@@ -1,0 +1,12 @@
+# Copyright (c) 2021 Nordic Semiconductor ASA
+# SPDX-License-Identifier: Apache-2.0
+
+# if SENSOR
+# rsource "example_sensor/Kconfig"
+# endif # SENSOR
+
+# Stuff I added
+if MODEM
+rsource "eee4022s_a76xx/Kconfig"
+endif
+# end stuff I added

@@ -1,0 +1,5 @@
+zephyr
+modules/
+.venv/
+
+apps/build*
