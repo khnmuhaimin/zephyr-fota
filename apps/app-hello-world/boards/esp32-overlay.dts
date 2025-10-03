@@ -1,0 +1,14 @@
+/ {
+	chosen {
+		zephyr,console = &uart2;
+		zephyr,shell-uart = &uart2;
+	};
+};
+
+&uart0 {
+	status = "disabled";
+};
+
+&uart2 {
+	status = "okay";
+};

@@ -1,10 +1,28 @@
-# Copyright (c) 2021 Nordic Semiconductor ASA
-# SPDX-License-Identifier: Apache-2.0
+menuconfig EEE4022S_A76XX
+    bool "A76XX Modem Driver"
+    depends on GPIO && UART_ASYNC_API
+    select MODEM_CONTEXT
+    select MODEM_CMD_HANDLER
+    select MODEM_IFACE_UART
+    select MODEM_SOCKET
+    select NET_OFFLOAD
+    select NET_SOCKETS_OFFLOAD
+    help
+      Enables the driver for the Simcom modems in the A76XX series.
 
-config EXAMPLE_SENSOR
-	bool "Example sensor"
-	default y
-	depends on DT_HAS_ZEPHYR_EXAMPLE_SENSOR_ENABLED
-	select GPIO
-	help
-	  Enable example sensor
+if EEE4022S_A76XX
+
+config EEE4022S_A76XX_INIT_PRIORITY
+    int "Init priority"
+    default 80
+    help
+      A76XX device driver initialization priority.
+
+config EEE4022S_A76XX_APN
+    string "APN"
+    default "internet"
+    help
+      The Access Point Name for the cellular connection.
+
+
+endif # EEE4022S_A76XX

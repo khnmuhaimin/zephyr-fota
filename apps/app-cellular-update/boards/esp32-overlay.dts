@@ -1,0 +1,37 @@
+/ {
+	chosen {
+		zephyr,console = &uart2;
+		zephyr,shell-uart = &uart2;
+	};
+
+	aliases {
+        modem-uart = &uart0;
+		modem = &modem;
+
+    };
+};
+
+&pinctrl {
+    uart0_default: uart0_default {
+        group1 {
+            pinmux = <UART0_TX_GPIO1>, <UART0_RTS_GPIO22>;
+            output-high;
+        };
+        group2 {
+            pinmux = <UART0_RX_GPIO3>, <UART0_CTS_GPIO19>;
+            bias-pull-up;
+        };
+    };
+};
+
+&uart0 {
+	hw-flow-control;
+    modem: modem {
+		compatible = "eee4022s,a76xx";
+		status = "okay";
+	};
+};
+
+&uart2 {
+	status = "okay";
+};
