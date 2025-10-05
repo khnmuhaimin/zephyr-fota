@@ -27,7 +27,8 @@
 &uart0 {
 	hw-flow-control;
     modem: modem {
-		compatible = "eee4022s,a76xx";
+		compatible = "simcom,a76xx";
+        mdm-power-gpios = <&gpio0 15 GPIO_ACTIVE_HIGH>;
 		status = "okay";
 	};
 };

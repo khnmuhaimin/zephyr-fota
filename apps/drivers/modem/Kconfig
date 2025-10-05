@@ -7,6 +7,6 @@
 
 # Stuff I added
 if MODEM
-rsource "eee4022s_a76xx/Kconfig"
+rsource "simcom-a76xx/Kconfig"
 endif
 # end stuff I added

@@ -1,9 +1,9 @@
-#define DT_DRV_COMPAT eee4022s_a76xx
+#define DT_DRV_COMPAT simcom_a76xx
 
 #include <zephyr/logging/log.h>
 #include <zephyr/net/offloaded_netdev.h>
 #include <zephyr/net/socket.h>
-#include <app/drivers/modem/a76xx.h>
+#include <app/drivers/eee4022s_a76xx.h>
 
 LOG_MODULE_REGISTER(a76xx, CONFIG_MODEM_LOG_LEVEL);
 

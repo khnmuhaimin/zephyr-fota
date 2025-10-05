@@ -4,6 +4,8 @@
             "name": "Linux",
             "browse": {
                 "path": [
+                "${workspaceFolder}",
+                "${workspaceFolder}/zephyr/include",    
                 "${workspaceFolder}/zephyr/lib/libc/iar/include",
                 "${workspaceFolder}/zephyr/lib/libc/minimal/include",
                 "${workspaceFolder}/zephyr/lib/libc/newlib/include",

@@ -1,0 +1,68 @@
+config MODEM_A76XX
+	bool "A76XX Driver"
+	select MODEM_CONTEXT
+	select MODEM_CMD_HANDLER
+	select MODEM_IFACE_UART
+	select MODEM_SOCKET
+	select NET_OFFLOAD
+	select NET_SOCKETS_OFFLOAD
+	imply GPIO
+	help
+	  Enables the driver for the A76XX series of modems.
+
+if MODEM_A76XX
+
+config MODEM_SIMCOM_A76XX_RX_STACK_SIZE
+	int "Stack size for the simcom a76xx modem driver rx thread"
+	default 1028
+	help
+	  This stack is used by the simcom A76XX RX thread.
+
+config MODEM_SIMCOM_A76XX_RX_WORKQ_STACK_SIZE
+	int "Stack size for the simcom a76xx modem driver work queue"
+	default 2048
+	help
+		This stack is used by the work queue.
+
+config MODEM_SIMCOM_A76XX_INIT_PRIORITY
+	int "simcom a76xx driver init priority"
+	default 80
+	help
+	  simcom a76xx driver initialization priority.
+
+config MODEM_SIMCOM_A76XX_LTE_BANDS
+	string "LTE bands the driver can use"
+	default "8,20,28"
+	help
+		Comma separated list of usable lte bands.
+
+config MODEM_SIMCOM_A76XX_APN
+	string "APN for establishing a network connection"
+	default "internet"
+	help
+	  This setting is used to set the APN name for the network connection
+	  context. This value is specific to the network provider and may
+	  need to be changed.
+
+choice MODEM_SIMCOM_A76XX_RAT
+	bool "Radio Access Technology Mode"
+	default MODEM_SIMCOM_A76XX_RAT_NB1
+
+config MODEM_SIMCOM_A76XX_RAT_NB1
+	bool "NB-IoT"
+	help
+		Enable LTE NB-IoT mode.
+
+config MODEM_SIMCOM_A76XX_RAT_M1
+	bool "Cat-M1"
+	help
+		Enable Cat-M1 mode.
+
+config MODEM_SIMCOM_A76XX_RAT_GSM
+	bool "GSM"
+	help
+	  Enable GSM mode.
+
+endchoice
+
+endif # MODEM_A76XX

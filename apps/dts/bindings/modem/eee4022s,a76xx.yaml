@@ -1,9 +1,0 @@
-# Copyright (C) 2025 Olivier Lalonde
-# SPDX-License-Identifier: Apache-2.0
-
-description: Simcom A76XX modem
-
-compatible: "eee4022s,a76xx"
-
-include: uart-device.yaml
-

@@ -4,5 +4,5 @@
 # add_subdirectory_ifdef(CONFIG_EXAMPLE_SENSOR example_sensor)
 
 # Stuff I added
-add_subdirectory_ifdef(CONFIG_EEE4022S_A76XX eee4022s_a76xx)
+add_subdirectory_ifdef(CONFIG_SIMCOM_A76XX simcom-a76xx)
 # end stuff I added
