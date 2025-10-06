@@ -5,10 +5,6 @@
 	};
 };
 
-&uart0 {
-	status = "disabled";
-};
-
 &uart2 {
 	status = "okay";
 };
