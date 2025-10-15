@@ -1,5 +1,9 @@
 zephyr
 modules/
 .venv/
-
 apps/build*
+bootloader
+build-mcuboot
+
+# used for accessing e2c instance on aws
+zephyr-fota-key.pem

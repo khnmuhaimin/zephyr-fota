@@ -4,9 +4,8 @@ config MODEM_A76XX
 	select MODEM_CMD_HANDLER
 	select MODEM_IFACE_UART
 	select MODEM_SOCKET
-	select NET_OFFLOAD
-	select NET_SOCKETS_OFFLOAD
-	imply GPIO
+	select GPIO
+	depends on NETWORKING
 	help
 	  Enables the driver for the A76XX series of modems.
 
@@ -44,6 +43,13 @@ config MODEM_SIMCOM_A76XX_APN
 	  context. This value is specific to the network provider and may
 	  need to be changed.
 
+config MODEM_SIMCOM_A76XX_APN_MAX_LEN
+    int "Maximum APN length"
+    default 64
+    help
+      Sets the maximum size for the APN string buffer. This is used
+      to safely allocate memory on the stack and prevent overflows.
+
 choice MODEM_SIMCOM_A76XX_RAT
 	bool "Radio Access Technology Mode"
 	default MODEM_SIMCOM_A76XX_RAT_NB1
@@ -66,3 +72,5 @@ config MODEM_SIMCOM_A76XX_RAT_GSM
 endchoice
 
 endif # MODEM_A76XX
+
+

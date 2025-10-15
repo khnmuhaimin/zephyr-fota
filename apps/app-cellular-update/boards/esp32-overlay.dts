@@ -1,38 +1,38 @@
 / {
 	chosen {
-		zephyr,console = &uart2;
-		zephyr,shell-uart = &uart2;
+		zephyr,console = &uart0;
+		zephyr,shell-uart = &uart0;
 	};
 
 	aliases {
-        modem-uart = &uart0;
+        modem-uart = &uart2;
 		modem = &modem;
-
     };
 };
 
-&pinctrl {
-    uart0_default: uart0_default {
-        group1 {
-            pinmux = <UART0_TX_GPIO1>, <UART0_RTS_GPIO22>;
-            output-high;
-        };
-        group2 {
-            pinmux = <UART0_RX_GPIO3>, <UART0_CTS_GPIO19>;
-            bias-pull-up;
-        };
-    };
+
+//&pinctrl {
+//    uart0_default: uart0_default {
+//        group1 {
+//            pinmux = <UART0_TX_GPIO1>, <UART0_RTS_GPIO22>;
+//            output-high;
+//        };
+//        group2 {
+//            pinmux = <UART0_RX_GPIO3>, <UART0_CTS_GPIO19>;
+//            bias-pull-up;
+//        };
+//    };
+//};
+
+&uart2 {
+    modem: modem {
+		compatible = "simcom,a76xx";
+        mdm-power-gpios = <&gpio0 4 GPIO_ACTIVE_HIGH>;
+		status = "okay";
+	};
+    status = "okay";
 };
 
 &uart0 {
-	hw-flow-control;
-    modem: modem {
-		compatible = "simcom,a76xx";
-        mdm-power-gpios = <&gpio0 15 GPIO_ACTIVE_HIGH>;
-		status = "okay";
-	};
-};
-
-&uart2 {
 	status = "okay";
 };

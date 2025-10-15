@@ -4,6 +4,8 @@
 # Copyright (c) 2021 Nordic Semiconductor ASA
 # SPDX-License-Identifier: Apache-2.0
 
+# message(STATUS ">>> Processing: ${CMAKE_CURRENT_LIST_FILE} <<<")
+
 cmake_minimum_required(VERSION 3.13.1)
 find_package(Zephyr REQUIRED HINTS $ENV{ZEPHYR_BASE})
 

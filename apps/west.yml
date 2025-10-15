@@ -2,8 +2,9 @@
 # SPDX-License-Identifier: Apache-2.0
 
 manifest:
+
   self:
-    west-commands: scripts/west-commands.yml
+    path: apps
 
   remotes:
     - name: zephyrproject-rtos
@@ -14,8 +15,6 @@ manifest:
       remote: zephyrproject-rtos
       revision: main
       import:
-        # By using name-allowlist we can clone only the modules that are
-        # strictly needed by the application.
         name-allowlist:
-          - hal_stm32  # required by the nucleo_f302r8 board (STM32 based)
           - hal_espressif
+          - mcuboot	

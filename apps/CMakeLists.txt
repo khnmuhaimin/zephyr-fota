@@ -7,6 +7,9 @@
 
 # This is needed so that custom driver classes using system calls are taken into
 # account
+
+# message(STATUS ">>> Processing: ${CMAKE_CURRENT_LIST_FILE} <<<")
+
 zephyr_syscall_include_directories(include)
 
 zephyr_include_directories(include)
