@@ -7,8 +7,9 @@
 #define DT_DRV_COMPAT simcom_a76xx
 
 #include <zephyr/logging/log.h>
-#include <zephyr/net/offloaded_netdev.h>
 LOG_MODULE_REGISTER(modem_simcom_a76xx, CONFIG_MODEM_LOG_LEVEL);
+#include <zephyr/net/offloaded_netdev.h>
+#include "net_private.h"
 
 #include <app/drivers/simcom-a76xx.h>
 
@@ -111,9 +112,12 @@ static enum a76xx_state get_state(void)
 MODEM_CMD_DEFINE(on_cmd_cipopen)
 {
     int result = atoi(argv[1]);
-    if (result == 0) {
+    if (result == 0)
+    {
         LOG_INF("+CIPOPEN: %d", result);
-    } else {
+    }
+    else
+    {
         LOG_WRN("+CIPOPEN: %d", result);
     }
     modem_cmd_handler_set_error(data, result);
@@ -132,10 +136,13 @@ MODEM_CMD_DIRECT_DEFINE(on_cmd_tx_ready)
 MODEM_CMD_DEFINE(on_cmd_netopen)
 {
     int error = atoi(argv[0]);
-    if (error == 0) {
+    if (error == 0)
+    {
         LOG_INF("+NETOPEN: %d", error);
         modem_cmd_handler_set_error(data, 0);
-    } else {
+    }
+    else
+    {
         LOG_WRN("+NETOPEN: %d", error);
         modem_cmd_handler_set_error(data, -EIO);
     }
@@ -143,14 +150,12 @@ MODEM_CMD_DEFINE(on_cmd_netopen)
     return 0;
 }
 
-
 MODEM_CMD_DEFINE(on_cmd_ip_error_network_already_opened)
 {
     LOG_WRN("+IP ERROR: Network is already opened");
     k_sem_give(&mdata.sem_response);
     return 0;
 }
-
 
 /*
  * Connects an modem socket. Protocol can either be TCP or UDP.
@@ -163,11 +168,9 @@ static int offload_connect(void *obj, const struct sockaddr *addr, socklen_t add
     // char ip_str[NET_IPV6_ADDR_LEN];
     struct modem_cmd netopen_responses[] = {
         MODEM_CMD("+NETOPEN: ", on_cmd_netopen, 1U, ""),
-        MODEM_CMD("+IP ERROR: Network is already opened", on_cmd_ip_error_network_already_opened, 0U, "")
-    };
+        MODEM_CMD("+IP ERROR: Network is already opened", on_cmd_ip_error_network_already_opened, 0U, "")};
     struct modem_cmd cipopen_responses[] = {
-        MODEM_CMD("+CIPOPEN: ", on_cmd_cipopen, 2U, ",")
-    };
+        MODEM_CMD("+CIPOPEN: ", on_cmd_cipopen, 2U, ",")};
     // longest cipopen command is for TCP. UDP version is significantly shorter
     char cipopen_command[sizeof("AT+CIPOPEN=#,\"TCP\",\"\",#####,0") + NET_IPV6_ADDR_LEN];
     int ret;
@@ -257,7 +260,7 @@ static int offload_connect(void *obj, const struct sockaddr *addr, socklen_t add
     errno = 0;
     return 0;
 error:
-//     errno = -ret;
+    //     errno = -ret;
     return -1;
 }
 
@@ -358,13 +361,13 @@ static ssize_t offload_sendto(void *obj, const void *buf, size_t len, int flags,
     LOG_DBG("Sending CTRL-Z terminator...");
     modem_cmd_send_data_nolock(&mctx.iface, &ctrlz, 1);
 
-    LOG_DBG("Waiting for final OK response...");
-    k_sem_reset(&mdata.sem_response);
-    ret = k_sem_take(&mdata.sem_response, MDM_CMD_TIMEOUT);
-    if (ret < 0)
-    {
-        LOG_ERR("Timeout waiting for OK");
-    }
+    // LOG_DBG("Waiting for final OK response...");
+    // k_sem_reset(&mdata.sem_response);
+    // ret = k_sem_take(&mdata.sem_response, MDM_CMD_TIMEOUT);
+    // if (ret < 0)
+    // {
+    //     LOG_ERR("Timeout waiting for OK");
+    // }
 
 exit:
     LOG_DBG("Releasing TX lock semaphore...");
@@ -377,17 +380,17 @@ exit:
         return -1;
     }
 
-//     errno = 0;
+    //     errno = 0;
     return mdata.current_sock_written;
 }
 
-
-
 /*
  * Read data from a given socket.
+ *
+ * Note: len seems to always be zero. It feels like a sanity check more than anything else.
  */
-static int sockread_common(int sockfd, struct modem_cmd_handler_data *data, int socket_data_length,
-                           uint16_t len)
+static int sockread_common(int sock_id, struct modem_cmd_handler_data *data, int socket_data_length,
+                           uint16_t len, size_t rx_buf_bytes_to_skip)
 {
     struct modem_socket *sock;
     struct socket_read_data *sock_data;
@@ -417,10 +420,10 @@ static int sockread_common(int sockfd, struct modem_cmd_handler_data *data, int 
         return -EAGAIN;
     }
 
-    sock = modem_socket_from_fd(&mdata.socket_config, sockfd);
+    sock = modem_socket_from_id(&mdata.socket_config, sock_id);
     if (!sock)
     {
-        LOG_ERR("Socket not found! (%d)", sockfd);
+        LOG_ERR("Socket not found! (%d)", sock_id);
         ret = -EINVAL;
         goto exit;
     }
@@ -428,14 +431,28 @@ static int sockread_common(int sockfd, struct modem_cmd_handler_data *data, int 
     sock_data = (struct socket_read_data *)sock->data;
     if (!sock_data)
     {
-        LOG_ERR("Socket data not found! (%d)", sockfd);
+        LOG_ERR("Socket data not found! (%d)", sock_id);
         ret = -EINVAL;
         goto exit;
     }
 
-    ret = net_buf_linearize(sock_data->recv_buf, sock_data->recv_buf_len, data->rx_buf, 0,
-                            (uint16_t)socket_data_length);
+    // if (data->rx_buf) {
+    // 	dump_net_buf(data->rx_buf);
+    // }
+    // data->rx_buf = net_buf_skip(data->rx_buf, 2);  // skip /r/n
+    // if (data->rx_buf) {
+    // 	dump_net_buf(data->rx_buf);
+    // }
+    data->rx_buf = net_buf_skip(data->rx_buf, rx_buf_bytes_to_skip);
+    ret = net_buf_linearize(sock_data->recv_buf, sock_data->recv_buf_len, data->rx_buf, 0, (uint16_t)socket_data_length);
+    // ret = net_buf_linearize(sock_data->recv_buf, sock_data->recv_buf_len, data->rx_buf, 0, sock_data->recv_buf_len);
+    // mdata.unread_data_lengths[SOCKET_INDEX(sock->id)] = 0;  // if not all data is copied, i honestly dont know what to do
     data->rx_buf = net_buf_skip(data->rx_buf, ret);
+    // if (data->rx_buf) {
+	// 	dump_net_buf(data->rx_buf);
+	// }
+    // log sock_data->recv_buf (only log ret characters)
+    LOG_HEXDUMP_DBG(sock_data->recv_buf, ret, "Data Copied to App Buffer");
     sock_data->recv_read_len = ret;
     if (ret != socket_data_length)
     {
@@ -444,6 +461,8 @@ static int sockread_common(int sockfd, struct modem_cmd_handler_data *data, int 
                 ret, socket_data_length);
         ret = -EINVAL;
         goto exit;
+    } else {
+        LOG_DBG("Copied as many bytes as the modem reported (apparently).");
     }
 
 exit:
@@ -453,13 +472,31 @@ exit:
     return ret;
 }
 
-/*
- * Handler for carecv response.
- */
-MODEM_CMD_DEFINE(on_cmd_ciprxget)
+MODEM_CMD_DEFINE(on_cmd_ciprxget_mode_2)
 {
-    return sockread_common(mdata.current_sock_fd, data, atoi(argv[0]), len);
+    // arg format
+    // argv[0] -> link number
+    // arvg[1] -> bytes read
+    // argv[2] -> remaining bytes
+    LOG_DBG("on_cmd_ciprxget_mode_2: Args: %s, %s, %s | Arg count: %d", argv[0], argv[1], argv[2], argc);
+    // modem_cmd_handler will skip until the last arg
+    // which means we need to manually skip the last arg and \r\n
+    size_t last_arg_len = strlen(argv[2]);
+    size_t rx_buf_bytes_to_skip = last_arg_len + 2;
+    int ret = sockread_common(atoi(argv[0]), data, atoi(argv[1]), len, rx_buf_bytes_to_skip);
+    return ret;
 }
+
+// MODEM_CMD_DEFINE(on_cmd_ciprxget_mode_4)
+// {
+//     // arg format
+//     // argv[0] -> link number
+//     // arvg[1] -> data length
+//     int socket_id = atoi(argv[0]);
+//     size_t data_length = atoi(argv[1]);
+//     mdata.unread_data_lengths[SOCKET_INDEX(socket_id)] = data_length;
+//     return 0;
+// }
 
 /*
  * Read data from a given socket.
@@ -467,90 +504,103 @@ MODEM_CMD_DEFINE(on_cmd_ciprxget)
 static ssize_t offload_recvfrom(void *obj, void *buf, size_t max_len, int flags,
                                 struct sockaddr *src_addr, socklen_t *addrlen)
 {
-	struct modem_socket *sock = (struct modem_socket *)obj;
-	char ciprxget_command[sizeof("AT+CIPRXGET=2,#,") + NUM_DEC_DIGITS(MDM_MAX_DATA_LENGTH)];
-	int ret, packet_size;
-	struct socket_read_data sock_data;
 
-	struct modem_cmd data_cmd[] = {MODEM_CMD("+CIPRXGET: ", on_cmd_ciprxget, 1U, ",")};
+    struct modem_socket *sock = (struct modem_socket *)obj;
+    char ciprxget_command[sizeof("AT+CIPRXGET=#,#,") + NUM_DEC_DIGITS(MDM_MAX_DATA_LENGTH)];
+    int ret, packet_size;
+    struct socket_read_data sock_data;
 
-	LOG_DBG("Receiving data from socket %d...", sock->id);
+    // struct modem_cmd query_data_length_cmd[] = {MODEM_CMD("+CIPRXGET: 4,", on_cmd_ciprxget_mode_4, 2U, ",")};
+    struct modem_cmd get_data_cmd[] = {MODEM_CMD("+CIPRXGET: 2,", on_cmd_ciprxget_mode_2, 3U, ",")};
 
-	LOG_DBG("Checking network state...");
-	if (get_state() != A76XX_STATE_NETWORKING) {
-		LOG_ERR("Modem not in networking state, aborting receive.");
-		return -EAGAIN;
-	}
+    LOG_DBG("Receiving data from socket %d...", sock->id);
 
-	LOG_DBG("Performing sanity checks on buffer and length...");
-	if (!buf || max_len == 0) {
-		errno = EINVAL;
-		return -1;
-	}
+    LOG_DBG("Checking network state...");
+    if (get_state() != A76XX_STATE_NETWORKING)
+    {
+        LOG_ERR("Modem not in networking state, aborting receive.");
+        return -EAGAIN;
+    }
 
-	if (flags & ZSOCK_MSG_PEEK) {
-		LOG_ERR("MSG_PEEK is not supported.");
-		errno = ENOTSUP;
-		return -1;
-	}
+    LOG_DBG("Performing sanity checks on buffer and length...");
+    if (!buf || max_len == 0)
+    {
+        errno = EINVAL;
+        return -1;
+    }
 
-	LOG_DBG("Checking for available data packets...");
-	packet_size = modem_socket_next_packet_size(&mdata.socket_config, sock);
-	if (!packet_size) {
-		if (flags & ZSOCK_MSG_DONTWAIT) {
-			LOG_DBG("No data available and MSG_DONTWAIT is set.");
-			errno = EAGAIN;
-			return -1;
-		}
+    if (flags & ZSOCK_MSG_PEEK)
+    {
+        LOG_ERR("MSG_PEEK is not supported.");
+        errno = ENOTSUP;
+        return -1;
+    }
 
-		LOG_DBG("No data available, waiting for data notification...");
-		modem_socket_wait_data(&mdata.socket_config, sock);
-		packet_size = modem_socket_next_packet_size(&mdata.socket_config, sock);
-		LOG_DBG("Data notification received, packet size is now %d.", packet_size);
-	}
+    LOG_DBG("Checking for available data packets...");
+    packet_size = modem_socket_next_packet_size(&mdata.socket_config, sock);
+    if (!packet_size)
+    {
+        if (flags & ZSOCK_MSG_DONTWAIT)
+        {
+            LOG_DBG("No data available and MSG_DONTWAIT is set.");
+            errno = EAGAIN;
+            return -1;
+        }
 
-	max_len = (max_len > MDM_MAX_DATA_LENGTH) ? MDM_MAX_DATA_LENGTH : max_len;
-	LOG_DBG("Building AT+CIPRXGET command to read %zu bytes...", max_len);
-	snprintk(ciprxget_command, sizeof(ciprxget_command), "AT+CIPRXGET=2,%d,%zu", sock->id, max_len);
+        LOG_DBG("No data available, waiting for data notification...");
+        modem_socket_wait_data(&mdata.socket_config, sock);
+        packet_size = modem_socket_next_packet_size(&mdata.socket_config, sock);
+        LOG_DBG("Data notification received, packet size is now %d.", packet_size);
+    }
 
-	LOG_DBG("Preparing socket data structure for read...");
-	memset(&sock_data, 0, sizeof(sock_data));
-	sock_data.recv_buf = buf;
-	sock_data.recv_buf_len = max_len;
-	sock_data.recv_addr = src_addr;
-	sock->data = &sock_data;
-	mdata.current_sock_fd = sock->sock_fd;
+    // LOG_DBG("Querying data length");
+    // snprintk(ciprxget_command, sizeof(ciprxget_command), "AT+CIPRXGET=4,%d", sock->id);
+    // ret = modem_cmd_send(&mctx.iface, &mctx.cmd_handler, query_data_length_cmd, ARRAY_SIZE(query_data_length_cmd),
+    //                      ciprxget_command, &mdata.sem_response, MDM_CIPRXGET_TIMEOUT);
 
-	LOG_DBG("Sending command '%s' and waiting for response...", ciprxget_command);
-	ret = modem_cmd_send(&mctx.iface, &mctx.cmd_handler, data_cmd, ARRAY_SIZE(data_cmd),
-			     ciprxget_command, &mdata.sem_response, MDM_CMD_TIMEOUT);
-	if (ret < 0) {
-		LOG_ERR("Failed to receive data, modem_cmd_send returned %d.", ret);
-		errno = -ret;
-		ret = -1;
-		goto exit;
-	}
+    max_len = (max_len > MDM_MAX_DATA_LENGTH) ? MDM_MAX_DATA_LENGTH : max_len;
+    // max_len = (max_len > mdata.unread_data_lengths[SOCKET_INDEX(sock->id)]) ? mdata.unread_data_lengths[SOCKET_INDEX(sock->id)] : max_len;
+    LOG_DBG("Building AT+CIPRXGET command to read %zu bytes...", max_len);
+    snprintk(ciprxget_command, sizeof(ciprxget_command), "AT+CIPRXGET=2,%d,%zu", sock->id, max_len);
 
-	/* HACK: use dst address as src */
-	if (src_addr && addrlen) {
-		LOG_DBG("Copying source address info...");
-		*addrlen = sizeof(sock->dst);
-		memcpy(src_addr, &sock->dst, *addrlen);
-	}
+    LOG_DBG("Preparing socket data structure for read...");
+    memset(&sock_data, 0, sizeof(sock_data));
+    sock_data.recv_buf = buf;
+    sock_data.recv_buf_len = max_len;
+    sock_data.recv_addr = src_addr;
+    sock->data = &sock_data;
+    mdata.current_sock_fd = sock->sock_fd;
 
-	errno = 0;
-	ret = sock_data.recv_read_len;
-	LOG_DBG("Successfully received %d bytes.", ret);
+    LOG_DBG("Sending command '%s' and waiting for response...", ciprxget_command);
+    ret = modem_cmd_send(&mctx.iface, &mctx.cmd_handler, get_data_cmd, ARRAY_SIZE(get_data_cmd),
+                         ciprxget_command, &mdata.sem_response, MDM_CMD_TIMEOUT);
+    if (ret < 0)
+    {
+        LOG_ERR("Failed to receive data, modem_cmd_send returned %d.", ret);
+        errno = -ret;
+        ret = -1;
+        goto exit;
+    }
+
+    // /* HACK: use dst address as src */
+    // if (src_addr && addrlen)
+    // {
+    //     LOG_DBG("Copying source address info...");
+    //     *addrlen = sizeof(sock->dst);
+    //     memcpy(src_addr, &sock->dst, *addrlen);
+    // }
+
+    errno = 0;
+    ret = sock_data.recv_read_len;
+    LOG_DBG("Successfully received %d bytes.", ret);
 
 exit:
-	LOG_DBG("Cleaning up socket data...");
-	/* clear socket data */
-	mdata.current_sock_fd = -1;
-	sock->data = NULL;
-	return ret;
+    LOG_DBG("Cleaning up socket data...");
+    /* clear socket data */
+    mdata.current_sock_fd = -1;
+    sock->data = NULL;
+    return ret;
 }
-
-
 
 /*
  * Sends messages to the modem.
@@ -619,27 +669,26 @@ static ssize_t offload_sendmsg(void *obj, const struct msghdr *msg, int flags)
  */
 static void socket_close(struct modem_socket *sock)
 {
-	char cipclose_command[sizeof("AT+CIPCLOSE=0")];
-	int ret;
+    char cipclose_cmd_buffer[sizeof("AT+CIPCLOSE=0")];
+    int ret;
 
-	LOG_DBG("Closing socket %d...", sock->id);
+    LOG_DBG("Closing socket %d...", sock->id);
 
-	LOG_DBG("Building AT+CIPCLOSE command...");
-	snprintk(cipclose_command, sizeof(cipclose_command), "AT+CIPCLOSE=%d", sock->id);
+    LOG_DBG("Building AT+CIPCLOSE command...");
+    snprintk(cipclose_cmd_buffer, sizeof(cipclose_cmd_buffer), "AT+CIPCLOSE=%d", sock->id);
 
-	LOG_DBG("Sending command '%s' and waiting for response...", cipclose_command);
-	ret = modem_cmd_send(&mctx.iface, &mctx.cmd_handler, NULL, 0U, cipclose_command,
-			     &mdata.sem_response, MDM_CMD_TIMEOUT);
-	if (ret < 0) {
-		LOG_ERR("AT+CIPCLOSE command failed for socket %d, ret: %d", sock->id, ret);
-	}
+    LOG_DBG("Sending command '%s' and waiting for response...", cipclose_cmd_buffer);
+    ret = modem_cmd_send(&mctx.iface, &mctx.cmd_handler, NULL, 0U, cipclose_cmd_buffer,
+                         &mdata.sem_response, MDM_CIPCLOSE_TIMEOUT);
+    if (ret < 0)
+    {
+        LOG_ERR("AT+CIPCLOSE command failed for socket %d, ret: %d", sock->id, ret);
+    }
 
-	LOG_DBG("Releasing socket resource for fd %d...", sock->sock_fd);
-	modem_socket_put(&mdata.socket_config, sock->sock_fd);
-	LOG_DBG("Socket %d closed successfully.", sock->id);
+    LOG_DBG("Releasing socket resource for fd %d...", sock->sock_fd);
+    modem_socket_put(&mdata.socket_config, sock->sock_fd);
+    LOG_DBG("Socket %d closed successfully.", sock->id);
 }
-
-
 
 /*
  * Offloads read by reading from a given socket.
@@ -1006,13 +1055,18 @@ MODEM_CMD_DEFINE(on_urc_app_pdp)
 
 MODEM_CMD_DEFINE(on_urc_ciprxget)
 {
-    int sock_id = atoi(argv[0]);  // link number is equal to socket id
+    int sock_id = atoi(argv[0]); // link number is equal to socket id
     LOG_DBG("+CIPRXGET: data recieved for socket with ID %d.", sock_id);
-    struct modem_socket* socket = modem_socket_from_id(&mdata.socket_config, sock_id);
-    if (!socket) {
-		LOG_ERR("Received data notification for unknown socket ID %d", sock_id);
-		return 0;
-	}
+    struct modem_socket *socket = modem_socket_from_id(&mdata.socket_config, sock_id);
+    if (!socket)
+    {
+        LOG_ERR("Received data notification for unknown socket ID %d", sock_id);
+        return 0;
+    }
+
+    LOG_DBG("Data available on socket: %d", sock_id);
+    /* Modem does not tell packet size. Set dummy for receive. */
+    modem_socket_packet_size_update(&mdata.socket_config, socket, 1);
     modem_socket_data_ready(&mdata.socket_config, socket);
     return 0;
 }
@@ -1086,46 +1140,6 @@ MODEM_CMD_DEFINE(on_urc_castate)
 
     sock->is_connected = false;
     LOG_INF("Socket closed: %d", sockfd);
-
-    return 0;
-}
-
-/**
- * Handles the ftpget urc.
- *
- * +FTPGET: <mode>,<error>
- *
- * Mode can be 1 for opening a session and
- * reporting that data is available or 2 for
- * reading data. This urc handler will only handle
- * mode 1 because 2 will not occur as urc.
- *
- * Error can be either:
- *  - 1 for data available/opened session.
- *  - 0 If transfer is finished.
- *  - >0 for some error.
- */
-MODEM_CMD_DEFINE(on_urc_ftpget)
-{
-    int error = atoi(argv[0]);
-
-    LOG_INF("+FTPGET: 1,%d", error);
-
-    /* Transfer finished. */
-    if (error == 0)
-    {
-        mdata.ftp.state = A76XX_FTP_CONNECTION_STATE_FINISHED;
-    }
-    else if (error == 1)
-    {
-        mdata.ftp.state = A76XX_FTP_CONNECTION_STATE_CONNECTED;
-    }
-    else
-    {
-        mdata.ftp.state = A76XX_FTP_CONNECTION_STATE_ERROR;
-    }
-
-    k_sem_give(&mdata.sem_ftp);
 
     return 0;
 }
@@ -1216,7 +1230,6 @@ MODEM_CMD_DEFINE(on_cmd_cgatt)
     return 0;
 }
 
-
 /*
  * Handler for RSSI query.
  *
@@ -1253,8 +1266,6 @@ MODEM_CMD_DEFINE(on_cmd_csq)
     LOG_INF("RSSI: %d", mdata.mdm_rssi);
     return 0;
 }
-
-
 
 /*
  * Queries modem RSSI.
@@ -1298,10 +1309,9 @@ static const struct modem_cmd response_cmds[] = {
 static const struct modem_cmd unsolicited_cmds[] = {
     MODEM_CMD("+CGEV: ME PDN ACT ", on_urc_app_pdp, 2U, ","),
     MODEM_CMD("+CIPRXGET: 1,", on_urc_ciprxget, 1U, ""),
-    MODEM_CMD("SMS ", on_urc_sms, 1U, ""),
-    MODEM_CMD("+CADATAIND: ", on_urc_cadataind, 1U, ""),
-    MODEM_CMD("+CASTATE: ", on_urc_castate, 2U, ","),
-    MODEM_CMD("+FTPGET: 1,", on_urc_ftpget, 1U, ""),
+    // MODEM_CMD("SMS ", on_urc_sms, 1U, ""),
+    // MODEM_CMD("+CADATAIND: ", on_urc_cadataind, 1U, ""),
+    // MODEM_CMD("+CASTATE: ", on_urc_castate, 2U, ","),
 };
 
 /*
@@ -1312,29 +1322,16 @@ static int modem_pdp_activate(void)
     int counter;
     int ret = 0;
 
-#if defined(CONFIG_MODEM_SIMCOM_A76XX_RAT_GSM)
-    // Allow unsolicted codes for network registration
-    const char *buf = "AT+CREG?";
-    struct modem_cmd cmds[] = {MODEM_CMD("+CREG: ", on_cmd_creg, 2U, ",")};
-#else
-    const char *buf = "AT+CEREG?";
-    struct modem_cmd cmds[] = {MODEM_CMD("+CEREG: ", on_cmd_creg, 2U, ",")};
-#endif /* defined(CONFIG_MODEM_SIMCOM_A76XX_RAT_GSM) */
-
     struct modem_cmd cgatt_cmd[] = {MODEM_CMD("+CGATT: ", on_cmd_cgatt, 1U, "")};
-
     counter = 0;
     while (counter++ < MDM_MAX_CGATT_WAITS && mdata.mdm_cgatt != 1)
     {
-        ret = modem_cmd_send(&mctx.iface, &mctx.cmd_handler, cgatt_cmd,
-                             ARRAY_SIZE(cgatt_cmd), "AT+CGATT?", &mdata.sem_response,
-                             MDM_CMD_TIMEOUT);
+        ret = modem_cmd_send(&mctx.iface, &mctx.cmd_handler, cgatt_cmd, ARRAY_SIZE(cgatt_cmd), "AT+CGATT?", &mdata.sem_response, MDM_CGATT_TIMEOUT);
         if (ret < 0)
         {
             LOG_ERR("Failed to query cgatt!!");
             return -1;
         }
-
         k_sleep(K_SECONDS(1));
     }
 
@@ -1352,15 +1349,15 @@ static int modem_pdp_activate(void)
 
     LOG_INF("Waiting for network");
 
-    /* Wait until the module is registered to the network.
+    /*
+     * Wait until the module is registered to the network.
      * Registration will be set by urc.
      */
+    struct modem_cmd cmds[] = {MODEM_CMD("+CREG: ", on_cmd_creg, 2U, ",")};
     counter = 0;
-    while (counter++ < MDM_MAX_CEREG_WAITS && mdata.mdm_registration != 1 &&
-           mdata.mdm_registration != 5)
+    while (counter++ < MDM_MAX_CEREG_WAITS && mdata.mdm_registration != 1 && mdata.mdm_registration != 5)
     {
-        ret = modem_cmd_send(&mctx.iface, &mctx.cmd_handler, cmds, ARRAY_SIZE(cmds), buf,
-                             &mdata.sem_response, MDM_CMD_TIMEOUT);
+        ret = modem_cmd_send(&mctx.iface, &mctx.cmd_handler, cmds, ARRAY_SIZE(cmds), "AT+CREG?", &mdata.sem_response, MDM_CREG_TIMEOUT);
         if (ret < 0)
         {
             LOG_ERR("Failed to query registration!!");
@@ -1372,20 +1369,21 @@ static int modem_pdp_activate(void)
 
     if (counter >= MDM_MAX_CEREG_WAITS)
     {
+        // mdm_registration was not 1 nor 5 (both are mean registered. See manual for more info.)
         LOG_WRN("Network registration failed!");
         ret = -1;
         goto error;
     }
 
     // now using just ipv4 (ipv6 not allowed)
-    char pdp_config_command_buffer[sizeof("AT+CGDCONT=1,\"IP\",\"\"") + CONFIG_MODEM_SIMCOM_A76XX_APN_MAX_LEN];
+    char pdp_config_cmd_buffer[sizeof("AT+CGDCONT=1,\"IP\",\"\"") + CONFIG_MODEM_SIMCOM_A76XX_APN_MAX_LEN];
 
-    snprintk(pdp_config_command_buffer,
-             sizeof(pdp_config_command_buffer),
+    snprintk(pdp_config_cmd_buffer,
+             sizeof(pdp_config_cmd_buffer),
              "AT+CGDCONT=1,\"IP\",\"%s\"",
              CONFIG_MODEM_SIMCOM_A76XX_APN);
-    LOG_DBG("Sending PDP context command: %s", pdp_config_command_buffer);
-    ret = modem_cmd_send(&mctx.iface, &mctx.cmd_handler, NULL, 0, pdp_config_command_buffer,
+    LOG_DBG("Sending PDP context command: %s", pdp_config_cmd_buffer);
+    ret = modem_cmd_send(&mctx.iface, &mctx.cmd_handler, NULL, 0, pdp_config_cmd_buffer,
                          &mdata.sem_response, MDM_CMD_TIMEOUT);
     if (ret < 0)
     {
@@ -1431,28 +1429,24 @@ error:
  * Commands to be sent at setup.
  */
 static const struct setup_cmd setup_cmds[] = {
-    SETUP_CMD("ATE0", "", on_cmd_ok, 0U, ""), // turns off echo mode
+    SETUP_CMD_NOHANDLE("ATE0"), // turns off echo mode
     // The four commands below collect product info
     SETUP_CMD("AT+CGMI", "", on_cmd_cgmi, 0U, ""),
     SETUP_CMD("AT+CGMM", "", on_cmd_cgmm, 0U, ""),
     SETUP_CMD("AT+CGMR", "", on_cmd_cgmr, 0U, ""),
     SETUP_CMD("AT+CGSN", "", on_cmd_cgsn, 0U, ""),
-    SETUP_CMD_NOHANDLE("AT+CIPRXGET=1"),  // lets the received data be called using a link number
+    SETUP_CMD_NOHANDLE("AT+CIPRXGET=1"), // lets the received data be called using a link number
 #if defined(CONFIG_MODEM_SIM_NUMBERS)
-    SETUP_CMD("AT+CIMI", "", on_cmd_cimi, 0U, ""),
-    SETUP_CMD("AT+CICCID", "", on_cmd_iccid, 0U, ""),
+// add setup cmds for sim numbers here
 #endif /* defined(CONFIG_MODEM_SIM_NUMBERS) */
 #if defined(CONFIG_MODEM_SIMCOM_A76XX_RAT_NB1)
-    SETUP_CMD_NOHANDLE("AT+CNMP=38"),
-    SETUP_CMD_NOHANDLE("AT+CMNB=2"),
-    SETUP_CMD_NOHANDLE("AT+CBANDCFG=\"NB-IOT\"," MDM_LTE_BANDS),
+// add setup cmds for NB1 here
 #endif /* defined(CONFIG_MODEM_SIMCOM_A76XX_RAT_NB1) */
 #if defined(CONFIG_MODEM_SIMCOM_A76XX_RAT_M1)
-    SETUP_CMD_NOHANDLE("AT+CNMP=38"),
-    SETUP_CMD_NOHANDLE("AT+CMNB=1"),
-    SETUP_CMD_NOHANDLE("AT+CBANDCFG=\"CAT-M\"," MDM_LTE_BANDS),
+// add setup cmds for M1 here
 #endif /* defined(CONFIG_MODEM_SIMCOM_A76XX_RAT_M1) */
 #if defined(CONFIG_MODEM_SIMCOM_A76XX_RAT_GSM)
+    // sets preferred mode to GSM
     SETUP_CMD_NOHANDLE("AT+CNMP=13"),
 #endif /* defined(CONFIG_MODEM_SIMCOM_A76XX_RAT_GSM) */
     SETUP_CMD("AT+CPIN?", "+CPIN: ", on_cmd_cpin, 1U, ""),
@@ -1766,81 +1760,6 @@ static size_t net_buf_find_crlf(struct net_buf *buf, size_t skip)
     return 0;
 }
 
-/**
- * Parses list sms and add them to buffer.
- * Format is:
- *
- * +CMGL: <index>,<stat>,,<length><CR><LF><pdu><CR><LF>
- * +CMGL: <index>,<stat>,,<length><CR><LF><pdu><CR><LF>
- * ...
- * OK
- */
-MODEM_CMD_DEFINE(on_cmd_cmgl)
-{
-    int sms_index, sms_stat, ret;
-    char pdu_buffer[256];
-    size_t out_len, sms_len, param_len;
-    struct a76xx_sms *sms;
-
-    sms_index = atoi(argv[0]);
-    sms_stat = atoi(argv[1]);
-
-    /* Get the length of the "length" parameter.
-     * The last parameter will be stuck in the netbuffer.
-     * It is not the actual length of the trailing pdu so
-     * we have to search the next crlf.
-     */
-    param_len = net_buf_find_crlf(data->rx_buf, 0);
-    if (param_len == 0)
-    {
-        LOG_INF("No <CR><LF>");
-        return -EAGAIN;
-    }
-
-    /* Get actual trailing pdu len. +2 to skip crlf. */
-    sms_len = net_buf_find_crlf(data->rx_buf, param_len + 2);
-    if (sms_len == 0)
-    {
-        return -EAGAIN;
-    }
-
-    /* Skip to start of pdu. */
-    data->rx_buf = net_buf_skip(data->rx_buf, param_len + 2);
-
-    out_len = net_buf_linearize(pdu_buffer, sizeof(pdu_buffer) - 1, data->rx_buf, 0, sms_len);
-    pdu_buffer[out_len] = '\0';
-
-    data->rx_buf = net_buf_skip(data->rx_buf, sms_len);
-
-    /* No buffer specified. */
-    if (!mdata.sms_buffer)
-    {
-        return 0;
-    }
-
-    /* No space left in buffer. */
-    if (mdata.sms_buffer_pos >= mdata.sms_buffer->nsms)
-    {
-        return 0;
-    }
-
-    sms = &mdata.sms_buffer->sms[mdata.sms_buffer_pos];
-
-    ret = mdm_decode_pdu(pdu_buffer, out_len, sms);
-    if (ret < 0)
-    {
-        return 0;
-    }
-
-    sms->stat = sms_stat;
-    sms->index = sms_index;
-    sms->data[sms->data_len] = '\0';
-
-    mdata.sms_buffer_pos++;
-
-    return 0;
-}
-
 /*
  * Does the modem setup by starting it and
  * bringing the modem to a PDP active state.
@@ -1955,8 +1874,6 @@ int mdm_a76xx_power_off(void)
     LOG_INF("A76XX modem powered off.");
     return 0;
 }
-
-// END MYSTICAL
 
 const char *mdm_a76xx_get_manufacturer(void)
 {
@@ -2080,6 +1997,9 @@ static int modem_init(const struct device *dev)
 
     LOG_INF("Initializing RSSI query work...");
     k_work_init_delayable(&mdata.rssi_query_work, modem_rssi_query_work);
+
+    LOG_DBG("Setting unread data lengths to all zero...");
+    memset(mdata.unread_data_lengths, 0, ARRAY_SIZE(mdata.unread_data_lengths));
 
     LOG_INF("Running modem setup...");
     return modem_setup();

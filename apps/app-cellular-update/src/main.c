@@ -43,7 +43,6 @@ LOG_MODULE_REGISTER(main, LOG_LEVEL_DBG);
 #include <zephyr/net/coap.h>
 
 #include "net_private.h"
-#include <zephyr/debug/coredump.h>
 
 const struct device *modem = DEVICE_DT_GET(DT_ALIAS(modem));
 const struct device *modem_uart = DEVICE_DT_GET(DT_ALIAS(modem_uart));
@@ -61,10 +60,19 @@ static int nfds;
 static const char * const test_path[] = { "hello", NULL };
 
 static void wait(void)
-{
-	if (poll(fds, nfds, -1) < 0) {
-		LOG_ERR("Error in poll:%d", errno);
-	}
+{    
+    int ret;
+
+    // A good "before" message states the action and the specific resource.
+    LOG_DBG("Blocking on poll(), waiting for data on socket fd %d...", fds[0].fd);
+
+    ret = poll(fds, nfds, -1);
+    if (ret < 0) {
+        LOG_ERR("Error in poll(): %d", errno);
+    } else {
+        // A good "after" message confirms the action is complete.
+        LOG_DBG("Woke up from poll(), events received.");
+    }
 }
 
 static void prepare_fds(void)
@@ -89,7 +97,9 @@ static int start_coap_client(void)
 	if (sock < 0) {
 		LOG_ERR("Failed to create UDP socket %d", errno);
 		return -errno;
-	}
+	} else {
+        LOG_DBG("Created socket with fd %d.", sock);
+    }
 
 	ret = connect(sock, (struct sockaddr *)&addr, sizeof(addr));
 	if (ret < 0) {
@@ -108,6 +118,8 @@ static int process_simple_coap_reply(void)
 	uint8_t *data;
 	int rcvd;
 	int ret;
+
+    LOG_DBG("Starting to process simple CoAP reply...");
 
 	wait();
 
@@ -137,6 +149,23 @@ static int process_simple_coap_reply(void)
 	ret = coap_packet_parse(&reply, data, rcvd, NULL, 0);
 	if (ret < 0) {
 		LOG_ERR("Invalid data received");
+	}
+
+    /*
+	 * THE FIX: Extract and print the human-readable payload.
+	 */
+	uint8_t *payload;
+	uint16_t payload_len;
+
+	payload = coap_packet_get_payload(&reply, &payload_len);
+	if (payload && payload_len > 0) {
+		/*
+		 * Use the %.*s format specifier to print the payload,
+		 * which is not a null-terminated string.
+		 */
+		LOG_INF("CoAP response payload: %.*s", payload_len, payload);
+	} else {
+		LOG_WRN("CoAP response has no payload.");
 	}
 
 end:

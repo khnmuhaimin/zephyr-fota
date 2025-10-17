@@ -55,6 +55,8 @@
 #define RSSI_TIMEOUT_SECS 30
 
 // my own timeouts
+#define MDM_CGATT_TIMEOUT K_SECONDS(9)
+#define MDM_CREG_TIMEOUT K_SECONDS(9)
 #define MDM_NETOPEN_TIMEOUT K_SECONDS(120)
 #define MDM_CIPOPEN_TIMEOUT K_SECONDS(120)
 #define MDM_CIPRXGET_TIMEOUT K_SECONDS(9)
@@ -79,6 +81,8 @@
      (n) < 1000000 ? 6 :  \
      (n) < 10000000 ? 7 : \
      (n) < 100000000 ? 8 : 9)
+
+#define SOCKET_INDEX(socket_id) (socket_id - MDM_BASE_SOCKET_NUM)
 
 
 enum a76xx_state {
@@ -187,6 +191,9 @@ struct a76xx_data {
 	struct k_sem sem_ftp;
     // Power status
     bool powered_on;
+    // when getting data, the length is queried on a different cmd than the actual "get data" cmd
+    // so ill store the lengths here
+    size_t unread_data_lengths[MDM_MAX_SOCKETS];
 };
 
 /*

@@ -58,6 +58,10 @@
   "C_Cpp_Runner.msvcSecureNoWarnings": false,
   "files.associations": {
     "*.erb": "erb",
-    "log.h": "c"
+    "log.h": "c",
+    "atomic": "c",
+    "condition_variable": "c",
+    "net_private.h": "c",
+    "functional": "c"
   }
 }
