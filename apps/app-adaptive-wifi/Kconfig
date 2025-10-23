@@ -1,0 +1,20 @@
+source "Kconfig.zephyr"
+
+menu "Adaptive Sockets"
+
+config ADAPTIVE_SOCKETS_ENABLE
+    bool "Enable adaptive sockets"
+    default y
+    help
+      Enables the custom socket offload implementation to handle routing
+      decisions between Wi-Fi and Cellular modem.
+
+config ADAPTIVE_SOCKETS_PRIORITY
+    int "Adaptive sockets priority"
+    default 1
+    range 0 99
+    help
+      Numerical priority for the custom offload. A lower number (e.g., 1)
+      means higher priority, ensuring it is checked first.
+
+endmenu

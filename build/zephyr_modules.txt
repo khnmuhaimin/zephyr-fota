@@ -1,4 +1,0 @@
-"apps":"/home/khnmuhaimin/EEE4022S/zephyr-fota/apps":"/home/khnmuhaimin/EEE4022S/zephyr-fota/apps"
-"hal_espressif":"/home/khnmuhaimin/EEE4022S/zephyr-fota/modules/hal/espressif":"/home/khnmuhaimin/EEE4022S/zephyr-fota/modules/hal/espressif/zephyr"
-"mbedtls":"/home/khnmuhaimin/EEE4022S/zephyr-fota/modules/crypto/mbedtls":"${ZEPHYR_MBEDTLS_CMAKE_DIR}"
-"mcuboot":"/home/khnmuhaimin/EEE4022S/zephyr-fota/bootloader/mcuboot":"/home/khnmuhaimin/EEE4022S/zephyr-fota/bootloader/mcuboot/boot/bootutil/zephyr"

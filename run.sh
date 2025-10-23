@@ -23,14 +23,23 @@ elif [ "$COMMAND" == "build-hello-world-menuconfig" ]; then
 	echo "Building menuconfig for app-hello-world..."
 	west build -b esp32_devkitc/esp32/procpu -d apps/build-hello-world -t menuconfig apps/app-hello-world
 	
-elif [ "$COMMAND" == "build-adaptive-update" ]; then
-    echo "Building app-adaptive-update..."
-	rm -rf apps/build-adaptive-update
-    west build -b esp32_devkitc/esp32/procpu --pristine -d apps/build-adaptive-update apps/app-adaptive-update/ -- -DDTC_OVERLAY_FILE="boards/esp32-overlay.dts"
+elif [ "$COMMAND" == "build-adaptive-wifi" ]; then
+    echo "Building app-adaptive-wifi..."
+	rm -rf apps/build-adaptive-wifi
+    west build -b esp32_devkitc/esp32/procpu --pristine -d apps/build-adaptive-wifi apps/app-adaptive-wifi/ -- -DDTC_OVERLAY_FILE="boards/esp32-overlay.dts"
 
-elif [ "$COMMAND" == "build-adaptive-update-menuconfig" ]; then
-	echo "Building menuconfig for app-adaptive-update..."
-	west build -b esp32_devkitc/esp32/procpu -d apps/build-adaptive-update -t menuconfig apps/app-adaptive-update
+elif [ "$COMMAND" == "build-adaptive-wifi-menuconfig" ]; then
+	echo "Building menuconfig for app-adaptive-wifi..."
+	west build -b esp32_devkitc/esp32/procpu -d apps/build-adaptive-wifi -t menuconfig apps/app-adaptive-wifi
+
+elif [ "$COMMAND" == "build-adaptive-modem" ]; then
+    echo "Building app-adaptive-modem..."
+	rm -rf apps/build-adaptive-modem
+    west build -b esp32_devkitc/esp32/procpu --pristine -d apps/build-adaptive-modem apps/app-adaptive-modem/ -- -DDTC_OVERLAY_FILE="boards/esp32-overlay.dts"
+
+elif [ "$COMMAND" == "build-adaptive-modem-menuconfig" ]; then
+	echo "Building menuconfig for app-adaptive-modem..."
+	west build -b esp32_devkitc/esp32/procpu -d apps/build-adaptive-modem -t menuconfig apps/app-adaptive-modem
 
 elif [ "$COMMAND" == "build-wifi-update" ]; then
     echo "Building app-wifi-update..."
