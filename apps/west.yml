@@ -13,8 +13,9 @@ manifest:
   projects:
     - name: zephyr
       remote: zephyrproject-rtos
-      revision: main
+      revision: v4.2.0
       import:
         name-allowlist:
           - hal_espressif
-          - mcuboot	
+          - mcuboot
+          - mbedtls

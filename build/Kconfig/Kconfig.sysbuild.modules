@@ -1,0 +1,12 @@
+config ZEPHYR_APPS_MODULE
+   bool
+   default y
+config ZEPHYR_HAL_ESPRESSIF_MODULE
+   bool
+   default y
+config ZEPHYR_MBEDTLS_MODULE
+   bool
+   default y
+config ZEPHYR_MCUBOOT_MODULE
+   bool
+   default y

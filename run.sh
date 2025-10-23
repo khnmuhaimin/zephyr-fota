@@ -22,6 +22,24 @@ elif [ "$COMMAND" == "build-hello-world" ]; then
 elif [ "$COMMAND" == "build-hello-world-menuconfig" ]; then
 	echo "Building menuconfig for app-hello-world..."
 	west build -b esp32_devkitc/esp32/procpu -d apps/build-hello-world -t menuconfig apps/app-hello-world
+	
+elif [ "$COMMAND" == "build-adaptive-update" ]; then
+    echo "Building app-adaptive-update..."
+	rm -rf apps/build-adaptive-update
+    west build -b esp32_devkitc/esp32/procpu --pristine -d apps/build-adaptive-update apps/app-adaptive-update/ -- -DDTC_OVERLAY_FILE="boards/esp32-overlay.dts"
+
+elif [ "$COMMAND" == "build-adaptive-update-menuconfig" ]; then
+	echo "Building menuconfig for app-adaptive-update..."
+	west build -b esp32_devkitc/esp32/procpu -d apps/build-adaptive-update -t menuconfig apps/app-adaptive-update
+
+elif [ "$COMMAND" == "build-wifi-update" ]; then
+    echo "Building app-wifi-update..."
+	rm -rf apps/build-wifi-update
+    west build -b esp32_devkitc/esp32/procpu --pristine -d apps/build-wifi-update apps/app-wifi-update/ -- -DDTC_OVERLAY_FILE="boards/esp32-overlay.dts"
+
+elif [ "$COMMAND" == "build-wifi-update-menuconfig" ]; then
+	echo "Building menuconfig for app-wifi-update..."
+	west build -b esp32_devkitc/esp32/procpu -d apps/build-wifi-update -t menuconfig apps/app-wifi-update
 
 elif [ "$COMMAND" == "build-mcuboot" ]; then
 	echo "Building MCUboot..."

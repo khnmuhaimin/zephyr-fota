@@ -191,9 +191,6 @@ struct a76xx_data {
 	struct k_sem sem_ftp;
     // Power status
     bool powered_on;
-    // when getting data, the length is queried on a different cmd than the actual "get data" cmd
-    // so ill store the lengths here
-    size_t unread_data_lengths[MDM_MAX_SOCKETS];
 };
 
 /*

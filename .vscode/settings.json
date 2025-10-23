@@ -62,6 +62,14 @@
     "atomic": "c",
     "condition_variable": "c",
     "net_private.h": "c",
-    "functional": "c"
+    "functional": "c",
+    "Kconfig*": "kconfig",
+    "errno-base.h": "c",
+    "net_if.h": "c",
+    "net_context.h": "c",
+    "socket.h": "c",
+    "net_ip.h": "c",
+    "dhcpv4_server.h": "c",
+    "kernel.h": "c"
   }
 }

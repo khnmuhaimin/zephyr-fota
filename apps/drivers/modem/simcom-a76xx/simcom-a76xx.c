@@ -1906,17 +1906,17 @@ static int modem_init(const struct device *dev)
 
     ARG_UNUSED(dev);
 
-    LOG_INF("Initializing A76XX modem driver...");
+    LOG_DBG("Initializing A76XX modem driver...");
     gpio_pin_configure_dt(&power_gpio, GPIO_OPEN_DRAIN | GPIO_OUTPUT_ACTIVE);
     mdm_a76xx_power_off(); // just in case its still on
 
-    LOG_INF("Initializing semaphores...");
+    LOG_DBG("Initializing semaphores...");
     k_sem_init(&mdata.sem_response, 0, 1);
     k_sem_init(&mdata.sem_tx_ready, 0, 1);
     k_sem_init(&mdata.sem_dns, 0, 1);
     k_sem_init(&mdata.sem_ftp, 0, 1);
 
-    LOG_INF("Starting workqueue...");
+    LOG_DBG("Starting workqueue...");
     k_work_queue_start(&modem_workq, modem_workq_stack,
                        K_KERNEL_STACK_SIZEOF(modem_workq_stack), K_PRIO_COOP(7), NULL);
 
@@ -1927,7 +1927,7 @@ static int modem_init(const struct device *dev)
     mdata.sms_buffer = NULL;
     mdata.sms_buffer_pos = 0;
 
-    LOG_INF("Initializing socket config...");
+    LOG_DBG("Initializing socket config...");
     ret = modem_socket_init(&mdata.socket_config, &mdata.sockets[0], ARRAY_SIZE(mdata.sockets),
                             MDM_BASE_SOCKET_NUM, true, &offload_socket_fd_op_vtable);
     if (ret < 0)
@@ -1936,7 +1936,7 @@ static int modem_init(const struct device *dev)
         goto error;
     }
 
-    LOG_INF("Setting driver state set to INIT...");
+    LOG_DBG("Setting driver state set to INIT...");
     change_state(A76XX_STATE_INIT);
 
     const struct modem_cmd_handler_config cmd_handler_config = {
@@ -1998,9 +1998,6 @@ static int modem_init(const struct device *dev)
     LOG_INF("Initializing RSSI query work...");
     k_work_init_delayable(&mdata.rssi_query_work, modem_rssi_query_work);
 
-    LOG_DBG("Setting unread data lengths to all zero...");
-    memset(mdata.unread_data_lengths, 0, ARRAY_SIZE(mdata.unread_data_lengths));
-
     LOG_INF("Running modem setup...");
     return modem_setup();
 
@@ -2014,5 +2011,5 @@ NET_DEVICE_DT_INST_OFFLOAD_DEFINE(0, modem_init, NULL, &mdata, NULL,
                                   CONFIG_MODEM_SIMCOM_A76XX_INIT_PRIORITY, &api_funcs,
                                   MDM_MAX_DATA_LENGTH);
 
-NET_SOCKET_OFFLOAD_REGISTER(simcom_a76xx, CONFIG_NET_SOCKETS_OFFLOAD_PRIORITY,
-                            AF_UNSPEC, offload_is_supported, offload_socket);
+NET_SOCKET_OFFLOAD_REGISTER(simcom_a76xx, CONFIG_MODEM_SIMCOM_A76XX_SOCKET_PRIORITY,
+                            AF_INET, offload_is_supported, offload_socket);

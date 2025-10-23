@@ -1,0 +1,3382 @@
+
+---
+events:
+  -
+    kind: "find_package-v1"
+    backtrace:
+      - "/home/khnmuhaimin/EEE4022S/zephyr-fota/zephyr/cmake/modules/zephyr_default.cmake:28 (find_package)"
+      - "/home/khnmuhaimin/EEE4022S/zephyr-fota/zephyr/share/zephyr-package/cmake/ZephyrConfig.cmake:66 (include)"
+      - "/home/khnmuhaimin/EEE4022S/zephyr-fota/zephyr/share/zephyr-package/cmake/ZephyrConfig.cmake:92 (include_boilerplate)"
+      - "CMakeLists.txt:5 (find_package)"
+    name: "ZephyrBuildConfiguration"
+    configs:
+      -
+        filename: "ZephyrBuildConfig.cmake"
+        kind: "cmake"
+      -
+        filename: "zephyrbuild-config.cmake"
+        kind: "cmake"
+    version_request:
+      exact: false
+    settings:
+      required: "optional"
+      quiet: true
+      global: false
+      policy_scope: false
+      bypass_provider: false
+      names:
+        - "ZephyrBuild"
+      search_paths:
+        - "/home/khnmuhaimin/EEE4022S/zephyr-fota/zephyr/../*"
+      path_suffixes:
+        - ""
+      paths:
+        CMAKE_FIND_USE_CMAKE_PATH: true
+        CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: false
+        CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: false
+        CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: false
+        CMAKE_FIND_USE_INSTALL_PREFIX: true
+        CMAKE_FIND_USE_PACKAGE_ROOT_PATH: true
+        CMAKE_FIND_USE_CMAKE_PACKAGE_REGISTRY: false
+        CMAKE_FIND_USE_SYSTEM_PACKAGE_REGISTRY: false
+        CMAKE_FIND_ROOT_PATH_MODE: "BOTH"
+    candidates:
+      -
+        path: "/home/khnmuhaimin/EEE4022S/zephyr-fota/build/CMakeFiles/pkgRedirects/ZephyrBuildConfig.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "/home/khnmuhaimin/EEE4022S/zephyr-fota/build/CMakeFiles/pkgRedirects/zephyrbuild-config.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "/home/khnmuhaimin/EEE4022S/zephyr-fota/modules/ZephyrBuildConfig.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "/home/khnmuhaimin/EEE4022S/zephyr-fota/modules/zephyrbuild-config.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "/home/khnmuhaimin/EEE4022S/zephyr-fota/.west/ZephyrBuildConfig.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "/home/khnmuhaimin/EEE4022S/zephyr-fota/.west/zephyrbuild-config.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "/home/khnmuhaimin/EEE4022S/zephyr-fota/apps/ZephyrBuildConfig.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "/home/khnmuhaimin/EEE4022S/zephyr-fota/apps/zephyrbuild-config.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "/home/khnmuhaimin/EEE4022S/zephyr-fota/.git/ZephyrBuildConfig.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "/home/khnmuhaimin/EEE4022S/zephyr-fota/.git/zephyrbuild-config.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "/home/khnmuhaimin/EEE4022S/zephyr-fota/.vscode/ZephyrBuildConfig.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "/home/khnmuhaimin/EEE4022S/zephyr-fota/.vscode/zephyrbuild-config.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "/home/khnmuhaimin/EEE4022S/zephyr-fota/.venv/ZephyrBuildConfig.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "/home/khnmuhaimin/EEE4022S/zephyr-fota/.venv/zephyrbuild-config.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "/home/khnmuhaimin/EEE4022S/zephyr-fota/bootloader/ZephyrBuildConfig.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "/home/khnmuhaimin/EEE4022S/zephyr-fota/bootloader/zephyrbuild-config.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "/home/khnmuhaimin/EEE4022S/zephyr-fota/build-mcuboot/ZephyrBuildConfig.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "/home/khnmuhaimin/EEE4022S/zephyr-fota/build-mcuboot/zephyrbuild-config.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "/home/khnmuhaimin/EEE4022S/zephyr-fota/zephyr/ZephyrBuildConfig.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "/home/khnmuhaimin/EEE4022S/zephyr-fota/zephyr/zephyrbuild-config.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "/home/khnmuhaimin/EEE4022S/zephyr-fota/zephyr/cmake/ZephyrBuildConfig.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "/home/khnmuhaimin/EEE4022S/zephyr-fota/zephyr/cmake/zephyrbuild-config.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "/home/khnmuhaimin/EEE4022S/zephyr-fota/build/ZephyrBuildConfig.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "/home/khnmuhaimin/EEE4022S/zephyr-fota/build/zephyrbuild-config.cmake"
+        mode: "config"
+        reason: "no_exist"
+    found: null
+    search_context:
+      ENV{PATH}:
+        - "/home/khnmuhaimin/EEE4022S/.venv/bin"
+        - "/home/khnmuhaimin/.local/bin"
+        - "/usr/local/bin"
+        - "/usr/bin"
+        - "/usr/local/sbin"
+        - "/usr/lib/jvm/default/bin"
+        - "/opt/rocm/bin"
+        - "/opt/rocm/hip/bin"
+        - "/usr/bin/site_perl"
+        - "/usr/bin/vendor_perl"
+        - "/usr/bin/core_perl"
+        - "/home/khnmuhaimin/.rvm/bin"
+        - "/usr/local/MATLAB/R2024b/bin"
+        - "/home/khnmuhaimin/.esp/xtensa-lx106-elf-gcc8_4_0-esp-2020r3-linux-amd64/xtensa-lx106-elf/bin"
+        - "/usr/local/texlive/2025/bin/x86_64-linux"
+  -
+    kind: "find_package-v1"
+    backtrace:
+      - "/home/khnmuhaimin/EEE4022S/zephyr-fota/zephyr/cmake/modules/zephyr_default.cmake:41 (find_package)"
+      - "/home/khnmuhaimin/EEE4022S/zephyr-fota/zephyr/share/zephyr-package/cmake/ZephyrConfig.cmake:66 (include)"
+      - "/home/khnmuhaimin/EEE4022S/zephyr-fota/zephyr/share/zephyr-package/cmake/ZephyrConfig.cmake:92 (include_boilerplate)"
+      - "CMakeLists.txt:5 (find_package)"
+    name: "ZephyrAppConfiguration"
+    configs:
+      -
+        filename: "ZephyrAppConfig.cmake"
+        kind: "cmake"
+      -
+        filename: "zephyrapp-config.cmake"
+        kind: "cmake"
+    version_request:
+      exact: false
+    settings:
+      required: "optional"
+      quiet: true
+      global: false
+      policy_scope: false
+      bypass_provider: false
+      names:
+        - "ZephyrApp"
+      search_paths:
+        - "/home/khnmuhaimin/EEE4022S/zephyr-fota/zephyr/samples/net/wifi/apsta_mode"
+      path_suffixes:
+        - ""
+      paths:
+        CMAKE_FIND_USE_CMAKE_PATH: true
+        CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: false
+        CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: false
+        CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: false
+        CMAKE_FIND_USE_INSTALL_PREFIX: true
+        CMAKE_FIND_USE_PACKAGE_ROOT_PATH: true
+        CMAKE_FIND_USE_CMAKE_PACKAGE_REGISTRY: false
+        CMAKE_FIND_USE_SYSTEM_PACKAGE_REGISTRY: false
+        CMAKE_FIND_ROOT_PATH_MODE: "BOTH"
+    candidates:
+      -
+        path: "/home/khnmuhaimin/EEE4022S/zephyr-fota/build/CMakeFiles/pkgRedirects/ZephyrAppConfig.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "/home/khnmuhaimin/EEE4022S/zephyr-fota/build/CMakeFiles/pkgRedirects/zephyrapp-config.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "/home/khnmuhaimin/EEE4022S/zephyr-fota/zephyr/samples/net/wifi/apsta_mode/ZephyrAppConfig.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "/home/khnmuhaimin/EEE4022S/zephyr-fota/zephyr/samples/net/wifi/apsta_mode/zephyrapp-config.cmake"
+        mode: "config"
+        reason: "no_exist"
+    found: null
+    search_context:
+      ENV{PATH}:
+        - "/home/khnmuhaimin/EEE4022S/.venv/bin"
+        - "/home/khnmuhaimin/.local/bin"
+        - "/usr/local/bin"
+        - "/usr/bin"
+        - "/usr/local/sbin"
+        - "/usr/lib/jvm/default/bin"
+        - "/opt/rocm/bin"
+        - "/opt/rocm/hip/bin"
+        - "/usr/bin/site_perl"
+        - "/usr/bin/vendor_perl"
+        - "/usr/bin/core_perl"
+        - "/home/khnmuhaimin/.rvm/bin"
+        - "/usr/local/MATLAB/R2024b/bin"
+        - "/home/khnmuhaimin/.esp/xtensa-lx106-elf-gcc8_4_0-esp-2020r3-linux-amd64/xtensa-lx106-elf/bin"
+        - "/usr/local/texlive/2025/bin/x86_64-linux"
+  -
+    kind: "find-v1"
+    backtrace:
+      - "/home/khnmuhaimin/EEE4022S/zephyr-fota/zephyr/cmake/modules/ccache.cmake:10 (find_program)"
+      - "/home/khnmuhaimin/EEE4022S/zephyr-fota/zephyr/cmake/modules/zephyr_default.cmake:131 (include)"
+      - "/home/khnmuhaimin/EEE4022S/zephyr-fota/zephyr/share/zephyr-package/cmake/ZephyrConfig.cmake:66 (include)"
+      - "/home/khnmuhaimin/EEE4022S/zephyr-fota/zephyr/share/zephyr-package/cmake/ZephyrConfig.cmake:92 (include_boilerplate)"
+      - "CMakeLists.txt:5 (find_package)"
+    mode: "program"
+    variable: "CCACHE_FOUND"
+    description: "Path to a program."
+    settings:
+      SearchFramework: "NEVER"
+      SearchAppBundle: "NEVER"
+      CMAKE_FIND_USE_CMAKE_PATH: true
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "ccache"
+    candidate_directories:
+      - "/home/khnmuhaimin/EEE4022S/.venv/bin/"
+      - "/home/khnmuhaimin/.local/bin/"
+      - "/usr/local/bin/"
+      - "/usr/bin/"
+      - "/usr/local/sbin/"
+      - "/usr/lib/jvm/default/bin/"
+      - "/opt/rocm/bin/"
+      - "/opt/rocm/hip/bin/"
+      - "/usr/bin/site_perl/"
+      - "/usr/bin/vendor_perl/"
+      - "/usr/bin/core_perl/"
+      - "/home/khnmuhaimin/.rvm/bin/"
+      - "/usr/local/MATLAB/R2024b/bin/"
+      - "/home/khnmuhaimin/.esp/xtensa-lx106-elf-gcc8_4_0-esp-2020r3-linux-amd64/xtensa-lx106-elf/bin/"
+      - "/usr/local/texlive/2025/bin/x86_64-linux/"
+    searched_directories:
+      - "/home/khnmuhaimin/EEE4022S/.venv/bin/ccache"
+      - "/home/khnmuhaimin/.local/bin/ccache"
+      - "/usr/local/bin/ccache"
+      - "/usr/bin/ccache"
+      - "/usr/local/sbin/ccache"
+      - "/usr/lib/jvm/default/bin/ccache"
+      - "/opt/rocm/bin/ccache"
+      - "/opt/rocm/hip/bin/ccache"
+      - "/usr/bin/site_perl/ccache"
+      - "/usr/bin/vendor_perl/ccache"
+      - "/usr/bin/core_perl/ccache"
+      - "/home/khnmuhaimin/.rvm/bin/ccache"
+      - "/usr/local/MATLAB/R2024b/bin/ccache"
+      - "/home/khnmuhaimin/.esp/xtensa-lx106-elf-gcc8_4_0-esp-2020r3-linux-amd64/xtensa-lx106-elf/bin/ccache"
+      - "/usr/local/texlive/2025/bin/x86_64-linux/ccache"
+    found: false
+    search_context:
+      ENV{PATH}:
+        - "/home/khnmuhaimin/EEE4022S/.venv/bin"
+        - "/home/khnmuhaimin/.local/bin"
+        - "/usr/local/bin"
+        - "/usr/bin"
+        - "/usr/local/sbin"
+        - "/usr/lib/jvm/default/bin"
+        - "/opt/rocm/bin"
+        - "/opt/rocm/hip/bin"
+        - "/usr/bin/site_perl"
+        - "/usr/bin/vendor_perl"
+        - "/usr/bin/core_perl"
+        - "/home/khnmuhaimin/.rvm/bin"
+        - "/usr/local/MATLAB/R2024b/bin"
+        - "/home/khnmuhaimin/.esp/xtensa-lx106-elf-gcc8_4_0-esp-2020r3-linux-amd64/xtensa-lx106-elf/bin"
+        - "/usr/local/texlive/2025/bin/x86_64-linux"
+  -
+    kind: "find_package-v1"
+    backtrace:
+      - "/home/khnmuhaimin/EEE4022S/zephyr-fota/zephyr/cmake/modules/FindZephyr-sdk.cmake:100 (find_package)"
+      - "/home/khnmuhaimin/EEE4022S/zephyr-fota/zephyr/cmake/modules/FindHostTools.cmake:51 (find_package)"
+      - "/home/khnmuhaimin/EEE4022S/zephyr-fota/zephyr/cmake/modules/dts.cmake:9 (find_package)"
+      - "/home/khnmuhaimin/EEE4022S/zephyr-fota/zephyr/cmake/modules/zephyr_default.cmake:131 (include)"
+      - "/home/khnmuhaimin/EEE4022S/zephyr-fota/zephyr/share/zephyr-package/cmake/ZephyrConfig.cmake:66 (include)"
+      - "/home/khnmuhaimin/EEE4022S/zephyr-fota/zephyr/share/zephyr-package/cmake/ZephyrConfig.cmake:92 (include_boilerplate)"
+      - "CMakeLists.txt:5 (find_package)"
+    name: "Zephyr-sdk"
+    components:
+      -
+        name: "LOAD"
+        required: false
+        found: false
+    configs:
+      -
+        filename: "Zephyr-sdkConfig.cmake"
+        kind: "cmake"
+      -
+        filename: "zephyr-sdk-config.cmake"
+        kind: "cmake"
+    version_request:
+      version: "0.0.0"
+      version_complete: "0.0.0"
+      exact: true
+    settings:
+      required: "optional"
+      quiet: true
+      global: false
+      policy_scope: true
+      bypass_provider: false
+      names:
+        - "Zephyr-sdk"
+      search_paths:
+        - "/usr"
+        - "/usr/local"
+        - "/opt"
+        - "/home/khnmuhaimin"
+        - "/home/khnmuhaimin/.local"
+        - "/home/khnmuhaimin/.local/opt"
+        - "/home/khnmuhaimin/bin"
+      path_suffixes:
+        - ""
+      paths:
+        CMAKE_FIND_USE_CMAKE_PATH: true
+        CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: true
+        CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+        CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+        CMAKE_FIND_USE_INSTALL_PREFIX: true
+        CMAKE_FIND_USE_PACKAGE_ROOT_PATH: true
+        CMAKE_FIND_USE_CMAKE_PACKAGE_REGISTRY: true
+        CMAKE_FIND_USE_SYSTEM_PACKAGE_REGISTRY: true
+        CMAKE_FIND_ROOT_PATH_MODE: "BOTH"
+    candidates:
+      -
+        path: "/home/khnmuhaimin/EEE4022S/zephyr-fota/build/CMakeFiles/pkgRedirects/Zephyr-sdkConfig.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "/home/khnmuhaimin/EEE4022S/zephyr-fota/build/CMakeFiles/pkgRedirects/zephyr-sdk-config.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "/home/khnmuhaimin/EEE4022S/.venv/Zephyr-sdkConfig.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "/home/khnmuhaimin/EEE4022S/.venv/zephyr-sdk-config.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "/home/khnmuhaimin/.local/Zephyr-sdkConfig.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "/home/khnmuhaimin/.local/zephyr-sdk-config.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "/usr/local/Zephyr-sdkConfig.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "/usr/local/zephyr-sdk-config.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "/usr/Zephyr-sdkConfig.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "/usr/zephyr-sdk-config.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "/usr/lib/jvm/default/Zephyr-sdkConfig.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "/usr/lib/jvm/default/zephyr-sdk-config.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "/opt/rocm/Zephyr-sdkConfig.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "/opt/rocm/zephyr-sdk-config.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "/usr/bin/site_perl/Zephyr-sdkConfig.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "/usr/bin/site_perl/zephyr-sdk-config.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "/usr/bin/vendor_perl/Zephyr-sdkConfig.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "/usr/bin/vendor_perl/zephyr-sdk-config.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "/usr/bin/core_perl/Zephyr-sdkConfig.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "/usr/bin/core_perl/zephyr-sdk-config.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "/usr/local/MATLAB/R2024b/Zephyr-sdkConfig.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "/usr/local/MATLAB/R2024b/zephyr-sdk-config.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "/home/khnmuhaimin/.esp/xtensa-lx106-elf-gcc8_4_0-esp-2020r3-linux-amd64/xtensa-lx106-elf/Zephyr-sdkConfig.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "/home/khnmuhaimin/.esp/xtensa-lx106-elf-gcc8_4_0-esp-2020r3-linux-amd64/xtensa-lx106-elf/zephyr-sdk-config.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "/usr/local/texlive/2025/bin/x86_64-linux/Zephyr-sdkConfig.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "/usr/local/texlive/2025/bin/x86_64-linux/zephyr-sdk-config.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "/home/khnmuhaimin/zephyr-sdk-0.17.2/cmake/Zephyr-sdkConfig.cmake"
+        mode: "config"
+        reason: "insufficient_version"
+      -
+        path: "/home/khnmuhaimin/zephyr-sdk-0.17.2/cmake/zephyr-sdk-config.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "/opt/Zephyr-sdkConfig.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "/opt/zephyr-sdk-config.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "/home/khnmuhaimin/Zephyr-sdkConfig.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "/home/khnmuhaimin/zephyr-sdk-config.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "/home/khnmuhaimin/zephyr-sdk-0.17.2/Zephyr-sdkConfig.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "/home/khnmuhaimin/zephyr-sdk-0.17.2/zephyr-sdk-config.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "/home/khnmuhaimin/zephyr-sdk-0.17.2/cmake/Zephyr-sdkConfig.cmake"
+        mode: "config"
+        reason: "insufficient_version"
+      -
+        path: "/home/khnmuhaimin/zephyr-sdk-0.17.2/cmake/zephyr-sdk-config.cmake"
+        mode: "config"
+        reason: "no_exist"
+    found: null
+    search_context:
+      ENV{PATH}:
+        - "/home/khnmuhaimin/EEE4022S/.venv/bin"
+        - "/home/khnmuhaimin/.local/bin"
+        - "/usr/local/bin"
+        - "/usr/bin"
+        - "/usr/local/sbin"
+        - "/usr/lib/jvm/default/bin"
+        - "/opt/rocm/bin"
+        - "/opt/rocm/hip/bin"
+        - "/usr/bin/site_perl"
+        - "/usr/bin/vendor_perl"
+        - "/usr/bin/core_perl"
+        - "/home/khnmuhaimin/.rvm/bin"
+        - "/usr/local/MATLAB/R2024b/bin"
+        - "/home/khnmuhaimin/.esp/xtensa-lx106-elf-gcc8_4_0-esp-2020r3-linux-amd64/xtensa-lx106-elf/bin"
+        - "/usr/local/texlive/2025/bin/x86_64-linux"
+  -
+    kind: "find-v1"
+    backtrace:
+      - "/home/khnmuhaimin/EEE4022S/zephyr-fota/zephyr/cmake/modules/FindHostTools.cmake:54 (find_program)"
+      - "/home/khnmuhaimin/EEE4022S/zephyr-fota/zephyr/cmake/modules/dts.cmake:9 (find_package)"
+      - "/home/khnmuhaimin/EEE4022S/zephyr-fota/zephyr/cmake/modules/zephyr_default.cmake:131 (include)"
+      - "/home/khnmuhaimin/EEE4022S/zephyr-fota/zephyr/share/zephyr-package/cmake/ZephyrConfig.cmake:66 (include)"
+      - "/home/khnmuhaimin/EEE4022S/zephyr-fota/zephyr/share/zephyr-package/cmake/ZephyrConfig.cmake:92 (include_boilerplate)"
+      - "CMakeLists.txt:5 (find_package)"
+    mode: "program"
+    variable: "GPERF"
+    description: "Path to a program."
+    settings:
+      SearchFramework: "NEVER"
+      SearchAppBundle: "NEVER"
+      CMAKE_FIND_USE_CMAKE_PATH: true
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "gperf"
+    candidate_directories:
+      - "/home/khnmuhaimin/zephyr-sdk-0.17.2/sysroots/x86_64-pokysdk-linux/usr/bin/"
+      - "/home/khnmuhaimin/zephyr-sdk-0.17.2/sysroots/x86_64-pokysdk-linux/usr/sbin/"
+      - "/home/khnmuhaimin/zephyr-sdk-0.17.2/sysroots/x86_64-pokysdk-linux/usr/"
+      - "/home/khnmuhaimin/EEE4022S/.venv/bin/"
+      - "/home/khnmuhaimin/.local/bin/"
+      - "/usr/local/bin/"
+      - "/usr/bin/"
+      - "/usr/local/sbin/"
+      - "/usr/lib/jvm/default/bin/"
+      - "/opt/rocm/bin/"
+      - "/opt/rocm/hip/bin/"
+      - "/usr/bin/site_perl/"
+      - "/usr/bin/vendor_perl/"
+      - "/usr/bin/core_perl/"
+      - "/home/khnmuhaimin/.rvm/bin/"
+      - "/usr/local/MATLAB/R2024b/bin/"
+      - "/home/khnmuhaimin/.esp/xtensa-lx106-elf-gcc8_4_0-esp-2020r3-linux-amd64/xtensa-lx106-elf/bin/"
+      - "/usr/local/texlive/2025/bin/x86_64-linux/"
+    searched_directories:
+      - "/home/khnmuhaimin/zephyr-sdk-0.17.2/sysroots/x86_64-pokysdk-linux/usr/bin/gperf"
+      - "/home/khnmuhaimin/zephyr-sdk-0.17.2/sysroots/x86_64-pokysdk-linux/usr/sbin/gperf"
+      - "/home/khnmuhaimin/zephyr-sdk-0.17.2/sysroots/x86_64-pokysdk-linux/usr/gperf"
+      - "/home/khnmuhaimin/EEE4022S/.venv/bin/gperf"
+      - "/home/khnmuhaimin/.local/bin/gperf"
+      - "/usr/local/bin/gperf"
+    found: "/usr/bin/gperf"
+    search_context:
+      CMAKE_PREFIX_PATH:
+        - "/home/khnmuhaimin/zephyr-sdk-0.17.2/sysroots/x86_64-pokysdk-linux/usr"
+      ENV{PATH}:
+        - "/home/khnmuhaimin/EEE4022S/.venv/bin"
+        - "/home/khnmuhaimin/.local/bin"
+        - "/usr/local/bin"
+        - "/usr/bin"
+        - "/usr/local/sbin"
+        - "/usr/lib/jvm/default/bin"
+        - "/opt/rocm/bin"
+        - "/opt/rocm/hip/bin"
+        - "/usr/bin/site_perl"
+        - "/usr/bin/vendor_perl"
+        - "/usr/bin/core_perl"
+        - "/home/khnmuhaimin/.rvm/bin"
+        - "/usr/local/MATLAB/R2024b/bin"
+        - "/home/khnmuhaimin/.esp/xtensa-lx106-elf-gcc8_4_0-esp-2020r3-linux-amd64/xtensa-lx106-elf/bin"
+        - "/usr/local/texlive/2025/bin/x86_64-linux"
+  -
+    kind: "find-v1"
+    backtrace:
+      - "/home/khnmuhaimin/EEE4022S/zephyr-fota/zephyr/cmake/modules/FindHostTools.cmake:57 (find_program)"
+      - "/home/khnmuhaimin/EEE4022S/zephyr-fota/zephyr/cmake/modules/dts.cmake:9 (find_package)"
+      - "/home/khnmuhaimin/EEE4022S/zephyr-fota/zephyr/cmake/modules/zephyr_default.cmake:131 (include)"
+      - "/home/khnmuhaimin/EEE4022S/zephyr-fota/zephyr/share/zephyr-package/cmake/ZephyrConfig.cmake:66 (include)"
+      - "/home/khnmuhaimin/EEE4022S/zephyr-fota/zephyr/share/zephyr-package/cmake/ZephyrConfig.cmake:92 (include_boilerplate)"
+      - "CMakeLists.txt:5 (find_package)"
+    mode: "program"
+    variable: "OPENOCD"
+    description: "Path to a program."
+    settings:
+      SearchFramework: "NEVER"
+      SearchAppBundle: "NEVER"
+      CMAKE_FIND_USE_CMAKE_PATH: true
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "openocd"
+    candidate_directories:
+      - "/home/khnmuhaimin/zephyr-sdk-0.17.2/sysroots/x86_64-pokysdk-linux/usr/bin/"
+      - "/home/khnmuhaimin/zephyr-sdk-0.17.2/sysroots/x86_64-pokysdk-linux/usr/sbin/"
+      - "/home/khnmuhaimin/zephyr-sdk-0.17.2/sysroots/x86_64-pokysdk-linux/usr/"
+      - "/home/khnmuhaimin/EEE4022S/.venv/bin/"
+      - "/home/khnmuhaimin/.local/bin/"
+      - "/usr/local/bin/"
+      - "/usr/bin/"
+      - "/usr/local/sbin/"
+      - "/usr/lib/jvm/default/bin/"
+      - "/opt/rocm/bin/"
+      - "/opt/rocm/hip/bin/"
+      - "/usr/bin/site_perl/"
+      - "/usr/bin/vendor_perl/"
+      - "/usr/bin/core_perl/"
+      - "/home/khnmuhaimin/.rvm/bin/"
+      - "/usr/local/MATLAB/R2024b/bin/"
+      - "/home/khnmuhaimin/.esp/xtensa-lx106-elf-gcc8_4_0-esp-2020r3-linux-amd64/xtensa-lx106-elf/bin/"
+      - "/usr/local/texlive/2025/bin/x86_64-linux/"
+    found: "/home/khnmuhaimin/zephyr-sdk-0.17.2/sysroots/x86_64-pokysdk-linux/usr/bin/openocd"
+    search_context:
+      CMAKE_PREFIX_PATH:
+        - "/home/khnmuhaimin/zephyr-sdk-0.17.2/sysroots/x86_64-pokysdk-linux/usr"
+      ENV{PATH}:
+        - "/home/khnmuhaimin/EEE4022S/.venv/bin"
+        - "/home/khnmuhaimin/.local/bin"
+        - "/usr/local/bin"
+        - "/usr/bin"
+        - "/usr/local/sbin"
+        - "/usr/lib/jvm/default/bin"
+        - "/opt/rocm/bin"
+        - "/opt/rocm/hip/bin"
+        - "/usr/bin/site_perl"
+        - "/usr/bin/vendor_perl"
+        - "/usr/bin/core_perl"
+        - "/home/khnmuhaimin/.rvm/bin"
+        - "/usr/local/MATLAB/R2024b/bin"
+        - "/home/khnmuhaimin/.esp/xtensa-lx106-elf-gcc8_4_0-esp-2020r3-linux-amd64/xtensa-lx106-elf/bin"
+        - "/usr/local/texlive/2025/bin/x86_64-linux"
+  -
+    kind: "find-v1"
+    backtrace:
+      - "/home/khnmuhaimin/EEE4022S/zephyr-fota/zephyr/cmake/modules/FindHostTools.cmake:60 (find_program)"
+      - "/home/khnmuhaimin/EEE4022S/zephyr-fota/zephyr/cmake/modules/dts.cmake:9 (find_package)"
+      - "/home/khnmuhaimin/EEE4022S/zephyr-fota/zephyr/cmake/modules/zephyr_default.cmake:131 (include)"
+      - "/home/khnmuhaimin/EEE4022S/zephyr-fota/zephyr/share/zephyr-package/cmake/ZephyrConfig.cmake:66 (include)"
+      - "/home/khnmuhaimin/EEE4022S/zephyr-fota/zephyr/share/zephyr-package/cmake/ZephyrConfig.cmake:92 (include_boilerplate)"
+      - "CMakeLists.txt:5 (find_package)"
+    mode: "program"
+    variable: "BOSSAC"
+    description: "Path to a program."
+    settings:
+      SearchFramework: "NEVER"
+      SearchAppBundle: "NEVER"
+      CMAKE_FIND_USE_CMAKE_PATH: true
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "bossac"
+    candidate_directories:
+      - "/home/khnmuhaimin/zephyr-sdk-0.17.2/sysroots/x86_64-pokysdk-linux/usr/bin/"
+      - "/home/khnmuhaimin/zephyr-sdk-0.17.2/sysroots/x86_64-pokysdk-linux/usr/sbin/"
+      - "/home/khnmuhaimin/zephyr-sdk-0.17.2/sysroots/x86_64-pokysdk-linux/usr/"
+      - "/home/khnmuhaimin/EEE4022S/.venv/bin/"
+      - "/home/khnmuhaimin/.local/bin/"
+      - "/usr/local/bin/"
+      - "/usr/bin/"
+      - "/usr/local/sbin/"
+      - "/usr/lib/jvm/default/bin/"
+      - "/opt/rocm/bin/"
+      - "/opt/rocm/hip/bin/"
+      - "/usr/bin/site_perl/"
+      - "/usr/bin/vendor_perl/"
+      - "/usr/bin/core_perl/"
+      - "/home/khnmuhaimin/.rvm/bin/"
+      - "/usr/local/MATLAB/R2024b/bin/"
+      - "/home/khnmuhaimin/.esp/xtensa-lx106-elf-gcc8_4_0-esp-2020r3-linux-amd64/xtensa-lx106-elf/bin/"
+      - "/usr/local/texlive/2025/bin/x86_64-linux/"
+    found: "/home/khnmuhaimin/zephyr-sdk-0.17.2/sysroots/x86_64-pokysdk-linux/usr/bin/bossac"
+    search_context:
+      CMAKE_PREFIX_PATH:
+        - "/home/khnmuhaimin/zephyr-sdk-0.17.2/sysroots/x86_64-pokysdk-linux/usr"
+      ENV{PATH}:
+        - "/home/khnmuhaimin/EEE4022S/.venv/bin"
+        - "/home/khnmuhaimin/.local/bin"
+        - "/usr/local/bin"
+        - "/usr/bin"
+        - "/usr/local/sbin"
+        - "/usr/lib/jvm/default/bin"
+        - "/opt/rocm/bin"
+        - "/opt/rocm/hip/bin"
+        - "/usr/bin/site_perl"
+        - "/usr/bin/vendor_perl"
+        - "/usr/bin/core_perl"
+        - "/home/khnmuhaimin/.rvm/bin"
+        - "/usr/local/MATLAB/R2024b/bin"
+        - "/home/khnmuhaimin/.esp/xtensa-lx106-elf-gcc8_4_0-esp-2020r3-linux-amd64/xtensa-lx106-elf/bin"
+        - "/usr/local/texlive/2025/bin/x86_64-linux"
+  -
+    kind: "find-v1"
+    backtrace:
+      - "/home/khnmuhaimin/EEE4022S/zephyr-fota/zephyr/cmake/modules/FindHostTools.cmake:65 (find_program)"
+      - "/home/khnmuhaimin/EEE4022S/zephyr-fota/zephyr/cmake/modules/dts.cmake:9 (find_package)"
+      - "/home/khnmuhaimin/EEE4022S/zephyr-fota/zephyr/cmake/modules/zephyr_default.cmake:131 (include)"
+      - "/home/khnmuhaimin/EEE4022S/zephyr-fota/zephyr/share/zephyr-package/cmake/ZephyrConfig.cmake:66 (include)"
+      - "/home/khnmuhaimin/EEE4022S/zephyr-fota/zephyr/share/zephyr-package/cmake/ZephyrConfig.cmake:92 (include_boilerplate)"
+      - "CMakeLists.txt:5 (find_package)"
+    mode: "program"
+    variable: "IMGTOOL"
+    description: "Path to a program."
+    settings:
+      SearchFramework: "NEVER"
+      SearchAppBundle: "NEVER"
+      CMAKE_FIND_USE_CMAKE_PATH: true
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "imgtool.py"
+      - "imgtool"
+    candidate_directories:
+      - "/home/khnmuhaimin/zephyr-sdk-0.17.2/sysroots/x86_64-pokysdk-linux/usr/bin/"
+      - "/home/khnmuhaimin/zephyr-sdk-0.17.2/sysroots/x86_64-pokysdk-linux/usr/sbin/"
+      - "/home/khnmuhaimin/zephyr-sdk-0.17.2/sysroots/x86_64-pokysdk-linux/usr/"
+      - "/home/khnmuhaimin/EEE4022S/zephyr-fota/bootloader/mcuboot/scripts/"
+      - "/home/khnmuhaimin/EEE4022S/.venv/bin/"
+      - "/home/khnmuhaimin/.local/bin/"
+      - "/usr/local/bin/"
+      - "/usr/bin/"
+      - "/usr/local/sbin/"
+      - "/usr/lib/jvm/default/bin/"
+      - "/opt/rocm/bin/"
+      - "/opt/rocm/hip/bin/"
+      - "/usr/bin/site_perl/"
+      - "/usr/bin/vendor_perl/"
+      - "/usr/bin/core_perl/"
+      - "/home/khnmuhaimin/.rvm/bin/"
+      - "/usr/local/MATLAB/R2024b/bin/"
+      - "/home/khnmuhaimin/.esp/xtensa-lx106-elf-gcc8_4_0-esp-2020r3-linux-amd64/xtensa-lx106-elf/bin/"
+      - "/usr/local/texlive/2025/bin/x86_64-linux/"
+    searched_directories:
+      - "/home/khnmuhaimin/zephyr-sdk-0.17.2/sysroots/x86_64-pokysdk-linux/usr/bin/imgtool.py"
+      - "/home/khnmuhaimin/zephyr-sdk-0.17.2/sysroots/x86_64-pokysdk-linux/usr/bin/imgtool"
+      - "/home/khnmuhaimin/zephyr-sdk-0.17.2/sysroots/x86_64-pokysdk-linux/usr/sbin/imgtool.py"
+      - "/home/khnmuhaimin/zephyr-sdk-0.17.2/sysroots/x86_64-pokysdk-linux/usr/sbin/imgtool"
+      - "/home/khnmuhaimin/zephyr-sdk-0.17.2/sysroots/x86_64-pokysdk-linux/usr/imgtool.py"
+      - "/home/khnmuhaimin/zephyr-sdk-0.17.2/sysroots/x86_64-pokysdk-linux/usr/imgtool"
+    found: "/home/khnmuhaimin/EEE4022S/zephyr-fota/bootloader/mcuboot/scripts/imgtool.py"
+    search_context:
+      CMAKE_PREFIX_PATH:
+        - "/home/khnmuhaimin/zephyr-sdk-0.17.2/sysroots/x86_64-pokysdk-linux/usr"
+      ENV{PATH}:
+        - "/home/khnmuhaimin/EEE4022S/.venv/bin"
+        - "/home/khnmuhaimin/.local/bin"
+        - "/usr/local/bin"
+        - "/usr/bin"
+        - "/usr/local/sbin"
+        - "/usr/lib/jvm/default/bin"
+        - "/opt/rocm/bin"
+        - "/opt/rocm/hip/bin"
+        - "/usr/bin/site_perl"
+        - "/usr/bin/vendor_perl"
+        - "/usr/bin/core_perl"
+        - "/home/khnmuhaimin/.rvm/bin"
+        - "/usr/local/MATLAB/R2024b/bin"
+        - "/home/khnmuhaimin/.esp/xtensa-lx106-elf-gcc8_4_0-esp-2020r3-linux-amd64/xtensa-lx106-elf/bin"
+        - "/usr/local/texlive/2025/bin/x86_64-linux"
+  -
+    kind: "find-v1"
+    backtrace:
+      - "/home/khnmuhaimin/EEE4022S/zephyr-fota/zephyr/cmake/modules/FindHostTools.cmake:68 (find_program)"
+      - "/home/khnmuhaimin/EEE4022S/zephyr-fota/zephyr/cmake/modules/dts.cmake:9 (find_package)"
+      - "/home/khnmuhaimin/EEE4022S/zephyr-fota/zephyr/cmake/modules/zephyr_default.cmake:131 (include)"
+      - "/home/khnmuhaimin/EEE4022S/zephyr-fota/zephyr/share/zephyr-package/cmake/ZephyrConfig.cmake:66 (include)"
+      - "/home/khnmuhaimin/EEE4022S/zephyr-fota/zephyr/share/zephyr-package/cmake/ZephyrConfig.cmake:92 (include_boilerplate)"
+      - "CMakeLists.txt:5 (find_package)"
+    mode: "program"
+    variable: "PTY_INTERFACE"
+    description: "Path to a program."
+    settings:
+      SearchFramework: "NEVER"
+      SearchAppBundle: "NEVER"
+      CMAKE_FIND_USE_CMAKE_PATH: true
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "winpty"
+    candidate_directories:
+      - "/home/khnmuhaimin/zephyr-sdk-0.17.2/sysroots/x86_64-pokysdk-linux/usr/bin/"
+      - "/home/khnmuhaimin/zephyr-sdk-0.17.2/sysroots/x86_64-pokysdk-linux/usr/sbin/"
+      - "/home/khnmuhaimin/zephyr-sdk-0.17.2/sysroots/x86_64-pokysdk-linux/usr/"
+      - "/home/khnmuhaimin/EEE4022S/.venv/bin/"
+      - "/home/khnmuhaimin/.local/bin/"
+      - "/usr/local/bin/"
+      - "/usr/bin/"
+      - "/usr/local/sbin/"
+      - "/usr/lib/jvm/default/bin/"
+      - "/opt/rocm/bin/"
+      - "/opt/rocm/hip/bin/"
+      - "/usr/bin/site_perl/"
+      - "/usr/bin/vendor_perl/"
+      - "/usr/bin/core_perl/"
+      - "/home/khnmuhaimin/.rvm/bin/"
+      - "/usr/local/MATLAB/R2024b/bin/"
+      - "/home/khnmuhaimin/.esp/xtensa-lx106-elf-gcc8_4_0-esp-2020r3-linux-amd64/xtensa-lx106-elf/bin/"
+      - "/usr/local/texlive/2025/bin/x86_64-linux/"
+    searched_directories:
+      - "/home/khnmuhaimin/zephyr-sdk-0.17.2/sysroots/x86_64-pokysdk-linux/usr/bin/winpty"
+      - "/home/khnmuhaimin/zephyr-sdk-0.17.2/sysroots/x86_64-pokysdk-linux/usr/sbin/winpty"
+      - "/home/khnmuhaimin/zephyr-sdk-0.17.2/sysroots/x86_64-pokysdk-linux/usr/winpty"
+      - "/home/khnmuhaimin/EEE4022S/.venv/bin/winpty"
+      - "/home/khnmuhaimin/.local/bin/winpty"
+      - "/usr/local/bin/winpty"
+      - "/usr/bin/winpty"
+      - "/usr/local/sbin/winpty"
+      - "/usr/lib/jvm/default/bin/winpty"
+      - "/opt/rocm/bin/winpty"
+      - "/opt/rocm/hip/bin/winpty"
+      - "/usr/bin/site_perl/winpty"
+      - "/usr/bin/vendor_perl/winpty"
+      - "/usr/bin/core_perl/winpty"
+      - "/home/khnmuhaimin/.rvm/bin/winpty"
+      - "/usr/local/MATLAB/R2024b/bin/winpty"
+      - "/home/khnmuhaimin/.esp/xtensa-lx106-elf-gcc8_4_0-esp-2020r3-linux-amd64/xtensa-lx106-elf/bin/winpty"
+      - "/usr/local/texlive/2025/bin/x86_64-linux/winpty"
+    found: false
+    search_context:
+      CMAKE_PREFIX_PATH:
+        - "/home/khnmuhaimin/zephyr-sdk-0.17.2/sysroots/x86_64-pokysdk-linux/usr"
+      ENV{PATH}:
+        - "/home/khnmuhaimin/EEE4022S/.venv/bin"
+        - "/home/khnmuhaimin/.local/bin"
+        - "/usr/local/bin"
+        - "/usr/bin"
+        - "/usr/local/sbin"
+        - "/usr/lib/jvm/default/bin"
+        - "/opt/rocm/bin"
+        - "/opt/rocm/hip/bin"
+        - "/usr/bin/site_perl"
+        - "/usr/bin/vendor_perl"
+        - "/usr/bin/core_perl"
+        - "/home/khnmuhaimin/.rvm/bin"
+        - "/usr/local/MATLAB/R2024b/bin"
+        - "/home/khnmuhaimin/.esp/xtensa-lx106-elf-gcc8_4_0-esp-2020r3-linux-amd64/xtensa-lx106-elf/bin"
+        - "/usr/local/texlive/2025/bin/x86_64-linux"
+  -
+    kind: "find-v1"
+    backtrace:
+      - "/home/khnmuhaimin/EEE4022S/zephyr-fota/zephyr/cmake/compiler/gcc/generic.cmake:5 (find_program)"
+      - "/home/khnmuhaimin/EEE4022S/zephyr-fota/zephyr/cmake/modules/FindHostTools.cmake:113 (include)"
+      - "/home/khnmuhaimin/EEE4022S/zephyr-fota/zephyr/cmake/modules/dts.cmake:9 (find_package)"
+      - "/home/khnmuhaimin/EEE4022S/zephyr-fota/zephyr/cmake/modules/zephyr_default.cmake:131 (include)"
+      - "/home/khnmuhaimin/EEE4022S/zephyr-fota/zephyr/share/zephyr-package/cmake/ZephyrConfig.cmake:66 (include)"
+      - "/home/khnmuhaimin/EEE4022S/zephyr-fota/zephyr/share/zephyr-package/cmake/ZephyrConfig.cmake:92 (include_boilerplate)"
+      - "CMakeLists.txt:5 (find_package)"
+    mode: "program"
+    variable: "CMAKE_C_COMPILER"
+    description: "Path to a program."
+    settings:
+      SearchFramework: "NEVER"
+      SearchAppBundle: "NEVER"
+      CMAKE_FIND_USE_CMAKE_PATH: true
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "/home/khnmuhaimin/zephyr-sdk-0.17.2/arm-zephyr-eabi/bin/arm-zephyr-eabi-gcc"
+    candidate_directories:
+      - "/home/khnmuhaimin/zephyr-sdk-0.17.2/"
+    found: "/home/khnmuhaimin/zephyr-sdk-0.17.2/arm-zephyr-eabi/bin/arm-zephyr-eabi-gcc"
+    search_context:
+      CMAKE_PREFIX_PATH:
+        - "/home/khnmuhaimin/zephyr-sdk-0.17.2/sysroots/x86_64-pokysdk-linux/usr"
+      ENV{PATH}:
+        - "/home/khnmuhaimin/EEE4022S/.venv/bin"
+        - "/home/khnmuhaimin/.local/bin"
+        - "/usr/local/bin"
+        - "/usr/bin"
+        - "/usr/local/sbin"
+        - "/usr/lib/jvm/default/bin"
+        - "/opt/rocm/bin"
+        - "/opt/rocm/hip/bin"
+        - "/usr/bin/site_perl"
+        - "/usr/bin/vendor_perl"
+        - "/usr/bin/core_perl"
+        - "/home/khnmuhaimin/.rvm/bin"
+        - "/usr/local/MATLAB/R2024b/bin"
+        - "/home/khnmuhaimin/.esp/xtensa-lx106-elf-gcc8_4_0-esp-2020r3-linux-amd64/xtensa-lx106-elf/bin"
+        - "/usr/local/texlive/2025/bin/x86_64-linux"
+  -
+    kind: "find-v1"
+    backtrace:
+      - "/home/khnmuhaimin/EEE4022S/zephyr-fota/zephyr/cmake/compiler/gcc/generic.cmake:6 (find_program)"
+      - "/home/khnmuhaimin/EEE4022S/zephyr-fota/zephyr/cmake/modules/FindHostTools.cmake:113 (include)"
+      - "/home/khnmuhaimin/EEE4022S/zephyr-fota/zephyr/cmake/modules/dts.cmake:9 (find_package)"
+      - "/home/khnmuhaimin/EEE4022S/zephyr-fota/zephyr/cmake/modules/zephyr_default.cmake:131 (include)"
+      - "/home/khnmuhaimin/EEE4022S/zephyr-fota/zephyr/share/zephyr-package/cmake/ZephyrConfig.cmake:66 (include)"
+      - "/home/khnmuhaimin/EEE4022S/zephyr-fota/zephyr/share/zephyr-package/cmake/ZephyrConfig.cmake:92 (include_boilerplate)"
+      - "CMakeLists.txt:5 (find_package)"
+    mode: "program"
+    variable: "CMAKE_GCOV"
+    description: "Path to a program."
+    settings:
+      SearchFramework: "NEVER"
+      SearchAppBundle: "NEVER"
+      CMAKE_FIND_USE_CMAKE_PATH: true
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "/home/khnmuhaimin/zephyr-sdk-0.17.2/arm-zephyr-eabi/bin/arm-zephyr-eabi-gcov"
+    candidate_directories:
+      - "/home/khnmuhaimin/zephyr-sdk-0.17.2/"
+    found: "/home/khnmuhaimin/zephyr-sdk-0.17.2/arm-zephyr-eabi/bin/arm-zephyr-eabi-gcov"
+    search_context:
+      CMAKE_PREFIX_PATH:
+        - "/home/khnmuhaimin/zephyr-sdk-0.17.2/sysroots/x86_64-pokysdk-linux/usr"
+      ENV{PATH}:
+        - "/home/khnmuhaimin/EEE4022S/.venv/bin"
+        - "/home/khnmuhaimin/.local/bin"
+        - "/usr/local/bin"
+        - "/usr/bin"
+        - "/usr/local/sbin"
+        - "/usr/lib/jvm/default/bin"
+        - "/opt/rocm/bin"
+        - "/opt/rocm/hip/bin"
+        - "/usr/bin/site_perl"
+        - "/usr/bin/vendor_perl"
+        - "/usr/bin/core_perl"
+        - "/home/khnmuhaimin/.rvm/bin"
+        - "/usr/local/MATLAB/R2024b/bin"
+        - "/home/khnmuhaimin/.esp/xtensa-lx106-elf-gcc8_4_0-esp-2020r3-linux-amd64/xtensa-lx106-elf/bin"
+        - "/usr/local/texlive/2025/bin/x86_64-linux"
+  -
+    kind: "find-v1"
+    backtrace:
+      - "/home/khnmuhaimin/EEE4022S/zephyr-fota/zephyr/cmake/modules/FindDtc.cmake:19 (find_program)"
+      - "/home/khnmuhaimin/EEE4022S/zephyr-fota/zephyr/cmake/modules/dts.cmake:10 (find_package)"
+      - "/home/khnmuhaimin/EEE4022S/zephyr-fota/zephyr/cmake/modules/zephyr_default.cmake:131 (include)"
+      - "/home/khnmuhaimin/EEE4022S/zephyr-fota/zephyr/share/zephyr-package/cmake/ZephyrConfig.cmake:66 (include)"
+      - "/home/khnmuhaimin/EEE4022S/zephyr-fota/zephyr/share/zephyr-package/cmake/ZephyrConfig.cmake:92 (include_boilerplate)"
+      - "CMakeLists.txt:5 (find_package)"
+    mode: "program"
+    variable: "DTC"
+    description: "Path to a program."
+    settings:
+      SearchFramework: "NEVER"
+      SearchAppBundle: "NEVER"
+      CMAKE_FIND_USE_CMAKE_PATH: true
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "dtc"
+    candidate_directories:
+      - "/home/khnmuhaimin/zephyr-sdk-0.17.2/sysroots/x86_64-pokysdk-linux/usr/bin/"
+      - "/home/khnmuhaimin/zephyr-sdk-0.17.2/sysroots/x86_64-pokysdk-linux/usr/sbin/"
+      - "/home/khnmuhaimin/zephyr-sdk-0.17.2/sysroots/x86_64-pokysdk-linux/usr/"
+      - "/home/khnmuhaimin/EEE4022S/.venv/bin/"
+      - "/home/khnmuhaimin/.local/bin/"
+      - "/usr/local/bin/"
+      - "/usr/bin/"
+      - "/usr/local/sbin/"
+      - "/usr/lib/jvm/default/bin/"
+      - "/opt/rocm/bin/"
+      - "/opt/rocm/hip/bin/"
+      - "/usr/bin/site_perl/"
+      - "/usr/bin/vendor_perl/"
+      - "/usr/bin/core_perl/"
+      - "/home/khnmuhaimin/.rvm/bin/"
+      - "/usr/local/MATLAB/R2024b/bin/"
+      - "/home/khnmuhaimin/.esp/xtensa-lx106-elf-gcc8_4_0-esp-2020r3-linux-amd64/xtensa-lx106-elf/bin/"
+      - "/usr/local/texlive/2025/bin/x86_64-linux/"
+    found: "/home/khnmuhaimin/zephyr-sdk-0.17.2/sysroots/x86_64-pokysdk-linux/usr/bin/dtc"
+    search_context:
+      CMAKE_PREFIX_PATH:
+        - "/home/khnmuhaimin/zephyr-sdk-0.17.2/sysroots/x86_64-pokysdk-linux/usr"
+      ENV{PATH}:
+        - "/home/khnmuhaimin/EEE4022S/.venv/bin"
+        - "/home/khnmuhaimin/.local/bin"
+        - "/usr/local/bin"
+        - "/usr/bin"
+        - "/usr/local/sbin"
+        - "/usr/lib/jvm/default/bin"
+        - "/opt/rocm/bin"
+        - "/opt/rocm/hip/bin"
+        - "/usr/bin/site_perl"
+        - "/usr/bin/vendor_perl"
+        - "/usr/bin/core_perl"
+        - "/home/khnmuhaimin/.rvm/bin"
+        - "/usr/local/MATLAB/R2024b/bin"
+        - "/home/khnmuhaimin/.esp/xtensa-lx106-elf-gcc8_4_0-esp-2020r3-linux-amd64/xtensa-lx106-elf/bin"
+        - "/usr/local/texlive/2025/bin/x86_64-linux"
+  -
+    kind: "find-v1"
+    backtrace:
+      - "/home/khnmuhaimin/EEE4022S/zephyr-fota/zephyr/cmake/compiler/gcc/target.cmake:8 (find_program)"
+      - "/home/khnmuhaimin/EEE4022S/zephyr-fota/zephyr/cmake/modules/FindTargetTools.cmake:103 (include)"
+      - "/home/khnmuhaimin/EEE4022S/zephyr-fota/zephyr/cmake/modules/kernel.cmake:25 (find_package)"
+      - "/home/khnmuhaimin/EEE4022S/zephyr-fota/zephyr/cmake/modules/zephyr_default.cmake:140 (include)"
+      - "/home/khnmuhaimin/EEE4022S/zephyr-fota/zephyr/share/zephyr-package/cmake/ZephyrConfig.cmake:66 (include)"
+      - "/home/khnmuhaimin/EEE4022S/zephyr-fota/zephyr/share/zephyr-package/cmake/ZephyrConfig.cmake:92 (include_boilerplate)"
+      - "CMakeLists.txt:5 (find_package)"
+    mode: "program"
+    variable: "CMAKE_C_COMPILER"
+    description: "Path to a program."
+    settings:
+      SearchFramework: "NEVER"
+      SearchAppBundle: "NEVER"
+      CMAKE_FIND_USE_CMAKE_PATH: true
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "/home/khnmuhaimin/zephyr-sdk-0.17.2/xtensa-espressif_esp32_zephyr-elf/bin/xtensa-espressif_esp32_zephyr-elf-gcc"
+    candidate_directories:
+      - "/home/khnmuhaimin/zephyr-sdk-0.17.2/"
+    found: "/home/khnmuhaimin/zephyr-sdk-0.17.2/xtensa-espressif_esp32_zephyr-elf/bin/xtensa-espressif_esp32_zephyr-elf-gcc"
+    search_context:
+      CMAKE_PREFIX_PATH:
+        - "/home/khnmuhaimin/zephyr-sdk-0.17.2/sysroots/x86_64-pokysdk-linux/usr"
+      ENV{PATH}:
+        - "/home/khnmuhaimin/EEE4022S/.venv/bin"
+        - "/home/khnmuhaimin/.local/bin"
+        - "/usr/local/bin"
+        - "/usr/bin"
+        - "/usr/local/sbin"
+        - "/usr/lib/jvm/default/bin"
+        - "/opt/rocm/bin"
+        - "/opt/rocm/hip/bin"
+        - "/usr/bin/site_perl"
+        - "/usr/bin/vendor_perl"
+        - "/usr/bin/core_perl"
+        - "/home/khnmuhaimin/.rvm/bin"
+        - "/usr/local/MATLAB/R2024b/bin"
+        - "/home/khnmuhaimin/.esp/xtensa-lx106-elf-gcc8_4_0-esp-2020r3-linux-amd64/xtensa-lx106-elf/bin"
+        - "/usr/local/texlive/2025/bin/x86_64-linux"
+  -
+    kind: "find-v1"
+    backtrace:
+      - "/home/khnmuhaimin/EEE4022S/zephyr-fota/zephyr/cmake/compiler/gcc/target.cmake:26 (find_program)"
+      - "/home/khnmuhaimin/EEE4022S/zephyr-fota/zephyr/cmake/modules/FindTargetTools.cmake:103 (include)"
+      - "/home/khnmuhaimin/EEE4022S/zephyr-fota/zephyr/cmake/modules/kernel.cmake:25 (find_package)"
+      - "/home/khnmuhaimin/EEE4022S/zephyr-fota/zephyr/cmake/modules/zephyr_default.cmake:140 (include)"
+      - "/home/khnmuhaimin/EEE4022S/zephyr-fota/zephyr/share/zephyr-package/cmake/ZephyrConfig.cmake:66 (include)"
+      - "/home/khnmuhaimin/EEE4022S/zephyr-fota/zephyr/share/zephyr-package/cmake/ZephyrConfig.cmake:92 (include_boilerplate)"
+      - "CMakeLists.txt:5 (find_package)"
+    mode: "program"
+    variable: "CMAKE_CXX_COMPILER"
+    description: "Path to a program."
+    settings:
+      SearchFramework: "NEVER"
+      SearchAppBundle: "NEVER"
+      CMAKE_FIND_USE_CMAKE_PATH: true
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "/home/khnmuhaimin/zephyr-sdk-0.17.2/xtensa-espressif_esp32_zephyr-elf/bin/xtensa-espressif_esp32_zephyr-elf-g++"
+    candidate_directories:
+      - "/home/khnmuhaimin/zephyr-sdk-0.17.2/"
+    found: "/home/khnmuhaimin/zephyr-sdk-0.17.2/xtensa-espressif_esp32_zephyr-elf/bin/xtensa-espressif_esp32_zephyr-elf-g++"
+    search_context:
+      CMAKE_PREFIX_PATH:
+        - "/home/khnmuhaimin/zephyr-sdk-0.17.2/sysroots/x86_64-pokysdk-linux/usr"
+      ENV{PATH}:
+        - "/home/khnmuhaimin/EEE4022S/.venv/bin"
+        - "/home/khnmuhaimin/.local/bin"
+        - "/usr/local/bin"
+        - "/usr/bin"
+        - "/usr/local/sbin"
+        - "/usr/lib/jvm/default/bin"
+        - "/opt/rocm/bin"
+        - "/opt/rocm/hip/bin"
+        - "/usr/bin/site_perl"
+        - "/usr/bin/vendor_perl"
+        - "/usr/bin/core_perl"
+        - "/home/khnmuhaimin/.rvm/bin"
+        - "/usr/local/MATLAB/R2024b/bin"
+        - "/home/khnmuhaimin/.esp/xtensa-lx106-elf-gcc8_4_0-esp-2020r3-linux-amd64/xtensa-lx106-elf/bin"
+        - "/usr/local/texlive/2025/bin/x86_64-linux"
+  -
+    kind: "find-v1"
+    backtrace:
+      - "/home/khnmuhaimin/EEE4022S/zephyr-fota/zephyr/cmake/bintools/gnu/target.cmake:5 (find_program)"
+      - "/home/khnmuhaimin/EEE4022S/zephyr-fota/zephyr/cmake/modules/FindTargetTools.cmake:106 (include)"
+      - "/home/khnmuhaimin/EEE4022S/zephyr-fota/zephyr/cmake/modules/kernel.cmake:25 (find_package)"
+      - "/home/khnmuhaimin/EEE4022S/zephyr-fota/zephyr/cmake/modules/zephyr_default.cmake:140 (include)"
+      - "/home/khnmuhaimin/EEE4022S/zephyr-fota/zephyr/share/zephyr-package/cmake/ZephyrConfig.cmake:66 (include)"
+      - "/home/khnmuhaimin/EEE4022S/zephyr-fota/zephyr/share/zephyr-package/cmake/ZephyrConfig.cmake:92 (include_boilerplate)"
+      - "CMakeLists.txt:5 (find_package)"
+    mode: "program"
+    variable: "CMAKE_OBJCOPY"
+    description: "Path to a program."
+    settings:
+      SearchFramework: "NEVER"
+      SearchAppBundle: "NEVER"
+      CMAKE_FIND_USE_CMAKE_PATH: true
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "/home/khnmuhaimin/zephyr-sdk-0.17.2/xtensa-espressif_esp32_zephyr-elf/bin/xtensa-espressif_esp32_zephyr-elf-objcopy"
+    candidate_directories:
+      - "/home/khnmuhaimin/zephyr-sdk-0.17.2/"
+    found: "/home/khnmuhaimin/zephyr-sdk-0.17.2/xtensa-espressif_esp32_zephyr-elf/bin/xtensa-espressif_esp32_zephyr-elf-objcopy"
+    search_context:
+      CMAKE_PREFIX_PATH:
+        - "/home/khnmuhaimin/zephyr-sdk-0.17.2/sysroots/x86_64-pokysdk-linux/usr"
+      ENV{PATH}:
+        - "/home/khnmuhaimin/EEE4022S/.venv/bin"
+        - "/home/khnmuhaimin/.local/bin"
+        - "/usr/local/bin"
+        - "/usr/bin"
+        - "/usr/local/sbin"
+        - "/usr/lib/jvm/default/bin"
+        - "/opt/rocm/bin"
+        - "/opt/rocm/hip/bin"
+        - "/usr/bin/site_perl"
+        - "/usr/bin/vendor_perl"
+        - "/usr/bin/core_perl"
+        - "/home/khnmuhaimin/.rvm/bin"
+        - "/usr/local/MATLAB/R2024b/bin"
+        - "/home/khnmuhaimin/.esp/xtensa-lx106-elf-gcc8_4_0-esp-2020r3-linux-amd64/xtensa-lx106-elf/bin"
+        - "/usr/local/texlive/2025/bin/x86_64-linux"
+  -
+    kind: "find-v1"
+    backtrace:
+      - "/home/khnmuhaimin/EEE4022S/zephyr-fota/zephyr/cmake/bintools/gnu/target.cmake:6 (find_program)"
+      - "/home/khnmuhaimin/EEE4022S/zephyr-fota/zephyr/cmake/modules/FindTargetTools.cmake:106 (include)"
+      - "/home/khnmuhaimin/EEE4022S/zephyr-fota/zephyr/cmake/modules/kernel.cmake:25 (find_package)"
+      - "/home/khnmuhaimin/EEE4022S/zephyr-fota/zephyr/cmake/modules/zephyr_default.cmake:140 (include)"
+      - "/home/khnmuhaimin/EEE4022S/zephyr-fota/zephyr/share/zephyr-package/cmake/ZephyrConfig.cmake:66 (include)"
+      - "/home/khnmuhaimin/EEE4022S/zephyr-fota/zephyr/share/zephyr-package/cmake/ZephyrConfig.cmake:92 (include_boilerplate)"
+      - "CMakeLists.txt:5 (find_package)"
+    mode: "program"
+    variable: "CMAKE_OBJDUMP"
+    description: "Path to a program."
+    settings:
+      SearchFramework: "NEVER"
+      SearchAppBundle: "NEVER"
+      CMAKE_FIND_USE_CMAKE_PATH: true
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "/home/khnmuhaimin/zephyr-sdk-0.17.2/xtensa-espressif_esp32_zephyr-elf/bin/xtensa-espressif_esp32_zephyr-elf-objdump"
+    candidate_directories:
+      - "/home/khnmuhaimin/zephyr-sdk-0.17.2/"
+    found: "/home/khnmuhaimin/zephyr-sdk-0.17.2/xtensa-espressif_esp32_zephyr-elf/bin/xtensa-espressif_esp32_zephyr-elf-objdump"
+    search_context:
+      CMAKE_PREFIX_PATH:
+        - "/home/khnmuhaimin/zephyr-sdk-0.17.2/sysroots/x86_64-pokysdk-linux/usr"
+      ENV{PATH}:
+        - "/home/khnmuhaimin/EEE4022S/.venv/bin"
+        - "/home/khnmuhaimin/.local/bin"
+        - "/usr/local/bin"
+        - "/usr/bin"
+        - "/usr/local/sbin"
+        - "/usr/lib/jvm/default/bin"
+        - "/opt/rocm/bin"
+        - "/opt/rocm/hip/bin"
+        - "/usr/bin/site_perl"
+        - "/usr/bin/vendor_perl"
+        - "/usr/bin/core_perl"
+        - "/home/khnmuhaimin/.rvm/bin"
+        - "/usr/local/MATLAB/R2024b/bin"
+        - "/home/khnmuhaimin/.esp/xtensa-lx106-elf-gcc8_4_0-esp-2020r3-linux-amd64/xtensa-lx106-elf/bin"
+        - "/usr/local/texlive/2025/bin/x86_64-linux"
+  -
+    kind: "find-v1"
+    backtrace:
+      - "/home/khnmuhaimin/EEE4022S/zephyr-fota/zephyr/cmake/bintools/gnu/target.cmake:7 (find_program)"
+      - "/home/khnmuhaimin/EEE4022S/zephyr-fota/zephyr/cmake/modules/FindTargetTools.cmake:106 (include)"
+      - "/home/khnmuhaimin/EEE4022S/zephyr-fota/zephyr/cmake/modules/kernel.cmake:25 (find_package)"
+      - "/home/khnmuhaimin/EEE4022S/zephyr-fota/zephyr/cmake/modules/zephyr_default.cmake:140 (include)"
+      - "/home/khnmuhaimin/EEE4022S/zephyr-fota/zephyr/share/zephyr-package/cmake/ZephyrConfig.cmake:66 (include)"
+      - "/home/khnmuhaimin/EEE4022S/zephyr-fota/zephyr/share/zephyr-package/cmake/ZephyrConfig.cmake:92 (include_boilerplate)"
+      - "CMakeLists.txt:5 (find_package)"
+    mode: "program"
+    variable: "CMAKE_AS"
+    description: "Path to a program."
+    settings:
+      SearchFramework: "NEVER"
+      SearchAppBundle: "NEVER"
+      CMAKE_FIND_USE_CMAKE_PATH: true
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "/home/khnmuhaimin/zephyr-sdk-0.17.2/xtensa-espressif_esp32_zephyr-elf/bin/xtensa-espressif_esp32_zephyr-elf-as"
+    candidate_directories:
+      - "/home/khnmuhaimin/zephyr-sdk-0.17.2/"
+    found: "/home/khnmuhaimin/zephyr-sdk-0.17.2/xtensa-espressif_esp32_zephyr-elf/bin/xtensa-espressif_esp32_zephyr-elf-as"
+    search_context:
+      CMAKE_PREFIX_PATH:
+        - "/home/khnmuhaimin/zephyr-sdk-0.17.2/sysroots/x86_64-pokysdk-linux/usr"
+      ENV{PATH}:
+        - "/home/khnmuhaimin/EEE4022S/.venv/bin"
+        - "/home/khnmuhaimin/.local/bin"
+        - "/usr/local/bin"
+        - "/usr/bin"
+        - "/usr/local/sbin"
+        - "/usr/lib/jvm/default/bin"
+        - "/opt/rocm/bin"
+        - "/opt/rocm/hip/bin"
+        - "/usr/bin/site_perl"
+        - "/usr/bin/vendor_perl"
+        - "/usr/bin/core_perl"
+        - "/home/khnmuhaimin/.rvm/bin"
+        - "/usr/local/MATLAB/R2024b/bin"
+        - "/home/khnmuhaimin/.esp/xtensa-lx106-elf-gcc8_4_0-esp-2020r3-linux-amd64/xtensa-lx106-elf/bin"
+        - "/usr/local/texlive/2025/bin/x86_64-linux"
+  -
+    kind: "find-v1"
+    backtrace:
+      - "/home/khnmuhaimin/EEE4022S/zephyr-fota/zephyr/cmake/bintools/gnu/target.cmake:12 (find_program)"
+      - "/home/khnmuhaimin/EEE4022S/zephyr-fota/zephyr/cmake/modules/FindTargetTools.cmake:106 (include)"
+      - "/home/khnmuhaimin/EEE4022S/zephyr-fota/zephyr/cmake/modules/kernel.cmake:25 (find_package)"
+      - "/home/khnmuhaimin/EEE4022S/zephyr-fota/zephyr/cmake/modules/zephyr_default.cmake:140 (include)"
+      - "/home/khnmuhaimin/EEE4022S/zephyr-fota/zephyr/share/zephyr-package/cmake/ZephyrConfig.cmake:66 (include)"
+      - "/home/khnmuhaimin/EEE4022S/zephyr-fota/zephyr/share/zephyr-package/cmake/ZephyrConfig.cmake:92 (include_boilerplate)"
+      - "CMakeLists.txt:5 (find_package)"
+    mode: "program"
+    variable: "CMAKE_AR"
+    description: "Path to a program."
+    settings:
+      SearchFramework: "NEVER"
+      SearchAppBundle: "NEVER"
+      CMAKE_FIND_USE_CMAKE_PATH: true
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "/home/khnmuhaimin/zephyr-sdk-0.17.2/xtensa-espressif_esp32_zephyr-elf/bin/xtensa-espressif_esp32_zephyr-elf-ar"
+    candidate_directories:
+      - "/home/khnmuhaimin/zephyr-sdk-0.17.2/"
+    found: "/home/khnmuhaimin/zephyr-sdk-0.17.2/xtensa-espressif_esp32_zephyr-elf/bin/xtensa-espressif_esp32_zephyr-elf-ar"
+    search_context:
+      CMAKE_PREFIX_PATH:
+        - "/home/khnmuhaimin/zephyr-sdk-0.17.2/sysroots/x86_64-pokysdk-linux/usr"
+      ENV{PATH}:
+        - "/home/khnmuhaimin/EEE4022S/.venv/bin"
+        - "/home/khnmuhaimin/.local/bin"
+        - "/usr/local/bin"
+        - "/usr/bin"
+        - "/usr/local/sbin"
+        - "/usr/lib/jvm/default/bin"
+        - "/opt/rocm/bin"
+        - "/opt/rocm/hip/bin"
+        - "/usr/bin/site_perl"
+        - "/usr/bin/vendor_perl"
+        - "/usr/bin/core_perl"
+        - "/home/khnmuhaimin/.rvm/bin"
+        - "/usr/local/MATLAB/R2024b/bin"
+        - "/home/khnmuhaimin/.esp/xtensa-lx106-elf-gcc8_4_0-esp-2020r3-linux-amd64/xtensa-lx106-elf/bin"
+        - "/usr/local/texlive/2025/bin/x86_64-linux"
+  -
+    kind: "find-v1"
+    backtrace:
+      - "/home/khnmuhaimin/EEE4022S/zephyr-fota/zephyr/cmake/bintools/gnu/target.cmake:13 (find_program)"
+      - "/home/khnmuhaimin/EEE4022S/zephyr-fota/zephyr/cmake/modules/FindTargetTools.cmake:106 (include)"
+      - "/home/khnmuhaimin/EEE4022S/zephyr-fota/zephyr/cmake/modules/kernel.cmake:25 (find_package)"
+      - "/home/khnmuhaimin/EEE4022S/zephyr-fota/zephyr/cmake/modules/zephyr_default.cmake:140 (include)"
+      - "/home/khnmuhaimin/EEE4022S/zephyr-fota/zephyr/share/zephyr-package/cmake/ZephyrConfig.cmake:66 (include)"
+      - "/home/khnmuhaimin/EEE4022S/zephyr-fota/zephyr/share/zephyr-package/cmake/ZephyrConfig.cmake:92 (include_boilerplate)"
+      - "CMakeLists.txt:5 (find_package)"
+    mode: "program"
+    variable: "CMAKE_RANLIB"
+    description: "Path to a program."
+    settings:
+      SearchFramework: "NEVER"
+      SearchAppBundle: "NEVER"
+      CMAKE_FIND_USE_CMAKE_PATH: true
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "/home/khnmuhaimin/zephyr-sdk-0.17.2/xtensa-espressif_esp32_zephyr-elf/bin/xtensa-espressif_esp32_zephyr-elf-ranlib"
+    candidate_directories:
+      - "/home/khnmuhaimin/zephyr-sdk-0.17.2/"
+    found: "/home/khnmuhaimin/zephyr-sdk-0.17.2/xtensa-espressif_esp32_zephyr-elf/bin/xtensa-espressif_esp32_zephyr-elf-ranlib"
+    search_context:
+      CMAKE_PREFIX_PATH:
+        - "/home/khnmuhaimin/zephyr-sdk-0.17.2/sysroots/x86_64-pokysdk-linux/usr"
+      ENV{PATH}:
+        - "/home/khnmuhaimin/EEE4022S/.venv/bin"
+        - "/home/khnmuhaimin/.local/bin"
+        - "/usr/local/bin"
+        - "/usr/bin"
+        - "/usr/local/sbin"
+        - "/usr/lib/jvm/default/bin"
+        - "/opt/rocm/bin"
+        - "/opt/rocm/hip/bin"
+        - "/usr/bin/site_perl"
+        - "/usr/bin/vendor_perl"
+        - "/usr/bin/core_perl"
+        - "/home/khnmuhaimin/.rvm/bin"
+        - "/usr/local/MATLAB/R2024b/bin"
+        - "/home/khnmuhaimin/.esp/xtensa-lx106-elf-gcc8_4_0-esp-2020r3-linux-amd64/xtensa-lx106-elf/bin"
+        - "/usr/local/texlive/2025/bin/x86_64-linux"
+  -
+    kind: "find-v1"
+    backtrace:
+      - "/home/khnmuhaimin/EEE4022S/zephyr-fota/zephyr/cmake/bintools/gnu/target.cmake:15 (find_program)"
+      - "/home/khnmuhaimin/EEE4022S/zephyr-fota/zephyr/cmake/modules/FindTargetTools.cmake:106 (include)"
+      - "/home/khnmuhaimin/EEE4022S/zephyr-fota/zephyr/cmake/modules/kernel.cmake:25 (find_package)"
+      - "/home/khnmuhaimin/EEE4022S/zephyr-fota/zephyr/cmake/modules/zephyr_default.cmake:140 (include)"
+      - "/home/khnmuhaimin/EEE4022S/zephyr-fota/zephyr/share/zephyr-package/cmake/ZephyrConfig.cmake:66 (include)"
+      - "/home/khnmuhaimin/EEE4022S/zephyr-fota/zephyr/share/zephyr-package/cmake/ZephyrConfig.cmake:92 (include_boilerplate)"
+      - "CMakeLists.txt:5 (find_package)"
+    mode: "program"
+    variable: "CMAKE_READELF"
+    description: "Path to a program."
+    settings:
+      SearchFramework: "NEVER"
+      SearchAppBundle: "NEVER"
+      CMAKE_FIND_USE_CMAKE_PATH: true
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "/home/khnmuhaimin/zephyr-sdk-0.17.2/xtensa-espressif_esp32_zephyr-elf/bin/xtensa-espressif_esp32_zephyr-elf-readelf"
+    candidate_directories:
+      - "/home/khnmuhaimin/zephyr-sdk-0.17.2/"
+    found: "/home/khnmuhaimin/zephyr-sdk-0.17.2/xtensa-espressif_esp32_zephyr-elf/bin/xtensa-espressif_esp32_zephyr-elf-readelf"
+    search_context:
+      CMAKE_PREFIX_PATH:
+        - "/home/khnmuhaimin/zephyr-sdk-0.17.2/sysroots/x86_64-pokysdk-linux/usr"
+      ENV{PATH}:
+        - "/home/khnmuhaimin/EEE4022S/.venv/bin"
+        - "/home/khnmuhaimin/.local/bin"
+        - "/usr/local/bin"
+        - "/usr/bin"
+        - "/usr/local/sbin"
+        - "/usr/lib/jvm/default/bin"
+        - "/opt/rocm/bin"
+        - "/opt/rocm/hip/bin"
+        - "/usr/bin/site_perl"
+        - "/usr/bin/vendor_perl"
+        - "/usr/bin/core_perl"
+        - "/home/khnmuhaimin/.rvm/bin"
+        - "/usr/local/MATLAB/R2024b/bin"
+        - "/home/khnmuhaimin/.esp/xtensa-lx106-elf-gcc8_4_0-esp-2020r3-linux-amd64/xtensa-lx106-elf/bin"
+        - "/usr/local/texlive/2025/bin/x86_64-linux"
+  -
+    kind: "find-v1"
+    backtrace:
+      - "/home/khnmuhaimin/EEE4022S/zephyr-fota/zephyr/cmake/bintools/gnu/target.cmake:16 (find_program)"
+      - "/home/khnmuhaimin/EEE4022S/zephyr-fota/zephyr/cmake/modules/FindTargetTools.cmake:106 (include)"
+      - "/home/khnmuhaimin/EEE4022S/zephyr-fota/zephyr/cmake/modules/kernel.cmake:25 (find_package)"
+      - "/home/khnmuhaimin/EEE4022S/zephyr-fota/zephyr/cmake/modules/zephyr_default.cmake:140 (include)"
+      - "/home/khnmuhaimin/EEE4022S/zephyr-fota/zephyr/share/zephyr-package/cmake/ZephyrConfig.cmake:66 (include)"
+      - "/home/khnmuhaimin/EEE4022S/zephyr-fota/zephyr/share/zephyr-package/cmake/ZephyrConfig.cmake:92 (include_boilerplate)"
+      - "CMakeLists.txt:5 (find_package)"
+    mode: "program"
+    variable: "CMAKE_NM"
+    description: "Path to a program."
+    settings:
+      SearchFramework: "NEVER"
+      SearchAppBundle: "NEVER"
+      CMAKE_FIND_USE_CMAKE_PATH: true
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "/home/khnmuhaimin/zephyr-sdk-0.17.2/xtensa-espressif_esp32_zephyr-elf/bin/xtensa-espressif_esp32_zephyr-elf-nm"
+    candidate_directories:
+      - "/home/khnmuhaimin/zephyr-sdk-0.17.2/"
+    found: "/home/khnmuhaimin/zephyr-sdk-0.17.2/xtensa-espressif_esp32_zephyr-elf/bin/xtensa-espressif_esp32_zephyr-elf-nm"
+    search_context:
+      CMAKE_PREFIX_PATH:
+        - "/home/khnmuhaimin/zephyr-sdk-0.17.2/sysroots/x86_64-pokysdk-linux/usr"
+      ENV{PATH}:
+        - "/home/khnmuhaimin/EEE4022S/.venv/bin"
+        - "/home/khnmuhaimin/.local/bin"
+        - "/usr/local/bin"
+        - "/usr/bin"
+        - "/usr/local/sbin"
+        - "/usr/lib/jvm/default/bin"
+        - "/opt/rocm/bin"
+        - "/opt/rocm/hip/bin"
+        - "/usr/bin/site_perl"
+        - "/usr/bin/vendor_perl"
+        - "/usr/bin/core_perl"
+        - "/home/khnmuhaimin/.rvm/bin"
+        - "/usr/local/MATLAB/R2024b/bin"
+        - "/home/khnmuhaimin/.esp/xtensa-lx106-elf-gcc8_4_0-esp-2020r3-linux-amd64/xtensa-lx106-elf/bin"
+        - "/usr/local/texlive/2025/bin/x86_64-linux"
+  -
+    kind: "find-v1"
+    backtrace:
+      - "/home/khnmuhaimin/EEE4022S/zephyr-fota/zephyr/cmake/bintools/gnu/target.cmake:17 (find_program)"
+      - "/home/khnmuhaimin/EEE4022S/zephyr-fota/zephyr/cmake/modules/FindTargetTools.cmake:106 (include)"
+      - "/home/khnmuhaimin/EEE4022S/zephyr-fota/zephyr/cmake/modules/kernel.cmake:25 (find_package)"
+      - "/home/khnmuhaimin/EEE4022S/zephyr-fota/zephyr/cmake/modules/zephyr_default.cmake:140 (include)"
+      - "/home/khnmuhaimin/EEE4022S/zephyr-fota/zephyr/share/zephyr-package/cmake/ZephyrConfig.cmake:66 (include)"
+      - "/home/khnmuhaimin/EEE4022S/zephyr-fota/zephyr/share/zephyr-package/cmake/ZephyrConfig.cmake:92 (include_boilerplate)"
+      - "CMakeLists.txt:5 (find_package)"
+    mode: "program"
+    variable: "CMAKE_STRIP"
+    description: "Path to a program."
+    settings:
+      SearchFramework: "NEVER"
+      SearchAppBundle: "NEVER"
+      CMAKE_FIND_USE_CMAKE_PATH: true
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "/home/khnmuhaimin/zephyr-sdk-0.17.2/xtensa-espressif_esp32_zephyr-elf/bin/xtensa-espressif_esp32_zephyr-elf-strip"
+    candidate_directories:
+      - "/home/khnmuhaimin/zephyr-sdk-0.17.2/"
+    found: "/home/khnmuhaimin/zephyr-sdk-0.17.2/xtensa-espressif_esp32_zephyr-elf/bin/xtensa-espressif_esp32_zephyr-elf-strip"
+    search_context:
+      CMAKE_PREFIX_PATH:
+        - "/home/khnmuhaimin/zephyr-sdk-0.17.2/sysroots/x86_64-pokysdk-linux/usr"
+      ENV{PATH}:
+        - "/home/khnmuhaimin/EEE4022S/.venv/bin"
+        - "/home/khnmuhaimin/.local/bin"
+        - "/usr/local/bin"
+        - "/usr/bin"
+        - "/usr/local/sbin"
+        - "/usr/lib/jvm/default/bin"
+        - "/opt/rocm/bin"
+        - "/opt/rocm/hip/bin"
+        - "/usr/bin/site_perl"
+        - "/usr/bin/vendor_perl"
+        - "/usr/bin/core_perl"
+        - "/home/khnmuhaimin/.rvm/bin"
+        - "/usr/local/MATLAB/R2024b/bin"
+        - "/home/khnmuhaimin/.esp/xtensa-lx106-elf-gcc8_4_0-esp-2020r3-linux-amd64/xtensa-lx106-elf/bin"
+        - "/usr/local/texlive/2025/bin/x86_64-linux"
+  -
+    kind: "find-v1"
+    backtrace:
+      - "/home/khnmuhaimin/EEE4022S/zephyr-fota/zephyr/cmake/bintools/gnu/target.cmake:19 (find_program)"
+      - "/home/khnmuhaimin/EEE4022S/zephyr-fota/zephyr/cmake/modules/FindTargetTools.cmake:106 (include)"
+      - "/home/khnmuhaimin/EEE4022S/zephyr-fota/zephyr/cmake/modules/kernel.cmake:25 (find_package)"
+      - "/home/khnmuhaimin/EEE4022S/zephyr-fota/zephyr/cmake/modules/zephyr_default.cmake:140 (include)"
+      - "/home/khnmuhaimin/EEE4022S/zephyr-fota/zephyr/share/zephyr-package/cmake/ZephyrConfig.cmake:66 (include)"
+      - "/home/khnmuhaimin/EEE4022S/zephyr-fota/zephyr/share/zephyr-package/cmake/ZephyrConfig.cmake:92 (include_boilerplate)"
+      - "CMakeLists.txt:5 (find_package)"
+    mode: "program"
+    variable: "CMAKE_GDB"
+    description: "Path to a program."
+    settings:
+      SearchFramework: "NEVER"
+      SearchAppBundle: "NEVER"
+      CMAKE_FIND_USE_CMAKE_PATH: true
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "/home/khnmuhaimin/zephyr-sdk-0.17.2/xtensa-espressif_esp32_zephyr-elf/bin/xtensa-espressif_esp32_zephyr-elf-gdb-py"
+    candidate_directories:
+      - "/home/khnmuhaimin/zephyr-sdk-0.17.2/"
+    found: "/home/khnmuhaimin/zephyr-sdk-0.17.2/xtensa-espressif_esp32_zephyr-elf/bin/xtensa-espressif_esp32_zephyr-elf-gdb-py"
+    search_context:
+      CMAKE_PREFIX_PATH:
+        - "/home/khnmuhaimin/zephyr-sdk-0.17.2/sysroots/x86_64-pokysdk-linux/usr"
+      ENV{PATH}:
+        - "/home/khnmuhaimin/EEE4022S/.venv/bin"
+        - "/home/khnmuhaimin/.local/bin"
+        - "/usr/local/bin"
+        - "/usr/bin"
+        - "/usr/local/sbin"
+        - "/usr/lib/jvm/default/bin"
+        - "/opt/rocm/bin"
+        - "/opt/rocm/hip/bin"
+        - "/usr/bin/site_perl"
+        - "/usr/bin/vendor_perl"
+        - "/usr/bin/core_perl"
+        - "/home/khnmuhaimin/.rvm/bin"
+        - "/usr/local/MATLAB/R2024b/bin"
+        - "/home/khnmuhaimin/.esp/xtensa-lx106-elf-gcc8_4_0-esp-2020r3-linux-amd64/xtensa-lx106-elf/bin"
+        - "/usr/local/texlive/2025/bin/x86_64-linux"
+  -
+    kind: "find-v1"
+    backtrace:
+      - "/home/khnmuhaimin/EEE4022S/zephyr-fota/zephyr/cmake/bintools/gnu/target.cmake:31 (find_program)"
+      - "/home/khnmuhaimin/EEE4022S/zephyr-fota/zephyr/cmake/modules/FindTargetTools.cmake:106 (include)"
+      - "/home/khnmuhaimin/EEE4022S/zephyr-fota/zephyr/cmake/modules/kernel.cmake:25 (find_package)"
+      - "/home/khnmuhaimin/EEE4022S/zephyr-fota/zephyr/cmake/modules/zephyr_default.cmake:140 (include)"
+      - "/home/khnmuhaimin/EEE4022S/zephyr-fota/zephyr/share/zephyr-package/cmake/ZephyrConfig.cmake:66 (include)"
+      - "/home/khnmuhaimin/EEE4022S/zephyr-fota/zephyr/share/zephyr-package/cmake/ZephyrConfig.cmake:92 (include_boilerplate)"
+      - "CMakeLists.txt:5 (find_package)"
+    mode: "program"
+    variable: "CMAKE_GDB_NO_PY"
+    description: "Path to a program."
+    settings:
+      SearchFramework: "NEVER"
+      SearchAppBundle: "NEVER"
+      CMAKE_FIND_USE_CMAKE_PATH: true
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "/home/khnmuhaimin/zephyr-sdk-0.17.2/xtensa-espressif_esp32_zephyr-elf/bin/xtensa-espressif_esp32_zephyr-elf-gdb"
+    candidate_directories:
+      - "/home/khnmuhaimin/zephyr-sdk-0.17.2/"
+    found: "/home/khnmuhaimin/zephyr-sdk-0.17.2/xtensa-espressif_esp32_zephyr-elf/bin/xtensa-espressif_esp32_zephyr-elf-gdb"
+    search_context:
+      CMAKE_PREFIX_PATH:
+        - "/home/khnmuhaimin/zephyr-sdk-0.17.2/sysroots/x86_64-pokysdk-linux/usr"
+      ENV{PATH}:
+        - "/home/khnmuhaimin/EEE4022S/.venv/bin"
+        - "/home/khnmuhaimin/.local/bin"
+        - "/usr/local/bin"
+        - "/usr/bin"
+        - "/usr/local/sbin"
+        - "/usr/lib/jvm/default/bin"
+        - "/opt/rocm/bin"
+        - "/opt/rocm/hip/bin"
+        - "/usr/bin/site_perl"
+        - "/usr/bin/vendor_perl"
+        - "/usr/bin/core_perl"
+        - "/home/khnmuhaimin/.rvm/bin"
+        - "/usr/local/MATLAB/R2024b/bin"
+        - "/home/khnmuhaimin/.esp/xtensa-lx106-elf-gcc8_4_0-esp-2020r3-linux-amd64/xtensa-lx106-elf/bin"
+        - "/usr/local/texlive/2025/bin/x86_64-linux"
+  -
+    kind: "find-v1"
+    backtrace:
+      - "/usr/share/cmake/Modules/CMakeDetermineSystem.cmake:12 (find_program)"
+      - "/home/khnmuhaimin/EEE4022S/zephyr-fota/zephyr/cmake/modules/kernel.cmake:129 (project)"
+      - "/home/khnmuhaimin/EEE4022S/zephyr-fota/zephyr/cmake/modules/zephyr_default.cmake:140 (include)"
+      - "/home/khnmuhaimin/EEE4022S/zephyr-fota/zephyr/share/zephyr-package/cmake/ZephyrConfig.cmake:66 (include)"
+      - "/home/khnmuhaimin/EEE4022S/zephyr-fota/zephyr/share/zephyr-package/cmake/ZephyrConfig.cmake:92 (include_boilerplate)"
+      - "CMakeLists.txt:5 (find_package)"
+    mode: "program"
+    variable: "CMAKE_UNAME"
+    description: "Path to a program."
+    settings:
+      SearchFramework: "NEVER"
+      SearchAppBundle: "NEVER"
+      CMAKE_FIND_USE_CMAKE_PATH: true
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "uname"
+    candidate_directories:
+      - "/home/khnmuhaimin/zephyr-sdk-0.17.2/sysroots/x86_64-pokysdk-linux/usr/bin/"
+      - "/home/khnmuhaimin/zephyr-sdk-0.17.2/sysroots/x86_64-pokysdk-linux/usr/sbin/"
+      - "/home/khnmuhaimin/zephyr-sdk-0.17.2/sysroots/x86_64-pokysdk-linux/usr/"
+      - "/home/khnmuhaimin/EEE4022S/.venv/bin/"
+      - "/home/khnmuhaimin/.local/bin/"
+      - "/usr/local/bin/"
+      - "/usr/bin/"
+      - "/usr/local/sbin/"
+      - "/usr/lib/jvm/default/bin/"
+      - "/opt/rocm/bin/"
+      - "/opt/rocm/hip/bin/"
+      - "/usr/bin/site_perl/"
+      - "/usr/bin/vendor_perl/"
+      - "/usr/bin/core_perl/"
+      - "/home/khnmuhaimin/.rvm/bin/"
+      - "/usr/local/MATLAB/R2024b/bin/"
+      - "/home/khnmuhaimin/.esp/xtensa-lx106-elf-gcc8_4_0-esp-2020r3-linux-amd64/xtensa-lx106-elf/bin/"
+      - "/usr/local/texlive/2025/bin/x86_64-linux/"
+      - "/bin/"
+    searched_directories:
+      - "/home/khnmuhaimin/zephyr-sdk-0.17.2/sysroots/x86_64-pokysdk-linux/usr/bin/uname"
+      - "/home/khnmuhaimin/zephyr-sdk-0.17.2/sysroots/x86_64-pokysdk-linux/usr/sbin/uname"
+      - "/home/khnmuhaimin/zephyr-sdk-0.17.2/sysroots/x86_64-pokysdk-linux/usr/uname"
+      - "/home/khnmuhaimin/EEE4022S/.venv/bin/uname"
+      - "/home/khnmuhaimin/.local/bin/uname"
+      - "/usr/local/bin/uname"
+    found: "/usr/bin/uname"
+    search_context:
+      CMAKE_PREFIX_PATH:
+        - "/home/khnmuhaimin/zephyr-sdk-0.17.2/sysroots/x86_64-pokysdk-linux/usr"
+      ENV{PATH}:
+        - "/home/khnmuhaimin/EEE4022S/.venv/bin"
+        - "/home/khnmuhaimin/.local/bin"
+        - "/usr/local/bin"
+        - "/usr/bin"
+        - "/usr/local/sbin"
+        - "/usr/lib/jvm/default/bin"
+        - "/opt/rocm/bin"
+        - "/opt/rocm/hip/bin"
+        - "/usr/bin/site_perl"
+        - "/usr/bin/vendor_perl"
+        - "/usr/bin/core_perl"
+        - "/home/khnmuhaimin/.rvm/bin"
+        - "/usr/local/MATLAB/R2024b/bin"
+        - "/home/khnmuhaimin/.esp/xtensa-lx106-elf-gcc8_4_0-esp-2020r3-linux-amd64/xtensa-lx106-elf/bin"
+        - "/usr/local/texlive/2025/bin/x86_64-linux"
+  -
+    kind: "message-v1"
+    backtrace:
+      - "/usr/share/cmake/Modules/CMakeDetermineSystem.cmake:207 (message)"
+      - "/home/khnmuhaimin/EEE4022S/zephyr-fota/zephyr/cmake/modules/kernel.cmake:129 (project)"
+      - "/home/khnmuhaimin/EEE4022S/zephyr-fota/zephyr/cmake/modules/zephyr_default.cmake:140 (include)"
+      - "/home/khnmuhaimin/EEE4022S/zephyr-fota/zephyr/share/zephyr-package/cmake/ZephyrConfig.cmake:66 (include)"
+      - "/home/khnmuhaimin/EEE4022S/zephyr-fota/zephyr/share/zephyr-package/cmake/ZephyrConfig.cmake:92 (include_boilerplate)"
+      - "CMakeLists.txt:5 (find_package)"
+    message: |
+      The target system is: Generic - 4.2.0 - xtensa
+      The host system is: Linux - 6.17.1-zen1-1-zen - x86_64
+  -
+    kind: "find-v1"
+    backtrace:
+      - "/usr/share/cmake/Modules/CMakeNinjaFindMake.cmake:5 (find_program)"
+      - "/home/khnmuhaimin/EEE4022S/zephyr-fota/zephyr/cmake/modules/kernel.cmake:129 (project)"
+      - "/home/khnmuhaimin/EEE4022S/zephyr-fota/zephyr/cmake/modules/zephyr_default.cmake:140 (include)"
+      - "/home/khnmuhaimin/EEE4022S/zephyr-fota/zephyr/share/zephyr-package/cmake/ZephyrConfig.cmake:66 (include)"
+      - "/home/khnmuhaimin/EEE4022S/zephyr-fota/zephyr/share/zephyr-package/cmake/ZephyrConfig.cmake:92 (include_boilerplate)"
+      - "CMakeLists.txt:5 (find_package)"
+    mode: "program"
+    variable: "CMAKE_MAKE_PROGRAM"
+    description: "Program used to build from build.ninja files."
+    settings:
+      SearchFramework: "NEVER"
+      SearchAppBundle: "NEVER"
+      CMAKE_FIND_USE_CMAKE_PATH: true
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "ninja-build"
+      - "ninja"
+      - "samu"
+    candidate_directories:
+      - "/home/khnmuhaimin/zephyr-sdk-0.17.2/sysroots/x86_64-pokysdk-linux/usr/bin/"
+      - "/home/khnmuhaimin/zephyr-sdk-0.17.2/sysroots/x86_64-pokysdk-linux/usr/sbin/"
+      - "/home/khnmuhaimin/zephyr-sdk-0.17.2/sysroots/x86_64-pokysdk-linux/usr/"
+      - "/home/khnmuhaimin/EEE4022S/.venv/bin/"
+      - "/home/khnmuhaimin/.local/bin/"
+      - "/usr/local/bin/"
+      - "/usr/bin/"
+      - "/usr/local/sbin/"
+      - "/usr/lib/jvm/default/bin/"
+      - "/opt/rocm/bin/"
+      - "/opt/rocm/hip/bin/"
+      - "/usr/bin/site_perl/"
+      - "/usr/bin/vendor_perl/"
+      - "/usr/bin/core_perl/"
+      - "/home/khnmuhaimin/.rvm/bin/"
+      - "/usr/local/MATLAB/R2024b/bin/"
+      - "/home/khnmuhaimin/.esp/xtensa-lx106-elf-gcc8_4_0-esp-2020r3-linux-amd64/xtensa-lx106-elf/bin/"
+      - "/usr/local/texlive/2025/bin/x86_64-linux/"
+    searched_directories:
+      - "/home/khnmuhaimin/zephyr-sdk-0.17.2/sysroots/x86_64-pokysdk-linux/usr/bin/ninja-build"
+      - "/home/khnmuhaimin/zephyr-sdk-0.17.2/sysroots/x86_64-pokysdk-linux/usr/bin/ninja"
+      - "/home/khnmuhaimin/zephyr-sdk-0.17.2/sysroots/x86_64-pokysdk-linux/usr/bin/samu"
+      - "/home/khnmuhaimin/zephyr-sdk-0.17.2/sysroots/x86_64-pokysdk-linux/usr/sbin/ninja-build"
+      - "/home/khnmuhaimin/zephyr-sdk-0.17.2/sysroots/x86_64-pokysdk-linux/usr/sbin/ninja"
+      - "/home/khnmuhaimin/zephyr-sdk-0.17.2/sysroots/x86_64-pokysdk-linux/usr/sbin/samu"
+      - "/home/khnmuhaimin/zephyr-sdk-0.17.2/sysroots/x86_64-pokysdk-linux/usr/ninja-build"
+      - "/home/khnmuhaimin/zephyr-sdk-0.17.2/sysroots/x86_64-pokysdk-linux/usr/ninja"
+      - "/home/khnmuhaimin/zephyr-sdk-0.17.2/sysroots/x86_64-pokysdk-linux/usr/samu"
+      - "/home/khnmuhaimin/EEE4022S/.venv/bin/ninja-build"
+      - "/home/khnmuhaimin/EEE4022S/.venv/bin/ninja"
+      - "/home/khnmuhaimin/EEE4022S/.venv/bin/samu"
+      - "/home/khnmuhaimin/.local/bin/ninja-build"
+      - "/home/khnmuhaimin/.local/bin/ninja"
+      - "/home/khnmuhaimin/.local/bin/samu"
+      - "/usr/local/bin/ninja-build"
+      - "/usr/local/bin/ninja"
+      - "/usr/local/bin/samu"
+      - "/usr/bin/ninja-build"
+    found: "/usr/bin/ninja"
+    search_context:
+      CMAKE_PREFIX_PATH:
+        - "/home/khnmuhaimin/zephyr-sdk-0.17.2/sysroots/x86_64-pokysdk-linux/usr"
+      ENV{PATH}:
+        - "/home/khnmuhaimin/EEE4022S/.venv/bin"
+        - "/home/khnmuhaimin/.local/bin"
+        - "/usr/local/bin"
+        - "/usr/bin"
+        - "/usr/local/sbin"
+        - "/usr/lib/jvm/default/bin"
+        - "/opt/rocm/bin"
+        - "/opt/rocm/hip/bin"
+        - "/usr/bin/site_perl"
+        - "/usr/bin/vendor_perl"
+        - "/usr/bin/core_perl"
+        - "/home/khnmuhaimin/.rvm/bin"
+        - "/usr/local/MATLAB/R2024b/bin"
+        - "/home/khnmuhaimin/.esp/xtensa-lx106-elf-gcc8_4_0-esp-2020r3-linux-amd64/xtensa-lx106-elf/bin"
+        - "/usr/local/texlive/2025/bin/x86_64-linux"
+  -
+    kind: "find-v1"
+    backtrace:
+      - "/usr/share/cmake/Modules/CMakeDetermineCompilerId.cmake:462 (find_file)"
+      - "/usr/share/cmake/Modules/CMakeDetermineCompilerId.cmake:500 (CMAKE_DETERMINE_COMPILER_ID_WRITE)"
+      - "/usr/share/cmake/Modules/CMakeDetermineCompilerId.cmake:8 (CMAKE_DETERMINE_COMPILER_ID_BUILD)"
+      - "/usr/share/cmake/Modules/CMakeDetermineCompilerId.cmake:64 (__determine_compiler_id_test)"
+      - "/usr/share/cmake/Modules/CMakeDetermineCCompiler.cmake:122 (CMAKE_DETERMINE_COMPILER_ID)"
+      - "/home/khnmuhaimin/EEE4022S/zephyr-fota/zephyr/cmake/modules/kernel.cmake:129 (project)"
+      - "/home/khnmuhaimin/EEE4022S/zephyr-fota/zephyr/cmake/modules/zephyr_default.cmake:140 (include)"
+      - "/home/khnmuhaimin/EEE4022S/zephyr-fota/zephyr/share/zephyr-package/cmake/ZephyrConfig.cmake:66 (include)"
+      - "/home/khnmuhaimin/EEE4022S/zephyr-fota/zephyr/share/zephyr-package/cmake/ZephyrConfig.cmake:92 (include_boilerplate)"
+      - "CMakeLists.txt:5 (find_package)"
+    mode: "file"
+    variable: "src_in"
+    description: "Path to a file."
+    settings:
+      SearchFramework: "NEVER"
+      SearchAppBundle: "NEVER"
+      CMAKE_FIND_USE_CMAKE_PATH: true
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "CMakeCCompilerId.c.in"
+    candidate_directories:
+      - "/usr/share/cmake/Modules/"
+      - "/home/khnmuhaimin/EEE4022S/zephyr-fota/zephyr/cmake/modules/"
+    found: "/usr/share/cmake/Modules/CMakeCCompilerId.c.in"
+    search_context:
+      CMAKE_PREFIX_PATH:
+        - "/home/khnmuhaimin/zephyr-sdk-0.17.2/sysroots/x86_64-pokysdk-linux/usr"
+      ENV{PATH}:
+        - "/home/khnmuhaimin/EEE4022S/.venv/bin"
+        - "/home/khnmuhaimin/.local/bin"
+        - "/usr/local/bin"
+        - "/usr/bin"
+        - "/usr/local/sbin"
+        - "/usr/lib/jvm/default/bin"
+        - "/opt/rocm/bin"
+        - "/opt/rocm/hip/bin"
+        - "/usr/bin/site_perl"
+        - "/usr/bin/vendor_perl"
+        - "/usr/bin/core_perl"
+        - "/home/khnmuhaimin/.rvm/bin"
+        - "/usr/local/MATLAB/R2024b/bin"
+        - "/home/khnmuhaimin/.esp/xtensa-lx106-elf-gcc8_4_0-esp-2020r3-linux-amd64/xtensa-lx106-elf/bin"
+        - "/usr/local/texlive/2025/bin/x86_64-linux"
+  -
+    kind: "message-v1"
+    backtrace:
+      - "/usr/share/cmake/Modules/CMakeDetermineCompilerId.cmake:17 (message)"
+      - "/usr/share/cmake/Modules/CMakeDetermineCompilerId.cmake:64 (__determine_compiler_id_test)"
+      - "/usr/share/cmake/Modules/CMakeDetermineCCompiler.cmake:122 (CMAKE_DETERMINE_COMPILER_ID)"
+      - "/home/khnmuhaimin/EEE4022S/zephyr-fota/zephyr/cmake/modules/kernel.cmake:129 (project)"
+      - "/home/khnmuhaimin/EEE4022S/zephyr-fota/zephyr/cmake/modules/zephyr_default.cmake:140 (include)"
+      - "/home/khnmuhaimin/EEE4022S/zephyr-fota/zephyr/share/zephyr-package/cmake/ZephyrConfig.cmake:66 (include)"
+      - "/home/khnmuhaimin/EEE4022S/zephyr-fota/zephyr/share/zephyr-package/cmake/ZephyrConfig.cmake:92 (include_boilerplate)"
+      - "CMakeLists.txt:5 (find_package)"
+    message: |
+      Compiling the C compiler identification source file "CMakeCCompilerId.c" failed.
+      Compiler: /home/khnmuhaimin/zephyr-sdk-0.17.2/xtensa-espressif_esp32_zephyr-elf/bin/xtensa-espressif_esp32_zephyr-elf-gcc 
+      Build flags: 
+      Id flags:  
+      
+      The output was:
+      1
+      /home/khnmuhaimin/zephyr-sdk-0.17.2/xtensa-espressif_esp32_zephyr-elf/bin/../lib/gcc/xtensa-espressif_esp32_zephyr-elf/12.2.0/../../../../xtensa-espressif_esp32_zephyr-elf/bin/ld: cannot find _vectors.o: No such file or directory
+      /home/khnmuhaimin/zephyr-sdk-0.17.2/xtensa-espressif_esp32_zephyr-elf/bin/../lib/gcc/xtensa-espressif_esp32_zephyr-elf/12.2.0/../../../../xtensa-espressif_esp32_zephyr-elf/bin/ld: cannot find -lhandlers-sim: No such file or directory
+      /home/khnmuhaimin/zephyr-sdk-0.17.2/xtensa-espressif_esp32_zephyr-elf/bin/../lib/gcc/xtensa-espressif_esp32_zephyr-elf/12.2.0/../../../../xtensa-espressif_esp32_zephyr-elf/bin/ld: cannot find -lhal: No such file or directory
+      collect2: error: ld returned 1 exit status
+      
+      
+  -
+    kind: "find-v1"
+    backtrace:
+      - "/usr/share/cmake/Modules/CMakeDetermineCompilerId.cmake:462 (find_file)"
+      - "/usr/share/cmake/Modules/CMakeDetermineCompilerId.cmake:500 (CMAKE_DETERMINE_COMPILER_ID_WRITE)"
+      - "/usr/share/cmake/Modules/CMakeDetermineCompilerId.cmake:8 (CMAKE_DETERMINE_COMPILER_ID_BUILD)"
+      - "/usr/share/cmake/Modules/CMakeDetermineCompilerId.cmake:64 (__determine_compiler_id_test)"
+      - "/usr/share/cmake/Modules/CMakeDetermineCCompiler.cmake:122 (CMAKE_DETERMINE_COMPILER_ID)"
+      - "/home/khnmuhaimin/EEE4022S/zephyr-fota/zephyr/cmake/modules/kernel.cmake:129 (project)"
+      - "/home/khnmuhaimin/EEE4022S/zephyr-fota/zephyr/cmake/modules/zephyr_default.cmake:140 (include)"
+      - "/home/khnmuhaimin/EEE4022S/zephyr-fota/zephyr/share/zephyr-package/cmake/ZephyrConfig.cmake:66 (include)"
+      - "/home/khnmuhaimin/EEE4022S/zephyr-fota/zephyr/share/zephyr-package/cmake/ZephyrConfig.cmake:92 (include_boilerplate)"
+      - "CMakeLists.txt:5 (find_package)"
+    mode: "file"
+    variable: "src_in"
+    description: "Path to a file."
+    settings:
+      SearchFramework: "NEVER"
+      SearchAppBundle: "NEVER"
+      CMAKE_FIND_USE_CMAKE_PATH: true
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "CMakeCCompilerId.c.in"
+    candidate_directories:
+      - "/usr/share/cmake/Modules/"
+      - "/home/khnmuhaimin/EEE4022S/zephyr-fota/zephyr/cmake/modules/"
+    found: "/usr/share/cmake/Modules/CMakeCCompilerId.c.in"
+    search_context:
+      CMAKE_PREFIX_PATH:
+        - "/home/khnmuhaimin/zephyr-sdk-0.17.2/sysroots/x86_64-pokysdk-linux/usr"
+      ENV{PATH}:
+        - "/home/khnmuhaimin/EEE4022S/.venv/bin"
+        - "/home/khnmuhaimin/.local/bin"
+        - "/usr/local/bin"
+        - "/usr/bin"
+        - "/usr/local/sbin"
+        - "/usr/lib/jvm/default/bin"
+        - "/opt/rocm/bin"
+        - "/opt/rocm/hip/bin"
+        - "/usr/bin/site_perl"
+        - "/usr/bin/vendor_perl"
+        - "/usr/bin/core_perl"
+        - "/home/khnmuhaimin/.rvm/bin"
+        - "/usr/local/MATLAB/R2024b/bin"
+        - "/home/khnmuhaimin/.esp/xtensa-lx106-elf-gcc8_4_0-esp-2020r3-linux-amd64/xtensa-lx106-elf/bin"
+        - "/usr/local/texlive/2025/bin/x86_64-linux"
+  -
+    kind: "message-v1"
+    backtrace:
+      - "/usr/share/cmake/Modules/CMakeDetermineCompilerId.cmake:17 (message)"
+      - "/usr/share/cmake/Modules/CMakeDetermineCompilerId.cmake:64 (__determine_compiler_id_test)"
+      - "/usr/share/cmake/Modules/CMakeDetermineCCompiler.cmake:122 (CMAKE_DETERMINE_COMPILER_ID)"
+      - "/home/khnmuhaimin/EEE4022S/zephyr-fota/zephyr/cmake/modules/kernel.cmake:129 (project)"
+      - "/home/khnmuhaimin/EEE4022S/zephyr-fota/zephyr/cmake/modules/zephyr_default.cmake:140 (include)"
+      - "/home/khnmuhaimin/EEE4022S/zephyr-fota/zephyr/share/zephyr-package/cmake/ZephyrConfig.cmake:66 (include)"
+      - "/home/khnmuhaimin/EEE4022S/zephyr-fota/zephyr/share/zephyr-package/cmake/ZephyrConfig.cmake:92 (include_boilerplate)"
+      - "CMakeLists.txt:5 (find_package)"
+    message: |
+      Compiling the C compiler identification source file "CMakeCCompilerId.c" succeeded.
+      Compiler: /home/khnmuhaimin/zephyr-sdk-0.17.2/xtensa-espressif_esp32_zephyr-elf/bin/xtensa-espressif_esp32_zephyr-elf-gcc 
+      Build flags: 
+      Id flags: -c 
+      
+      The output was:
+      0
+      
+      
+      Compilation of the C compiler identification source "CMakeCCompilerId.c" produced "CMakeCCompilerId.o"
+      
+      The C compiler identification is GNU, found in:
+        /home/khnmuhaimin/EEE4022S/zephyr-fota/build/CMakeFiles/4.1.2/CompilerIdC/CMakeCCompilerId.o
+      
+  -
+    kind: "find-v1"
+    backtrace:
+      - "/usr/share/cmake/Modules/CMakeFindBinUtils.cmake:238 (find_program)"
+      - "/usr/share/cmake/Modules/CMakeDetermineCCompiler.cmake:200 (include)"
+      - "/home/khnmuhaimin/EEE4022S/zephyr-fota/zephyr/cmake/modules/kernel.cmake:129 (project)"
+      - "/home/khnmuhaimin/EEE4022S/zephyr-fota/zephyr/cmake/modules/zephyr_default.cmake:140 (include)"
+      - "/home/khnmuhaimin/EEE4022S/zephyr-fota/zephyr/share/zephyr-package/cmake/ZephyrConfig.cmake:66 (include)"
+      - "/home/khnmuhaimin/EEE4022S/zephyr-fota/zephyr/share/zephyr-package/cmake/ZephyrConfig.cmake:92 (include_boilerplate)"
+      - "CMakeLists.txt:5 (find_package)"
+    mode: "program"
+    variable: "CMAKE_DLLTOOL"
+    description: "Path to a program."
+    settings:
+      SearchFramework: "NEVER"
+      SearchAppBundle: "NEVER"
+      CMAKE_FIND_USE_CMAKE_PATH: false
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: false
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "xtensa-espressif_esp32_zephyr-elf-dlltool"
+      - "dlltool"
+    candidate_directories:
+      - "/home/khnmuhaimin/zephyr-sdk-0.17.2/xtensa-espressif_esp32_zephyr-elf/bin/"
+      - "/home/khnmuhaimin/EEE4022S/.venv/bin/"
+      - "/home/khnmuhaimin/.local/bin/"
+      - "/usr/local/bin/"
+      - "/usr/bin/"
+      - "/usr/local/sbin/"
+      - "/usr/lib/jvm/default/bin/"
+      - "/opt/rocm/bin/"
+      - "/opt/rocm/hip/bin/"
+      - "/usr/bin/site_perl/"
+      - "/usr/bin/vendor_perl/"
+      - "/usr/bin/core_perl/"
+      - "/home/khnmuhaimin/.rvm/bin/"
+      - "/usr/local/MATLAB/R2024b/bin/"
+      - "/home/khnmuhaimin/.esp/xtensa-lx106-elf-gcc8_4_0-esp-2020r3-linux-amd64/xtensa-lx106-elf/bin/"
+      - "/usr/local/texlive/2025/bin/x86_64-linux/"
+    searched_directories:
+      - "/home/khnmuhaimin/zephyr-sdk-0.17.2/xtensa-espressif_esp32_zephyr-elf/bin/xtensa-espressif_esp32_zephyr-elf-dlltool"
+      - "/home/khnmuhaimin/EEE4022S/.venv/bin/xtensa-espressif_esp32_zephyr-elf-dlltool"
+      - "/home/khnmuhaimin/.local/bin/xtensa-espressif_esp32_zephyr-elf-dlltool"
+      - "/usr/local/bin/xtensa-espressif_esp32_zephyr-elf-dlltool"
+      - "/usr/bin/xtensa-espressif_esp32_zephyr-elf-dlltool"
+      - "/usr/local/sbin/xtensa-espressif_esp32_zephyr-elf-dlltool"
+      - "/usr/lib/jvm/default/bin/xtensa-espressif_esp32_zephyr-elf-dlltool"
+      - "/opt/rocm/bin/xtensa-espressif_esp32_zephyr-elf-dlltool"
+      - "/opt/rocm/hip/bin/xtensa-espressif_esp32_zephyr-elf-dlltool"
+      - "/usr/bin/site_perl/xtensa-espressif_esp32_zephyr-elf-dlltool"
+      - "/usr/bin/vendor_perl/xtensa-espressif_esp32_zephyr-elf-dlltool"
+      - "/usr/bin/core_perl/xtensa-espressif_esp32_zephyr-elf-dlltool"
+      - "/home/khnmuhaimin/.rvm/bin/xtensa-espressif_esp32_zephyr-elf-dlltool"
+      - "/usr/local/MATLAB/R2024b/bin/xtensa-espressif_esp32_zephyr-elf-dlltool"
+      - "/home/khnmuhaimin/.esp/xtensa-lx106-elf-gcc8_4_0-esp-2020r3-linux-amd64/xtensa-lx106-elf/bin/xtensa-espressif_esp32_zephyr-elf-dlltool"
+      - "/usr/local/texlive/2025/bin/x86_64-linux/xtensa-espressif_esp32_zephyr-elf-dlltool"
+      - "/home/khnmuhaimin/zephyr-sdk-0.17.2/xtensa-espressif_esp32_zephyr-elf/bin/dlltool"
+      - "/home/khnmuhaimin/EEE4022S/.venv/bin/dlltool"
+      - "/home/khnmuhaimin/.local/bin/dlltool"
+      - "/usr/local/bin/dlltool"
+      - "/usr/bin/dlltool"
+      - "/usr/local/sbin/dlltool"
+      - "/usr/lib/jvm/default/bin/dlltool"
+      - "/opt/rocm/bin/dlltool"
+      - "/opt/rocm/hip/bin/dlltool"
+      - "/usr/bin/site_perl/dlltool"
+      - "/usr/bin/vendor_perl/dlltool"
+      - "/usr/bin/core_perl/dlltool"
+      - "/home/khnmuhaimin/.rvm/bin/dlltool"
+      - "/usr/local/MATLAB/R2024b/bin/dlltool"
+      - "/home/khnmuhaimin/.esp/xtensa-lx106-elf-gcc8_4_0-esp-2020r3-linux-amd64/xtensa-lx106-elf/bin/dlltool"
+      - "/usr/local/texlive/2025/bin/x86_64-linux/dlltool"
+    found: false
+    search_context:
+      CMAKE_PREFIX_PATH:
+        - "/home/khnmuhaimin/zephyr-sdk-0.17.2/sysroots/x86_64-pokysdk-linux/usr"
+      ENV{PATH}:
+        - "/home/khnmuhaimin/EEE4022S/.venv/bin"
+        - "/home/khnmuhaimin/.local/bin"
+        - "/usr/local/bin"
+        - "/usr/bin"
+        - "/usr/local/sbin"
+        - "/usr/lib/jvm/default/bin"
+        - "/opt/rocm/bin"
+        - "/opt/rocm/hip/bin"
+        - "/usr/bin/site_perl"
+        - "/usr/bin/vendor_perl"
+        - "/usr/bin/core_perl"
+        - "/home/khnmuhaimin/.rvm/bin"
+        - "/usr/local/MATLAB/R2024b/bin"
+        - "/home/khnmuhaimin/.esp/xtensa-lx106-elf-gcc8_4_0-esp-2020r3-linux-amd64/xtensa-lx106-elf/bin"
+        - "/usr/local/texlive/2025/bin/x86_64-linux"
+  -
+    kind: "find-v1"
+    backtrace:
+      - "/usr/share/cmake/Modules/CMakeFindBinUtils.cmake:238 (find_program)"
+      - "/usr/share/cmake/Modules/CMakeDetermineCCompiler.cmake:200 (include)"
+      - "/home/khnmuhaimin/EEE4022S/zephyr-fota/zephyr/cmake/modules/kernel.cmake:129 (project)"
+      - "/home/khnmuhaimin/EEE4022S/zephyr-fota/zephyr/cmake/modules/zephyr_default.cmake:140 (include)"
+      - "/home/khnmuhaimin/EEE4022S/zephyr-fota/zephyr/share/zephyr-package/cmake/ZephyrConfig.cmake:66 (include)"
+      - "/home/khnmuhaimin/EEE4022S/zephyr-fota/zephyr/share/zephyr-package/cmake/ZephyrConfig.cmake:92 (include_boilerplate)"
+      - "CMakeLists.txt:5 (find_package)"
+    mode: "program"
+    variable: "CMAKE_ADDR2LINE"
+    description: "Path to a program."
+    settings:
+      SearchFramework: "NEVER"
+      SearchAppBundle: "NEVER"
+      CMAKE_FIND_USE_CMAKE_PATH: false
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: false
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "xtensa-espressif_esp32_zephyr-elf-addr2line"
+      - "addr2line"
+    candidate_directories:
+      - "/home/khnmuhaimin/zephyr-sdk-0.17.2/xtensa-espressif_esp32_zephyr-elf/bin/"
+      - "/home/khnmuhaimin/EEE4022S/.venv/bin/"
+      - "/home/khnmuhaimin/.local/bin/"
+      - "/usr/local/bin/"
+      - "/usr/bin/"
+      - "/usr/local/sbin/"
+      - "/usr/lib/jvm/default/bin/"
+      - "/opt/rocm/bin/"
+      - "/opt/rocm/hip/bin/"
+      - "/usr/bin/site_perl/"
+      - "/usr/bin/vendor_perl/"
+      - "/usr/bin/core_perl/"
+      - "/home/khnmuhaimin/.rvm/bin/"
+      - "/usr/local/MATLAB/R2024b/bin/"
+      - "/home/khnmuhaimin/.esp/xtensa-lx106-elf-gcc8_4_0-esp-2020r3-linux-amd64/xtensa-lx106-elf/bin/"
+      - "/usr/local/texlive/2025/bin/x86_64-linux/"
+    found: "/home/khnmuhaimin/zephyr-sdk-0.17.2/xtensa-espressif_esp32_zephyr-elf/bin/xtensa-espressif_esp32_zephyr-elf-addr2line"
+    search_context:
+      CMAKE_PREFIX_PATH:
+        - "/home/khnmuhaimin/zephyr-sdk-0.17.2/sysroots/x86_64-pokysdk-linux/usr"
+      ENV{PATH}:
+        - "/home/khnmuhaimin/EEE4022S/.venv/bin"
+        - "/home/khnmuhaimin/.local/bin"
+        - "/usr/local/bin"
+        - "/usr/bin"
+        - "/usr/local/sbin"
+        - "/usr/lib/jvm/default/bin"
+        - "/opt/rocm/bin"
+        - "/opt/rocm/hip/bin"
+        - "/usr/bin/site_perl"
+        - "/usr/bin/vendor_perl"
+        - "/usr/bin/core_perl"
+        - "/home/khnmuhaimin/.rvm/bin"
+        - "/usr/local/MATLAB/R2024b/bin"
+        - "/home/khnmuhaimin/.esp/xtensa-lx106-elf-gcc8_4_0-esp-2020r3-linux-amd64/xtensa-lx106-elf/bin"
+        - "/usr/local/texlive/2025/bin/x86_64-linux"
+  -
+    kind: "find-v1"
+    backtrace:
+      - "/usr/share/cmake/Modules/CMakeFindBinUtils.cmake:238 (find_program)"
+      - "/usr/share/cmake/Modules/CMakeDetermineCCompiler.cmake:200 (include)"
+      - "/home/khnmuhaimin/EEE4022S/zephyr-fota/zephyr/cmake/modules/kernel.cmake:129 (project)"
+      - "/home/khnmuhaimin/EEE4022S/zephyr-fota/zephyr/cmake/modules/zephyr_default.cmake:140 (include)"
+      - "/home/khnmuhaimin/EEE4022S/zephyr-fota/zephyr/share/zephyr-package/cmake/ZephyrConfig.cmake:66 (include)"
+      - "/home/khnmuhaimin/EEE4022S/zephyr-fota/zephyr/share/zephyr-package/cmake/ZephyrConfig.cmake:92 (include_boilerplate)"
+      - "CMakeLists.txt:5 (find_package)"
+    mode: "program"
+    variable: "CMAKE_TAPI"
+    description: "Path to a program."
+    settings:
+      SearchFramework: "NEVER"
+      SearchAppBundle: "NEVER"
+      CMAKE_FIND_USE_CMAKE_PATH: false
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: false
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "xtensa-espressif_esp32_zephyr-elf-tapi"
+      - "tapi"
+    candidate_directories:
+      - "/home/khnmuhaimin/zephyr-sdk-0.17.2/xtensa-espressif_esp32_zephyr-elf/bin/"
+      - "/home/khnmuhaimin/EEE4022S/.venv/bin/"
+      - "/home/khnmuhaimin/.local/bin/"
+      - "/usr/local/bin/"
+      - "/usr/bin/"
+      - "/usr/local/sbin/"
+      - "/usr/lib/jvm/default/bin/"
+      - "/opt/rocm/bin/"
+      - "/opt/rocm/hip/bin/"
+      - "/usr/bin/site_perl/"
+      - "/usr/bin/vendor_perl/"
+      - "/usr/bin/core_perl/"
+      - "/home/khnmuhaimin/.rvm/bin/"
+      - "/usr/local/MATLAB/R2024b/bin/"
+      - "/home/khnmuhaimin/.esp/xtensa-lx106-elf-gcc8_4_0-esp-2020r3-linux-amd64/xtensa-lx106-elf/bin/"
+      - "/usr/local/texlive/2025/bin/x86_64-linux/"
+    searched_directories:
+      - "/home/khnmuhaimin/zephyr-sdk-0.17.2/xtensa-espressif_esp32_zephyr-elf/bin/xtensa-espressif_esp32_zephyr-elf-tapi"
+      - "/home/khnmuhaimin/EEE4022S/.venv/bin/xtensa-espressif_esp32_zephyr-elf-tapi"
+      - "/home/khnmuhaimin/.local/bin/xtensa-espressif_esp32_zephyr-elf-tapi"
+      - "/usr/local/bin/xtensa-espressif_esp32_zephyr-elf-tapi"
+      - "/usr/bin/xtensa-espressif_esp32_zephyr-elf-tapi"
+      - "/usr/local/sbin/xtensa-espressif_esp32_zephyr-elf-tapi"
+      - "/usr/lib/jvm/default/bin/xtensa-espressif_esp32_zephyr-elf-tapi"
+      - "/opt/rocm/bin/xtensa-espressif_esp32_zephyr-elf-tapi"
+      - "/opt/rocm/hip/bin/xtensa-espressif_esp32_zephyr-elf-tapi"
+      - "/usr/bin/site_perl/xtensa-espressif_esp32_zephyr-elf-tapi"
+      - "/usr/bin/vendor_perl/xtensa-espressif_esp32_zephyr-elf-tapi"
+      - "/usr/bin/core_perl/xtensa-espressif_esp32_zephyr-elf-tapi"
+      - "/home/khnmuhaimin/.rvm/bin/xtensa-espressif_esp32_zephyr-elf-tapi"
+      - "/usr/local/MATLAB/R2024b/bin/xtensa-espressif_esp32_zephyr-elf-tapi"
+      - "/home/khnmuhaimin/.esp/xtensa-lx106-elf-gcc8_4_0-esp-2020r3-linux-amd64/xtensa-lx106-elf/bin/xtensa-espressif_esp32_zephyr-elf-tapi"
+      - "/usr/local/texlive/2025/bin/x86_64-linux/xtensa-espressif_esp32_zephyr-elf-tapi"
+      - "/home/khnmuhaimin/zephyr-sdk-0.17.2/xtensa-espressif_esp32_zephyr-elf/bin/tapi"
+      - "/home/khnmuhaimin/EEE4022S/.venv/bin/tapi"
+      - "/home/khnmuhaimin/.local/bin/tapi"
+      - "/usr/local/bin/tapi"
+      - "/usr/bin/tapi"
+      - "/usr/local/sbin/tapi"
+      - "/usr/lib/jvm/default/bin/tapi"
+      - "/opt/rocm/bin/tapi"
+      - "/opt/rocm/hip/bin/tapi"
+      - "/usr/bin/site_perl/tapi"
+      - "/usr/bin/vendor_perl/tapi"
+      - "/usr/bin/core_perl/tapi"
+      - "/home/khnmuhaimin/.rvm/bin/tapi"
+      - "/usr/local/MATLAB/R2024b/bin/tapi"
+      - "/home/khnmuhaimin/.esp/xtensa-lx106-elf-gcc8_4_0-esp-2020r3-linux-amd64/xtensa-lx106-elf/bin/tapi"
+      - "/usr/local/texlive/2025/bin/x86_64-linux/tapi"
+    found: false
+    search_context:
+      CMAKE_PREFIX_PATH:
+        - "/home/khnmuhaimin/zephyr-sdk-0.17.2/sysroots/x86_64-pokysdk-linux/usr"
+      ENV{PATH}:
+        - "/home/khnmuhaimin/EEE4022S/.venv/bin"
+        - "/home/khnmuhaimin/.local/bin"
+        - "/usr/local/bin"
+        - "/usr/bin"
+        - "/usr/local/sbin"
+        - "/usr/lib/jvm/default/bin"
+        - "/opt/rocm/bin"
+        - "/opt/rocm/hip/bin"
+        - "/usr/bin/site_perl"
+        - "/usr/bin/vendor_perl"
+        - "/usr/bin/core_perl"
+        - "/home/khnmuhaimin/.rvm/bin"
+        - "/usr/local/MATLAB/R2024b/bin"
+        - "/home/khnmuhaimin/.esp/xtensa-lx106-elf-gcc8_4_0-esp-2020r3-linux-amd64/xtensa-lx106-elf/bin"
+        - "/usr/local/texlive/2025/bin/x86_64-linux"
+  -
+    kind: "find-v1"
+    backtrace:
+      - "/usr/share/cmake/Modules/Compiler/GNU-FindBinUtils.cmake:18 (find_program)"
+      - "/usr/share/cmake/Modules/CMakeDetermineCCompiler.cmake:201 (include)"
+      - "/home/khnmuhaimin/EEE4022S/zephyr-fota/zephyr/cmake/modules/kernel.cmake:129 (project)"
+      - "/home/khnmuhaimin/EEE4022S/zephyr-fota/zephyr/cmake/modules/zephyr_default.cmake:140 (include)"
+      - "/home/khnmuhaimin/EEE4022S/zephyr-fota/zephyr/share/zephyr-package/cmake/ZephyrConfig.cmake:66 (include)"
+      - "/home/khnmuhaimin/EEE4022S/zephyr-fota/zephyr/share/zephyr-package/cmake/ZephyrConfig.cmake:92 (include_boilerplate)"
+      - "CMakeLists.txt:5 (find_package)"
+    mode: "program"
+    variable: "CMAKE_C_COMPILER_AR"
+    description: "A wrapper around 'ar' adding the appropriate '--plugin' option for the GCC compiler"
+    settings:
+      SearchFramework: "NEVER"
+      SearchAppBundle: "NEVER"
+      CMAKE_FIND_USE_CMAKE_PATH: false
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: false
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "xtensa-espressif_esp32_zephyr-elf-gcc-ar-12.2"
+      - "xtensa-espressif_esp32_zephyr-elf-gcc-ar-12"
+      - "xtensa-espressif_esp32_zephyr-elf-gcc-ar12"
+      - "xtensa-espressif_esp32_zephyr-elf-gcc-ar"
+    candidate_directories:
+      - "/home/khnmuhaimin/zephyr-sdk-0.17.2/xtensa-espressif_esp32_zephyr-elf/bin/"
+      - "/home/khnmuhaimin/EEE4022S/.venv/bin/"
+      - "/home/khnmuhaimin/.local/bin/"
+      - "/usr/local/bin/"
+      - "/usr/bin/"
+      - "/usr/local/sbin/"
+      - "/usr/lib/jvm/default/bin/"
+      - "/opt/rocm/bin/"
+      - "/opt/rocm/hip/bin/"
+      - "/usr/bin/site_perl/"
+      - "/usr/bin/vendor_perl/"
+      - "/usr/bin/core_perl/"
+      - "/home/khnmuhaimin/.rvm/bin/"
+      - "/usr/local/MATLAB/R2024b/bin/"
+      - "/home/khnmuhaimin/.esp/xtensa-lx106-elf-gcc8_4_0-esp-2020r3-linux-amd64/xtensa-lx106-elf/bin/"
+      - "/usr/local/texlive/2025/bin/x86_64-linux/"
+    searched_directories:
+      - "/home/khnmuhaimin/zephyr-sdk-0.17.2/xtensa-espressif_esp32_zephyr-elf/bin/xtensa-espressif_esp32_zephyr-elf-gcc-ar-12.2"
+      - "/home/khnmuhaimin/EEE4022S/.venv/bin/xtensa-espressif_esp32_zephyr-elf-gcc-ar-12.2"
+      - "/home/khnmuhaimin/.local/bin/xtensa-espressif_esp32_zephyr-elf-gcc-ar-12.2"
+      - "/usr/local/bin/xtensa-espressif_esp32_zephyr-elf-gcc-ar-12.2"
+      - "/usr/bin/xtensa-espressif_esp32_zephyr-elf-gcc-ar-12.2"
+      - "/usr/local/sbin/xtensa-espressif_esp32_zephyr-elf-gcc-ar-12.2"
+      - "/usr/lib/jvm/default/bin/xtensa-espressif_esp32_zephyr-elf-gcc-ar-12.2"
+      - "/opt/rocm/bin/xtensa-espressif_esp32_zephyr-elf-gcc-ar-12.2"
+      - "/opt/rocm/hip/bin/xtensa-espressif_esp32_zephyr-elf-gcc-ar-12.2"
+      - "/usr/bin/site_perl/xtensa-espressif_esp32_zephyr-elf-gcc-ar-12.2"
+      - "/usr/bin/vendor_perl/xtensa-espressif_esp32_zephyr-elf-gcc-ar-12.2"
+      - "/usr/bin/core_perl/xtensa-espressif_esp32_zephyr-elf-gcc-ar-12.2"
+      - "/home/khnmuhaimin/.rvm/bin/xtensa-espressif_esp32_zephyr-elf-gcc-ar-12.2"
+      - "/usr/local/MATLAB/R2024b/bin/xtensa-espressif_esp32_zephyr-elf-gcc-ar-12.2"
+      - "/home/khnmuhaimin/.esp/xtensa-lx106-elf-gcc8_4_0-esp-2020r3-linux-amd64/xtensa-lx106-elf/bin/xtensa-espressif_esp32_zephyr-elf-gcc-ar-12.2"
+      - "/usr/local/texlive/2025/bin/x86_64-linux/xtensa-espressif_esp32_zephyr-elf-gcc-ar-12.2"
+      - "/home/khnmuhaimin/zephyr-sdk-0.17.2/xtensa-espressif_esp32_zephyr-elf/bin/xtensa-espressif_esp32_zephyr-elf-gcc-ar-12"
+      - "/home/khnmuhaimin/EEE4022S/.venv/bin/xtensa-espressif_esp32_zephyr-elf-gcc-ar-12"
+      - "/home/khnmuhaimin/.local/bin/xtensa-espressif_esp32_zephyr-elf-gcc-ar-12"
+      - "/usr/local/bin/xtensa-espressif_esp32_zephyr-elf-gcc-ar-12"
+      - "/usr/bin/xtensa-espressif_esp32_zephyr-elf-gcc-ar-12"
+      - "/usr/local/sbin/xtensa-espressif_esp32_zephyr-elf-gcc-ar-12"
+      - "/usr/lib/jvm/default/bin/xtensa-espressif_esp32_zephyr-elf-gcc-ar-12"
+      - "/opt/rocm/bin/xtensa-espressif_esp32_zephyr-elf-gcc-ar-12"
+      - "/opt/rocm/hip/bin/xtensa-espressif_esp32_zephyr-elf-gcc-ar-12"
+      - "/usr/bin/site_perl/xtensa-espressif_esp32_zephyr-elf-gcc-ar-12"
+      - "/usr/bin/vendor_perl/xtensa-espressif_esp32_zephyr-elf-gcc-ar-12"
+      - "/usr/bin/core_perl/xtensa-espressif_esp32_zephyr-elf-gcc-ar-12"
+      - "/home/khnmuhaimin/.rvm/bin/xtensa-espressif_esp32_zephyr-elf-gcc-ar-12"
+      - "/usr/local/MATLAB/R2024b/bin/xtensa-espressif_esp32_zephyr-elf-gcc-ar-12"
+      - "/home/khnmuhaimin/.esp/xtensa-lx106-elf-gcc8_4_0-esp-2020r3-linux-amd64/xtensa-lx106-elf/bin/xtensa-espressif_esp32_zephyr-elf-gcc-ar-12"
+      - "/usr/local/texlive/2025/bin/x86_64-linux/xtensa-espressif_esp32_zephyr-elf-gcc-ar-12"
+      - "/home/khnmuhaimin/zephyr-sdk-0.17.2/xtensa-espressif_esp32_zephyr-elf/bin/xtensa-espressif_esp32_zephyr-elf-gcc-ar12"
+      - "/home/khnmuhaimin/EEE4022S/.venv/bin/xtensa-espressif_esp32_zephyr-elf-gcc-ar12"
+      - "/home/khnmuhaimin/.local/bin/xtensa-espressif_esp32_zephyr-elf-gcc-ar12"
+      - "/usr/local/bin/xtensa-espressif_esp32_zephyr-elf-gcc-ar12"
+      - "/usr/bin/xtensa-espressif_esp32_zephyr-elf-gcc-ar12"
+      - "/usr/local/sbin/xtensa-espressif_esp32_zephyr-elf-gcc-ar12"
+      - "/usr/lib/jvm/default/bin/xtensa-espressif_esp32_zephyr-elf-gcc-ar12"
+      - "/opt/rocm/bin/xtensa-espressif_esp32_zephyr-elf-gcc-ar12"
+      - "/opt/rocm/hip/bin/xtensa-espressif_esp32_zephyr-elf-gcc-ar12"
+      - "/usr/bin/site_perl/xtensa-espressif_esp32_zephyr-elf-gcc-ar12"
+      - "/usr/bin/vendor_perl/xtensa-espressif_esp32_zephyr-elf-gcc-ar12"
+      - "/usr/bin/core_perl/xtensa-espressif_esp32_zephyr-elf-gcc-ar12"
+      - "/home/khnmuhaimin/.rvm/bin/xtensa-espressif_esp32_zephyr-elf-gcc-ar12"
+      - "/usr/local/MATLAB/R2024b/bin/xtensa-espressif_esp32_zephyr-elf-gcc-ar12"
+      - "/home/khnmuhaimin/.esp/xtensa-lx106-elf-gcc8_4_0-esp-2020r3-linux-amd64/xtensa-lx106-elf/bin/xtensa-espressif_esp32_zephyr-elf-gcc-ar12"
+      - "/usr/local/texlive/2025/bin/x86_64-linux/xtensa-espressif_esp32_zephyr-elf-gcc-ar12"
+    found: "/home/khnmuhaimin/zephyr-sdk-0.17.2/xtensa-espressif_esp32_zephyr-elf/bin/xtensa-espressif_esp32_zephyr-elf-gcc-ar"
+    search_context:
+      CMAKE_PREFIX_PATH:
+        - "/home/khnmuhaimin/zephyr-sdk-0.17.2/sysroots/x86_64-pokysdk-linux/usr"
+      ENV{PATH}:
+        - "/home/khnmuhaimin/EEE4022S/.venv/bin"
+        - "/home/khnmuhaimin/.local/bin"
+        - "/usr/local/bin"
+        - "/usr/bin"
+        - "/usr/local/sbin"
+        - "/usr/lib/jvm/default/bin"
+        - "/opt/rocm/bin"
+        - "/opt/rocm/hip/bin"
+        - "/usr/bin/site_perl"
+        - "/usr/bin/vendor_perl"
+        - "/usr/bin/core_perl"
+        - "/home/khnmuhaimin/.rvm/bin"
+        - "/usr/local/MATLAB/R2024b/bin"
+        - "/home/khnmuhaimin/.esp/xtensa-lx106-elf-gcc8_4_0-esp-2020r3-linux-amd64/xtensa-lx106-elf/bin"
+        - "/usr/local/texlive/2025/bin/x86_64-linux"
+  -
+    kind: "find-v1"
+    backtrace:
+      - "/usr/share/cmake/Modules/Compiler/GNU-FindBinUtils.cmake:30 (find_program)"
+      - "/usr/share/cmake/Modules/CMakeDetermineCCompiler.cmake:201 (include)"
+      - "/home/khnmuhaimin/EEE4022S/zephyr-fota/zephyr/cmake/modules/kernel.cmake:129 (project)"
+      - "/home/khnmuhaimin/EEE4022S/zephyr-fota/zephyr/cmake/modules/zephyr_default.cmake:140 (include)"
+      - "/home/khnmuhaimin/EEE4022S/zephyr-fota/zephyr/share/zephyr-package/cmake/ZephyrConfig.cmake:66 (include)"
+      - "/home/khnmuhaimin/EEE4022S/zephyr-fota/zephyr/share/zephyr-package/cmake/ZephyrConfig.cmake:92 (include_boilerplate)"
+      - "CMakeLists.txt:5 (find_package)"
+    mode: "program"
+    variable: "CMAKE_C_COMPILER_RANLIB"
+    description: "A wrapper around 'ranlib' adding the appropriate '--plugin' option for the GCC compiler"
+    settings:
+      SearchFramework: "NEVER"
+      SearchAppBundle: "NEVER"
+      CMAKE_FIND_USE_CMAKE_PATH: false
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: false
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "xtensa-espressif_esp32_zephyr-elf-gcc-ranlib-12.2"
+      - "xtensa-espressif_esp32_zephyr-elf-gcc-ranlib-12"
+      - "xtensa-espressif_esp32_zephyr-elf-gcc-ranlib12"
+      - "xtensa-espressif_esp32_zephyr-elf-gcc-ranlib"
+    candidate_directories:
+      - "/home/khnmuhaimin/zephyr-sdk-0.17.2/xtensa-espressif_esp32_zephyr-elf/bin/"
+      - "/home/khnmuhaimin/EEE4022S/.venv/bin/"
+      - "/home/khnmuhaimin/.local/bin/"
+      - "/usr/local/bin/"
+      - "/usr/bin/"
+      - "/usr/local/sbin/"
+      - "/usr/lib/jvm/default/bin/"
+      - "/opt/rocm/bin/"
+      - "/opt/rocm/hip/bin/"
+      - "/usr/bin/site_perl/"
+      - "/usr/bin/vendor_perl/"
+      - "/usr/bin/core_perl/"
+      - "/home/khnmuhaimin/.rvm/bin/"
+      - "/usr/local/MATLAB/R2024b/bin/"
+      - "/home/khnmuhaimin/.esp/xtensa-lx106-elf-gcc8_4_0-esp-2020r3-linux-amd64/xtensa-lx106-elf/bin/"
+      - "/usr/local/texlive/2025/bin/x86_64-linux/"
+    searched_directories:
+      - "/home/khnmuhaimin/zephyr-sdk-0.17.2/xtensa-espressif_esp32_zephyr-elf/bin/xtensa-espressif_esp32_zephyr-elf-gcc-ranlib-12.2"
+      - "/home/khnmuhaimin/EEE4022S/.venv/bin/xtensa-espressif_esp32_zephyr-elf-gcc-ranlib-12.2"
+      - "/home/khnmuhaimin/.local/bin/xtensa-espressif_esp32_zephyr-elf-gcc-ranlib-12.2"
+      - "/usr/local/bin/xtensa-espressif_esp32_zephyr-elf-gcc-ranlib-12.2"
+      - "/usr/bin/xtensa-espressif_esp32_zephyr-elf-gcc-ranlib-12.2"
+      - "/usr/local/sbin/xtensa-espressif_esp32_zephyr-elf-gcc-ranlib-12.2"
+      - "/usr/lib/jvm/default/bin/xtensa-espressif_esp32_zephyr-elf-gcc-ranlib-12.2"
+      - "/opt/rocm/bin/xtensa-espressif_esp32_zephyr-elf-gcc-ranlib-12.2"
+      - "/opt/rocm/hip/bin/xtensa-espressif_esp32_zephyr-elf-gcc-ranlib-12.2"
+      - "/usr/bin/site_perl/xtensa-espressif_esp32_zephyr-elf-gcc-ranlib-12.2"
+      - "/usr/bin/vendor_perl/xtensa-espressif_esp32_zephyr-elf-gcc-ranlib-12.2"
+      - "/usr/bin/core_perl/xtensa-espressif_esp32_zephyr-elf-gcc-ranlib-12.2"
+      - "/home/khnmuhaimin/.rvm/bin/xtensa-espressif_esp32_zephyr-elf-gcc-ranlib-12.2"
+      - "/usr/local/MATLAB/R2024b/bin/xtensa-espressif_esp32_zephyr-elf-gcc-ranlib-12.2"
+      - "/home/khnmuhaimin/.esp/xtensa-lx106-elf-gcc8_4_0-esp-2020r3-linux-amd64/xtensa-lx106-elf/bin/xtensa-espressif_esp32_zephyr-elf-gcc-ranlib-12.2"
+      - "/usr/local/texlive/2025/bin/x86_64-linux/xtensa-espressif_esp32_zephyr-elf-gcc-ranlib-12.2"
+      - "/home/khnmuhaimin/zephyr-sdk-0.17.2/xtensa-espressif_esp32_zephyr-elf/bin/xtensa-espressif_esp32_zephyr-elf-gcc-ranlib-12"
+      - "/home/khnmuhaimin/EEE4022S/.venv/bin/xtensa-espressif_esp32_zephyr-elf-gcc-ranlib-12"
+      - "/home/khnmuhaimin/.local/bin/xtensa-espressif_esp32_zephyr-elf-gcc-ranlib-12"
+      - "/usr/local/bin/xtensa-espressif_esp32_zephyr-elf-gcc-ranlib-12"
+      - "/usr/bin/xtensa-espressif_esp32_zephyr-elf-gcc-ranlib-12"
+      - "/usr/local/sbin/xtensa-espressif_esp32_zephyr-elf-gcc-ranlib-12"
+      - "/usr/lib/jvm/default/bin/xtensa-espressif_esp32_zephyr-elf-gcc-ranlib-12"
+      - "/opt/rocm/bin/xtensa-espressif_esp32_zephyr-elf-gcc-ranlib-12"
+      - "/opt/rocm/hip/bin/xtensa-espressif_esp32_zephyr-elf-gcc-ranlib-12"
+      - "/usr/bin/site_perl/xtensa-espressif_esp32_zephyr-elf-gcc-ranlib-12"
+      - "/usr/bin/vendor_perl/xtensa-espressif_esp32_zephyr-elf-gcc-ranlib-12"
+      - "/usr/bin/core_perl/xtensa-espressif_esp32_zephyr-elf-gcc-ranlib-12"
+      - "/home/khnmuhaimin/.rvm/bin/xtensa-espressif_esp32_zephyr-elf-gcc-ranlib-12"
+      - "/usr/local/MATLAB/R2024b/bin/xtensa-espressif_esp32_zephyr-elf-gcc-ranlib-12"
+      - "/home/khnmuhaimin/.esp/xtensa-lx106-elf-gcc8_4_0-esp-2020r3-linux-amd64/xtensa-lx106-elf/bin/xtensa-espressif_esp32_zephyr-elf-gcc-ranlib-12"
+      - "/usr/local/texlive/2025/bin/x86_64-linux/xtensa-espressif_esp32_zephyr-elf-gcc-ranlib-12"
+      - "/home/khnmuhaimin/zephyr-sdk-0.17.2/xtensa-espressif_esp32_zephyr-elf/bin/xtensa-espressif_esp32_zephyr-elf-gcc-ranlib12"
+      - "/home/khnmuhaimin/EEE4022S/.venv/bin/xtensa-espressif_esp32_zephyr-elf-gcc-ranlib12"
+      - "/home/khnmuhaimin/.local/bin/xtensa-espressif_esp32_zephyr-elf-gcc-ranlib12"
+      - "/usr/local/bin/xtensa-espressif_esp32_zephyr-elf-gcc-ranlib12"
+      - "/usr/bin/xtensa-espressif_esp32_zephyr-elf-gcc-ranlib12"
+      - "/usr/local/sbin/xtensa-espressif_esp32_zephyr-elf-gcc-ranlib12"
+      - "/usr/lib/jvm/default/bin/xtensa-espressif_esp32_zephyr-elf-gcc-ranlib12"
+      - "/opt/rocm/bin/xtensa-espressif_esp32_zephyr-elf-gcc-ranlib12"
+      - "/opt/rocm/hip/bin/xtensa-espressif_esp32_zephyr-elf-gcc-ranlib12"
+      - "/usr/bin/site_perl/xtensa-espressif_esp32_zephyr-elf-gcc-ranlib12"
+      - "/usr/bin/vendor_perl/xtensa-espressif_esp32_zephyr-elf-gcc-ranlib12"
+      - "/usr/bin/core_perl/xtensa-espressif_esp32_zephyr-elf-gcc-ranlib12"
+      - "/home/khnmuhaimin/.rvm/bin/xtensa-espressif_esp32_zephyr-elf-gcc-ranlib12"
+      - "/usr/local/MATLAB/R2024b/bin/xtensa-espressif_esp32_zephyr-elf-gcc-ranlib12"
+      - "/home/khnmuhaimin/.esp/xtensa-lx106-elf-gcc8_4_0-esp-2020r3-linux-amd64/xtensa-lx106-elf/bin/xtensa-espressif_esp32_zephyr-elf-gcc-ranlib12"
+      - "/usr/local/texlive/2025/bin/x86_64-linux/xtensa-espressif_esp32_zephyr-elf-gcc-ranlib12"
+    found: "/home/khnmuhaimin/zephyr-sdk-0.17.2/xtensa-espressif_esp32_zephyr-elf/bin/xtensa-espressif_esp32_zephyr-elf-gcc-ranlib"
+    search_context:
+      CMAKE_PREFIX_PATH:
+        - "/home/khnmuhaimin/zephyr-sdk-0.17.2/sysroots/x86_64-pokysdk-linux/usr"
+      ENV{PATH}:
+        - "/home/khnmuhaimin/EEE4022S/.venv/bin"
+        - "/home/khnmuhaimin/.local/bin"
+        - "/usr/local/bin"
+        - "/usr/bin"
+        - "/usr/local/sbin"
+        - "/usr/lib/jvm/default/bin"
+        - "/opt/rocm/bin"
+        - "/opt/rocm/hip/bin"
+        - "/usr/bin/site_perl"
+        - "/usr/bin/vendor_perl"
+        - "/usr/bin/core_perl"
+        - "/home/khnmuhaimin/.rvm/bin"
+        - "/usr/local/MATLAB/R2024b/bin"
+        - "/home/khnmuhaimin/.esp/xtensa-lx106-elf-gcc8_4_0-esp-2020r3-linux-amd64/xtensa-lx106-elf/bin"
+        - "/usr/local/texlive/2025/bin/x86_64-linux"
+  -
+    kind: "find-v1"
+    backtrace:
+      - "/usr/share/cmake/Modules/CMakeDetermineCompilerId.cmake:462 (find_file)"
+      - "/usr/share/cmake/Modules/CMakeDetermineCompilerId.cmake:500 (CMAKE_DETERMINE_COMPILER_ID_WRITE)"
+      - "/usr/share/cmake/Modules/CMakeDetermineCompilerId.cmake:8 (CMAKE_DETERMINE_COMPILER_ID_BUILD)"
+      - "/usr/share/cmake/Modules/CMakeDetermineCompilerId.cmake:64 (__determine_compiler_id_test)"
+      - "/usr/share/cmake/Modules/CMakeDetermineCXXCompiler.cmake:125 (CMAKE_DETERMINE_COMPILER_ID)"
+      - "/home/khnmuhaimin/EEE4022S/zephyr-fota/zephyr/cmake/modules/kernel.cmake:129 (project)"
+      - "/home/khnmuhaimin/EEE4022S/zephyr-fota/zephyr/cmake/modules/zephyr_default.cmake:140 (include)"
+      - "/home/khnmuhaimin/EEE4022S/zephyr-fota/zephyr/share/zephyr-package/cmake/ZephyrConfig.cmake:66 (include)"
+      - "/home/khnmuhaimin/EEE4022S/zephyr-fota/zephyr/share/zephyr-package/cmake/ZephyrConfig.cmake:92 (include_boilerplate)"
+      - "CMakeLists.txt:5 (find_package)"
+    mode: "file"
+    variable: "src_in"
+    description: "Path to a file."
+    settings:
+      SearchFramework: "NEVER"
+      SearchAppBundle: "NEVER"
+      CMAKE_FIND_USE_CMAKE_PATH: true
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "CMakeCXXCompilerId.cpp.in"
+    candidate_directories:
+      - "/usr/share/cmake/Modules/"
+      - "/home/khnmuhaimin/EEE4022S/zephyr-fota/zephyr/cmake/modules/"
+    found: "/usr/share/cmake/Modules/CMakeCXXCompilerId.cpp.in"
+    search_context:
+      CMAKE_PREFIX_PATH:
+        - "/home/khnmuhaimin/zephyr-sdk-0.17.2/sysroots/x86_64-pokysdk-linux/usr"
+      ENV{PATH}:
+        - "/home/khnmuhaimin/EEE4022S/.venv/bin"
+        - "/home/khnmuhaimin/.local/bin"
+        - "/usr/local/bin"
+        - "/usr/bin"
+        - "/usr/local/sbin"
+        - "/usr/lib/jvm/default/bin"
+        - "/opt/rocm/bin"
+        - "/opt/rocm/hip/bin"
+        - "/usr/bin/site_perl"
+        - "/usr/bin/vendor_perl"
+        - "/usr/bin/core_perl"
+        - "/home/khnmuhaimin/.rvm/bin"
+        - "/usr/local/MATLAB/R2024b/bin"
+        - "/home/khnmuhaimin/.esp/xtensa-lx106-elf-gcc8_4_0-esp-2020r3-linux-amd64/xtensa-lx106-elf/bin"
+        - "/usr/local/texlive/2025/bin/x86_64-linux"
+  -
+    kind: "message-v1"
+    backtrace:
+      - "/usr/share/cmake/Modules/CMakeDetermineCompilerId.cmake:17 (message)"
+      - "/usr/share/cmake/Modules/CMakeDetermineCompilerId.cmake:64 (__determine_compiler_id_test)"
+      - "/usr/share/cmake/Modules/CMakeDetermineCXXCompiler.cmake:125 (CMAKE_DETERMINE_COMPILER_ID)"
+      - "/home/khnmuhaimin/EEE4022S/zephyr-fota/zephyr/cmake/modules/kernel.cmake:129 (project)"
+      - "/home/khnmuhaimin/EEE4022S/zephyr-fota/zephyr/cmake/modules/zephyr_default.cmake:140 (include)"
+      - "/home/khnmuhaimin/EEE4022S/zephyr-fota/zephyr/share/zephyr-package/cmake/ZephyrConfig.cmake:66 (include)"
+      - "/home/khnmuhaimin/EEE4022S/zephyr-fota/zephyr/share/zephyr-package/cmake/ZephyrConfig.cmake:92 (include_boilerplate)"
+      - "CMakeLists.txt:5 (find_package)"
+    message: |
+      Compiling the CXX compiler identification source file "CMakeCXXCompilerId.cpp" failed.
+      Compiler: /home/khnmuhaimin/zephyr-sdk-0.17.2/xtensa-espressif_esp32_zephyr-elf/bin/xtensa-espressif_esp32_zephyr-elf-g++ 
+      Build flags: 
+      Id flags:  
+      
+      The output was:
+      1
+      /home/khnmuhaimin/zephyr-sdk-0.17.2/xtensa-espressif_esp32_zephyr-elf/bin/../lib/gcc/xtensa-espressif_esp32_zephyr-elf/12.2.0/../../../../xtensa-espressif_esp32_zephyr-elf/bin/ld: cannot find _vectors.o: No such file or directory
+      /home/khnmuhaimin/zephyr-sdk-0.17.2/xtensa-espressif_esp32_zephyr-elf/bin/../lib/gcc/xtensa-espressif_esp32_zephyr-elf/12.2.0/../../../../xtensa-espressif_esp32_zephyr-elf/bin/ld: cannot find -lhandlers-sim: No such file or directory
+      /home/khnmuhaimin/zephyr-sdk-0.17.2/xtensa-espressif_esp32_zephyr-elf/bin/../lib/gcc/xtensa-espressif_esp32_zephyr-elf/12.2.0/../../../../xtensa-espressif_esp32_zephyr-elf/bin/ld: cannot find -lhal: No such file or directory
+      collect2: error: ld returned 1 exit status
+      
+      
+  -
+    kind: "find-v1"
+    backtrace:
+      - "/usr/share/cmake/Modules/CMakeDetermineCompilerId.cmake:462 (find_file)"
+      - "/usr/share/cmake/Modules/CMakeDetermineCompilerId.cmake:500 (CMAKE_DETERMINE_COMPILER_ID_WRITE)"
+      - "/usr/share/cmake/Modules/CMakeDetermineCompilerId.cmake:8 (CMAKE_DETERMINE_COMPILER_ID_BUILD)"
+      - "/usr/share/cmake/Modules/CMakeDetermineCompilerId.cmake:64 (__determine_compiler_id_test)"
+      - "/usr/share/cmake/Modules/CMakeDetermineCXXCompiler.cmake:125 (CMAKE_DETERMINE_COMPILER_ID)"
+      - "/home/khnmuhaimin/EEE4022S/zephyr-fota/zephyr/cmake/modules/kernel.cmake:129 (project)"
+      - "/home/khnmuhaimin/EEE4022S/zephyr-fota/zephyr/cmake/modules/zephyr_default.cmake:140 (include)"
+      - "/home/khnmuhaimin/EEE4022S/zephyr-fota/zephyr/share/zephyr-package/cmake/ZephyrConfig.cmake:66 (include)"
+      - "/home/khnmuhaimin/EEE4022S/zephyr-fota/zephyr/share/zephyr-package/cmake/ZephyrConfig.cmake:92 (include_boilerplate)"
+      - "CMakeLists.txt:5 (find_package)"
+    mode: "file"
+    variable: "src_in"
+    description: "Path to a file."
+    settings:
+      SearchFramework: "NEVER"
+      SearchAppBundle: "NEVER"
+      CMAKE_FIND_USE_CMAKE_PATH: true
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "CMakeCXXCompilerId.cpp.in"
+    candidate_directories:
+      - "/usr/share/cmake/Modules/"
+      - "/home/khnmuhaimin/EEE4022S/zephyr-fota/zephyr/cmake/modules/"
+    found: "/usr/share/cmake/Modules/CMakeCXXCompilerId.cpp.in"
+    search_context:
+      CMAKE_PREFIX_PATH:
+        - "/home/khnmuhaimin/zephyr-sdk-0.17.2/sysroots/x86_64-pokysdk-linux/usr"
+      ENV{PATH}:
+        - "/home/khnmuhaimin/EEE4022S/.venv/bin"
+        - "/home/khnmuhaimin/.local/bin"
+        - "/usr/local/bin"
+        - "/usr/bin"
+        - "/usr/local/sbin"
+        - "/usr/lib/jvm/default/bin"
+        - "/opt/rocm/bin"
+        - "/opt/rocm/hip/bin"
+        - "/usr/bin/site_perl"
+        - "/usr/bin/vendor_perl"
+        - "/usr/bin/core_perl"
+        - "/home/khnmuhaimin/.rvm/bin"
+        - "/usr/local/MATLAB/R2024b/bin"
+        - "/home/khnmuhaimin/.esp/xtensa-lx106-elf-gcc8_4_0-esp-2020r3-linux-amd64/xtensa-lx106-elf/bin"
+        - "/usr/local/texlive/2025/bin/x86_64-linux"
+  -
+    kind: "message-v1"
+    backtrace:
+      - "/usr/share/cmake/Modules/CMakeDetermineCompilerId.cmake:17 (message)"
+      - "/usr/share/cmake/Modules/CMakeDetermineCompilerId.cmake:64 (__determine_compiler_id_test)"
+      - "/usr/share/cmake/Modules/CMakeDetermineCXXCompiler.cmake:125 (CMAKE_DETERMINE_COMPILER_ID)"
+      - "/home/khnmuhaimin/EEE4022S/zephyr-fota/zephyr/cmake/modules/kernel.cmake:129 (project)"
+      - "/home/khnmuhaimin/EEE4022S/zephyr-fota/zephyr/cmake/modules/zephyr_default.cmake:140 (include)"
+      - "/home/khnmuhaimin/EEE4022S/zephyr-fota/zephyr/share/zephyr-package/cmake/ZephyrConfig.cmake:66 (include)"
+      - "/home/khnmuhaimin/EEE4022S/zephyr-fota/zephyr/share/zephyr-package/cmake/ZephyrConfig.cmake:92 (include_boilerplate)"
+      - "CMakeLists.txt:5 (find_package)"
+    message: |
+      Compiling the CXX compiler identification source file "CMakeCXXCompilerId.cpp" succeeded.
+      Compiler: /home/khnmuhaimin/zephyr-sdk-0.17.2/xtensa-espressif_esp32_zephyr-elf/bin/xtensa-espressif_esp32_zephyr-elf-g++ 
+      Build flags: 
+      Id flags: -c 
+      
+      The output was:
+      0
+      
+      
+      Compilation of the CXX compiler identification source "CMakeCXXCompilerId.cpp" produced "CMakeCXXCompilerId.o"
+      
+      The CXX compiler identification is GNU, found in:
+        /home/khnmuhaimin/EEE4022S/zephyr-fota/build/CMakeFiles/4.1.2/CompilerIdCXX/CMakeCXXCompilerId.o
+      
+  -
+    kind: "find-v1"
+    backtrace:
+      - "/usr/share/cmake/Modules/Compiler/GNU-FindBinUtils.cmake:18 (find_program)"
+      - "/usr/share/cmake/Modules/CMakeDetermineCXXCompiler.cmake:207 (include)"
+      - "/home/khnmuhaimin/EEE4022S/zephyr-fota/zephyr/cmake/modules/kernel.cmake:129 (project)"
+      - "/home/khnmuhaimin/EEE4022S/zephyr-fota/zephyr/cmake/modules/zephyr_default.cmake:140 (include)"
+      - "/home/khnmuhaimin/EEE4022S/zephyr-fota/zephyr/share/zephyr-package/cmake/ZephyrConfig.cmake:66 (include)"
+      - "/home/khnmuhaimin/EEE4022S/zephyr-fota/zephyr/share/zephyr-package/cmake/ZephyrConfig.cmake:92 (include_boilerplate)"
+      - "CMakeLists.txt:5 (find_package)"
+    mode: "program"
+    variable: "CMAKE_CXX_COMPILER_AR"
+    description: "A wrapper around 'ar' adding the appropriate '--plugin' option for the GCC compiler"
+    settings:
+      SearchFramework: "NEVER"
+      SearchAppBundle: "NEVER"
+      CMAKE_FIND_USE_CMAKE_PATH: false
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: false
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "xtensa-espressif_esp32_zephyr-elf-gcc-ar-12.2"
+      - "xtensa-espressif_esp32_zephyr-elf-gcc-ar-12"
+      - "xtensa-espressif_esp32_zephyr-elf-gcc-ar12"
+      - "xtensa-espressif_esp32_zephyr-elf-gcc-ar"
+    candidate_directories:
+      - "/home/khnmuhaimin/zephyr-sdk-0.17.2/xtensa-espressif_esp32_zephyr-elf/bin/"
+      - "/home/khnmuhaimin/EEE4022S/.venv/bin/"
+      - "/home/khnmuhaimin/.local/bin/"
+      - "/usr/local/bin/"
+      - "/usr/bin/"
+      - "/usr/local/sbin/"
+      - "/usr/lib/jvm/default/bin/"
+      - "/opt/rocm/bin/"
+      - "/opt/rocm/hip/bin/"
+      - "/usr/bin/site_perl/"
+      - "/usr/bin/vendor_perl/"
+      - "/usr/bin/core_perl/"
+      - "/home/khnmuhaimin/.rvm/bin/"
+      - "/usr/local/MATLAB/R2024b/bin/"
+      - "/home/khnmuhaimin/.esp/xtensa-lx106-elf-gcc8_4_0-esp-2020r3-linux-amd64/xtensa-lx106-elf/bin/"
+      - "/usr/local/texlive/2025/bin/x86_64-linux/"
+    searched_directories:
+      - "/home/khnmuhaimin/zephyr-sdk-0.17.2/xtensa-espressif_esp32_zephyr-elf/bin/xtensa-espressif_esp32_zephyr-elf-gcc-ar-12.2"
+      - "/home/khnmuhaimin/EEE4022S/.venv/bin/xtensa-espressif_esp32_zephyr-elf-gcc-ar-12.2"
+      - "/home/khnmuhaimin/.local/bin/xtensa-espressif_esp32_zephyr-elf-gcc-ar-12.2"
+      - "/usr/local/bin/xtensa-espressif_esp32_zephyr-elf-gcc-ar-12.2"
+      - "/usr/bin/xtensa-espressif_esp32_zephyr-elf-gcc-ar-12.2"
+      - "/usr/local/sbin/xtensa-espressif_esp32_zephyr-elf-gcc-ar-12.2"
+      - "/usr/lib/jvm/default/bin/xtensa-espressif_esp32_zephyr-elf-gcc-ar-12.2"
+      - "/opt/rocm/bin/xtensa-espressif_esp32_zephyr-elf-gcc-ar-12.2"
+      - "/opt/rocm/hip/bin/xtensa-espressif_esp32_zephyr-elf-gcc-ar-12.2"
+      - "/usr/bin/site_perl/xtensa-espressif_esp32_zephyr-elf-gcc-ar-12.2"
+      - "/usr/bin/vendor_perl/xtensa-espressif_esp32_zephyr-elf-gcc-ar-12.2"
+      - "/usr/bin/core_perl/xtensa-espressif_esp32_zephyr-elf-gcc-ar-12.2"
+      - "/home/khnmuhaimin/.rvm/bin/xtensa-espressif_esp32_zephyr-elf-gcc-ar-12.2"
+      - "/usr/local/MATLAB/R2024b/bin/xtensa-espressif_esp32_zephyr-elf-gcc-ar-12.2"
+      - "/home/khnmuhaimin/.esp/xtensa-lx106-elf-gcc8_4_0-esp-2020r3-linux-amd64/xtensa-lx106-elf/bin/xtensa-espressif_esp32_zephyr-elf-gcc-ar-12.2"
+      - "/usr/local/texlive/2025/bin/x86_64-linux/xtensa-espressif_esp32_zephyr-elf-gcc-ar-12.2"
+      - "/home/khnmuhaimin/zephyr-sdk-0.17.2/xtensa-espressif_esp32_zephyr-elf/bin/xtensa-espressif_esp32_zephyr-elf-gcc-ar-12"
+      - "/home/khnmuhaimin/EEE4022S/.venv/bin/xtensa-espressif_esp32_zephyr-elf-gcc-ar-12"
+      - "/home/khnmuhaimin/.local/bin/xtensa-espressif_esp32_zephyr-elf-gcc-ar-12"
+      - "/usr/local/bin/xtensa-espressif_esp32_zephyr-elf-gcc-ar-12"
+      - "/usr/bin/xtensa-espressif_esp32_zephyr-elf-gcc-ar-12"
+      - "/usr/local/sbin/xtensa-espressif_esp32_zephyr-elf-gcc-ar-12"
+      - "/usr/lib/jvm/default/bin/xtensa-espressif_esp32_zephyr-elf-gcc-ar-12"
+      - "/opt/rocm/bin/xtensa-espressif_esp32_zephyr-elf-gcc-ar-12"
+      - "/opt/rocm/hip/bin/xtensa-espressif_esp32_zephyr-elf-gcc-ar-12"
+      - "/usr/bin/site_perl/xtensa-espressif_esp32_zephyr-elf-gcc-ar-12"
+      - "/usr/bin/vendor_perl/xtensa-espressif_esp32_zephyr-elf-gcc-ar-12"
+      - "/usr/bin/core_perl/xtensa-espressif_esp32_zephyr-elf-gcc-ar-12"
+      - "/home/khnmuhaimin/.rvm/bin/xtensa-espressif_esp32_zephyr-elf-gcc-ar-12"
+      - "/usr/local/MATLAB/R2024b/bin/xtensa-espressif_esp32_zephyr-elf-gcc-ar-12"
+      - "/home/khnmuhaimin/.esp/xtensa-lx106-elf-gcc8_4_0-esp-2020r3-linux-amd64/xtensa-lx106-elf/bin/xtensa-espressif_esp32_zephyr-elf-gcc-ar-12"
+      - "/usr/local/texlive/2025/bin/x86_64-linux/xtensa-espressif_esp32_zephyr-elf-gcc-ar-12"
+      - "/home/khnmuhaimin/zephyr-sdk-0.17.2/xtensa-espressif_esp32_zephyr-elf/bin/xtensa-espressif_esp32_zephyr-elf-gcc-ar12"
+      - "/home/khnmuhaimin/EEE4022S/.venv/bin/xtensa-espressif_esp32_zephyr-elf-gcc-ar12"
+      - "/home/khnmuhaimin/.local/bin/xtensa-espressif_esp32_zephyr-elf-gcc-ar12"
+      - "/usr/local/bin/xtensa-espressif_esp32_zephyr-elf-gcc-ar12"
+      - "/usr/bin/xtensa-espressif_esp32_zephyr-elf-gcc-ar12"
+      - "/usr/local/sbin/xtensa-espressif_esp32_zephyr-elf-gcc-ar12"
+      - "/usr/lib/jvm/default/bin/xtensa-espressif_esp32_zephyr-elf-gcc-ar12"
+      - "/opt/rocm/bin/xtensa-espressif_esp32_zephyr-elf-gcc-ar12"
+      - "/opt/rocm/hip/bin/xtensa-espressif_esp32_zephyr-elf-gcc-ar12"
+      - "/usr/bin/site_perl/xtensa-espressif_esp32_zephyr-elf-gcc-ar12"
+      - "/usr/bin/vendor_perl/xtensa-espressif_esp32_zephyr-elf-gcc-ar12"
+      - "/usr/bin/core_perl/xtensa-espressif_esp32_zephyr-elf-gcc-ar12"
+      - "/home/khnmuhaimin/.rvm/bin/xtensa-espressif_esp32_zephyr-elf-gcc-ar12"
+      - "/usr/local/MATLAB/R2024b/bin/xtensa-espressif_esp32_zephyr-elf-gcc-ar12"
+      - "/home/khnmuhaimin/.esp/xtensa-lx106-elf-gcc8_4_0-esp-2020r3-linux-amd64/xtensa-lx106-elf/bin/xtensa-espressif_esp32_zephyr-elf-gcc-ar12"
+      - "/usr/local/texlive/2025/bin/x86_64-linux/xtensa-espressif_esp32_zephyr-elf-gcc-ar12"
+    found: "/home/khnmuhaimin/zephyr-sdk-0.17.2/xtensa-espressif_esp32_zephyr-elf/bin/xtensa-espressif_esp32_zephyr-elf-gcc-ar"
+    search_context:
+      CMAKE_PREFIX_PATH:
+        - "/home/khnmuhaimin/zephyr-sdk-0.17.2/sysroots/x86_64-pokysdk-linux/usr"
+      ENV{PATH}:
+        - "/home/khnmuhaimin/EEE4022S/.venv/bin"
+        - "/home/khnmuhaimin/.local/bin"
+        - "/usr/local/bin"
+        - "/usr/bin"
+        - "/usr/local/sbin"
+        - "/usr/lib/jvm/default/bin"
+        - "/opt/rocm/bin"
+        - "/opt/rocm/hip/bin"
+        - "/usr/bin/site_perl"
+        - "/usr/bin/vendor_perl"
+        - "/usr/bin/core_perl"
+        - "/home/khnmuhaimin/.rvm/bin"
+        - "/usr/local/MATLAB/R2024b/bin"
+        - "/home/khnmuhaimin/.esp/xtensa-lx106-elf-gcc8_4_0-esp-2020r3-linux-amd64/xtensa-lx106-elf/bin"
+        - "/usr/local/texlive/2025/bin/x86_64-linux"
+  -
+    kind: "find-v1"
+    backtrace:
+      - "/usr/share/cmake/Modules/Compiler/GNU-FindBinUtils.cmake:30 (find_program)"
+      - "/usr/share/cmake/Modules/CMakeDetermineCXXCompiler.cmake:207 (include)"
+      - "/home/khnmuhaimin/EEE4022S/zephyr-fota/zephyr/cmake/modules/kernel.cmake:129 (project)"
+      - "/home/khnmuhaimin/EEE4022S/zephyr-fota/zephyr/cmake/modules/zephyr_default.cmake:140 (include)"
+      - "/home/khnmuhaimin/EEE4022S/zephyr-fota/zephyr/share/zephyr-package/cmake/ZephyrConfig.cmake:66 (include)"
+      - "/home/khnmuhaimin/EEE4022S/zephyr-fota/zephyr/share/zephyr-package/cmake/ZephyrConfig.cmake:92 (include_boilerplate)"
+      - "CMakeLists.txt:5 (find_package)"
+    mode: "program"
+    variable: "CMAKE_CXX_COMPILER_RANLIB"
+    description: "A wrapper around 'ranlib' adding the appropriate '--plugin' option for the GCC compiler"
+    settings:
+      SearchFramework: "NEVER"
+      SearchAppBundle: "NEVER"
+      CMAKE_FIND_USE_CMAKE_PATH: false
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: false
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "xtensa-espressif_esp32_zephyr-elf-gcc-ranlib-12.2"
+      - "xtensa-espressif_esp32_zephyr-elf-gcc-ranlib-12"
+      - "xtensa-espressif_esp32_zephyr-elf-gcc-ranlib12"
+      - "xtensa-espressif_esp32_zephyr-elf-gcc-ranlib"
+    candidate_directories:
+      - "/home/khnmuhaimin/zephyr-sdk-0.17.2/xtensa-espressif_esp32_zephyr-elf/bin/"
+      - "/home/khnmuhaimin/EEE4022S/.venv/bin/"
+      - "/home/khnmuhaimin/.local/bin/"
+      - "/usr/local/bin/"
+      - "/usr/bin/"
+      - "/usr/local/sbin/"
+      - "/usr/lib/jvm/default/bin/"
+      - "/opt/rocm/bin/"
+      - "/opt/rocm/hip/bin/"
+      - "/usr/bin/site_perl/"
+      - "/usr/bin/vendor_perl/"
+      - "/usr/bin/core_perl/"
+      - "/home/khnmuhaimin/.rvm/bin/"
+      - "/usr/local/MATLAB/R2024b/bin/"
+      - "/home/khnmuhaimin/.esp/xtensa-lx106-elf-gcc8_4_0-esp-2020r3-linux-amd64/xtensa-lx106-elf/bin/"
+      - "/usr/local/texlive/2025/bin/x86_64-linux/"
+    searched_directories:
+      - "/home/khnmuhaimin/zephyr-sdk-0.17.2/xtensa-espressif_esp32_zephyr-elf/bin/xtensa-espressif_esp32_zephyr-elf-gcc-ranlib-12.2"
+      - "/home/khnmuhaimin/EEE4022S/.venv/bin/xtensa-espressif_esp32_zephyr-elf-gcc-ranlib-12.2"
+      - "/home/khnmuhaimin/.local/bin/xtensa-espressif_esp32_zephyr-elf-gcc-ranlib-12.2"
+      - "/usr/local/bin/xtensa-espressif_esp32_zephyr-elf-gcc-ranlib-12.2"
+      - "/usr/bin/xtensa-espressif_esp32_zephyr-elf-gcc-ranlib-12.2"
+      - "/usr/local/sbin/xtensa-espressif_esp32_zephyr-elf-gcc-ranlib-12.2"
+      - "/usr/lib/jvm/default/bin/xtensa-espressif_esp32_zephyr-elf-gcc-ranlib-12.2"
+      - "/opt/rocm/bin/xtensa-espressif_esp32_zephyr-elf-gcc-ranlib-12.2"
+      - "/opt/rocm/hip/bin/xtensa-espressif_esp32_zephyr-elf-gcc-ranlib-12.2"
+      - "/usr/bin/site_perl/xtensa-espressif_esp32_zephyr-elf-gcc-ranlib-12.2"
+      - "/usr/bin/vendor_perl/xtensa-espressif_esp32_zephyr-elf-gcc-ranlib-12.2"
+      - "/usr/bin/core_perl/xtensa-espressif_esp32_zephyr-elf-gcc-ranlib-12.2"
+      - "/home/khnmuhaimin/.rvm/bin/xtensa-espressif_esp32_zephyr-elf-gcc-ranlib-12.2"
+      - "/usr/local/MATLAB/R2024b/bin/xtensa-espressif_esp32_zephyr-elf-gcc-ranlib-12.2"
+      - "/home/khnmuhaimin/.esp/xtensa-lx106-elf-gcc8_4_0-esp-2020r3-linux-amd64/xtensa-lx106-elf/bin/xtensa-espressif_esp32_zephyr-elf-gcc-ranlib-12.2"
+      - "/usr/local/texlive/2025/bin/x86_64-linux/xtensa-espressif_esp32_zephyr-elf-gcc-ranlib-12.2"
+      - "/home/khnmuhaimin/zephyr-sdk-0.17.2/xtensa-espressif_esp32_zephyr-elf/bin/xtensa-espressif_esp32_zephyr-elf-gcc-ranlib-12"
+      - "/home/khnmuhaimin/EEE4022S/.venv/bin/xtensa-espressif_esp32_zephyr-elf-gcc-ranlib-12"
+      - "/home/khnmuhaimin/.local/bin/xtensa-espressif_esp32_zephyr-elf-gcc-ranlib-12"
+      - "/usr/local/bin/xtensa-espressif_esp32_zephyr-elf-gcc-ranlib-12"
+      - "/usr/bin/xtensa-espressif_esp32_zephyr-elf-gcc-ranlib-12"
+      - "/usr/local/sbin/xtensa-espressif_esp32_zephyr-elf-gcc-ranlib-12"
+      - "/usr/lib/jvm/default/bin/xtensa-espressif_esp32_zephyr-elf-gcc-ranlib-12"
+      - "/opt/rocm/bin/xtensa-espressif_esp32_zephyr-elf-gcc-ranlib-12"
+      - "/opt/rocm/hip/bin/xtensa-espressif_esp32_zephyr-elf-gcc-ranlib-12"
+      - "/usr/bin/site_perl/xtensa-espressif_esp32_zephyr-elf-gcc-ranlib-12"
+      - "/usr/bin/vendor_perl/xtensa-espressif_esp32_zephyr-elf-gcc-ranlib-12"
+      - "/usr/bin/core_perl/xtensa-espressif_esp32_zephyr-elf-gcc-ranlib-12"
+      - "/home/khnmuhaimin/.rvm/bin/xtensa-espressif_esp32_zephyr-elf-gcc-ranlib-12"
+      - "/usr/local/MATLAB/R2024b/bin/xtensa-espressif_esp32_zephyr-elf-gcc-ranlib-12"
+      - "/home/khnmuhaimin/.esp/xtensa-lx106-elf-gcc8_4_0-esp-2020r3-linux-amd64/xtensa-lx106-elf/bin/xtensa-espressif_esp32_zephyr-elf-gcc-ranlib-12"
+      - "/usr/local/texlive/2025/bin/x86_64-linux/xtensa-espressif_esp32_zephyr-elf-gcc-ranlib-12"
+      - "/home/khnmuhaimin/zephyr-sdk-0.17.2/xtensa-espressif_esp32_zephyr-elf/bin/xtensa-espressif_esp32_zephyr-elf-gcc-ranlib12"
+      - "/home/khnmuhaimin/EEE4022S/.venv/bin/xtensa-espressif_esp32_zephyr-elf-gcc-ranlib12"
+      - "/home/khnmuhaimin/.local/bin/xtensa-espressif_esp32_zephyr-elf-gcc-ranlib12"
+      - "/usr/local/bin/xtensa-espressif_esp32_zephyr-elf-gcc-ranlib12"
+      - "/usr/bin/xtensa-espressif_esp32_zephyr-elf-gcc-ranlib12"
+      - "/usr/local/sbin/xtensa-espressif_esp32_zephyr-elf-gcc-ranlib12"
+      - "/usr/lib/jvm/default/bin/xtensa-espressif_esp32_zephyr-elf-gcc-ranlib12"
+      - "/opt/rocm/bin/xtensa-espressif_esp32_zephyr-elf-gcc-ranlib12"
+      - "/opt/rocm/hip/bin/xtensa-espressif_esp32_zephyr-elf-gcc-ranlib12"
+      - "/usr/bin/site_perl/xtensa-espressif_esp32_zephyr-elf-gcc-ranlib12"
+      - "/usr/bin/vendor_perl/xtensa-espressif_esp32_zephyr-elf-gcc-ranlib12"
+      - "/usr/bin/core_perl/xtensa-espressif_esp32_zephyr-elf-gcc-ranlib12"
+      - "/home/khnmuhaimin/.rvm/bin/xtensa-espressif_esp32_zephyr-elf-gcc-ranlib12"
+      - "/usr/local/MATLAB/R2024b/bin/xtensa-espressif_esp32_zephyr-elf-gcc-ranlib12"
+      - "/home/khnmuhaimin/.esp/xtensa-lx106-elf-gcc8_4_0-esp-2020r3-linux-amd64/xtensa-lx106-elf/bin/xtensa-espressif_esp32_zephyr-elf-gcc-ranlib12"
+      - "/usr/local/texlive/2025/bin/x86_64-linux/xtensa-espressif_esp32_zephyr-elf-gcc-ranlib12"
+    found: "/home/khnmuhaimin/zephyr-sdk-0.17.2/xtensa-espressif_esp32_zephyr-elf/bin/xtensa-espressif_esp32_zephyr-elf-gcc-ranlib"
+    search_context:
+      CMAKE_PREFIX_PATH:
+        - "/home/khnmuhaimin/zephyr-sdk-0.17.2/sysroots/x86_64-pokysdk-linux/usr"
+      ENV{PATH}:
+        - "/home/khnmuhaimin/EEE4022S/.venv/bin"
+        - "/home/khnmuhaimin/.local/bin"
+        - "/usr/local/bin"
+        - "/usr/bin"
+        - "/usr/local/sbin"
+        - "/usr/lib/jvm/default/bin"
+        - "/opt/rocm/bin"
+        - "/opt/rocm/hip/bin"
+        - "/usr/bin/site_perl"
+        - "/usr/bin/vendor_perl"
+        - "/usr/bin/core_perl"
+        - "/home/khnmuhaimin/.rvm/bin"
+        - "/usr/local/MATLAB/R2024b/bin"
+        - "/home/khnmuhaimin/.esp/xtensa-lx106-elf-gcc8_4_0-esp-2020r3-linux-amd64/xtensa-lx106-elf/bin"
+        - "/usr/local/texlive/2025/bin/x86_64-linux"
+  -
+    kind: "find-v1"
+    backtrace:
+      - "/usr/share/cmake/Modules/CMakeDetermineCompiler.cmake:54 (find_program)"
+      - "/usr/share/cmake/Modules/CMakeDetermineASMCompiler.cmake:61 (_cmake_find_compiler)"
+      - "/home/khnmuhaimin/EEE4022S/zephyr-fota/zephyr/cmake/modules/kernel.cmake:135 (enable_language)"
+      - "/home/khnmuhaimin/EEE4022S/zephyr-fota/zephyr/cmake/modules/zephyr_default.cmake:140 (include)"
+      - "/home/khnmuhaimin/EEE4022S/zephyr-fota/zephyr/share/zephyr-package/cmake/ZephyrConfig.cmake:66 (include)"
+      - "/home/khnmuhaimin/EEE4022S/zephyr-fota/zephyr/share/zephyr-package/cmake/ZephyrConfig.cmake:92 (include_boilerplate)"
+      - "CMakeLists.txt:5 (find_package)"
+    mode: "program"
+    variable: "CMAKE_ASM_COMPILER"
+    description: "ASM compiler"
+    settings:
+      SearchFramework: "NEVER"
+      SearchAppBundle: "NEVER"
+      CMAKE_FIND_USE_CMAKE_PATH: true
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "/home/khnmuhaimin/zephyr-sdk-0.17.2/xtensa-espressif_esp32_zephyr-elf/bin/xtensa-espressif_esp32_zephyr-elf-gcc"
+    candidate_directories:
+      - "/home/khnmuhaimin/zephyr-sdk-0.17.2/xtensa-espressif_esp32_zephyr-elf/bin/"
+    found: "/home/khnmuhaimin/zephyr-sdk-0.17.2/xtensa-espressif_esp32_zephyr-elf/bin/xtensa-espressif_esp32_zephyr-elf-gcc"
+    search_context:
+      CMAKE_PREFIX_PATH:
+        - "/home/khnmuhaimin/zephyr-sdk-0.17.2/sysroots/x86_64-pokysdk-linux/usr"
+      ENV{PATH}:
+        - "/home/khnmuhaimin/EEE4022S/.venv/bin"
+        - "/home/khnmuhaimin/.local/bin"
+        - "/usr/local/bin"
+        - "/usr/bin"
+        - "/usr/local/sbin"
+        - "/usr/lib/jvm/default/bin"
+        - "/opt/rocm/bin"
+        - "/opt/rocm/hip/bin"
+        - "/usr/bin/site_perl"
+        - "/usr/bin/vendor_perl"
+        - "/usr/bin/core_perl"
+        - "/home/khnmuhaimin/.rvm/bin"
+        - "/usr/local/MATLAB/R2024b/bin"
+        - "/home/khnmuhaimin/.esp/xtensa-lx106-elf-gcc8_4_0-esp-2020r3-linux-amd64/xtensa-lx106-elf/bin"
+        - "/usr/local/texlive/2025/bin/x86_64-linux"
+      CMAKE_INSTALL_PREFIX: "/usr/local"
+      CMAKE_SYSTEM_PROGRAM_PATH:
+        - "/bin"
+  -
+    kind: "message-v1"
+    backtrace:
+      - "/usr/share/cmake/Modules/CMakeDetermineCompilerId.cmake:1290 (message)"
+      - "/usr/share/cmake/Modules/CMakeDetermineASMCompiler.cmake:170 (CMAKE_DETERMINE_COMPILER_ID_VENDOR)"
+      - "/home/khnmuhaimin/EEE4022S/zephyr-fota/zephyr/cmake/modules/kernel.cmake:135 (enable_language)"
+      - "/home/khnmuhaimin/EEE4022S/zephyr-fota/zephyr/cmake/modules/zephyr_default.cmake:140 (include)"
+      - "/home/khnmuhaimin/EEE4022S/zephyr-fota/zephyr/share/zephyr-package/cmake/ZephyrConfig.cmake:66 (include)"
+      - "/home/khnmuhaimin/EEE4022S/zephyr-fota/zephyr/share/zephyr-package/cmake/ZephyrConfig.cmake:92 (include_boilerplate)"
+      - "CMakeLists.txt:5 (find_package)"
+    message: |
+      Checking whether the ASM compiler is GNU using "--version" matched "(GNU assembler)|(GCC)|(Free Software Foundation)":
+      xtensa-espressif_esp32_zephyr-elf-gcc (Zephyr SDK 0.17.2) 12.2.0
+      Copyright (C) 2022 Free Software Foundation, Inc.
+      This is free software; see the source for copying conditions.  There is NO
+      warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+      
+  -
+    kind: "find-v1"
+    backtrace:
+      - "/usr/share/cmake/Modules/Compiler/GNU-FindBinUtils.cmake:18 (find_program)"
+      - "/usr/share/cmake/Modules/CMakeDetermineASMCompiler.cmake:268 (include)"
+      - "/home/khnmuhaimin/EEE4022S/zephyr-fota/zephyr/cmake/modules/kernel.cmake:135 (enable_language)"
+      - "/home/khnmuhaimin/EEE4022S/zephyr-fota/zephyr/cmake/modules/zephyr_default.cmake:140 (include)"
+      - "/home/khnmuhaimin/EEE4022S/zephyr-fota/zephyr/share/zephyr-package/cmake/ZephyrConfig.cmake:66 (include)"
+      - "/home/khnmuhaimin/EEE4022S/zephyr-fota/zephyr/share/zephyr-package/cmake/ZephyrConfig.cmake:92 (include_boilerplate)"
+      - "CMakeLists.txt:5 (find_package)"
+    mode: "program"
+    variable: "CMAKE_ASM_COMPILER_AR"
+    description: "A wrapper around 'ar' adding the appropriate '--plugin' option for the GCC compiler"
+    settings:
+      SearchFramework: "NEVER"
+      SearchAppBundle: "NEVER"
+      CMAKE_FIND_USE_CMAKE_PATH: false
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: false
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "xtensa-espressif_esp32_zephyr-elf-gcc-ar-"
+      - "xtensa-espressif_esp32_zephyr-elf-gcc-ar-"
+      - "xtensa-espressif_esp32_zephyr-elf-gcc-ar"
+      - "xtensa-espressif_esp32_zephyr-elf-gcc-ar"
+    candidate_directories:
+      - "/home/khnmuhaimin/zephyr-sdk-0.17.2/xtensa-espressif_esp32_zephyr-elf/bin/"
+      - "/home/khnmuhaimin/EEE4022S/.venv/bin/"
+      - "/home/khnmuhaimin/.local/bin/"
+      - "/usr/local/bin/"
+      - "/usr/bin/"
+      - "/usr/local/sbin/"
+      - "/usr/lib/jvm/default/bin/"
+      - "/opt/rocm/bin/"
+      - "/opt/rocm/hip/bin/"
+      - "/usr/bin/site_perl/"
+      - "/usr/bin/vendor_perl/"
+      - "/usr/bin/core_perl/"
+      - "/home/khnmuhaimin/.rvm/bin/"
+      - "/usr/local/MATLAB/R2024b/bin/"
+      - "/home/khnmuhaimin/.esp/xtensa-lx106-elf-gcc8_4_0-esp-2020r3-linux-amd64/xtensa-lx106-elf/bin/"
+      - "/usr/local/texlive/2025/bin/x86_64-linux/"
+      - "/bin/"
+    searched_directories:
+      - "/home/khnmuhaimin/zephyr-sdk-0.17.2/xtensa-espressif_esp32_zephyr-elf/bin/xtensa-espressif_esp32_zephyr-elf-gcc-ar-"
+      - "/home/khnmuhaimin/EEE4022S/.venv/bin/xtensa-espressif_esp32_zephyr-elf-gcc-ar-"
+      - "/home/khnmuhaimin/.local/bin/xtensa-espressif_esp32_zephyr-elf-gcc-ar-"
+      - "/usr/local/bin/xtensa-espressif_esp32_zephyr-elf-gcc-ar-"
+      - "/usr/bin/xtensa-espressif_esp32_zephyr-elf-gcc-ar-"
+      - "/usr/local/sbin/xtensa-espressif_esp32_zephyr-elf-gcc-ar-"
+      - "/usr/lib/jvm/default/bin/xtensa-espressif_esp32_zephyr-elf-gcc-ar-"
+      - "/opt/rocm/bin/xtensa-espressif_esp32_zephyr-elf-gcc-ar-"
+      - "/opt/rocm/hip/bin/xtensa-espressif_esp32_zephyr-elf-gcc-ar-"
+      - "/usr/bin/site_perl/xtensa-espressif_esp32_zephyr-elf-gcc-ar-"
+      - "/usr/bin/vendor_perl/xtensa-espressif_esp32_zephyr-elf-gcc-ar-"
+      - "/usr/bin/core_perl/xtensa-espressif_esp32_zephyr-elf-gcc-ar-"
+      - "/home/khnmuhaimin/.rvm/bin/xtensa-espressif_esp32_zephyr-elf-gcc-ar-"
+      - "/usr/local/MATLAB/R2024b/bin/xtensa-espressif_esp32_zephyr-elf-gcc-ar-"
+      - "/home/khnmuhaimin/.esp/xtensa-lx106-elf-gcc8_4_0-esp-2020r3-linux-amd64/xtensa-lx106-elf/bin/xtensa-espressif_esp32_zephyr-elf-gcc-ar-"
+      - "/usr/local/texlive/2025/bin/x86_64-linux/xtensa-espressif_esp32_zephyr-elf-gcc-ar-"
+      - "/bin/xtensa-espressif_esp32_zephyr-elf-gcc-ar-"
+      - "/home/khnmuhaimin/zephyr-sdk-0.17.2/xtensa-espressif_esp32_zephyr-elf/bin/xtensa-espressif_esp32_zephyr-elf-gcc-ar-"
+      - "/home/khnmuhaimin/EEE4022S/.venv/bin/xtensa-espressif_esp32_zephyr-elf-gcc-ar-"
+      - "/home/khnmuhaimin/.local/bin/xtensa-espressif_esp32_zephyr-elf-gcc-ar-"
+      - "/usr/local/bin/xtensa-espressif_esp32_zephyr-elf-gcc-ar-"
+      - "/usr/bin/xtensa-espressif_esp32_zephyr-elf-gcc-ar-"
+      - "/usr/local/sbin/xtensa-espressif_esp32_zephyr-elf-gcc-ar-"
+      - "/usr/lib/jvm/default/bin/xtensa-espressif_esp32_zephyr-elf-gcc-ar-"
+      - "/opt/rocm/bin/xtensa-espressif_esp32_zephyr-elf-gcc-ar-"
+      - "/opt/rocm/hip/bin/xtensa-espressif_esp32_zephyr-elf-gcc-ar-"
+      - "/usr/bin/site_perl/xtensa-espressif_esp32_zephyr-elf-gcc-ar-"
+      - "/usr/bin/vendor_perl/xtensa-espressif_esp32_zephyr-elf-gcc-ar-"
+      - "/usr/bin/core_perl/xtensa-espressif_esp32_zephyr-elf-gcc-ar-"
+      - "/home/khnmuhaimin/.rvm/bin/xtensa-espressif_esp32_zephyr-elf-gcc-ar-"
+      - "/usr/local/MATLAB/R2024b/bin/xtensa-espressif_esp32_zephyr-elf-gcc-ar-"
+      - "/home/khnmuhaimin/.esp/xtensa-lx106-elf-gcc8_4_0-esp-2020r3-linux-amd64/xtensa-lx106-elf/bin/xtensa-espressif_esp32_zephyr-elf-gcc-ar-"
+      - "/usr/local/texlive/2025/bin/x86_64-linux/xtensa-espressif_esp32_zephyr-elf-gcc-ar-"
+      - "/bin/xtensa-espressif_esp32_zephyr-elf-gcc-ar-"
+    found: "/home/khnmuhaimin/zephyr-sdk-0.17.2/xtensa-espressif_esp32_zephyr-elf/bin/xtensa-espressif_esp32_zephyr-elf-gcc-ar"
+    search_context:
+      CMAKE_PREFIX_PATH:
+        - "/home/khnmuhaimin/zephyr-sdk-0.17.2/sysroots/x86_64-pokysdk-linux/usr"
+      ENV{PATH}:
+        - "/home/khnmuhaimin/EEE4022S/.venv/bin"
+        - "/home/khnmuhaimin/.local/bin"
+        - "/usr/local/bin"
+        - "/usr/bin"
+        - "/usr/local/sbin"
+        - "/usr/lib/jvm/default/bin"
+        - "/opt/rocm/bin"
+        - "/opt/rocm/hip/bin"
+        - "/usr/bin/site_perl"
+        - "/usr/bin/vendor_perl"
+        - "/usr/bin/core_perl"
+        - "/home/khnmuhaimin/.rvm/bin"
+        - "/usr/local/MATLAB/R2024b/bin"
+        - "/home/khnmuhaimin/.esp/xtensa-lx106-elf-gcc8_4_0-esp-2020r3-linux-amd64/xtensa-lx106-elf/bin"
+        - "/usr/local/texlive/2025/bin/x86_64-linux"
+      CMAKE_INSTALL_PREFIX: "/usr/local"
+      CMAKE_SYSTEM_PROGRAM_PATH:
+        - "/bin"
+  -
+    kind: "find-v1"
+    backtrace:
+      - "/usr/share/cmake/Modules/Compiler/GNU-FindBinUtils.cmake:30 (find_program)"
+      - "/usr/share/cmake/Modules/CMakeDetermineASMCompiler.cmake:268 (include)"
+      - "/home/khnmuhaimin/EEE4022S/zephyr-fota/zephyr/cmake/modules/kernel.cmake:135 (enable_language)"
+      - "/home/khnmuhaimin/EEE4022S/zephyr-fota/zephyr/cmake/modules/zephyr_default.cmake:140 (include)"
+      - "/home/khnmuhaimin/EEE4022S/zephyr-fota/zephyr/share/zephyr-package/cmake/ZephyrConfig.cmake:66 (include)"
+      - "/home/khnmuhaimin/EEE4022S/zephyr-fota/zephyr/share/zephyr-package/cmake/ZephyrConfig.cmake:92 (include_boilerplate)"
+      - "CMakeLists.txt:5 (find_package)"
+    mode: "program"
+    variable: "CMAKE_ASM_COMPILER_RANLIB"
+    description: "A wrapper around 'ranlib' adding the appropriate '--plugin' option for the GCC compiler"
+    settings:
+      SearchFramework: "NEVER"
+      SearchAppBundle: "NEVER"
+      CMAKE_FIND_USE_CMAKE_PATH: false
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: false
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "xtensa-espressif_esp32_zephyr-elf-gcc-ranlib-"
+      - "xtensa-espressif_esp32_zephyr-elf-gcc-ranlib-"
+      - "xtensa-espressif_esp32_zephyr-elf-gcc-ranlib"
+      - "xtensa-espressif_esp32_zephyr-elf-gcc-ranlib"
+    candidate_directories:
+      - "/home/khnmuhaimin/zephyr-sdk-0.17.2/xtensa-espressif_esp32_zephyr-elf/bin/"
+      - "/home/khnmuhaimin/EEE4022S/.venv/bin/"
+      - "/home/khnmuhaimin/.local/bin/"
+      - "/usr/local/bin/"
+      - "/usr/bin/"
+      - "/usr/local/sbin/"
+      - "/usr/lib/jvm/default/bin/"
+      - "/opt/rocm/bin/"
+      - "/opt/rocm/hip/bin/"
+      - "/usr/bin/site_perl/"
+      - "/usr/bin/vendor_perl/"
+      - "/usr/bin/core_perl/"
+      - "/home/khnmuhaimin/.rvm/bin/"
+      - "/usr/local/MATLAB/R2024b/bin/"
+      - "/home/khnmuhaimin/.esp/xtensa-lx106-elf-gcc8_4_0-esp-2020r3-linux-amd64/xtensa-lx106-elf/bin/"
+      - "/usr/local/texlive/2025/bin/x86_64-linux/"
+      - "/bin/"
+    searched_directories:
+      - "/home/khnmuhaimin/zephyr-sdk-0.17.2/xtensa-espressif_esp32_zephyr-elf/bin/xtensa-espressif_esp32_zephyr-elf-gcc-ranlib-"
+      - "/home/khnmuhaimin/EEE4022S/.venv/bin/xtensa-espressif_esp32_zephyr-elf-gcc-ranlib-"
+      - "/home/khnmuhaimin/.local/bin/xtensa-espressif_esp32_zephyr-elf-gcc-ranlib-"
+      - "/usr/local/bin/xtensa-espressif_esp32_zephyr-elf-gcc-ranlib-"
+      - "/usr/bin/xtensa-espressif_esp32_zephyr-elf-gcc-ranlib-"
+      - "/usr/local/sbin/xtensa-espressif_esp32_zephyr-elf-gcc-ranlib-"
+      - "/usr/lib/jvm/default/bin/xtensa-espressif_esp32_zephyr-elf-gcc-ranlib-"
+      - "/opt/rocm/bin/xtensa-espressif_esp32_zephyr-elf-gcc-ranlib-"
+      - "/opt/rocm/hip/bin/xtensa-espressif_esp32_zephyr-elf-gcc-ranlib-"
+      - "/usr/bin/site_perl/xtensa-espressif_esp32_zephyr-elf-gcc-ranlib-"
+      - "/usr/bin/vendor_perl/xtensa-espressif_esp32_zephyr-elf-gcc-ranlib-"
+      - "/usr/bin/core_perl/xtensa-espressif_esp32_zephyr-elf-gcc-ranlib-"
+      - "/home/khnmuhaimin/.rvm/bin/xtensa-espressif_esp32_zephyr-elf-gcc-ranlib-"
+      - "/usr/local/MATLAB/R2024b/bin/xtensa-espressif_esp32_zephyr-elf-gcc-ranlib-"
+      - "/home/khnmuhaimin/.esp/xtensa-lx106-elf-gcc8_4_0-esp-2020r3-linux-amd64/xtensa-lx106-elf/bin/xtensa-espressif_esp32_zephyr-elf-gcc-ranlib-"
+      - "/usr/local/texlive/2025/bin/x86_64-linux/xtensa-espressif_esp32_zephyr-elf-gcc-ranlib-"
+      - "/bin/xtensa-espressif_esp32_zephyr-elf-gcc-ranlib-"
+      - "/home/khnmuhaimin/zephyr-sdk-0.17.2/xtensa-espressif_esp32_zephyr-elf/bin/xtensa-espressif_esp32_zephyr-elf-gcc-ranlib-"
+      - "/home/khnmuhaimin/EEE4022S/.venv/bin/xtensa-espressif_esp32_zephyr-elf-gcc-ranlib-"
+      - "/home/khnmuhaimin/.local/bin/xtensa-espressif_esp32_zephyr-elf-gcc-ranlib-"
+      - "/usr/local/bin/xtensa-espressif_esp32_zephyr-elf-gcc-ranlib-"
+      - "/usr/bin/xtensa-espressif_esp32_zephyr-elf-gcc-ranlib-"
+      - "/usr/local/sbin/xtensa-espressif_esp32_zephyr-elf-gcc-ranlib-"
+      - "/usr/lib/jvm/default/bin/xtensa-espressif_esp32_zephyr-elf-gcc-ranlib-"
+      - "/opt/rocm/bin/xtensa-espressif_esp32_zephyr-elf-gcc-ranlib-"
+      - "/opt/rocm/hip/bin/xtensa-espressif_esp32_zephyr-elf-gcc-ranlib-"
+      - "/usr/bin/site_perl/xtensa-espressif_esp32_zephyr-elf-gcc-ranlib-"
+      - "/usr/bin/vendor_perl/xtensa-espressif_esp32_zephyr-elf-gcc-ranlib-"
+      - "/usr/bin/core_perl/xtensa-espressif_esp32_zephyr-elf-gcc-ranlib-"
+      - "/home/khnmuhaimin/.rvm/bin/xtensa-espressif_esp32_zephyr-elf-gcc-ranlib-"
+      - "/usr/local/MATLAB/R2024b/bin/xtensa-espressif_esp32_zephyr-elf-gcc-ranlib-"
+      - "/home/khnmuhaimin/.esp/xtensa-lx106-elf-gcc8_4_0-esp-2020r3-linux-amd64/xtensa-lx106-elf/bin/xtensa-espressif_esp32_zephyr-elf-gcc-ranlib-"
+      - "/usr/local/texlive/2025/bin/x86_64-linux/xtensa-espressif_esp32_zephyr-elf-gcc-ranlib-"
+      - "/bin/xtensa-espressif_esp32_zephyr-elf-gcc-ranlib-"
+    found: "/home/khnmuhaimin/zephyr-sdk-0.17.2/xtensa-espressif_esp32_zephyr-elf/bin/xtensa-espressif_esp32_zephyr-elf-gcc-ranlib"
+    search_context:
+      CMAKE_PREFIX_PATH:
+        - "/home/khnmuhaimin/zephyr-sdk-0.17.2/sysroots/x86_64-pokysdk-linux/usr"
+      ENV{PATH}:
+        - "/home/khnmuhaimin/EEE4022S/.venv/bin"
+        - "/home/khnmuhaimin/.local/bin"
+        - "/usr/local/bin"
+        - "/usr/bin"
+        - "/usr/local/sbin"
+        - "/usr/lib/jvm/default/bin"
+        - "/opt/rocm/bin"
+        - "/opt/rocm/hip/bin"
+        - "/usr/bin/site_perl"
+        - "/usr/bin/vendor_perl"
+        - "/usr/bin/core_perl"
+        - "/home/khnmuhaimin/.rvm/bin"
+        - "/usr/local/MATLAB/R2024b/bin"
+        - "/home/khnmuhaimin/.esp/xtensa-lx106-elf-gcc8_4_0-esp-2020r3-linux-amd64/xtensa-lx106-elf/bin"
+        - "/usr/local/texlive/2025/bin/x86_64-linux"
+      CMAKE_INSTALL_PREFIX: "/usr/local"
+      CMAKE_SYSTEM_PROGRAM_PATH:
+        - "/bin"
+  -
+    kind: "find-v1"
+    backtrace:
+      - "/home/khnmuhaimin/EEE4022S/zephyr-fota/zephyr/cmake/kobj.cmake:3 (find_program)"
+      - "/home/khnmuhaimin/EEE4022S/zephyr-fota/zephyr/CMakeLists.txt:906 (include)"
+    mode: "program"
+    variable: "GEN_KOBJECT_LIST"
+    description: "Path to a program."
+    settings:
+      SearchFramework: "NEVER"
+      SearchAppBundle: "NEVER"
+      CMAKE_FIND_USE_CMAKE_PATH: true
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "gen_kobject_list"
+      - "gen_kobject_list.py"
+    candidate_directories:
+      - "/home/khnmuhaimin/zephyr-sdk-0.17.2/sysroots/x86_64-pokysdk-linux/usr/bin/"
+      - "/home/khnmuhaimin/zephyr-sdk-0.17.2/sysroots/x86_64-pokysdk-linux/usr/sbin/"
+      - "/home/khnmuhaimin/zephyr-sdk-0.17.2/sysroots/x86_64-pokysdk-linux/usr/"
+      - "/home/khnmuhaimin/EEE4022S/.venv/bin/"
+      - "/home/khnmuhaimin/.local/bin/"
+      - "/usr/local/bin/"
+      - "/usr/bin/"
+      - "/usr/local/sbin/"
+      - "/usr/lib/jvm/default/bin/"
+      - "/opt/rocm/bin/"
+      - "/opt/rocm/hip/bin/"
+      - "/usr/bin/site_perl/"
+      - "/usr/bin/vendor_perl/"
+      - "/usr/bin/core_perl/"
+      - "/home/khnmuhaimin/.rvm/bin/"
+      - "/usr/local/MATLAB/R2024b/bin/"
+      - "/home/khnmuhaimin/.esp/xtensa-lx106-elf-gcc8_4_0-esp-2020r3-linux-amd64/xtensa-lx106-elf/bin/"
+      - "/usr/local/texlive/2025/bin/x86_64-linux/"
+      - "/bin/"
+      - "/home/khnmuhaimin/EEE4022S/zephyr-fota/zephyr/scripts/build/"
+    searched_directories:
+      - "/home/khnmuhaimin/zephyr-sdk-0.17.2/sysroots/x86_64-pokysdk-linux/usr/bin/gen_kobject_list"
+      - "/home/khnmuhaimin/zephyr-sdk-0.17.2/sysroots/x86_64-pokysdk-linux/usr/sbin/gen_kobject_list"
+      - "/home/khnmuhaimin/zephyr-sdk-0.17.2/sysroots/x86_64-pokysdk-linux/usr/gen_kobject_list"
+      - "/home/khnmuhaimin/EEE4022S/.venv/bin/gen_kobject_list"
+      - "/home/khnmuhaimin/.local/bin/gen_kobject_list"
+      - "/usr/local/bin/gen_kobject_list"
+      - "/usr/bin/gen_kobject_list"
+      - "/usr/local/sbin/gen_kobject_list"
+      - "/usr/lib/jvm/default/bin/gen_kobject_list"
+      - "/opt/rocm/bin/gen_kobject_list"
+      - "/opt/rocm/hip/bin/gen_kobject_list"
+      - "/usr/bin/site_perl/gen_kobject_list"
+      - "/usr/bin/vendor_perl/gen_kobject_list"
+      - "/usr/bin/core_perl/gen_kobject_list"
+      - "/home/khnmuhaimin/.rvm/bin/gen_kobject_list"
+      - "/usr/local/MATLAB/R2024b/bin/gen_kobject_list"
+      - "/home/khnmuhaimin/.esp/xtensa-lx106-elf-gcc8_4_0-esp-2020r3-linux-amd64/xtensa-lx106-elf/bin/gen_kobject_list"
+      - "/usr/local/texlive/2025/bin/x86_64-linux/gen_kobject_list"
+      - "/bin/gen_kobject_list"
+      - "/home/khnmuhaimin/EEE4022S/zephyr-fota/zephyr/scripts/build/gen_kobject_list"
+      - "/home/khnmuhaimin/zephyr-sdk-0.17.2/sysroots/x86_64-pokysdk-linux/usr/bin/gen_kobject_list.py"
+      - "/home/khnmuhaimin/zephyr-sdk-0.17.2/sysroots/x86_64-pokysdk-linux/usr/sbin/gen_kobject_list.py"
+      - "/home/khnmuhaimin/zephyr-sdk-0.17.2/sysroots/x86_64-pokysdk-linux/usr/gen_kobject_list.py"
+      - "/home/khnmuhaimin/EEE4022S/.venv/bin/gen_kobject_list.py"
+      - "/home/khnmuhaimin/.local/bin/gen_kobject_list.py"
+      - "/usr/local/bin/gen_kobject_list.py"
+      - "/usr/bin/gen_kobject_list.py"
+      - "/usr/local/sbin/gen_kobject_list.py"
+      - "/usr/lib/jvm/default/bin/gen_kobject_list.py"
+      - "/opt/rocm/bin/gen_kobject_list.py"
+      - "/opt/rocm/hip/bin/gen_kobject_list.py"
+      - "/usr/bin/site_perl/gen_kobject_list.py"
+      - "/usr/bin/vendor_perl/gen_kobject_list.py"
+      - "/usr/bin/core_perl/gen_kobject_list.py"
+      - "/home/khnmuhaimin/.rvm/bin/gen_kobject_list.py"
+      - "/usr/local/MATLAB/R2024b/bin/gen_kobject_list.py"
+      - "/home/khnmuhaimin/.esp/xtensa-lx106-elf-gcc8_4_0-esp-2020r3-linux-amd64/xtensa-lx106-elf/bin/gen_kobject_list.py"
+      - "/usr/local/texlive/2025/bin/x86_64-linux/gen_kobject_list.py"
+      - "/bin/gen_kobject_list.py"
+    found: "/home/khnmuhaimin/EEE4022S/zephyr-fota/zephyr/scripts/build/gen_kobject_list.py"
+    search_context:
+      CMAKE_PREFIX_PATH:
+        - "/home/khnmuhaimin/zephyr-sdk-0.17.2/sysroots/x86_64-pokysdk-linux/usr"
+      ENV{PATH}:
+        - "/home/khnmuhaimin/EEE4022S/.venv/bin"
+        - "/home/khnmuhaimin/.local/bin"
+        - "/usr/local/bin"
+        - "/usr/bin"
+        - "/usr/local/sbin"
+        - "/usr/lib/jvm/default/bin"
+        - "/opt/rocm/bin"
+        - "/opt/rocm/hip/bin"
+        - "/usr/bin/site_perl"
+        - "/usr/bin/vendor_perl"
+        - "/usr/bin/core_perl"
+        - "/home/khnmuhaimin/.rvm/bin"
+        - "/usr/local/MATLAB/R2024b/bin"
+        - "/home/khnmuhaimin/.esp/xtensa-lx106-elf-gcc8_4_0-esp-2020r3-linux-amd64/xtensa-lx106-elf/bin"
+        - "/usr/local/texlive/2025/bin/x86_64-linux"
+      CMAKE_INSTALL_PREFIX: "/usr/local"
+      CMAKE_SYSTEM_PROGRAM_PATH:
+        - "/bin"
+  -
+    kind: "find-v1"
+    backtrace:
+      - "/home/khnmuhaimin/EEE4022S/zephyr-fota/zephyr/cmake/reports/CMakeLists.txt:87 (find_program)"
+    mode: "program"
+    variable: "PUNCOVER"
+    description: "Path to a program."
+    settings:
+      SearchFramework: "NEVER"
+      SearchAppBundle: "NEVER"
+      CMAKE_FIND_USE_CMAKE_PATH: true
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "puncover"
+    candidate_directories:
+      - "/home/khnmuhaimin/zephyr-sdk-0.17.2/sysroots/x86_64-pokysdk-linux/usr/bin/"
+      - "/home/khnmuhaimin/zephyr-sdk-0.17.2/sysroots/x86_64-pokysdk-linux/usr/sbin/"
+      - "/home/khnmuhaimin/zephyr-sdk-0.17.2/sysroots/x86_64-pokysdk-linux/usr/"
+      - "/home/khnmuhaimin/EEE4022S/.venv/bin/"
+      - "/home/khnmuhaimin/.local/bin/"
+      - "/usr/local/bin/"
+      - "/usr/bin/"
+      - "/usr/local/sbin/"
+      - "/usr/lib/jvm/default/bin/"
+      - "/opt/rocm/bin/"
+      - "/opt/rocm/hip/bin/"
+      - "/usr/bin/site_perl/"
+      - "/usr/bin/vendor_perl/"
+      - "/usr/bin/core_perl/"
+      - "/home/khnmuhaimin/.rvm/bin/"
+      - "/usr/local/MATLAB/R2024b/bin/"
+      - "/home/khnmuhaimin/.esp/xtensa-lx106-elf-gcc8_4_0-esp-2020r3-linux-amd64/xtensa-lx106-elf/bin/"
+      - "/usr/local/texlive/2025/bin/x86_64-linux/"
+      - "/bin/"
+    searched_directories:
+      - "/home/khnmuhaimin/zephyr-sdk-0.17.2/sysroots/x86_64-pokysdk-linux/usr/bin/puncover"
+      - "/home/khnmuhaimin/zephyr-sdk-0.17.2/sysroots/x86_64-pokysdk-linux/usr/sbin/puncover"
+      - "/home/khnmuhaimin/zephyr-sdk-0.17.2/sysroots/x86_64-pokysdk-linux/usr/puncover"
+      - "/home/khnmuhaimin/EEE4022S/.venv/bin/puncover"
+      - "/home/khnmuhaimin/.local/bin/puncover"
+      - "/usr/local/bin/puncover"
+      - "/usr/bin/puncover"
+      - "/usr/local/sbin/puncover"
+      - "/usr/lib/jvm/default/bin/puncover"
+      - "/opt/rocm/bin/puncover"
+      - "/opt/rocm/hip/bin/puncover"
+      - "/usr/bin/site_perl/puncover"
+      - "/usr/bin/vendor_perl/puncover"
+      - "/usr/bin/core_perl/puncover"
+      - "/home/khnmuhaimin/.rvm/bin/puncover"
+      - "/usr/local/MATLAB/R2024b/bin/puncover"
+      - "/home/khnmuhaimin/.esp/xtensa-lx106-elf-gcc8_4_0-esp-2020r3-linux-amd64/xtensa-lx106-elf/bin/puncover"
+      - "/usr/local/texlive/2025/bin/x86_64-linux/puncover"
+      - "/bin/puncover"
+    found: false
+    search_context:
+      CMAKE_PREFIX_PATH:
+        - "/home/khnmuhaimin/zephyr-sdk-0.17.2/sysroots/x86_64-pokysdk-linux/usr"
+      ENV{PATH}:
+        - "/home/khnmuhaimin/EEE4022S/.venv/bin"
+        - "/home/khnmuhaimin/.local/bin"
+        - "/usr/local/bin"
+        - "/usr/bin"
+        - "/usr/local/sbin"
+        - "/usr/lib/jvm/default/bin"
+        - "/opt/rocm/bin"
+        - "/opt/rocm/hip/bin"
+        - "/usr/bin/site_perl"
+        - "/usr/bin/vendor_perl"
+        - "/usr/bin/core_perl"
+        - "/home/khnmuhaimin/.rvm/bin"
+        - "/usr/local/MATLAB/R2024b/bin"
+        - "/home/khnmuhaimin/.esp/xtensa-lx106-elf-gcc8_4_0-esp-2020r3-linux-amd64/xtensa-lx106-elf/bin"
+        - "/usr/local/texlive/2025/bin/x86_64-linux"
+      CMAKE_INSTALL_PREFIX: "/usr/local"
+      CMAKE_SYSTEM_PROGRAM_PATH:
+        - "/bin"
+  -
+    kind: "find-v1"
+    backtrace:
+      - "/home/khnmuhaimin/EEE4022S/zephyr-fota/zephyr/cmake/reports/CMakeLists.txt:114 (find_program)"
+    mode: "program"
+    variable: "PAHOLE"
+    description: "Path to a program."
+    settings:
+      SearchFramework: "NEVER"
+      SearchAppBundle: "NEVER"
+      CMAKE_FIND_USE_CMAKE_PATH: true
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "pahole"
+    candidate_directories:
+      - "/home/khnmuhaimin/zephyr-sdk-0.17.2/sysroots/x86_64-pokysdk-linux/usr/bin/"
+      - "/home/khnmuhaimin/zephyr-sdk-0.17.2/sysroots/x86_64-pokysdk-linux/usr/sbin/"
+      - "/home/khnmuhaimin/zephyr-sdk-0.17.2/sysroots/x86_64-pokysdk-linux/usr/"
+      - "/home/khnmuhaimin/EEE4022S/.venv/bin/"
+      - "/home/khnmuhaimin/.local/bin/"
+      - "/usr/local/bin/"
+      - "/usr/bin/"
+      - "/usr/local/sbin/"
+      - "/usr/lib/jvm/default/bin/"
+      - "/opt/rocm/bin/"
+      - "/opt/rocm/hip/bin/"
+      - "/usr/bin/site_perl/"
+      - "/usr/bin/vendor_perl/"
+      - "/usr/bin/core_perl/"
+      - "/home/khnmuhaimin/.rvm/bin/"
+      - "/usr/local/MATLAB/R2024b/bin/"
+      - "/home/khnmuhaimin/.esp/xtensa-lx106-elf-gcc8_4_0-esp-2020r3-linux-amd64/xtensa-lx106-elf/bin/"
+      - "/usr/local/texlive/2025/bin/x86_64-linux/"
+      - "/bin/"
+    searched_directories:
+      - "/home/khnmuhaimin/zephyr-sdk-0.17.2/sysroots/x86_64-pokysdk-linux/usr/bin/pahole"
+      - "/home/khnmuhaimin/zephyr-sdk-0.17.2/sysroots/x86_64-pokysdk-linux/usr/sbin/pahole"
+      - "/home/khnmuhaimin/zephyr-sdk-0.17.2/sysroots/x86_64-pokysdk-linux/usr/pahole"
+      - "/home/khnmuhaimin/EEE4022S/.venv/bin/pahole"
+      - "/home/khnmuhaimin/.local/bin/pahole"
+      - "/usr/local/bin/pahole"
+    found: "/usr/bin/pahole"
+    search_context:
+      CMAKE_PREFIX_PATH:
+        - "/home/khnmuhaimin/zephyr-sdk-0.17.2/sysroots/x86_64-pokysdk-linux/usr"
+      ENV{PATH}:
+        - "/home/khnmuhaimin/EEE4022S/.venv/bin"
+        - "/home/khnmuhaimin/.local/bin"
+        - "/usr/local/bin"
+        - "/usr/bin"
+        - "/usr/local/sbin"
+        - "/usr/lib/jvm/default/bin"
+        - "/opt/rocm/bin"
+        - "/opt/rocm/hip/bin"
+        - "/usr/bin/site_perl"
+        - "/usr/bin/vendor_perl"
+        - "/usr/bin/core_perl"
+        - "/home/khnmuhaimin/.rvm/bin"
+        - "/usr/local/MATLAB/R2024b/bin"
+        - "/home/khnmuhaimin/.esp/xtensa-lx106-elf-gcc8_4_0-esp-2020r3-linux-amd64/xtensa-lx106-elf/bin"
+        - "/usr/local/texlive/2025/bin/x86_64-linux"
+      CMAKE_INSTALL_PREFIX: "/usr/local"
+      CMAKE_SYSTEM_PROGRAM_PATH:
+        - "/bin"
+  -
+    kind: "find_package-v1"
+    backtrace:
+      - "CMakeLists.txt:5 (find_package)"
+    name: "Zephyr"
+    configs:
+      -
+        filename: "ZephyrConfig.cmake"
+        kind: "cmake"
+      -
+        filename: "zephyr-config.cmake"
+        kind: "cmake"
+    version_request:
+      exact: false
+    settings:
+      required: "required_explicit"
+      quiet: false
+      global: false
+      policy_scope: true
+      bypass_provider: false
+      hints:
+        - "/home/khnmuhaimin/EEE4022S/zephyr-fota/zephyr"
+      names:
+        - "Zephyr"
+      path_suffixes:
+        - ""
+      paths:
+        CMAKE_FIND_USE_CMAKE_PATH: true
+        CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: true
+        CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+        CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+        CMAKE_FIND_USE_INSTALL_PREFIX: true
+        CMAKE_FIND_USE_PACKAGE_ROOT_PATH: true
+        CMAKE_FIND_USE_CMAKE_PACKAGE_REGISTRY: true
+        CMAKE_FIND_USE_SYSTEM_PACKAGE_REGISTRY: true
+        CMAKE_FIND_ROOT_PATH_MODE: "BOTH"
+    candidates:
+      -
+        path: "/home/khnmuhaimin/EEE4022S/zephyr-fota/build/CMakeFiles/pkgRedirects/ZephyrConfig.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "/home/khnmuhaimin/EEE4022S/zephyr-fota/build/CMakeFiles/pkgRedirects/zephyr-config.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "/home/khnmuhaimin/EEE4022S/zephyr-fota/zephyr/ZephyrConfig.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "/home/khnmuhaimin/EEE4022S/zephyr-fota/zephyr/zephyr-config.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "/home/khnmuhaimin/EEE4022S/zephyr-fota/zephyr/cmake/ZephyrConfig.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "/home/khnmuhaimin/EEE4022S/zephyr-fota/zephyr/cmake/zephyr-config.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "/home/khnmuhaimin/EEE4022S/zephyr-fota/zephyr/share/zephyr-package/ZephyrConfig.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "/home/khnmuhaimin/EEE4022S/zephyr-fota/zephyr/share/zephyr-package/zephyr-config.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "/home/khnmuhaimin/EEE4022S/zephyr-fota/zephyr/share/zephyrunittest-package/ZephyrConfig.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "/home/khnmuhaimin/EEE4022S/zephyr-fota/zephyr/share/zephyrunittest-package/zephyr-config.cmake"
+        mode: "config"
+        reason: "no_exist"
+    found:
+      path: "/home/khnmuhaimin/EEE4022S/zephyr-fota/zephyr/share/zephyr-package/cmake/ZephyrConfig.cmake"
+      mode: "config"
+      version: "4.2.0"
+    search_context:
+      CMAKE_PREFIX_PATH:
+        - "/home/khnmuhaimin/zephyr-sdk-0.17.2/sysroots/x86_64-pokysdk-linux/usr"
+      ENV{PATH}:
+        - "/home/khnmuhaimin/EEE4022S/.venv/bin"
+        - "/home/khnmuhaimin/.local/bin"
+        - "/usr/local/bin"
+        - "/usr/bin"
+        - "/usr/local/sbin"
+        - "/usr/lib/jvm/default/bin"
+        - "/opt/rocm/bin"
+        - "/opt/rocm/hip/bin"
+        - "/usr/bin/site_perl"
+        - "/usr/bin/vendor_perl"
+        - "/usr/bin/core_perl"
+        - "/home/khnmuhaimin/.rvm/bin"
+        - "/usr/local/MATLAB/R2024b/bin"
+        - "/home/khnmuhaimin/.esp/xtensa-lx106-elf-gcc8_4_0-esp-2020r3-linux-amd64/xtensa-lx106-elf/bin"
+        - "/usr/local/texlive/2025/bin/x86_64-linux"
+      CMAKE_INSTALL_PREFIX: "/usr/local"
+...
+
+---
+events:
+  -
+    kind: "find-v1"
+    backtrace:
+      - "/home/khnmuhaimin/EEE4022S/zephyr-fota/zephyr/cmake/compiler/gcc/target.cmake:8 (find_program)"
+      - "/home/khnmuhaimin/EEE4022S/zephyr-fota/zephyr/cmake/modules/FindTargetTools.cmake:103 (include)"
+      - "/home/khnmuhaimin/EEE4022S/zephyr-fota/zephyr/cmake/modules/kernel.cmake:25 (find_package)"
+      - "/home/khnmuhaimin/EEE4022S/zephyr-fota/zephyr/cmake/modules/zephyr_default.cmake:140 (include)"
+      - "/home/khnmuhaimin/EEE4022S/zephyr-fota/zephyr/share/zephyr-package/cmake/ZephyrConfig.cmake:66 (include)"
+      - "/home/khnmuhaimin/EEE4022S/zephyr-fota/zephyr/share/zephyr-package/cmake/ZephyrConfig.cmake:97 (include_boilerplate)"
+      - "CMakeLists.txt:5 (find_package)"
+    mode: "program"
+    variable: "CMAKE_C_COMPILER"
+    description: "Path to a program."
+    settings:
+      SearchFramework: "NEVER"
+      SearchAppBundle: "NEVER"
+      CMAKE_FIND_USE_CMAKE_PATH: true
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "/home/khnmuhaimin/zephyr-sdk-0.17.2/xtensa-espressif_esp32_zephyr-elf/bin/xtensa-espressif_esp32_zephyr-elf-gcc"
+    candidate_directories:
+      - "/home/khnmuhaimin/zephyr-sdk-0.17.2/"
+    found: "/home/khnmuhaimin/zephyr-sdk-0.17.2/xtensa-espressif_esp32_zephyr-elf/bin/xtensa-espressif_esp32_zephyr-elf-gcc"
+    search_context:
+      CMAKE_PREFIX_PATH:
+        - "/home/khnmuhaimin/zephyr-sdk-0.17.2/sysroots/x86_64-pokysdk-linux/usr"
+      ENV{PATH}:
+        - "/home/khnmuhaimin/EEE4022S/zephyr-fota/zephyr/scripts"
+        - "/home/khnmuhaimin/EEE4022S/zephyr-fota/.venv/bin"
+        - "/home/khnmuhaimin/.local/bin"
+        - "/usr/local/bin"
+        - "/usr/bin"
+        - "/usr/local/sbin"
+        - "/usr/lib/jvm/default/bin"
+        - "/opt/rocm/bin"
+        - "/opt/rocm/hip/bin"
+        - "/usr/bin/site_perl"
+        - "/usr/bin/vendor_perl"
+        - "/usr/bin/core_perl"
+        - "/home/khnmuhaimin/.rvm/bin"
+        - "/usr/local/MATLAB/R2024b/bin"
+        - "/home/khnmuhaimin/.esp/xtensa-lx106-elf-gcc8_4_0-esp-2020r3-linux-amd64/xtensa-lx106-elf/bin"
+        - "/usr/local/texlive/2025/bin/x86_64-linux"
+      CMAKE_INSTALL_PREFIX: "/usr/local"
+...

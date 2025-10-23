@@ -8,8 +8,8 @@
       "args": [],
       "stopAtEntry": false,
       "externalConsole": false,
-      "cwd": "/home/khnmuhaimin/EEE4022S/zephyr-fota/zephyr/samples/net/sockets/coap_client/src",
-      "program": "/home/khnmuhaimin/EEE4022S/zephyr-fota/zephyr/samples/net/sockets/coap_client/src/build/Debug/outDebug",
+      "cwd": "/home/khnmuhaimin/EEE4022S/zephyr-fota/apps/drivers/modem/simcom-a76xx",
+      "program": "/home/khnmuhaimin/EEE4022S/zephyr-fota/apps/drivers/modem/simcom-a76xx/build/Debug/outDebug",
       "MIMode": "gdb",
       "miDebuggerPath": "gdb",
       "setupCommands": [

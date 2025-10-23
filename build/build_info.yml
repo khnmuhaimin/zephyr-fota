@@ -1,0 +1,55 @@
+cmake:
+  application:
+    configuration-dir: '/home/khnmuhaimin/EEE4022S/zephyr-fota/zephyr/samples/net/wifi/apsta_mode'
+    source-dir: '/home/khnmuhaimin/EEE4022S/zephyr-fota/zephyr/samples/net/wifi/apsta_mode'
+  board:
+    name: 'esp32_devkitc'
+    path:
+     - '/home/khnmuhaimin/EEE4022S/zephyr-fota/zephyr/boards/espressif/esp32_devkitc'
+    qualifiers: 'esp32/procpu'
+    revision: ''
+  devicetree:
+    bindings-dirs:
+     - '/home/khnmuhaimin/EEE4022S/zephyr-fota/apps/dts/bindings'
+     - '/home/khnmuhaimin/EEE4022S/zephyr-fota/zephyr/dts/bindings'
+    files:
+     - '/home/khnmuhaimin/EEE4022S/zephyr-fota/zephyr/boards/espressif/esp32_devkitc/esp32_devkitc_procpu.dts'
+     - '/home/khnmuhaimin/EEE4022S/zephyr-fota/zephyr/samples/net/wifi/apsta_mode/socs/esp32_procpu.overlay'
+    include-dirs:
+     - '/home/khnmuhaimin/EEE4022S/zephyr-fota/apps/include'
+     - '/home/khnmuhaimin/EEE4022S/zephyr-fota/apps/dts'
+     - '/home/khnmuhaimin/EEE4022S/zephyr-fota/zephyr/include'
+     - '/home/khnmuhaimin/EEE4022S/zephyr-fota/zephyr/include/zephyr'
+     - '/home/khnmuhaimin/EEE4022S/zephyr-fota/zephyr/dts/common'
+     - '/home/khnmuhaimin/EEE4022S/zephyr-fota/zephyr/dts/vendor'
+     - '/home/khnmuhaimin/EEE4022S/zephyr-fota/zephyr/dts/rx'
+     - '/home/khnmuhaimin/EEE4022S/zephyr-fota/zephyr/dts/x86'
+     - '/home/khnmuhaimin/EEE4022S/zephyr-fota/zephyr/dts/xtensa'
+     - '/home/khnmuhaimin/EEE4022S/zephyr-fota/zephyr/dts/sparc'
+     - '/home/khnmuhaimin/EEE4022S/zephyr-fota/zephyr/dts/riscv'
+     - '/home/khnmuhaimin/EEE4022S/zephyr-fota/zephyr/dts/posix'
+     - '/home/khnmuhaimin/EEE4022S/zephyr-fota/zephyr/dts/arm64'
+     - '/home/khnmuhaimin/EEE4022S/zephyr-fota/zephyr/dts/arm'
+     - '/home/khnmuhaimin/EEE4022S/zephyr-fota/zephyr/dts/arc'
+     - '/home/khnmuhaimin/EEE4022S/zephyr-fota/zephyr/dts'
+    user-files:
+     - '/home/khnmuhaimin/EEE4022S/zephyr-fota/zephyr/samples/net/wifi/apsta_mode/socs/esp32_procpu.overlay'
+  kconfig:
+    files:
+     - '/home/khnmuhaimin/EEE4022S/zephyr-fota/zephyr/boards/espressif/esp32_devkitc/esp32_devkitc_procpu_defconfig'
+     - '/home/khnmuhaimin/EEE4022S/zephyr-fota/zephyr/samples/net/wifi/apsta_mode/prj.conf'
+     - '/home/khnmuhaimin/EEE4022S/zephyr-fota/zephyr/samples/net/wifi/apsta_mode/socs/esp32_procpu.conf'
+    user-files:
+     - '/home/khnmuhaimin/EEE4022S/zephyr-fota/zephyr/samples/net/wifi/apsta_mode/prj.conf'
+     - '/home/khnmuhaimin/EEE4022S/zephyr-fota/zephyr/samples/net/wifi/apsta_mode/socs/esp32_procpu.conf'
+  toolchain:
+    name: 'zephyr'
+    path: '/home/khnmuhaimin/zephyr-sdk-0.17.2'
+  zephyr:
+    version: '4.2.0'
+    zephyr-base: '/home/khnmuhaimin/EEE4022S/zephyr-fota/zephyr'
+version: '0.1.0'
+west:
+  command: '/home/khnmuhaimin/EEE4022S/.venv/bin/west build --pristine -b esp32_devkitc/esp32/procpu zephyr/samples/net/wifi/apsta_mode'
+  topdir: '/home/khnmuhaimin/EEE4022S/zephyr-fota'
+  version: '1.5.0'

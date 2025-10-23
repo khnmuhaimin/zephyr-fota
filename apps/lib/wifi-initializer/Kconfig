@@ -1,0 +1,23 @@
+config WIFI_INITIALIZER
+	bool "Enable wifi initialization"
+  	help
+	 	 Enables initialization for wifi before the main function executes.
+
+if WIFI_INITIALIZER
+
+config WIFI_INITIALIZER_SSID
+	string "SSID of the target AP"
+	help
+	  	SSID of the access point to connect to in station mode.
+	  	For example: "TARGET-AP"
+
+config WIFI_INITIALIZER_PASSWORD
+	string "Pre-shared key for target AP"
+	help
+	  	WPA2 password used to connect to the target AP.
+	  	For example: "PSK"
+
+module = WIFI_INITIALIZER
+source "subsys/logging/Kconfig.template.log_config"
+
+endif

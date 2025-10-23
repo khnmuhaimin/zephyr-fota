@@ -1,0 +1,2 @@
+# Load board Kconfig descriptions.
+osource "/home/khnmuhaimin/EEE4022S/zephyr-fota/zephyr/boards/espressif/esp32_devkitc/Kconfig.esp32_devkitc"
