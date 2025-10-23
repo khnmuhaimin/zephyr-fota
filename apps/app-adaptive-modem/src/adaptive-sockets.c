@@ -5,8 +5,78 @@ LOG_MODULE_REGISTER(adaptive_sockets, LOG_LEVEL_DBG);
 #include <zephyr/net/socket.h>
 #include <zephyr/net/net_context.h>
 #include <zephyr/net/net_pkt.h>
-// #include <zephyr/net/net_core.h>
-// #include <zephyr/net/net_ip.h>
+#include <zephyr/device.h>
+#include <zephyr/devicetree.h>
+
+
+// node identifiers
+#define ADAPT_NET_DEV_1 DT_ALIAS(adaptive_net_device_1)
+
+// compile time checks
+#if !DT_NODE_HAS_STATUS(ADAPT_NET_DEV_1, okay)
+#error "Devicetree alias 'adaptive-net-device-1' is missing or disabled. Please define it in your board overlay."
+#endif
+
+void log_interface_conditions(struct net_if *iface)
+{
+    if (iface == NULL) {
+        LOG_ERR("Cannot log conditions: Interface pointer is NULL.");
+        return;
+    }
+    LOG_DBG("Admin up: %d\nCarrier okay: %d\nIs dormant: %d", net_if_is_admin_up(iface), net_if_is_carrier_ok(iface), net_if_is_dormant(iface));
+    
+}
+
+
+/*
+ * Holds data for and Adaptive Socket
+ */
+struct adaptive_socket
+{
+    int fd;
+    struct net_context *context;
+    struct k_sem recv_pkt_sem;
+    struct net_pkt *recv_pkt;
+    struct sockaddr *dest_addr;
+    socklen_t dest_addr_len;
+    int error;
+};
+
+/*
+ * Holds data for the Adaptive Sockets Layer
+ */
+struct adaptive_sockets_layer
+{
+    struct net_if *net_if_1;
+    int error;
+};
+
+static struct adaptive_sockets_layer adapt_sockets_layer = {0};
+static int adaptive_close(void *obj);
+static int adaptive_connect(void *obj, const struct sockaddr *dest_addr, socklen_t dest_addr_len);
+static ssize_t adaptive_sendto(void *obj, const void *buf, size_t buf_len, int flags, const struct sockaddr *dest_addr, socklen_t dest_addr_len);
+static ssize_t adaptive_recvfrom(void *obj, void *buf, size_t buf_len, int flags, struct sockaddr *src_addr, socklen_t *src_addr_len);
+
+static const struct socket_op_vtable adapt_socket_ops = {
+    .fd_vtable = {
+        .read = NULL,   // implement as caller for recvfrom
+        .write = NULL, // implement as caller for sendto
+        .close = adaptive_close, // implement
+        .ioctl = NULL},
+    .shutdown = NULL,
+    .bind = NULL,
+    .connect = adaptive_connect, // implement
+    .listen = NULL,
+    .accept = NULL,
+    .sendto = adaptive_sendto,     // implement
+    .recvfrom = adaptive_recvfrom, // implement
+    .getsockopt = NULL,
+    .setsockopt = NULL,
+    .sendmsg = NULL,
+    .recvmsg = NULL,
+    .getpeername = NULL,
+    .getsockname = NULL,
+};
 
 void log_ipv4(struct sockaddr *addr, socklen_t addrlen)
 {
@@ -41,166 +111,97 @@ void log_ipv4(struct sockaddr *addr, socklen_t addrlen)
     }
 }
 
-// void log_netif_ip_address(struct net_if *iface)
-// {
-//     if (!iface) {
-//         LOG_ERR("Cannot log IP: Interface pointer is NULL.");
-//         return;
-//     }
 
-//     // Allocate a buffer to hold the human-readable IP address string
-//     char ip_addr_str[NET_IPV4_ADDR_LEN] = {0};
 
-//     // 1. Get the first valid IPv4 address structure
-//     struct net_if_addr *if_addr = net_if_ipv4_get_addr(iface, NET_ADDR_ANY, NET_ADDR_VALID);
-
-//     if (if_addr) {
-//         // 2. Convert the binary IP address data to a string
-//         net_addr_ntop(AF_INET, &if_addr->address.in_addr, ip_addr_str, sizeof(ip_addr_str));
-
-//         // 3. Log the result
-//         LOG_INF("Interface %p successfully acquired IP: %s", iface, ip_addr_str);
-//     } else {
-//         // 4. Handle failure case
-//         LOG_WRN("Interface %p has NO valid IPv4 address yet (Still 0.0.0.0).", iface);
-//     }
-// }
-
-/*
- * Holds data for and Adaptive Socket
- */
-struct adaptive_socket
+int adaptive_sockets_init(void)
 {
-    int fd;
-    struct net_context *wifi_context;
-    struct k_sem receive_packet_semaphore;
-    struct net_pkt *received_packet;
-    struct sockaddr *destination_address;
-    socklen_t destination_address_length;
-    int error;
-};
-
-/*
- * Holds data for the Adaptive Sockets Layer
- */
-struct adaptive_sockets_layer
-{
-    struct net_if *wifi_iface;
-    int error;
-};
-
-static struct adaptive_sockets_layer adapt_sockets_layer;
-
-static ssize_t adaptive_read(void *obj, void *buf, size_t sz);
-static ssize_t adaptive_write(void *obj, const void *buf, size_t sz);
-static int adaptive_close(void *obj);
-static int adaptive_connect(void *obj, const struct sockaddr *addr, socklen_t addrlen);
-static ssize_t adaptive_sendto(void *obj, const void *buf, size_t len, int flags, const struct sockaddr *dest_addr, socklen_t addrlen);
-static ssize_t adaptive_recvfrom(void *obj, void *buf, size_t max_len, int flags, struct sockaddr *src_addr, socklen_t *addrlen);
-
-static const struct socket_op_vtable adaptive_socket_ops = {
-    .fd_vtable = {
-        .read = adaptive_read,   // implement as caller for recvfrom
-        .write = adaptive_write, // implement as caller for sendto
-        .close = adaptive_close, // implement
-        .ioctl = NULL},
-    .shutdown = NULL,
-    .bind = NULL,
-    .connect = adaptive_connect, // implement
-    .listen = NULL,
-    .accept = NULL,
-    .sendto = adaptive_sendto,     // implement
-    .recvfrom = adaptive_recvfrom, // implement
-    .getsockopt = NULL,
-    .setsockopt = NULL,
-    .sendmsg = NULL,
-    .recvmsg = NULL,
-    .getpeername = NULL,
-    .getsockname = NULL,
-};
-
-static void adaptive_set_wifi_iface_if_wifi_iface(struct net_if *iface, void *user_data)
-{
-    if (adapt_sockets_layer.wifi_iface == NULL && net_if_is_wifi(iface))
-    {
-        adapt_sockets_layer.wifi_iface = iface;
-    }
-}
-
-int adaptive_sockets_init()
-{
-    adapt_sockets_layer.error = 0;
-    adapt_sockets_layer.wifi_iface = net_if_get_wifi_sta();
-    if (adapt_sockets_layer.error != 0)
-    {
-        LOG_ERR("Failed to get wifi station network interface!");
+    if (adapt_sockets_layer.error != 0) {
+        LOG_ERR("Cannot initialize adaptive sockets layer while in an error state!");
         return -adapt_sockets_layer.error;
     }
+    adapt_sockets_layer.error = 0;
+    struct device * net_dev_1 = DEVICE_DT_GET(ADAPT_NET_DEV_1);
+    if (net_dev_1 == NULL)
+    {
+        LOG_ERR("Failed to get net device 1!");
+        adapt_sockets_layer.error = ENODEV;
+        return -adapt_sockets_layer.error;
+    }
+    if (!device_is_ready(net_dev_1)) {
+        LOG_ERR("Device 'adaptive-net-device-1' is not ready yet.");
+        // Use EBUSY: Resource is busy or not initialized.
+        adapt_sockets_layer.error = EBUSY;
+        return -adapt_sockets_layer.error;
+    }
+    adapt_sockets_layer.net_if_1 = net_if_lookup_by_dev(net_dev_1);
+    if (adapt_sockets_layer.net_if_1 == NULL)
+    {
+        LOG_ERR("Failed to get network interface for net device 1!");
+        adapt_sockets_layer.error = ENODEV;
+        return -adapt_sockets_layer.error;
+    }
+    log_interface_conditions(adapt_sockets_layer.net_if_1);
     // do some more init stuff
     return -adapt_sockets_layer.error;
-}
-
-static ssize_t adaptive_read(void *obj, void *buf, size_t sz)
-{
-    struct adaptive_socket *socket = (struct adaptive_socket *)obj;
-    LOG_DBG("Running adaptive_read for socket %d...", socket->fd);
-    return sz > 0 ? 10 : 0;
-}
-
-static ssize_t adaptive_write(void *obj, const void *buf, size_t sz)
-{
-    struct adaptive_socket *socket = (struct adaptive_socket *)obj;
-    LOG_DBG("Running adaptive_write for socket %d...", socket->fd);
-    return sz;
 }
 
 static int adaptive_close(void *obj)
 {
     struct adaptive_socket *socket = (struct adaptive_socket *)obj;
     LOG_DBG("Running adaptive_close for socket %d...", socket->fd);
-    int error_code = net_context_put(socket->wifi_context);
-    if (error_code < 0)
+    int error = net_context_put(socket->context);
+    if (error < 0)
     {
-        LOG_ERR("Failed to put network context. Error %d.", error_code);
+        LOG_ERR("Failed to put network context. Error %d.", error);
     }
     k_free(socket);
     return 0;
 }
 
-static int adaptive_connect(void *obj, const struct sockaddr *addr, socklen_t addrlen)
+static int adaptive_connect(void *obj, const struct sockaddr *dest_addr, socklen_t dest_addr_len)
 {
     struct adaptive_socket *socket = (struct adaptive_socket *)obj;
     LOG_DBG("Running adaptive_connect for socket %d...", socket->fd);
-    LOG_DBG("addrlen: %d", addrlen);
-    log_ipv4(addr, addrlen);
+    // LOG_DBG("addrlen: %d", addrlen);
+    // log_ipv4(addr, addrlen);
     // LOG_DBG("----------------------------");
-    socket->destination_address = addr;
-    socket->destination_address_length = addrlen;
-    net_context_connect(socket->wifi_context, addr, addrlen, NULL, K_FOREVER, NULL);
+    socket->dest_addr = dest_addr;
+    socket->dest_addr_len = dest_addr_len;
+    net_context_connect(
+        socket->context,
+        dest_addr,
+        dest_addr_len,
+        NULL,
+        K_FOREVER,
+        NULL);
     return 0;
 }
 
-void on_send_by_wifi(struct net_context *context, int status, void *user_data)
+void on_send(struct net_context *context, int status, void *user_data)
 {
-    LOG_DBG("Sent");
+    LOG_DBG("Running on_send...");
 }
 
-void on_receieve_by_wifi(
+
+void on_receive(
     struct net_context *context,
-    struct net_pkt *packet,
+    struct net_pkt *pkt,
     union net_ip_header *ip_hdr,
     union net_proto_header *proto_hdr,
-    int status, void *user_data)
+    int status,
+    void *user_data)
 {
-
-    LOG_DBG("Recieved");
+    if (status != 0) {
+        return;
+    }
+    LOG_DBG("Running on_receive...");
     struct adaptive_socket *socket = (struct adaptive_socket *)user_data;
-    socket->received_packet = packet;
-    k_sem_give(&socket->receive_packet_semaphore);
+    socket->recv_pkt = pkt;
+    k_sem_give(&socket->recv_pkt_sem);
 }
 
-static ssize_t adaptive_sendto(void *obj, const void *buf, size_t len, int flags,
-                               const struct sockaddr *dest_addr, socklen_t addrlen)
+static ssize_t adaptive_sendto(void *obj, const void *buf, size_t buf_len, int flags,
+                               const struct sockaddr *dest_addr, socklen_t addr_len)
 {
     struct adaptive_socket *socket = (struct adaptive_socket *)obj;
     LOG_DBG("Running adaptive_sendto for socket %d...", socket->fd);
@@ -211,46 +212,54 @@ static ssize_t adaptive_sendto(void *obj, const void *buf, size_t len, int flags
     // LOG_DBG("----------------------------");
 
     // try to send the request over wifi
-    return net_context_sendto(socket->wifi_context, buf, len, socket->destination_address, socket->destination_address_length, on_send_by_wifi, K_FOREVER, NULL);
+    return net_context_sendto(
+        socket->context,
+        buf,
+        buf_len,
+        socket->dest_addr,
+        socket->dest_addr_len,
+        on_send,
+        K_FOREVER,
+        NULL);
 }
 
-static ssize_t adaptive_recvfrom(void *object, void *buffer, size_t max_length, int flags,
-                                 struct sockaddr *source_address, socklen_t *address_length)
+static ssize_t adaptive_recvfrom(void *obj, void *buf, size_t buf_len, int flags,
+                                 struct sockaddr *src_addr, socklen_t *src_addr_len)
 {
-    int error_code;
-    struct adaptive_socket *socket = (struct adaptive_socket *)object;
+    int error;
+    struct adaptive_socket *socket = (struct adaptive_socket *)obj;
     LOG_DBG("Running adaptive_recvfrom for socket %d...", socket->fd);
-    error_code = net_context_recv(socket->wifi_context, on_receieve_by_wifi, K_FOREVER, socket);
-    if (error_code < 0)
+    error = net_context_recv(socket->context, on_receive, K_FOREVER, socket);
+    if (error < 0)
     {
-        LOG_ERR("Failed to receive data from wifi context. Error: %d.", error_code);
-        return error_code;
+        LOG_ERR("Failed to receive data from context. Error: %d.", error);
+        return error;
     }
-    error_code = k_sem_take(&socket->receive_packet_semaphore, K_SECONDS(60));
-    if (error_code == -EAGAIN)
+    error = k_sem_take(&socket->recv_pkt_sem, K_SECONDS(60));
+    if (error == -EAGAIN)
     {
         LOG_ERR("Timeout waiting for data.");
         return -ETIMEDOUT;
     }
 
-    if (socket->received_packet == NULL)
+    if (socket->recv_pkt == NULL)
     {
         LOG_ERR("No recieved packet found.");
         return -1;
     }
     // net_pkt_cursor_init(socket->received_packet);
-    size_t packet_length = net_pkt_get_len(socket->received_packet);
-    size_t bytes_to_copy = (packet_length < max_length ? packet_length : max_length) - 28;
-    LOG_DBG("max_length: %zu, packet_length: %zu, bytes_to_copy: %zu", max_length, packet_length, bytes_to_copy);
+    size_t pkt_len = net_pkt_get_len(socket->recv_pkt);
+    size_t bytes_to_copy = (pkt_len < buf_len ? pkt_len : buf_len);// - 28;
+    LOG_DBG("max_length: %zu, packet_length: %zu, bytes_to_copy: %zu", buf_len, pkt_len, bytes_to_copy);
     // net_pkt_cursor_init(socket->received_packet);
-    error_code = net_pkt_read(socket->received_packet, buffer, bytes_to_copy);
-    if (error_code < 0)
+    error = net_pkt_read(socket->recv_pkt, buf, bytes_to_copy);
+    if (error < 0)
     {
-        LOG_ERR("Failed to read network packet. Error code: %d.", error_code);
+        LOG_ERR("Failed to read network packet. Error code: %d.", error);
     }
-    net_pkt_unref(socket->received_packet); // unref the packet regardless of whether it was read successfully.
-    socket->received_packet = NULL;
-    return error_code == 0 ? (ssize_t)bytes_to_copy : (ssize_t)error_code;
+    net_pkt_unref(socket->recv_pkt); // unref the packet regardless of whether it was read successfully.
+    socket->recv_pkt = NULL;
+    return error == 0 ? (ssize_t)bytes_to_copy : (ssize_t)error;
 }
 
 static bool adaptive_connection_is_supported(int family, int type, int proto)
@@ -262,6 +271,12 @@ static bool adaptive_connection_is_supported(int family, int type, int proto)
 static int adaptive_get_socket(int family, int type, int proto)
 {
     LOG_DBG("Running adaptive_get_socket...");
+
+    if (adapt_sockets_layer.net_if_1 == NULL)
+    {
+        return -ENETDOWN;
+    }
+
     struct adaptive_socket *socket = k_calloc(1, sizeof(struct adaptive_socket));
     if (socket == NULL)
     {
@@ -270,27 +285,22 @@ static int adaptive_get_socket(int family, int type, int proto)
     int fd = zvfs_reserve_fd();
     if (fd < 0)
     {
-        k_free(socket);
         return fd; // contains an error
     }
     socket->fd = fd;
     zvfs_finalize_typed_fd(
         socket->fd,
         socket,
-        (struct fd_op_vtable *)&adaptive_socket_ops,
+        (struct fd_op_vtable *)&adapt_socket_ops,
         ZVFS_MODE_IFSOCK);
-    if (adapt_sockets_layer.wifi_iface == NULL)
-    {
-        k_free(socket);
-        return -ENETDOWN;
-    }
-    int error_code = net_context_get(family, type, proto, &socket->wifi_context);
+    
+    int error_code = net_context_get(family, type, proto, &socket->context);
     if (error_code < 0)
     {
         LOG_ERR("Failed to get a network context. Error %d.", error_code);
     }
-    // net_context_bind_iface(socket->wifi_context, adapt_sockets_layer.wifi_iface);
-    k_sem_init(&socket->receive_packet_semaphore, 0, 1);
+    net_context_bind_iface(socket->context, adapt_sockets_layer.net_if_1);
+    k_sem_init(&socket->recv_pkt_sem, 0, 1);
     return socket->fd;
 }
 

@@ -10,8 +10,9 @@
 LOG_MODULE_REGISTER(modem_simcom_a76xx, CONFIG_MODEM_LOG_LEVEL);
 #include <zephyr/net/offloaded_netdev.h>
 #include "net_private.h"
-
-#include <app/drivers/simcom-a76xx.h>
+#include <zephyr/net/net_if.h>
+#include <zephyr/net/net_ip.h>
+#include "app/drivers/simcom-a76xx.h"
 
 #define SMS_TP_UDHI_HEADER 0x40
 
@@ -36,6 +37,40 @@ static const struct gpio_dt_spec power_gpio = GPIO_DT_SPEC_INST_GET(0, mdm_power
 
 static void socket_close(struct modem_socket *sock);
 static const struct socket_dns_offload offload_dns_ops;
+
+// net if offloaded functions
+static int net_if_offload_get(sa_family_t family, enum net_sock_type type,
+                              enum net_ip_protocol ip_proto,
+                              struct net_context **context);
+
+static int net_if_offload_bind(struct net_context *context,
+                               const struct sockaddr *addr, socklen_t addr_len);
+
+static int net_if_offload_connect(struct net_context *context,
+                                  const struct sockaddr *addr, socklen_t addr_len,
+                                  net_context_connect_cb_t cb, int32_t timeout,
+                                  void *user_data);
+
+static int net_if_offload_sendto(struct net_pkt *pkt, const struct sockaddr *dst_addr,
+                                 socklen_t addr_len, net_context_send_cb_t cb,
+                                 int32_t timeout, void *user_data);
+
+static int net_if_offload_send(struct net_pkt *pkt, net_context_send_cb_t cb, int32_t timeout, void *user_data);
+
+static int net_if_offload_recv(struct net_context *context, net_context_recv_cb_t cb,
+                               int32_t timeout, void *user_data);
+
+static struct net_offload net_if_offload_funcs = {
+    .get = net_if_offload_get,
+    .bind = net_if_offload_bind,
+    .listen = NULL,
+    .connect = net_if_offload_connect,
+    .accept = NULL,
+    .send = net_if_offload_send,
+    .sendto = net_if_offload_sendto,
+    .recv = net_if_offload_recv,
+    .put = NULL,
+};
 
 static inline uint32_t hash32(char *str, int len)
 {
@@ -82,6 +117,15 @@ static void modem_net_iface_init(struct net_if *iface)
     socket_offload_dns_register(&offload_dns_ops);
 
     net_if_socket_offload_set(iface, offload_socket);
+    iface->if_dev->offload = &net_if_offload_funcs;
+
+    struct in_addr modem_ip;
+    net_addr_pton(AF_INET, "192.0.2.1", &modem_ip);
+    struct net_if_addr *if_addr = net_if_ipv4_addr_add(
+        iface,
+        &modem_ip,
+        NET_ADDR_MANUAL,
+        0);
 }
 
 /**
@@ -449,8 +493,8 @@ static int sockread_common(int sock_id, struct modem_cmd_handler_data *data, int
     // mdata.unread_data_lengths[SOCKET_INDEX(sock->id)] = 0;  // if not all data is copied, i honestly dont know what to do
     data->rx_buf = net_buf_skip(data->rx_buf, ret);
     // if (data->rx_buf) {
-	// 	dump_net_buf(data->rx_buf);
-	// }
+    // 	dump_net_buf(data->rx_buf);
+    // }
     // log sock_data->recv_buf (only log ret characters)
     LOG_HEXDUMP_DBG(sock_data->recv_buf, ret, "Data Copied to App Buffer");
     sock_data->recv_read_len = ret;
@@ -461,7 +505,9 @@ static int sockread_common(int sock_id, struct modem_cmd_handler_data *data, int
                 ret, socket_data_length);
         ret = -EINVAL;
         goto exit;
-    } else {
+    }
+    else
+    {
         LOG_DBG("Copied as many bytes as the modem reported (apparently).");
     }
 
@@ -2006,10 +2052,122 @@ error:
     return ret;
 }
 
+static struct modem_socket *get_socket_from_fd(int fd)
+{
+    struct modem_socket *socket = NULL;
+    k_sem_take(&(mdata.socket_config.sem_lock), K_FOREVER);
+    for (uint8_t i = 0; i < MDM_MAX_SOCKETS; i++)
+    {
+        if (mdata.socket_config.sockets[i].sock_fd == fd)
+        {
+            socket = &mdata.socket_config.sockets[i];
+        }
+    }
+    k_sem_give(&(mdata.socket_config.sem_lock));
+    return socket;
+}
+
+static int net_if_offload_get(sa_family_t family, enum net_sock_type type,
+                              enum net_ip_protocol ip_proto,
+                              struct net_context **context)
+{
+    LOG_DBG("Running net_if_offload_get...");
+    int ret;
+
+    // on success, this will give an fd
+    ret = modem_socket_get(&mdata.socket_config, family, type, ip_proto);
+    if (ret < 0)
+    {
+        errno = -ret;
+        return -1;
+    }
+
+    struct modem_socket *socket = get_socket_from_fd(ret);
+    if (socket == NULL)
+    {
+        LOG_ERR("Couldn't find the socket that was apparently created.");
+        return -1;
+    }
+    (*context)->offload_context = socket;
+
+    errno = 0;
+    return ret;
+    return 0;
+}
+
+static int net_if_offload_bind(struct net_context *context,
+                               const struct sockaddr *addr, socklen_t addr_len)
+{
+    LOG_DBG("Running net_if_offload_bind...");
+    return 0;
+}
+
+static int net_if_offload_connect(struct net_context *context,
+                                  const struct sockaddr *addr, socklen_t addr_len,
+                                  net_context_connect_cb_t cb, int32_t timeout,
+                                  void *user_data)
+{
+    LOG_DBG("Running net_if_offload_connect...");
+    offload_connect(context->offload_context, addr, addr_len);
+}
+
+static int net_if_offload_sendto(struct net_pkt *pkt, const struct sockaddr *dst_addr,
+                                 socklen_t addr_len, net_context_send_cb_t cb,
+                                 int32_t timeout, void *user_data)
+{
+    LOG_DBG("Running net_if_offload_sendto...");
+    // LOG_DBG("pkt: %p, length: %zu", pkt, net_pkt_get_len(pkt));
+    // LOG_DBG("dst_addr: %p", dst_addr);
+    // LOG_DBG("addr_len: %zu", addr_len);
+    net_pkt_cursor_init(pkt);
+    size_t length = net_pkt_get_len(pkt);
+    uint8_t *data = k_calloc(length + 5, 1);
+    net_pkt_read(pkt, data, length);
+    struct net_context *context = pkt->context;
+    ssize_t written = offload_sendto(context->offload_context, data, length, 0, dst_addr, addr_len);
+    k_free(data);
+    return written > 0 ? 0 : -1;
+}
+
+static int net_if_offload_send(struct net_pkt *pkt, net_context_send_cb_t cb, int32_t timeout, void *user_data)
+{
+    LOG_DBG("Running net_if_offload_send...");
+    return 0;
+}
+
+static int net_if_offload_recv(struct net_context *context, net_context_recv_cb_t cb,
+                               int32_t timeout, void *user_data)
+{
+    LOG_DBG("Running net_if_offload_recv...");
+    struct modem_socket *socket = context->offload_context;
+    /*
+    typedef void (*net_context_recv_cb_t)(
+    struct net_context *context, struct net_pkt *pkt, union net_ip_header *ip_hdr,
+    union net_proto_header *proto_hdr, int status, void *user_data)
+
+    this is the callback that we are given. we need to call it to process the packet.
+    Pass the data to that function.
+
+    Since i only want to use the packet, set everything to null and send the packet.
+    */
+    struct net_pkt* pkt = net_pkt_alloc_with_buffer(mdata.netif, 1280, socket->family, socket->ip_proto, K_FOREVER);
+    uint8_t* buf = NULL;
+    while (buf == NULL) {
+        buf = k_calloc(1280, 1);
+    }
+    ssize_t bytes_read = offload_recvfrom(socket, buf, 1280, 0, NULL, NULL);
+    net_hexdump("Response in net_if_offload_recv", buf, bytes_read);
+    net_pkt_write(pkt, buf, bytes_read);
+    net_pkt_cursor_init(pkt);
+    cb(context, pkt, NULL, NULL, 0, user_data);
+    k_free(buf);
+    return 0;
+}
+
 /* Register device with the networking stack. */
 NET_DEVICE_DT_INST_OFFLOAD_DEFINE(0, modem_init, NULL, &mdata, NULL,
                                   CONFIG_MODEM_SIMCOM_A76XX_INIT_PRIORITY, &api_funcs,
                                   MDM_MAX_DATA_LENGTH);
 
-NET_SOCKET_OFFLOAD_REGISTER(simcom_a76xx, CONFIG_MODEM_SIMCOM_A76XX_SOCKET_PRIORITY,
-                            AF_INET, offload_is_supported, offload_socket);
+// NET_SOCKET_OFFLOAD_REGISTER(simcom_a76xx, CONFIG_MODEM_SIMCOM_A76XX_SOCKET_PRIORITY,
+//                             AF_INET, offload_is_supported, offload_socket);
