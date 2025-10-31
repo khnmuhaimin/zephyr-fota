@@ -1,0 +1,401 @@
+[00:01:42.320,000] <dbg> main: main: Done sleeping.
+uart:~$ [00:01:42.321,000] <dbg> main: main: Sending hello request #4...
+uart:~$ [00:01:42.325,000] <dbg> adaptive_sockets: adaptive_connection_is_supported: Running adaptive_connection_is_supported...
+uart:~$ [00:01:42.339,000] <dbg> adaptive_sockets: adaptive_get_socket: Running adaptive_get_socket...
+uart:~$ [00:01:42.350,000] <dbg> main: main: Created socket with fd 4.
+uart:~$ [00:01:42.358,000] <dbg> adaptive_sockets: adaptive_connect: Running adaptive_connect for socket 4...
+uart:~$ [00:01:42.370,000] <dbg> adaptive_sockets: adaptive_connect: obj: 0x3ffbb570
+uart:~$ [00:01:42.380,000] <dbg> adaptive_sockets: log_ipv4: Address: 134.102.218.18:5683
+uart:~$ [00:01:42.390,000] <dbg> adaptive_sockets: log_ipv4: Address Family (sin_family): 1 (AF_INET=2)
+uart:~$ [00:01:42.401,000] <dbg> adaptive_sockets: adaptive_get_preferred_net_if: Preferring net if 1...
+uart:~$ [00:01:42.413,000] <inf> main: Connected to UDP remote.
+uart:~$ [00:01:42.421,000] <dbg> main: net_hexdump: Request
+                               48 01 2b 02 c6 c1 b6 aa  bd d9 4d 97 b5 68 65 6c |H.+..... ..M..hel
+                               6c 6f                                            |lo               
+uart:~$ [00:01:42.445,000] <dbg> adaptive_sockets: adaptive_sendto: Running adaptive_sendto for socket 4...
+uart:~$ [00:01:42.457,000] <dbg> adaptive_sockets: adaptive_sendto: obj: 0x3ffbb570 | buf: 0x3ffbb650 | buf_len: 18 | flags: 0
+uart:~$ [00:01:42.470,000] <dbg> adaptive_sockets: log_ipv4: Destination Address (addr): NULL
+uart:~$ [00:01:42.482,000] <dbg> esp32_wifi: esp32_wifi_send: pkt sent 0x3ffd1f10 len 60
+uart:~$ [00:01:42.491,000] <dbg> adaptive_sockets: adaptive_on_send: Running adaptive_on_send...
+uart:~$ [00:01:42.501,000] <inf> main: Sent coap request successfully
+uart:~$ [00:01:42.510,000] <dbg> main: process_simple_coap_reply: Starting to process simple CoAP reply...
+uart:~$ [00:01:42.521,000] <dbg> adaptive_sockets: adaptive_recvfrom: Running adaptive_recvfrom for socket 4...
+uart:~$ [00:01:42.789,000] <dbg> adaptive_sockets: adaptive_on_receive: Running adaptive_on_receive...
+uart:~$ [00:01:42.790,000] <dbg> adaptive_sockets: adaptive_recvfrom: max_length: 256, packet_length: 19, bytes_to_copy: 19
+uart:~$ [00:01:42.803,000] <dbg> main: net_hexdump: Response
+                               68 45 2b 02 c6 c1 b6 aa  bd d9 4d 97 c0 ff 77 6f |hE+..... ..M...wo
+                               72 6c 64                                         |rld              
+uart:~$ [00:01:42.827,000] <inf> main: CoAP response payload: world
+uart:~$ [00:01:42.836,000] <inf> main: Processed coap reply correctly.
+uart:~$ [00:01:42.844,000] <dbg> adaptive_sockets: adaptive_close: Running adaptive_close for socket 4...
+uart:~$ [00:01:42.856,000] <dbg> main: main: Starting to sleep.
+uart:~$ [00:01:43.408,000] <dbg> esp32_wifi: esp32_wifi_send: pkt sent 0x3ffd1f10 len 42
+uart:~$ [00:01:43.415,000] <dbg> esp32_wifi: esp32_wifi_send: pkt sent 0x3ffd1f10 len 70
+uart:~$ [00:01:43.863,000] <dbg> main: main: Done sleeping.
+uart:~$ [00:01:43.864,000] <dbg> main: main: Sending hello request #5...
+uart:~$ [00:01:43.869,000] <dbg> adaptive_sockets: adaptive_connection_is_supported: Running adaptive_connection_is_supported...
+uart:~$ [00:01:43.882,000] <dbg> adaptive_sockets: adaptive_get_socket: Running adaptive_get_socket...
+uart:~$ [00:01:43.894,000] <dbg> main: main: Created socket with fd 4.
+uart:~$ [00:01:43.902,000] <dbg> adaptive_sockets: adaptive_connect: Running adaptive_connect for socket 4...
+uart:~$ [00:01:43.914,000] <dbg> adaptive_sockets: adaptive_connect: obj: 0x3ffbb570
+uart:~$ [00:01:43.923,000] <dbg> adaptive_sockets: log_ipv4: Address: 134.102.218.18:5683
+uart:~$ [00:01:43.933,000] <dbg> adaptive_sockets: log_ipv4: Address Family (sin_family): 1 (AF_INET=2)
+uart:~$ [00:01:43.945,000] <dbg> adaptive_sockets: adaptive_get_preferred_net_if: Preferring net if 1...
+uart:~$ [00:01:43.956,000] <inf> main: Connected to UDP remote.
+uart:~$ [00:01:43.964,000] <dbg> main: net_hexdump: Request
+                               48 01 2b 03 45 f9 ef 72  96 b9 97 2b b5 68 65 6c |H.+.E..r ...+.hel
+                               6c 6f                                            |lo               
+uart:~$ [00:01:43.989,000] <dbg> adaptive_sockets: adaptive_sendto: Running adaptive_sendto for socket 4...
+uart:~$ [00:01:44.000,000] <dbg> adaptive_sockets: adaptive_sendto: obj: 0x3ffbb570 | buf: 0x3ffbb650 | buf_len: 18 | flags: 0
+uart:~$ [00:01:44.013,000] <dbg> adaptive_sockets: log_ipv4: Destination Address (addr): NULL
+uart:~$ [00:01:44.026,000] <dbg> esp32_wifi: esp32_wifi_send: pkt sent 0x3ffd1f10 len 60
+uart:~$ [00:01:44.034,000] <dbg> adaptive_sockets: adaptive_on_send: Running adaptive_on_send...
+uart:~$ [00:01:44.045,000] <inf> main: Sent coap request successfully
+uart:~$ [00:01:44.053,000] <dbg> main: process_simple_coap_reply: Starting to process simple CoAP reply...
+uart:~$ [00:01:44.065,000] <dbg> adaptive_sockets: adaptive_recvfrom: Running adaptive_recvfrom for socket 4...
+uart:~$ [00:01:44.340,000] <dbg> adaptive_sockets: adaptive_on_receive: Running adaptive_on_receive...
+uart:~$ [00:01:44.342,000] <dbg> adaptive_sockets: adaptive_recvfrom: max_length: 256, packet_length: 19, bytes_to_copy: 19
+uart:~$ [00:01:44.354,000] <dbg> main: net_hexdump: Response
+                               68 45 2b 03 45 f9 ef 72  96 b9 97 2b c0 ff 77 6f |hE+.E..r ...+..wo
+                               72 6c 64                                         |rld              
+uart:~$ [00:01:44.379,000] <inf> main: CoAP response payload: world
+uart:~$ [00:01:44.387,000] <inf> main: Processed coap reply correctly.
+uart:~$ [00:01:44.395,000] <dbg> adaptive_sockets: adaptive_close: Running adaptive_close for socket 4...
+uart:~$ [00:01:44.407,000] <dbg> main: main: Starting to sleep.
+uart:~$ [00:01:45.415,000] <dbg> main: main: Done sleeping.
+uart:~$ [00:01:45.416,000] <dbg> main: main: Sending hello request #6...
+uart:~$ [00:01:45.420,000] <dbg> adaptive_sockets: adaptive_connection_is_supported: Running adaptive_connection_is_supported...
+uart:~$ [00:01:45.434,000] <dbg> adaptive_sockets: adaptive_get_socket: Running adaptive_get_socket...
+uart:~$ [00:01:45.445,000] <dbg> main: main: Created socket with fd 4.
+uart:~$ [00:01:45.453,000] <dbg> adaptive_sockets: adaptive_connect: Running adaptive_connect for socket 4...
+uart:~$ [00:01:45.465,000] <dbg> adaptive_sockets: adaptive_connect: obj: 0x3ffbb570
+uart:~$ [00:01:45.475,000] <dbg> adaptive_sockets: log_ipv4: Address: 134.102.218.18:5683
+uart:~$ [00:01:45.485,000] <dbg> adaptive_sockets: log_ipv4: Address Family (sin_family): 1 (AF_INET=2)
+uart:~$ [00:01:45.496,000] <dbg> adaptive_sockets: adaptive_get_preferred_net_if: Preferring net if 1...
+uart:~$ [00:01:45.507,000] <inf> main: Connected to UDP remote.
+uart:~$ [00:01:45.515,000] <dbg> main: net_hexdump: Request
+                               48 01 2b 04 28 07 00 a2  4d d4 c0 ff b5 68 65 6c |H.+.(... M....hel
+                               6c 6f                                            |lo               
+uart:~$ [00:01:45.540,000] <dbg> adaptive_sockets: adaptive_sendto: Running adaptive_sendto for socket 4...
+uart:~$ [00:01:45.552,000] <dbg> adaptive_sockets: adaptive_sendto: obj: 0x3ffbb570 | buf: 0x3ffbb650 | buf_len: 18 | flags: 0
+uart:~$ [00:01:45.565,000] <dbg> adaptive_sockets: log_ipv4: Destination Address (addr): NULL
+uart:~$ [00:01:45.577,000] <dbg> esp32_wifi: esp32_wifi_send: pkt sent 0x3ffd1f10 len 60
+uart:~$ [00:01:45.585,000] <dbg> adaptive_sockets: adaptive_on_send: Running adaptive_on_send...
+uart:~$ [00:01:45.596,000] <inf> main: Sent coap request successfully
+uart:~$ [00:01:45.604,000] <dbg> main: process_simple_coap_reply: Starting to process simple CoAP reply...
+uart:~$ [00:01:45.616,000] <dbg> adaptive_sockets: adaptive_recvfrom: Running adaptive_recvfrom for socket 4...
+uart:~$ [00:01:45.952,000] <dbg> adaptive_sockets: adaptive_on_receive: Running adaptive_on_receive...
+uart:~$ [00:01:45.953,000] <dbg> adaptive_sockets: adaptive_recvfrom: max_length: 256, packet_length: 19, bytes_to_copy: 19
+uart:~$ [00:01:45.965,000] <dbg> main: net_hexdump: Response
+                               68 45 2b 04 28 07 00 a2  4d d4 c0 ff c0 ff 77 6f |hE+.(... M.....wo
+                               72 6c 64                                         |rld              
+uart:~$ [00:01:45.990,000] <inf> main: CoAP response payload: world
+uart:~$ [00:01:45.998,000] <inf> main: Processed coap reply correctly.
+uart:~$ [00:01:46.007,000] <dbg> adaptive_sockets: adaptive_close: Running adaptive_close for socket 4...
+uart:~$ [00:01:46.018,000] <dbg> main: main: Starting to sleep.
+uart:~$ [00:01:47.026,000] <dbg> main: main: Done sleeping.
+uart:~$ [00:01:47.027,000] <dbg> main: main: Sending hello request #7...
+uart:~$ [00:01:47.031,000] <dbg> adaptive_sockets: adaptive_connection_is_supported: Running adaptive_connection_is_supported...
+uart:~$ [00:01:47.045,000] <dbg> adaptive_sockets: adaptive_get_socket: Running adaptive_get_socket...
+uart:~$ [00:01:47.056,000] <dbg> main: main: Created socket with fd 4.
+uart:~$ [00:01:47.064,000] <dbg> adaptive_sockets: adaptive_connect: Running adaptive_connect for socket 4...
+uart:~$ [00:01:47.076,000] <dbg> adaptive_sockets: adaptive_connect: obj: 0x3ffbb570
+uart:~$ [00:01:47.086,000] <dbg> adaptive_sockets: log_ipv4: Address: 134.102.218.18:5683
+uart:~$ [00:01:47.096,000] <dbg> adaptive_sockets: log_ipv4: Address Family (sin_family): 1 (AF_INET=2)
+uart:~$ [00:01:47.107,000] <dbg> adaptive_sockets: adaptive_get_preferred_net_if: Preferring net if 1...
+uart:~$ [00:01:47.119,000] <inf> main: Connected to UDP remote.
+uart:~$ [00:01:47.126,000] <dbg> main: net_hexdump: Request
+                               48 01 2b 05 c3 28 a4 78  25 ee 71 6e b5 68 65 6c |H.+..(.x %.qn.hel
+                               6c 6f                                            |lo               
+uart:~$ [00:01:47.151,000] <dbg> adaptive_sockets: adaptive_sendto: Running adaptive_sendto for socket 4...
+uart:~$ [00:01:47.163,000] <dbg> adaptive_sockets: adaptive_sendto: obj: 0x3ffbb570 | buf: 0x3ffbb650 | buf_len: 18 | flags: 0
+uart:~$ [00:01:47.176,000] <dbg> adaptive_sockets: log_ipv4: Destination Address (addr): NULL
+uart:~$ [00:01:47.188,000] <dbg> esp32_wifi: esp32_wifi_send: pkt sent 0x3ffd1f10 len 60
+uart:~$ [00:01:47.196,000] <dbg> adaptive_sockets: adaptive_on_send: Running adaptive_on_send...
+uart:~$ [00:01:47.207,000] <inf> main: Sent coap request successfully
+uart:~$ [00:01:47.215,000] <dbg> main: process_simple_coap_reply: Starting to process simple CoAP reply...
+uart:~$ [00:01:47.227,000] <dbg> adaptive_sockets: adaptive_recvfrom: Running adaptive_recvfrom for socket 4...
+uart:~$ [00:01:47.591,000] <dbg> adaptive_sockets: adaptive_on_receive: Running adaptive_on_receive...
+uart:~$ [00:01:47.592,000] <dbg> adaptive_sockets: adaptive_recvfrom: max_length: 256, packet_length: 19, bytes_to_copy: 19
+uart:~$ [00:01:47.605,000] <dbg> main: net_hexdump: Response
+                               68 45 2b 05 c3 28 a4 78  25 ee 71 6e c0 ff 77 6f |hE+..(.x %.qn..wo
+                               72 6c 64                                         |rld              
+uart:~$ [00:01:47.630,000] <inf> main: CoAP response payload: world
+uart:~$ [00:01:47.638,000] <inf> main: Processed coap reply correctly.
+uart:~$ [00:01:47.646,000] <dbg> adaptive_sockets: adaptive_close: Running adaptive_close for socket 4...
+uart:~$ [00:01:47.658,000] <dbg> main: main: Starting to sleep.
+uart:~$ [00:01:48.548,000] <dbg> esp32_wifi: esp32_wifi_send: pkt sent 0x3ffd1f10 len 42
+uart:~$ [00:01:48.602,000] <dbg> esp32_wifi: esp32_wifi_send: pkt sent 0x3ffd1f10 len 70
+uart:~$ [00:01:48.666,000] <dbg> main: main: Done sleeping.
+uart:~$ [00:01:48.666,000] <dbg> main: main: Sending hello request #8...
+uart:~$ [00:01:48.671,000] <dbg> adaptive_sockets: adaptive_connection_is_supported: Running adaptive_connection_is_supported...
+uart:~$ [00:01:48.684,000] <dbg> adaptive_sockets: adaptive_get_socket: Running adaptive_get_socket...
+uart:~$ [00:01:48.696,000] <dbg> main: main: Created socket with fd 4.
+uart:~$ [00:01:48.704,000] <dbg> adaptive_sockets: adaptive_connect: Running adaptive_connect for socket 4...
+uart:~$ [00:01:48.716,000] <dbg> adaptive_sockets: adaptive_connect: obj: 0x3ffbb570
+uart:~$ [00:01:48.725,000] <dbg> adaptive_sockets: log_ipv4: Address: 134.102.218.18:5683
+uart:~$ [00:01:48.735,000] <dbg> adaptive_sockets: log_ipv4: Address Family (sin_family): 1 (AF_INET=2)
+uart:~$ [00:01:48.747,000] <dbg> adaptive_sockets: adaptive_get_preferred_net_if: Preferring net if 1...
+uart:~$ [00:01:48.758,000] <inf> main: Connected to UDP remote.
+uart:~$ [00:01:48.766,000] <dbg> main: net_hexdump: Request
+                               48 01 2b 06 10 92 68 c1  36 ee b6 a0 b5 68 65 6c |H.+...h. 6....hel
+                               6c 6f                                            |lo               
+uart:~$ [00:01:48.791,000] <dbg> adaptive_sockets: adaptive_sendto: Running adaptive_sendto for socket 4...
+uart:~$ [00:01:48.802,000] <dbg> adaptive_sockets: adaptive_sendto: obj: 0x3ffbb570 | buf: 0x3ffbb650 | buf_len: 18 | flags: 0
+uart:~$ [00:01:48.816,000] <dbg> adaptive_sockets: log_ipv4: Destination Address (addr): NULL
+uart:~$ [00:01:48.828,000] <dbg> esp32_wifi: esp32_wifi_send: pkt sent 0x3ffd1f10 len 60
+uart:~$ [00:01:48.836,000] <dbg> adaptive_sockets: adaptive_on_send: Running adaptive_on_send...
+uart:~$ [00:01:48.847,000] <inf> main: Sent coap request successfully
+uart:~$ [00:01:48.855,000] <dbg> main: process_simple_coap_reply: Starting to process simple CoAP reply...
+uart:~$ [00:01:48.867,000] <dbg> adaptive_sockets: adaptive_recvfrom: Running adaptive_recvfrom for socket 4...
+uart:~$ [00:01:49.067,000] <dbg> adaptive_sockets: adaptive_on_receive: Running adaptive_on_receive...
+uart:~$ [00:01:49.068,000] <dbg> adaptive_sockets: adaptive_recvfrom: max_length: 256, packet_length: 19, bytes_to_copy: 19
+uart:~$ [00:01:49.081,000] <dbg> main: net_hexdump: Response
+                               68 45 2b 06 10 92 68 c1  36 ee b6 a0 c0 ff 77 6f |hE+...h. 6.....wo
+                               72 6c 64                                         |rld              
+uart:~$ [00:01:49.106,000] <inf> main: CoAP response payload: world
+uart:~$ [00:01:49.114,000] <inf> main: Processed coap reply correctly.
+uart:~$ [00:01:49.122,000] <dbg> adaptive_sockets: adaptive_close: Running adaptive_close for socket 4...
+uart:~$ [00:01:49.134,000] <dbg> main: main: Starting to sleep.
+uart:~$ [00:01:49.391,000] <dbg> modem_cmd_handler: modem_cmd_send_ext: SENT DATA
+                                            41 54 2b 43 53 51                                |AT+CSQ           
+uart:~$ [00:01:49.406,000] <dbg> modem_cmd_handler: cmd_handler_process_rx_buf: RECV
+                                            2b 43 53 51 3a 20 33 31  2c 30                   |+CSQ: 31 ,0      
+uart:~$ [00:01:49.419,000] <dbg> modem_cmd_handler: find_cmd_match: data: 0x3ffc0f80
+uart:~$ [00:01:49.429,000] <err> os:  ** FATAL EXCEPTION
+uart:~$ [00:01:49.436,000] <err> os:  ** CPU 0 EXCCAUSE 28 (load prohibited)
+uart:~$ [00:01:49.445,000] <err> os:  **  PC 0x400f913c VADDR 0x1
+uart:~$ [00:01:49.454,000] <err> os:  **  PS 0x60a20
+uart:~$ [00:01:49.461,000] <err> os:  **    (INTLEVEL:0 EXCM: 0 UM:1 RING:0 WOE:1 OWB:10 CALLINC:2)
+uart:~$ [00:01:49.472,000] <err> os:  **  A0 0x800fc32c  SP 0x3ffcac90  A2 0x3ffc0f80  A3 0
+uart:~$ [00:01:49.482,000] <err> os:  **  A4 0xa  A5 0  A6 0x3ffc0f88  A7 0x3ffca8a0
+uart:~$ [00:01:49.492,000] <err> os:  **  A8 0x3ffc0f8c  A9 0x1 A10 0xa A11 0x1
+uart:~$ [00:01:49.502,000] <err> os:  ** A12 0x53 A13 0 A14 0 A15 0x8
+uart:~$ [00:01:49.510,000] <err> os:  ** LBEG 0x400014fd LEND 0x4000150d LCOUNT 0xfffffffd
+uart:~$ [00:01:49.521,000] <err> os:  ** SAR 0x3
+uart:~$ [00:01:49.528,000] <err> os:  **  THREADPTR 0x3ffcac90
+uart:~$ 
+
+Backtrace:uart:~$ 0x400f9139:0x3ffcac90 uart:~$ 0x400fc329:0x3ffcad00 uart:~$ 0x400db4b7:0x3ffcad20 uart:~$ 
+
+uart:~$ [00:01:49.554,000] <err> os: >>> ZEPHYR FATAL ERROR 0: CPU exception on CPU 0
+uart:~$ [00:01:49.564,000] <err> os: Current thread: 0x3ffc1808 (unknown)
+uart:~$ [00:01:49.573,000] <err> os: Halting system
+uart:~$ 
+uart:~$ [00:01:28.010,000] <dbg> esp32_wifi: esp_wifi_event_handler: Wi-Fi event: 2
+uart:~$ [00:01:30.121,000] <dbg> esp32_wifi: esp_wifi_event_handler: Wi-Fi event: 4
+uart:~$ [00:01:31.125,000] <dbg> esp32_wifi: esp32_wifi_send: pkt sent 0x3ffd1f10 len 299
+uart:~$ k[00:01:31.164,000] <dbg> esp32_wifi: esp32_wifi_send: pkt sent 0x3ffd1f10 len 306
+uart:~$ k[00:01:31.222,000] <inf> net_dhcpv4: Received: 192.168.1.83
+uart:~$ k[00:01:31.223,000] <inf> main: Connected to Openserve-8B43
+uart:~$ k[00:01:31.227,000] <dbg> adaptive_sockets: adaptive_sockets_init: Running adaptive_sockets_init...
+uart:~$ k[00:01:31.239,000] <dbg> adaptive_sockets: adaptive_get_inner_net_if: Running adaptive_get_inner_net_if...
+uart:~$ k[00:01:31.251,000] <dbg> adaptive_sockets: adaptive_get_inner_net_if: Running adaptive_get_inner_net_if...
+uart:~$ k[00:01:31.264,000] <dbg> main: main: Sending hello request #1...
+uart:~$ k[00:01:31.272,000] <dbg> adaptive_sockets: adaptive_connection_is_supported: Running adaptive_connection_is_supported...
+uart:~$ k[00:01:31.286,000] <dbg> adaptive_sockets: adaptive_get_socket: Running adaptive_get_socket...
+uart:~$ k[00:01:31.297,000] <dbg> main: main: Created socket with fd 4.
+uart:~$ k[00:01:31.306,000] <dbg> adaptive_sockets: adaptive_connect: Running adaptive_connect for socket 4...
+uart:~$ k[00:01:31.317,000] <dbg> adaptive_sockets: adaptive_connect: obj: 0x3ffbbb98
+uart:~$ k[00:01:31.327,000] <dbg> adaptive_sockets: log_ipv4: Address: 134.102.218.18:5683
+uart:~$ k[00:01:31.337,000] <dbg> adaptive_sockets: log_ipv4: Address Family (sin_family): 1 (AF_INET=2)
+uart:~$ k[00:01:31.349,000] <dbg> adaptive_sockets: adaptive_get_preferred_net_if: Preferring net if 1...
+uart:~$ k[00:01:31.360,000] <inf> main: Connected to UDP remote.
+uart:~$ k[00:01:31.368,000] <dbg> main: net_hexdump: Request
+                               48 01 43 c6 a0 d5 e9 88  9d 22 31 d7 b5 68 65 6c |H.C..... ."1..hel
+                               6c 6f                                            |lo               
+uart:~$ k[00:01:31.393,000] <dbg> adaptive_sockets: adaptive_sendto: Running adaptive_sendto for socket 4...
+uart:~$ k[00:01:31.405,000] <dbg> adaptive_sockets: adaptive_sendto: obj: 0x3ffbbb98 | buf: 0x3ffbbbe0 | buf_len: 18 | flags: 0
+uart:~$ k[00:01:31.418,000] <dbg> adaptive_sockets: log_ipv4: Destination Address (addr): NULL
+uart:~$ k[00:01:31.430,000] <dbg> esp32_wifi: esp32_wifi_send: pkt sent 0x3ffd1f54 len 42
+uart:~$ k[00:01:31.439,000] <dbg> adaptive_sockets: adaptive_on_send: Running adaptive_on_send...
+uart:~$ k[00:01:31.449,000] <inf> main: Sent coap request successfully
+uart:~$ k[00:01:31.458,000] <dbg> main: process_simple_coap_reply: Starting to process simple CoAP reply...
+uart:~$ k[00:01:31.470,000] <dbg> adaptive_sockets: adaptive_recvfrom: Running adaptive_recvfrom for socket 4...
+uart:~$ ker[00:01:31.489,000] <dbg> esp32_wifi: esp32_wifi_send: pkt sent 0x3ffd1f10 len 60
+uart:~$ kern[00:01:31.506,000] <dbg> esp32_wifi: esp32_wifi_send: pkt sent 0x3ffd1f10 len 42
+uart:~$ kernel[00:01:31.724,000] <dbg> adaptive_sockets: adaptive_on_receive: Running adaptive_on_receive...
+uart:~$ kernel[00:01:31.725,000] <dbg> adaptive_sockets: adaptive_recvfrom: max_length: 256, packet_length: 19, bytes_to_copy: 19
+uart:~$ kernel[00:01:31.739,000] <dbg> main: net_hexdump: Response
+                               68 45 43 c6 a0 d5 e9 88  9d 22 31 d7 c0 ff 77 6f |hEC..... ."1...wo
+                               72 6c 64                                         |rld              
+uart:~$ kernel[00:01:31.764,000] <inf> main: CoAP response payload: world
+uart:~$ kernel[00:01:31.773,000] <inf> main: Processed coap reply correctly.
+uart:~$ kernel[00:01:31.782,000] <dbg> adaptive_sockets: adaptive_close: Running adaptive_close for socket 4...
+uart:~$ kernel[00:01:31.794,000] <dbg> main: main: Starting to sleep.
+uart:~$ kernel [00:01:32.802,000] <dbg> main: main: Done sleeping.
+uart:~$ kernel [00:01:32.803,000] <dbg> main: main: Sending hello request #2...
+uart:~$ kernel [00:01:32.809,000] <dbg> adaptive_sockets: adaptive_connection_is_supported: Running adaptive_connection_is_supported...
+uart:~$ kernel [00:01:32.823,000] <dbg> adaptive_sockets: adaptive_get_socket: Running adaptive_get_socket...
+uart:~$ kernel [00:01:32.835,000] <dbg> main: main: Created socket with fd 4.
+uart:~$ kernel [00:01:32.844,000] <dbg> adaptive_sockets: adaptive_connect: Running adaptive_connect for socket 4...
+uart:~$ kernel [00:01:32.857,000] <dbg> adaptive_sockets: adaptive_connect: obj: 0x3ffbbc88
+uart:~$ kernel [00:01:32.867,000] <dbg> adaptive_sockets: log_ipv4: Address: 134.102.218.18:5683
+uart:~$ kernel [00:01:32.878,000] <dbg> adaptive_sockets: log_ipv4: Address Family (sin_family): 1 (AF_INET=2)
+uart:~$ kernel [00:01:32.890,000] <dbg> adaptive_sockets: adaptive_get_preferred_net_if: Preferring net if 1...
+uart:~$ kernel [00:01:32.902,000] <inf> main: Connected to UDP remote.
+uart:~$ kernel [00:01:32.911,000] <dbg> main: net_hexdump: Request
+                               48 01 43 c7 6b 67 0b 8a  da 87 d2 86 b5 68 65 6c |H.C.kg.. .....hel
+                               6c 6f                                            |lo               
+uart:~$ kernel [00:01:32.936,000] <dbg> adaptive_sockets: adaptive_sendto: Running adaptive_sendto for socket 4...
+uart:~$ kernel [00:01:32.948,000] <dbg> adaptive_sockets: adaptive_sendto: obj: 0x3ffbbc88 | buf: 0x3ffbb4f0 | buf_len: 18 | flags: 0
+uart:~$ kernel [00:01:32.962,000] <dbg> adaptive_sockets: log_ipv4: Destination Address (addr): NULL
+uart:~$ kernel [00:01:32.975,000] <dbg> esp32_wifi: esp32_wifi_send: pkt sent 0x3ffd1f10 len 60
+uart:~$ kernel [00:01:32.984,000] <dbg> adaptive_sockets: adaptive_on_send: Running adaptive_on_send...
+uart:~$ kernel [00:01:32.995,000] <inf> main: Sent coap request successfully
+uart:~$ kernel [00:01:33.004,000] <dbg> main: process_simple_coap_reply: Starting to process simple CoAP reply...
+uart:~$ kernel [00:01:33.017,000] <dbg> adaptive_sockets: adaptive_recvfrom: Running adaptive_recvfrom for socket 4...
+uart:~$ kernel s[00:01:33.285,000] <dbg> adaptive_sockets: adaptive_on_receive: Running adaptive_on_receive...
+uart:~$ kernel [00:01:33.286,000] <dbg> adaptive_sockets: adaptive_recvfrom: max_length: 256, packet_length: 19, bytes_to_copy: 19
+uart:~$ kernel [00:01:33.300,000] <dbg> main: net_hexdump: Response
+                               68 45 43 c7 6b 67 0b 8a  da 87 d2 86 c0 ff 77 6f |hEC.kg.. ......wo
+                               72 6c 64                                         |rld              
+uart:~$ kernel [00:01:33.326,000] <inf> main: CoAP response payload: world
+uart:~$ kernel [00:01:33.334,000] <inf> main: Processed coap reply correctly.
+uart:~$ kernel [00:01:33.344,000] <dbg> adaptive_sockets: adaptive_close: Running adaptive_close for socket 4...
+uart:~$ kernel [00:01:33.356,000] <dbg> main: main: Starting to sleep.
+uart:~$ kernel thread[00:01:34.364,000] <dbg> main: main: Done sleeping.
+uart:~$ kernel thread[00:01:34.365,000] <dbg> main: main: Sending hello request #3...
+uart:~$ kernel thread[00:01:34.372,000] <dbg> adaptive_sockets: adaptive_connection_is_supported: Running adaptive_connection_is_supported...
+uart:~$ kernel thread[00:01:34.387,000] <dbg> adaptive_sockets: adaptive_get_socket: Running adaptive_get_socket...
+uart:~$ kernel thread[00:01:34.399,000] <dbg> main: main: Created socket with fd 4.
+uart:~$ kernel thread[00:01:34.409,000] <dbg> adaptive_sockets: adaptive_connect: Running adaptive_connect for socket 4...
+uart:~$ kernel thread[00:01:34.422,000] <dbg> adaptive_sockets: adaptive_connect: obj: 0x3ffbbc88
+uart:~$ kernel thread[00:01:34.433,000] <dbg> adaptive_sockets: log_ipv4: Address: 134.102.218.18:5683
+uart:~$ kernel thread[00:01:34.444,000] <dbg> adaptive_sockets: log_ipv4: Address Family (sin_family): 1 (AF_INET=2)
+uart:~$ kernel thread[00:01:34.456,000] <dbg> adaptive_sockets: adaptive_get_preferred_net_if: Preferring net if 1...
+uart:~$ kernel thread[00:01:34.469,000] <inf> main: Connected to UDP remote.
+uart:~$ kernel thread[00:01:34.478,000] <dbg> main: net_hexdump: Request
+                               48 01 43 c8 c2 9f c4 49  14 f5 49 ec b5 68 65 6c |H.C....I ..I..hel
+                               6c 6f                                            |lo               
+uart:~$ kernel thread[00:01:34.504,000] <dbg> adaptive_sockets: adaptive_sendto: Running adaptive_sendto for socket 4...
+uart:~$ kernel thread[00:01:34.517,000] <dbg> adaptive_sockets: adaptive_sendto: obj: 0x3ffbbc88 | buf: 0x3ffbb570 | buf_len: 18 | flags: 0
+uart:~$ kernel thread[00:01:34.531,000] <dbg> adaptive_sockets: log_ipv4: Destination Address (addr): NULL
+uart:~$ kernel thread[00:01:34.545,000] <dbg> esp32_wifi: esp32_wifi_send: pkt sent 0x3ffd1f10 len 60
+uart:~$ kernel thread[00:01:34.554,000] <dbg> adaptive_sockets: adaptive_on_send: Running adaptive_on_send...
+uart:~$ kernel thread[00:01:34.566,000] <inf> main: Sent coap request successfully
+uart:~$ kernel thread[00:01:34.576,000] <dbg> main: process_simple_coap_reply: Starting to process simple CoAP reply...
+uart:~$ kernel thread[00:01:34.588,000] <dbg> adaptive_sockets: adaptive_recvfrom: Running adaptive_recvfrom for socket 4...
+uart:~$ kernel thread stac[00:01:34.985,000] <dbg> adaptive_sockets: adaptive_on_receive: Running adaptive_on_receive...
+uart:~$ kernel thread stac[00:01:34.987,000] <dbg> adaptive_sockets: adaptive_recvfrom: max_length: 256, packet_length: 19, bytes_to_copy: 19
+uart:~$ kernel thread stac[00:01:35.002,000] <dbg> main: net_hexdump: Response
+                               68 45 43 c8 c2 9f c4 49  14 f5 49 ec c0 ff 77 6f |hEC....I ..I...wo
+                               72 6c 64                                         |rld              
+uart:~$ kernel thread stac[00:01:35.028,000] <inf> main: CoAP response payload: world
+uart:~$ kernel thread stac[00:01:35.038,000] <inf> main: Processed coap reply correctly.
+uart:~$ kernel thread stac[00:01:35.048,000] <dbg> adaptive_sockets: adaptive_close: Running adaptive_close for socket 4...
+uart:~$ kernel thread stac[00:01:35.061,000] <dbg> main: main: Starting to sleep.
+uart:~$ kernel thread stacks
+0x3ffbfd60                                  (real size 1024):	unused  736	usage  288 / 1024 (28 %)
+0x3ffc0a28 conn_mgr_monitor                 (real size  512):	unused  176	usage  336 /  512 (65 %)
+0x3ffc05f0 net_socket_service               (real size 1200):	unused  672	usage  528 / 1200 (44 %)
+0x3ffc0848 rx_q[0]                          (real size 4096):	unused 2192	usage 1904 / 4096 (46 %)
+0x3ffc0770 net_mgmt                         (real size 2048):	unused  672	usage 1376 / 2048 (67 %)
+0x3ffbfe48 shell_uart                       (real size 8192):	unused 6592	usage 1600 / 8192 (19 %)
+0x3ffc1808                                  (real size 1040):	unused  368	usage  672 / 1040 (64 %)
+0x3ffc1748                                  (real size 2048):	unused 1744	usage  304 / 2048 (14 %)
+0x3ffc0058 wifi                             (real size 3584):	unused 1424	usage 2160 / 3584 (60 %)
+0x3ffc1aa8 sysworkq                         (real size 10240):	unused 8608	usage 1632 / 10240 (15 %)
+0x3ffbffb0 esp_timer                        (real size 4096):	unused 3712	usage  384 / 4096 ( 9 %)
+0x3ffc18a8 idle                             (real size 1024):	unused  816	usage  208 / 1024 (20 %)
+0x3ffc1948 main                             (real size 4096):	unused 2240	usage 1856 / 4096 (45 %)
+0x3ffcad30 IRQ 00                           (real size 2048):	unused 1616	usage  432 / 2048 (21 %)
+uart:~$ [00:01:35.926,000] <dbg> esp32_wifi: esp32_wifi_send: pkt sent 0x3ffd1f10 len 42
+uart:~$ [00:01:36.071,000] <dbg> main: main: Done sleeping.
+uart:~$ [00:01:36.072,000] <dbg> main: main: Sending hello request #4...
+uart:~$ [00:01:36.076,000] <dbg> adaptive_sockets: adaptive_connection_is_supported: Running adaptive_connection_is_supported...
+uart:~$ [00:01:36.089,000] <dbg> adaptive_sockets: adaptive_get_socket: Running adaptive_get_socket...
+uart:~$ [00:01:36.101,000] <dbg> main: main: Created socket with fd 4.
+uart:~$ [00:01:36.109,000] <dbg> adaptive_sockets: adaptive_connect: Running adaptive_connect for socket 4...
+uart:~$ [00:01:36.121,000] <dbg> adaptive_sockets: adaptive_connect: obj: 0x3ffbbc88
+uart:~$ [00:01:36.131,000] <dbg> adaptive_sockets: log_ipv4: Address: 134.102.218.18:5683
+uart:~$ [00:01:36.141,000] <dbg> adaptive_sockets: log_ipv4: Address Family (sin_family): 1 (AF_INET=2)
+uart:~$ [00:01:36.152,000] <dbg> adaptive_sockets: adaptive_get_preferred_net_if: Preferring net if 1...
+uart:~$ [00:01:36.163,000] <inf> main: Connected to UDP remote.
+uart:~$ [00:01:36.171,000] <dbg> main: net_hexdump: Request
+                               48 01 43 c9 0a 3d 75 94  61 13 f4 25 b5 68 65 6c |H.C..=u. a..%.hel
+                               6c 6f                                            |lo               
+uart:~$ [00:01:36.196,000] <dbg> adaptive_sockets: adaptive_sendto: Running adaptive_sendto for socket 4...
+uart:~$ [00:01:36.208,000] <dbg> adaptive_sockets: adaptive_sendto: obj: 0x3ffbbc88 | buf: 0x3ffbb4f0 | buf_len: 18 | flags: 0
+uart:~$ [00:01:36.221,000] <dbg> adaptive_sockets: log_ipv4: Destination Address (addr): NULL
+uart:~$ [00:01:36.233,000] <dbg> esp32_wifi: esp32_wifi_send: pkt sent 0x3ffd1f10 len 60
+uart:~$ [00:01:36.241,000] <dbg> adaptive_sockets: adaptive_on_send: Running adaptive_on_send...
+uart:~$ [00:01:36.252,000] <inf> main: Sent coap request successfully
+uart:~$ [00:01:36.260,000] <dbg> main: process_simple_coap_reply: Starting to process simple CoAP reply...
+uart:~$ [00:01:36.272,000] <dbg> adaptive_sockets: adaptive_recvfrom: Running adaptive_recvfrom for socket 4...
+uart:~$ [00:01:36.668,000] <dbg> adaptive_sockets: adaptive_on_receive: Running adaptive_on_receive...
+uart:~$ [00:01:36.669,000] <dbg> adaptive_sockets: adaptive_recvfrom: max_length: 256, packet_length: 19, bytes_to_copy: 19
+uart:~$ [00:01:36.682,000] <dbg> main: net_hexdump: Response
+                               68 45 43 c9 0a 3d 75 94  61 13 f4 25 c0 ff 77 6f |hEC..=u. a..%..wo
+                               72 6c 64                                         |rld              
+uart:~$ [00:01:36.707,000] <inf> main: CoAP response payload: world
+uart:~$ [00:01:36.715,000] <inf> main: Processed coap reply correctly.
+uart:~$ [00:01:36.723,000] <dbg> adaptive_sockets: adaptive_close: Running adaptive_close for socket 4...
+uart:~$ [00:01:36.735,000] <dbg> main: main: Starting to sleep.
+uart:~$ kernel thread stacks[00:01:37.743,000] <dbg> main: main: Done sleeping.
+uart:~$ kernel thread stacks[00:01:37.743,000] <dbg> main: main: Sending hello request #5...
+uart:~$ kernel thread stacks[00:01:37.752,000] <dbg> adaptive_sockets: adaptive_connection_is_supported: Running adaptive_connection_is_supported...
+uart:~$ kernel thread stacks[00:01:37.767,000] <dbg> adaptive_sockets: adaptive_get_socket: Running adaptive_get_socket...
+uart:~$ kernel thread stacks[00:01:37.780,000] <dbg> main: main: Created socket with fd 4.
+uart:~$ kernel thread stacks[00:01:37.790,000] <dbg> adaptive_sockets: adaptive_connect: Running adaptive_connect for socket 4...
+uart:~$ kernel thread stacks[00:01:37.804,000] <dbg> adaptive_sockets: adaptive_connect: obj: 0x3ffbbc88
+uart:~$ kernel thread stacks[00:01:37.815,000] <dbg> adaptive_sockets: log_ipv4: Address: 134.102.218.18:5683
+uart:~$ kernel thread stacks[00:01:37.827,000] <dbg> adaptive_sockets: log_ipv4: Address Family (sin_family): 1 (AF_INET=2)
+uart:~$ kernel thread stacks[00:01:37.840,000] <dbg> adaptive_sockets: adaptive_get_preferred_net_if: Preferring net if 1...
+uart:~$ kernel thread stacks[00:01:37.853,000] <inf> main: Connected to UDP remote.
+uart:~$ kernel thread stacks[00:01:37.863,000] <dbg> main: net_hexdump: Request
+                               48 01 43 ca ac bc 4e 90  c0 6a b5 48 b5 68 65 6c |H.C...N. .j.H.hel
+                               6c 6f                                            |lo               
+uart:~$ kernel thread stacks[00:01:37.890,000] <dbg> adaptive_sockets: adaptive_sendto: Running adaptive_sendto for socket 4...
+uart:~$ kernel thread stacks[00:01:37.903,000] <dbg> adaptive_sockets: adaptive_sendto: obj: 0x3ffbbc88 | buf: 0x3ffbb570 | buf_len: 18 | flags: 0
+uart:~$ kernel thread stacks[00:01:37.918,000] <dbg> adaptive_sockets: log_ipv4: Destination Address (addr): NULL
+uart:~$ kernel thread stacks[00:01:37.932,000] <dbg> esp32_wifi: esp32_wifi_send: pkt sent 0x3ffd1f10 len 60
+uart:~$ kernel thread stacks[00:01:37.942,000] <dbg> adaptive_sockets: adaptive_on_send: Running adaptive_on_send...
+uart:~$ kernel thread stacks[00:01:37.955,000] <inf> main: Sent coap request successfully
+uart:~$ kernel thread stacks[00:01:37.965,000] <dbg> main: process_simple_coap_reply: Starting to process simple CoAP reply...
+uart:~$ kernel thread stacks[00:01:37.978,000] <dbg> adaptive_sockets: adaptive_recvfrom: Running adaptive_recvfrom for socket 4...
+uart:~$ kernel thread stacks
+0x3ffbfd60                                  (real size 1024):	unused  736	usage  288 / 1024 (28 %)
+0x3ffc0a28 conn_mgr_monitor                 (real size  512):	unused  176	usage  336 /  512 (65 %)
+0x3ffc05f0 net_socket_service               (real size 1200):	unused  672	usage  528 / 1200 (44 %)
+0x3ffc0848 rx_q[0]                          (real size 4096):	unused 2192	usage 1904 / 4096 (46 %)
+0x3ffc0770 net_mgmt                         (real size 2048):	unused  672	usage 1376 / 2048 (67 %)
+0x3ffbfe48 shell_uart                       (real size 8192):	unused 6592	usage 1600 / 8192 (19 %)
+0x3ffc1808                                  (real size 1040):	unused  368	usage  672 / 1040 (64 %)
+0x3ffc1748                                  (real size 2048):	unused 1744	usage  304 / 2048 (14 %)
+0x3ffc0058 wifi                             (real size 3584):	unused 1424	usage 2160 / 3584 (60 %)
+0x3ffc1aa8 sysworkq                         (real size 10240):	unused 8608	usage 1632 / 10240 (15 %)
+0x3ffbffb0 esp_timer                        (real size 4096):	unused 3712	usage  384 / 4096 ( 9 %)
+0x3ffc18a8 idle                             (real size 1024):	unused  816	usage  208 / 1024 (20 %)
+0x3ffc1948 main                             (real size 4096):	unused 2240	usage 1856 / 4096 (45 %)
+0x3ffcad30 IRQ 00                           (real size 2048):	unused 1616	usage  432 / 2048 (21 %)
+uart:~$ [00:01:41.331,000] <dbg> esp32_wifi: esp32_wifi_send: pkt sent 0x3ffd1f10 len 42
+uart:~$ [00:01:42.952,000] <dbg> modem_simcom_a76xx: modem_rssi_query_work: Going to query RSSI.
+uart:~$ [00:01:42.953,000] <dbg> modem_simcom_a76xx: modem_rssi_query_work: Going to run cmd for RSSI query.
+uart:~$ [00:01:42.964,000] <dbg> modem_cmd_handler: modem_cmd_send_ext: SENT DATA
+                                            41 54 2b 43 53 51                                |AT+CSQ           
+uart:~$ [00:01:42.989,000] <dbg> modem_cmd_handler: cmd_handler_process_rx_buf: RECV
+                                            2b 43 53 51 3a 20 33 31  2c 30                   |+CSQ: 31 ,0      
+uart:~$ [00:01:43.003,000] <dbg> modem_cmd_handler: find_cmd_match: data: 0x3ffc0f80
+uart:~$ [00:01:43.012,000] <dbg> modem_cmd_handler: find_cmd_match: data->cmds: 0x3ffc0f80
+uart:~$ [00:01:43.022,000] <dbg> modem_cmd_handler: find_cmd_match: data->cmd_len: 1073483660
+uart:~$ [00:01:43.033,000] <err> os:  ** FATAL EXCEPTION
+uart:~$ [00:01:43.040,000] <err> os:  ** CPU 0 EXCCAUSE 28 (load prohibited)
+uart:~$ [00:01:43.049,000] <err> os:  **  PC 0x400f91a0 VADDR 0x1
+uart:~$ [00:01:43.058,000] <err> os:  **  PS 0x60020
+uart:~$ [00:01:43.065,000] <err> os:  **    (INTLEVEL:0 EXCM: 0 UM:1 RING:0 WOE:1 OWB:0 CALLINC:2)
+uart:~$ [00:01:43.076,000] <err> os:  **  A0 0x800fc3f0  SP 0x3ffcac90  A2 0  A3 0x3ffc0f80
+uart:~$ [00:01:43.086,000] <err> os:  **  A4 0xa  A5 0  A6 0x3ffc0f88  A7 0x3ffca8a0
+uart:~$ [00:01:43.096,000] <err> os:  **  A8 0x800f91b4  A9 0x1 A10 0xa A11 0x1
+uart:~$ [00:01:43.106,000] <err> os:  ** A12 0x53 A13 0 A14 0 A15 0x8
+uart:~$ [00:01:43.114,000] <err> os:  ** LBEG 0x400014fd LEND 0x4000150d LCOUNT 0xfffffffd
+uart:~$ [00:01:43.125,000] <err> os:  ** SAR 0x3
+uart:~$ [00:01:43.131,000] <err> os:  **  THREADPTR 0x3ffcac90
+uart:~$ 
+
+Backtrace:uart:~$ 0x400f919d:0x3ffcac90 uart:~$ 0x400fc3ed:0x3ffcad00 uart:~$ 0x400db4d3:0x3ffcad20 uart:~$ 
+
+uart:~$ [00:01:43.158,000] <err> os: >>> ZEPHYR FATAL ERROR 0: CPU exception on CPU 0
+uart:~$ [00:01:43.168,000] <err> os: Current thread: 0x3ffc1808 (unknown)
+uart:~$ [00:01:43.177,000] <err> os: Halting system
+uart:~$ 

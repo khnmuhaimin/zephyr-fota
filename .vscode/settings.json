@@ -70,6 +70,7 @@
     "socket.h": "c",
     "net_ip.h": "c",
     "dhcpv4_server.h": "c",
-    "kernel.h": "c"
+    "kernel.h": "c",
+    "memory": "c"
   }
 }

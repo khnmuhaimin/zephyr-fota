@@ -5,10 +5,11 @@
  */
 
 #include <stdio.h>
+#include <zephyr/logging/log.h>
+LOG_MODULE_REGISTER(main, LOG_LEVEL_DBG);
 
 int main(void)
 {
-	printf("Hello World! %s\n", CONFIG_BOARD_TARGET);
-
-	return 0;
+    LOG_INF("Hello, New Image!");
+    return 0;
 }

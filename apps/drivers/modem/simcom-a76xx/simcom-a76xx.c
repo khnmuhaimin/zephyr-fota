@@ -60,6 +60,8 @@ static int net_if_offload_send(struct net_pkt *pkt, net_context_send_cb_t cb, in
 static int net_if_offload_recv(struct net_context *context, net_context_recv_cb_t cb,
                                int32_t timeout, void *user_data);
 
+static int net_if_offload_put(struct net_context *context);
+
 static struct net_offload net_if_offload_funcs = {
     .get = net_if_offload_get,
     .bind = net_if_offload_bind,
@@ -69,7 +71,7 @@ static struct net_offload net_if_offload_funcs = {
     .send = net_if_offload_send,
     .sendto = net_if_offload_sendto,
     .recv = net_if_offload_recv,
-    .put = NULL,
+    .put = net_if_offload_put,
 };
 
 static inline uint32_t hash32(char *str, int len)
@@ -114,9 +116,9 @@ static void modem_net_iface_init(struct net_if *iface)
 
     data->netif = iface;
 
-    socket_offload_dns_register(&offload_dns_ops);
+    // socket_offload_dns_register(&offload_dns_ops);
 
-    net_if_socket_offload_set(iface, offload_socket);
+    // net_if_socket_offload_set(iface, offload_socket);
     iface->if_dev->offload = &net_if_offload_funcs;
 
     struct in_addr modem_ip;
@@ -206,6 +208,13 @@ MODEM_CMD_DEFINE(on_cmd_ip_error_network_already_opened)
  */
 static int offload_connect(void *obj, const struct sockaddr *addr, socklen_t addrlen)
 {
+    LOG_DBG("Running modem's offload_connect...");
+    char ip_str[NET_IPV4_ADDR_LEN];
+    net_addr_ntop(AF_INET, &((const struct sockaddr_in *)addr)->sin_addr, ip_str, sizeof(ip_str));
+    LOG_DBG("Running offload_connect: Socket %p, Dest IP: %s, Port: %d",
+            obj,
+            ip_str,
+            ntohs(((const struct sockaddr_in *)addr)->sin_port));
     struct modem_socket *sock = (struct modem_socket *)obj;
     // uint16_t dst_port = 0;
     char *protocol;
@@ -276,11 +285,13 @@ static int offload_connect(void *obj, const struct sockaddr *addr, socklen_t add
     LOG_DBG("Starting socket service...");
     ret = modem_cmd_send(&mctx.iface, &mctx.cmd_handler, netopen_responses, ARRAY_SIZE(netopen_responses), "AT+NETOPEN",
                          &mdata.sem_response, MDM_NETOPEN_TIMEOUT);
-    if (ret < 0)
-    {
-        LOG_ERR("Could not start socket service.");
-        goto error;
-    }
+
+    // worst case is the above gives "NET already opened" which means it cant faile
+    // if (ret < 0)
+    // {
+    //     LOG_ERR("Could not start socket service.");
+    //     goto error;
+    // }
 
     LOG_DBG("Establishing connection in multisocket mode...");
     ret = modem_cmd_send(&mctx.iface, &mctx.cmd_handler, cipopen_responses, ARRAY_SIZE(cipopen_responses), cipopen_command,
@@ -302,9 +313,11 @@ static int offload_connect(void *obj, const struct sockaddr *addr, socklen_t add
 
     sock->is_connected = true;
     errno = 0;
+    LOG_DBG("Leaving modem's offload_connect...");
     return 0;
 error:
     //     errno = -ret;
+    LOG_DBG("Leaving modem's offload_connect...");
     return -1;
 }
 
@@ -1321,15 +1334,19 @@ MODEM_CMD_DEFINE(on_cmd_csq)
  */
 static void modem_rssi_query_work(struct k_work *work)
 {
+    LOG_DBG("Going to query RSSI.");
     struct modem_cmd cmd[] = {MODEM_CMD("+CSQ: ", on_cmd_csq, 2U, ",")};
     static char *send_cmd = "AT+CSQ";
     int ret;
-
+    LOG_DBG("Going to run cmd for RSSI query.");
+    LOG_DBG("ARRAY_SIZE(cmd): %zu", ARRAY_SIZE(cmd));
     ret = modem_cmd_send(&mctx.iface, &mctx.cmd_handler, cmd, ARRAY_SIZE(cmd), send_cmd,
                          &mdata.sem_response, MDM_CMD_TIMEOUT);
     if (ret < 0)
     {
         LOG_ERR("AT+CSQ ret:%d", ret);
+    } else {
+        LOG_DBG("Queried RSSI successfully.");
     }
 
     if (work)
@@ -2081,6 +2098,7 @@ static int net_if_offload_get(sa_family_t family, enum net_sock_type type,
         errno = -ret;
         return -1;
     }
+    LOG_DBG("Successfully got the fd %d.", ret);
 
     struct modem_socket *socket = get_socket_from_fd(ret);
     if (socket == NULL)
@@ -2088,7 +2106,9 @@ static int net_if_offload_get(sa_family_t family, enum net_sock_type type,
         LOG_ERR("Couldn't find the socket that was apparently created.");
         return -1;
     }
+    LOG_DBG("Successfully got a socket with fd %d.", ret);
     (*context)->offload_context = socket;
+    LOG_DBG("Successfully stored socket with fd %d in the context.", ret);
 
     errno = 0;
     return ret;
@@ -2098,7 +2118,7 @@ static int net_if_offload_get(sa_family_t family, enum net_sock_type type,
 static int net_if_offload_bind(struct net_context *context,
                                const struct sockaddr *addr, socklen_t addr_len)
 {
-    LOG_DBG("Running net_if_offload_bind...");
+    LOG_DBG("Running modem's net_if_offload_bind...");
     return 0;
 }
 
@@ -2107,7 +2127,7 @@ static int net_if_offload_connect(struct net_context *context,
                                   net_context_connect_cb_t cb, int32_t timeout,
                                   void *user_data)
 {
-    LOG_DBG("Running net_if_offload_connect...");
+    LOG_DBG("Running modem's net_if_offload_connect...");
     offload_connect(context->offload_context, addr, addr_len);
 }
 
@@ -2115,7 +2135,7 @@ static int net_if_offload_sendto(struct net_pkt *pkt, const struct sockaddr *dst
                                  socklen_t addr_len, net_context_send_cb_t cb,
                                  int32_t timeout, void *user_data)
 {
-    LOG_DBG("Running net_if_offload_sendto...");
+    LOG_DBG("Running modem's net_if_offload_sendto...");
     // LOG_DBG("pkt: %p, length: %zu", pkt, net_pkt_get_len(pkt));
     // LOG_DBG("dst_addr: %p", dst_addr);
     // LOG_DBG("addr_len: %zu", addr_len);
@@ -2131,14 +2151,14 @@ static int net_if_offload_sendto(struct net_pkt *pkt, const struct sockaddr *dst
 
 static int net_if_offload_send(struct net_pkt *pkt, net_context_send_cb_t cb, int32_t timeout, void *user_data)
 {
-    LOG_DBG("Running net_if_offload_send...");
+    LOG_DBG("Running modem's net_if_offload_send...");
     return 0;
 }
 
 static int net_if_offload_recv(struct net_context *context, net_context_recv_cb_t cb,
                                int32_t timeout, void *user_data)
 {
-    LOG_DBG("Running net_if_offload_recv...");
+    LOG_DBG("Running modem's net_if_offload_recv...");
     struct modem_socket *socket = context->offload_context;
     /*
     typedef void (*net_context_recv_cb_t)(
@@ -2150,9 +2170,10 @@ static int net_if_offload_recv(struct net_context *context, net_context_recv_cb_
 
     Since i only want to use the packet, set everything to null and send the packet.
     */
-    struct net_pkt* pkt = net_pkt_alloc_with_buffer(mdata.netif, 1280, socket->family, socket->ip_proto, K_FOREVER);
-    uint8_t* buf = NULL;
-    while (buf == NULL) {
+    struct net_pkt *pkt = net_pkt_alloc_with_buffer(mdata.netif, 1280, socket->family, socket->ip_proto, K_FOREVER);
+    uint8_t *buf = NULL;
+    while (buf == NULL)
+    {
         buf = k_calloc(1280, 1);
     }
     ssize_t bytes_read = offload_recvfrom(socket, buf, 1280, 0, NULL, NULL);
@@ -2162,6 +2183,12 @@ static int net_if_offload_recv(struct net_context *context, net_context_recv_cb_
     cb(context, pkt, NULL, NULL, 0, user_data);
     k_free(buf);
     return 0;
+}
+
+static int net_if_offload_put(struct net_context *context)
+{
+    LOG_DBG("Running modem's net_if_offload_put...");
+    struct modem_socket *socket = context->offload_context;
 }
 
 /* Register device with the networking stack. */

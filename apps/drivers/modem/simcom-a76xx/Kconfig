@@ -72,10 +72,10 @@ config MODEM_SIMCOM_A76XX_RAT_GSM
 endchoice
 
 config MODEM_SIMCOM_A76XX_SOCKET_PRIORITY
-	int "simcom a76xx socket offload priority"
+	int "simcom a76xx socket priority"
 	default NET_SOCKETS_PRIORITY_DEFAULT
 	help
-	  Sets the numerical priority for the Simcom A76XX socket offload implementation. A lower number means a higher priority, meaning it is checked earlier during socket creation.
+	  Sets the numerical priority for the Simcom A76XX socket implementation. A lower number means a higher priority, meaning it is checked earlier during socket creation.
 
 endif # MODEM_A76XX
 

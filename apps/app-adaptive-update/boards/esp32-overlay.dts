@@ -1,0 +1,35 @@
+
+/ {
+
+	chosen {
+		zephyr,console = &uart0;
+		zephyr,shell-uart = &uart0;
+	};
+
+	aliases {
+        modem-uart = &uart2;
+		modem = &modem;
+		adaptive-net-device-1 = &wifi;
+		adaptive-net-device-2 = &modem;
+		wifi = &wifi;
+    };
+};
+
+
+&uart2 {
+    modem: modem {
+		compatible = "simcom,a76xx";
+        mdm-power-gpios = <&gpio0 4 GPIO_ACTIVE_HIGH>;
+		status = "okay";
+	};
+    status = "okay";
+};
+
+
+&wifi {
+	status = "okay";
+};
+
+&uart0 {
+	status = "okay";
+};
