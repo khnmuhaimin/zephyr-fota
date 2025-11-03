@@ -142,7 +142,7 @@ static void adapt_test_set_before_fail(bool before_fail)
 #endif
 
 static void net_if_status_monitor_thread(void *p1, void *p2, void *p3);
-K_THREAD_STACK_DEFINE(monitor_stack_area, NET_IF_STATUS_MONITOR_THREAD_STACK_SIZE);
+// K_THREAD_STACK_DEFINE(monitor_stack_area, NET_IF_STATUS_MONITOR_THREAD_STACK_SIZE);
 static struct adaptive_sockets_layer adapt_sockets_layer = {0};
 static bool adaptive_net_if_is_operational(struct net_if *iface);
 static int adaptive_close(void *obj);
@@ -411,17 +411,23 @@ static struct net_if *adaptive_get_preferred_net_if(void)
     // LOG_DBG("net_if_1_operational %d", adapt_sockets_layer.net_if_1_operational);
     // LOG_DBG("adaptive_net_if_1_is_stable() %d", adaptive_net_if_1_is_stable());
     // LOG_DBG("adaptive_net_if_is_operational(adapt_sockets_layer.net_if_2) %d", adaptive_net_if_is_operational(adapt_sockets_layer.net_if_2));
+    // LOG_DBG("adapt_sockets_layer.net_if_1: %p | adapt_sockets_layer.net_if_2: %p", adapt_sockets_layer.net_if_1, adapt_sockets_layer.net_if_2);
 
-    if (adapt_sockets_layer.net_if_1_operational && adaptive_net_if_1_is_stable())
-    // if (false)
+    // if (adapt_sockets_layer.net_if_1_operational && adaptive_net_if_1_is_stable())
+    if (false)
     {
-        LOG_DBG("Preferring net if 1...");
+        LOG_INF("Preferring net if 1...");
         preferred = adapt_sockets_layer.net_if_1;
     }
-    else if (adaptive_net_if_is_operational(adapt_sockets_layer.net_if_2))
+    // else if (adaptive_net_if_is_operational(adapt_sockets_layer.net_if_2))
+    else if (true)
     {
-        LOG_DBG("Preferring net if 2...");
+        LOG_INF("Preferring net if 2...");
         preferred = adapt_sockets_layer.net_if_2;
+    }
+    else
+    {
+        LOG_WRN("No net if was preferred.");
     }
     k_mutex_unlock(&adapt_sockets_layer.lock);
     return preferred;
@@ -470,25 +476,26 @@ int adaptive_sockets_init(void)
         adapt_sockets_layer.error = ENODEV;
         return -ENODEV;
     }
-    // struct device *net_dev_2 = DEVICE_DT_GET(ADAPT_NET_DEV_2);
-    // adapt_sockets_layer.net_if_2 = adaptive_get_inner_net_if(net_dev_2);
-    // if (adapt_sockets_layer.net_if_2 == NULL)
-    // {
-    //     LOG_ERR("Could not find net if for net device 2.");
-    //     adapt_sockets_layer.error = ENODEV;
-    //     return -ENODEV;
-    // }
+    struct device *net_dev_2 = DEVICE_DT_GET(ADAPT_NET_DEV_2);
+    adapt_sockets_layer.net_if_2 = adaptive_get_inner_net_if(net_dev_2);
+    if (adapt_sockets_layer.net_if_2 == NULL)
+    {
+        LOG_ERR("Could not find net if for net device 2.");
+        adapt_sockets_layer.error = ENODEV;
+        return -ENODEV;
+    }
+    // net_if_set_default(adapt_sockets_layer.net_if_2); // needed for making a socket. otherwise net_context_get doesnt call get of the modem's api
 
     // create a thread to monitor net ifs
-    adapt_sockets_layer.monitor_tid = k_thread_create(
-        &adapt_sockets_layer.monitor_thread_data,
-        monitor_stack_area,
-        K_THREAD_STACK_SIZEOF(monitor_stack_area),
-        net_if_status_monitor_thread,
-        NULL, NULL, NULL,
-        NET_IF_STATUS_POLLING_PRIORITY,
-        0,
-        K_NO_WAIT);
+    // adapt_sockets_layer.monitor_tid = k_thread_create(
+    //     &adapt_sockets_layer.monitor_thread_data,
+    //     monitor_stack_area,
+    //     K_THREAD_STACK_SIZEOF(monitor_stack_area),
+    //     net_if_status_monitor_thread,
+    //     NULL, NULL, NULL,
+    //     NET_IF_STATUS_POLLING_PRIORITY,
+    //     0,
+    //     K_NO_WAIT);
 
     // set net ifs current status
     adapt_sockets_layer.net_if_1_operational = adaptive_net_if_is_operational(adapt_sockets_layer.net_if_1);
@@ -506,7 +513,7 @@ static int adaptive_connect(void *obj, const struct sockaddr *dest_addr, socklen
 {
     struct adaptive_socket *socket = (struct adaptive_socket *)obj;
     LOG_DBG("Running adaptive_connect for socket %d...", socket->fd);
-    LOG_DBG("obj: %p", obj);
+    // LOG_DBG("obj: %p", obj);
     log_ipv4(dest_addr, dest_addr_len);
 
     // destination might be given here or in the send function. This is to account for both cases.
@@ -517,12 +524,15 @@ static int adaptive_connect(void *obj, const struct sockaddr *dest_addr, socklen
     socket->dest_addr_len = dest_addr_len;
     // we need to be bound at this stage cause net_context_connect might try to call net_offloaded funcs
     socket->net_if = adaptive_get_preferred_net_if();
+    // LOG_DBG("socket->net_if: %p", socket->net_if);
+    // LOG_DBG("socket->context: %p", socket->context);
     net_context_bind_iface(socket->context, socket->net_if);
     // LOG_DBG("adaptive_connect: About to call net_context_connect...");
     // hack to get modem working
     if (socket->net_if == adapt_sockets_layer.net_if_2)
     {
-        LOG_WRN("Running the modem hack...");
+        // LOG_WRN("Running the modem hack...");
+        // Not 100% sure why i need this but if its not here, i get this error: ""
         net_offload_get(socket->net_if, AF_INET, SOCK_DGRAM, IPPROTO_UDP, &(socket->context));
         net_context_set_iface(socket->context, adapt_sockets_layer.net_if_2);
     }
@@ -557,7 +567,7 @@ static ssize_t adaptive_sendto(void *obj, const void *buf, size_t buf_len, int f
 {
     struct adaptive_socket *socket = (struct adaptive_socket *)obj;
     LOG_DBG("Running adaptive_sendto for socket %d...", socket->fd);
-    LOG_DBG("obj: %p | buf: %p | buf_len: %zu | flags: %d", obj, buf, buf_len, flags);
+    // LOG_DBG("obj: %p | buf: %p | buf_len: %zu | flags: %d", obj, buf, buf_len, flags);
     log_ipv4(dest_addr, dest_addr_len);
 
     if (dest_addr != NULL)
@@ -643,6 +653,8 @@ static ssize_t adaptive_sendto(void *obj, const void *buf, size_t buf_len, int f
         socket->connected = false;
         try++;
     }
+    // LOG_DBG("socket->net_if: %p", socket->net_if);
+    // LOG_DBG("Done running adaptive_sendto...");
 }
 
 static void adaptive_on_receive(
@@ -664,6 +676,8 @@ static ssize_t adaptive_recvfrom(void *obj, void *buf, size_t buf_len, int flags
 {
     struct adaptive_socket *socket = (struct adaptive_socket *)obj;
     LOG_DBG("Running adaptive_recvfrom for socket %d...", socket->fd);
+    // LOG_DBG("socket->net_if: %p", socket->net_if);
+
     ssize_t error = 0;
     uint8_t try = 0;
     while (try < ADAPTIVE_MAX_RECV_TRIES)
@@ -705,6 +719,7 @@ static ssize_t adaptive_recvfrom(void *obj, void *buf, size_t buf_len, int flags
         }
         if (try <= ADAPTIVE_MAX_RECV_TRIES - 1)
         {
+            // LOG_DBG("socket->net_if: %p", socket->net_if);
             error = adaptive_sendto(socket, socket->send_buf, socket->send_buf_len, 0, NULL, 0);
             if (error < 0)
             {
@@ -719,29 +734,17 @@ static ssize_t adaptive_recvfrom(void *obj, void *buf, size_t buf_len, int flags
     {
         goto cleanup;
     }
-    LOG_DBG("Just before net_pkt_get_len: socket: %p | fd: %d | socket->recv_pkt: %p", socket, socket->fd, socket->recv_pkt);
+
+    ssize_t bytes_to_copy;
+    // LOG_DBG("Just before net_pkt_get_len: socket: %p | fd: %d | socket->recv_pkt: %p", socket, socket->fd, socket->recv_pkt);
+    // LOG_DBG("socket->net_if: %p", socket->net_if);
     size_t pkt_len = net_pkt_get_len(socket->recv_pkt);
     net_pkt_cursor_init(socket->recv_pkt);
-    // hacky solution: espressif wifi driver seems to add extra 28 bytes of data
-    if (socket->net_if)
-    {
-        const struct device *dev = net_if_get_device(socket->net_if);
 
-        // if (dev)
-        // {
-        //     LOG_DBG("adaptive_recvfrom : Network Interface: %s.", dev->name);
-        // }
-        // else
-        // {
-        //     LOG_DBG("adaptive_recvfrom : Network Interface: [Device not found].");
-        // }
-    }
-    else
-    {
-        LOG_ERR("Socket not bound to an net if.");
-    }
     if (net_if_get_wifi_sta() == socket->net_if)
     {
+        // hacky solution: espressif wifi driver seems to add extra 28 bytes of data
+        // LOG_DBG("socket->net_if: %p", socket->net_if);
         // LOG_DBG("Socket is using wifi. Will try to do hack.");
         if (pkt_len < 28)
         {
@@ -755,26 +758,26 @@ static ssize_t adaptive_recvfrom(void *obj, void *buf, size_t buf_len, int flags
             net_pkt_skip(socket->recv_pkt, 28);
         }
     }
-    else
-    {
-        // LOG_DBG("Socket is using modem.");
-    }
-    ssize_t bytes_to_copy = (pkt_len < buf_len ? pkt_len : buf_len);
-    LOG_DBG("max_length: %zu, packet_length: %zu, bytes_to_copy: %zu", buf_len, pkt_len, bytes_to_copy);
+    bytes_to_copy = (pkt_len < buf_len ? pkt_len : buf_len);
+    // LOG_DBG("max_length: %zu, packet_length: %zu, bytes_to_copy: %zu", buf_len, pkt_len, bytes_to_copy);
     error = (ssize_t)net_pkt_read(socket->recv_pkt, buf, bytes_to_copy);
+
     if (error < 0)
     {
         LOG_ERR("Failed to read network packet. Error code: %d.", error);
     }
 cleanup:
+    // LOG_DBG("Clean up");
     if (socket->recv_pkt != NULL)
     {
+        LOG_DBG("Unreffing packet...");
         net_pkt_unref(socket->recv_pkt); // unref the packet regardless of whether it was read successfully.
         socket->recv_pkt = NULL;
     }
     k_free(socket->send_buf);
     socket->send_buf = NULL;
     socket->send_buf_len = 0;
+    // LOG_DBG("Returning");
     return error == 0 ? (ssize_t)bytes_to_copy : error;
 }
 

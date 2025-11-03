@@ -74,6 +74,166 @@ static struct net_offload net_if_offload_funcs = {
     .put = net_if_offload_put,
 };
 
+// static int allocate_link_num(int fd)
+// {
+//     k_mutex_lock(&mdata.link_num_lock, K_FOREVER);
+//     int link_num = -1;
+//     int link_nums_allocated = 0;
+
+//     // count number of used link numbers
+//     for (int i = 0; i < MDM_MAX_SOCKETS; i++) {
+//         if (mdata.link_num_to_fd[i] >= 0) {
+//             link_nums_allocated++;
+//         }
+//     }
+
+//     // return -1 if no link numbers are available
+//     if (link_nums_allocated >= MDM_MAX_SOCKETS) {
+//         return -1;
+//     }
+
+//     // allocate a link number
+//     for (int i = MDM_MIN_LINK_NUM; i <= MDM_MAX_LINK_NUM; i++)
+//     {
+//         if (mdata.link_num_to_fd[i - MDM_MIN_LINK_NUM] == -1)
+//         {
+//             // -1 represent not used
+//             link_num = i;
+//             mdata.link_num_to_fd[i - MDM_MIN_LINK_NUM] = fd;
+//             break;
+//         }
+//     }
+//     k_mutex_unlock(&mdata.link_num_lock);
+//     return link_num;
+// }
+
+static int init_link_nums()
+{
+    k_mutex_lock(&mdata.link_num_lock, K_FOREVER);
+    for (int i = 0; i < MDM_MAX_SOCKETS; i++)
+    {
+        mdata.link_num_to_fd[i] = -1;
+    }
+    k_mutex_unlock(&mdata.link_num_lock);
+}
+
+static int allocate_link_num(int fd)
+{
+    LOG_DBG("Running allocate_link_num... fd=%d", fd);
+    k_mutex_lock(&mdata.link_num_lock, K_FOREVER);
+    int link_num = -1;
+    int link_nums_allocated = 0;
+
+    // count number of used link numbers
+    // LOG_DBG("B: Starting count of allocated links (MDM_MAX_SOCKETS: %d)", MDM_MAX_SOCKETS);
+    for (int i = 0; i < MDM_MAX_SOCKETS; i++)
+    {
+        if (mdata.link_num_to_fd[i] >= 0)
+        {
+            link_nums_allocated++;
+            // LOG_DBG("B.1: Link index %d is IN USE (FD: %d). Total allocated: %d",
+            // i, mdata.link_num_to_fd[i], link_nums_allocated);
+        }
+        else
+        {
+            // LOG_DBG("B.2: Link index %d is FREE (-1)", i);
+        }
+    }
+
+    // return -1 if no link numbers are available
+    // LOG_DBG("C: Checking capacity: Allocated %d / Max %d", link_nums_allocated, MDM_MAX_SOCKETS);
+    if (link_nums_allocated >= MDM_MAX_SOCKETS)
+    {
+        // LOG_ERR("C.1: FAILED: All link numbers (%d) are currently in use.", MDM_MAX_SOCKETS);
+        k_mutex_unlock(&mdata.link_num_lock);
+        return -1;
+    }
+    // LOG_DBG("C.2: Capacity check PASSED. Proceeding to allocate.");
+
+    // allocate a link number
+    // LOG_DBG("D: Searching for first free link num in range [%d, %d]", MDM_MIN_LINK_NUM, MDM_MAX_LINK_NUM);
+    for (int i = MDM_MIN_LINK_NUM; i <= MDM_MAX_LINK_NUM; i++)
+    {
+        int array_index = i - MDM_MIN_LINK_NUM;
+        // LOG_DBG("D.1: Checking conceptual link %d (Array Index: %d)", i, array_index);
+
+        if (mdata.link_num_to_fd[i - MDM_MIN_LINK_NUM] == -1)
+        {
+            // -1 represent not used
+            link_num = i;
+            mdata.link_num_to_fd[i - MDM_MIN_LINK_NUM] = fd;
+            // LOG_INF("D.2: SUCCESS: Allocated link num %d (Index %d) to FD %d", link_num, array_index, fd);
+            break;
+        }
+        // LOG_DBG("D.3: Link num %d (Index %d) is busy (FD: %d)", i, array_index, mdata.link_num_to_fd[array_index]);
+    }
+
+    // Log the final return status before unlock
+    if (link_num == -1)
+    {
+        LOG_ERR("E: FAILED: Could not find a free slot (Logic error or race after count).");
+    }
+    else
+    {
+        // LOG_DBG("E: Allocation finalized. Returning link num %d", link_num);
+    }
+
+    k_mutex_unlock(&mdata.link_num_lock);
+    return link_num;
+}
+
+static void free_link_num(int link_num)
+{
+    LOG_DBG("Running free_link_num... link_num=%d", link_num);
+    k_mutex_lock(&mdata.link_num_lock, K_FOREVER);
+    mdata.link_num_to_fd[link_num - MDM_MIN_LINK_NUM] = -1;
+    k_mutex_unlock(&mdata.link_num_lock);
+}
+
+static int get_link_num(int fd)
+{
+    LOG_DBG("Running get_link_num... fd=%d", fd);
+    k_mutex_lock(&mdata.link_num_lock, K_FOREVER);
+    for (int link_num = MDM_MIN_LINK_NUM; link_num <= MDM_MAX_LINK_NUM; link_num++)
+    {
+        if (mdata.link_num_to_fd[link_num - MDM_MIN_LINK_NUM] == fd)
+        {
+            k_mutex_unlock(&mdata.link_num_lock);
+            return link_num;
+        }
+    }
+    k_mutex_unlock(&mdata.link_num_lock);
+    return -1;
+}
+
+static int get_fd_from_link_num(int link_num)
+{
+    LOG_DBG("Running get_fd_from_link_num... link_num=%d", link_num);
+    if (link_num - MDM_MIN_LINK_NUM < 0 || link_num - MDM_MIN_LINK_NUM >= MDM_MAX_SOCKETS)
+    {
+        LOG_ERR("Link number %d is out of range.", link_num);
+    }
+    k_mutex_lock(&mdata.link_num_lock, K_FOREVER);
+    int fd = mdata.link_num_to_fd[link_num - MDM_MIN_LINK_NUM];
+    k_mutex_unlock(&mdata.link_num_lock);
+    return fd;
+}
+
+static struct modem_socket *get_socket_from_fd(int fd)
+{
+    struct modem_socket *socket = NULL;
+    k_sem_take(&(mdata.socket_config.sem_lock), K_FOREVER);
+    for (uint8_t i = 0; i < MDM_MAX_SOCKETS; i++)
+    {
+        if (mdata.socket_config.sockets[i].sock_fd == fd)
+        {
+            socket = &mdata.socket_config.sockets[i];
+        }
+    }
+    k_sem_give(&(mdata.socket_config.sem_lock));
+    return socket;
+}
+
 static inline uint32_t hash32(char *str, int len)
 {
 #define HASH_MULTIPLIER 37
@@ -137,7 +297,7 @@ static void modem_net_iface_init(struct net_if *iface)
  */
 static void change_state(enum a76xx_state state)
 {
-    LOG_DBG("Changing state to (%d)", state);
+    // LOG_DBG("Changing state to (%d)", state);
     mdata.state = state;
 }
 
@@ -211,17 +371,15 @@ static int offload_connect(void *obj, const struct sockaddr *addr, socklen_t add
     LOG_DBG("Running modem's offload_connect...");
     char ip_str[NET_IPV4_ADDR_LEN];
     net_addr_ntop(AF_INET, &((const struct sockaddr_in *)addr)->sin_addr, ip_str, sizeof(ip_str));
-    LOG_DBG("Running offload_connect: Socket %p, Dest IP: %s, Port: %d",
-            obj,
-            ip_str,
-            ntohs(((const struct sockaddr_in *)addr)->sin_port));
+    // LOG_DBG("Running offload_connect: Socket %p, Dest IP: %s, Port: %d",
+    //         obj,
+    //         ip_str,
+    //         ntohs(((const struct sockaddr_in *)addr)->sin_port));
     struct modem_socket *sock = (struct modem_socket *)obj;
     // uint16_t dst_port = 0;
     char *protocol;
     // char ip_str[NET_IPV6_ADDR_LEN];
-    struct modem_cmd netopen_responses[] = {
-        MODEM_CMD("+NETOPEN: ", on_cmd_netopen, 1U, ""),
-        MODEM_CMD("+IP ERROR: Network is already opened", on_cmd_ip_error_network_already_opened, 0U, "")};
+
     struct modem_cmd cipopen_responses[] = {
         MODEM_CMD("+CIPOPEN: ", on_cmd_cipopen, 2U, ",")};
     // longest cipopen command is for TCP. UDP version is significantly shorter
@@ -248,7 +406,7 @@ static int offload_connect(void *obj, const struct sockaddr *addr, socklen_t add
         return -1;
     }
 
-    LOG_DBG("Storing destination address in socket struct");
+    // LOG_DBG("Storing destination address in socket struct");
     sock->dst = *addr;
 
     // /* get the destination port */
@@ -273,18 +431,13 @@ static int offload_connect(void *obj, const struct sockaddr *addr, socklen_t add
     // }
 
     // only works for UDP btw
-    ret = snprintk(cipopen_command, sizeof(cipopen_command), "AT+CIPOPEN=%d,\"%s\",,,0", sock->id, protocol);
+    ret = snprintk(cipopen_command, sizeof(cipopen_command), "AT+CIPOPEN=%d,\"%s\",,,0", get_link_num(sock->sock_fd), protocol);
     if (ret < 0)
     {
         LOG_ERR("Failed to build connect command. ID: %d, FD: %d", sock->id, sock->sock_fd);
         errno = ENOMEM;
         return -1;
     }
-
-    // Starting socket service
-    LOG_DBG("Starting socket service...");
-    ret = modem_cmd_send(&mctx.iface, &mctx.cmd_handler, netopen_responses, ARRAY_SIZE(netopen_responses), "AT+NETOPEN",
-                         &mdata.sem_response, MDM_NETOPEN_TIMEOUT);
 
     // worst case is the above gives "NET already opened" which means it cant faile
     // if (ret < 0)
@@ -293,7 +446,7 @@ static int offload_connect(void *obj, const struct sockaddr *addr, socklen_t add
     //     goto error;
     // }
 
-    LOG_DBG("Establishing connection in multisocket mode...");
+    // LOG_DBG("Establishing connection in multisocket mode...");
     ret = modem_cmd_send(&mctx.iface, &mctx.cmd_handler, cipopen_responses, ARRAY_SIZE(cipopen_responses), cipopen_command,
                          &mdata.sem_response, MDM_CONNECT_TIMEOUT);
     if (ret < 0)
@@ -313,11 +466,11 @@ static int offload_connect(void *obj, const struct sockaddr *addr, socklen_t add
 
     sock->is_connected = true;
     errno = 0;
-    LOG_DBG("Leaving modem's offload_connect...");
+    // LOG_DBG("Leaving modem's offload_connect...");
     return 0;
 error:
     //     errno = -ret;
-    LOG_DBG("Leaving modem's offload_connect...");
+    // LOG_DBG("Leaving modem's offload_connect...");
     return -1;
 }
 
@@ -334,21 +487,21 @@ static ssize_t offload_sendto(void *obj, const void *buf, size_t len, int flags,
     char cipsend_command[sizeof("AT+CIPSEND=#,#####,\"###.###.###.###\",#####") + NUM_DEC_DIGITS(MDM_MAX_DATA_LENGTH) + NET_IPV6_ADDR_LEN] = {0};
     char ctrlz = 0x1A;
 
-    LOG_DBG("Checking modem network state...");
+    // LOG_DBG("Checking modem network state...");
     if (get_state() != A76XX_STATE_NETWORKING)
     {
         LOG_ERR("Modem currently not attached to the network!");
         return -EAGAIN;
     }
 
-    LOG_DBG("Performing sanity checks on buffer and length...");
+    // LOG_DBG("Performing sanity checks on buffer and length...");
     if (!buf || len == 0)
     {
         errno = EINVAL;
         return -1;
     }
 
-    LOG_DBG("Checking if socket is connected...");
+    // LOG_DBG("Checking if socket is connected...");
     if (!sock->is_connected)
     {
         errno = ENOTCONN;
@@ -358,11 +511,11 @@ static ssize_t offload_sendto(void *obj, const void *buf, size_t len, int flags,
     /* Only send up to MTU bytes. */
     if (len > MDM_MAX_DATA_LENGTH)
     {
-        LOG_DBG("Truncating data length to MDM_MAX_DATA_LENGTH...");
+        // LOG_DBG("Truncating data length to MDM_MAX_DATA_LENGTH...");
         len = MDM_MAX_DATA_LENGTH;
     }
 
-    LOG_DBG("Getting destination port...");
+    // LOG_DBG("Getting destination port...");
     if (sock->dst.sa_family == AF_INET6)
     {
         dest_port = ntohs(net_sin6(&sock->dst)->sin6_port);
@@ -372,7 +525,7 @@ static ssize_t offload_sendto(void *obj, const void *buf, size_t len, int flags,
         dest_port = ntohs(net_sin(&sock->dst)->sin_port);
     }
 
-    LOG_DBG("Formatting IP address string...");
+    // LOG_DBG("Formatting IP address string...");
     ret = modem_context_sprint_ip_addr(&sock->dst, ip_str, sizeof(ip_str));
     if (ret != 0)
     {
@@ -381,8 +534,8 @@ static ssize_t offload_sendto(void *obj, const void *buf, size_t len, int flags,
         return -1;
     }
 
-    LOG_DBG("Building CIPSEND command string...");
-    ret = snprintk(cipsend_command, sizeof(cipsend_command), "AT+CIPSEND=%d,%d,\"%s\",%d", sock->id, len, ip_str, dest_port);
+    // LOG_DBG("Building CIPSEND command string...");
+    ret = snprintk(cipsend_command, sizeof(cipsend_command), "AT+CIPSEND=%d,%d,\"%s\",%d", get_link_num(sock->sock_fd), len, ip_str, dest_port);
     if (ret < 0)
     {
         LOG_ERR("Failed to build send command!!");
@@ -390,13 +543,13 @@ static ssize_t offload_sendto(void *obj, const void *buf, size_t len, int flags,
         return -1;
     }
 
-    LOG_DBG("Taking TX lock semaphore...");
+    // LOG_DBG("Taking TX lock semaphore...");
     k_sem_take(&mdata.cmd_handler_data.sem_tx_lock, K_FOREVER);
     k_sem_reset(&mdata.sem_tx_ready);
 
     /* Send CIPSEND */
     mdata.current_sock_written = len;
-    LOG_DBG("Sending AT+CIPSEND command...");
+    // LOG_DBG("Sending AT+CIPSEND command...");
     ret = modem_cmd_send_nolock(&mctx.iface, &mctx.cmd_handler, NULL, 0U, cipsend_command, NULL,
                                 K_NO_WAIT);
     if (ret < 0)
@@ -405,7 +558,7 @@ static ssize_t offload_sendto(void *obj, const void *buf, size_t len, int flags,
         goto exit;
     }
 
-    LOG_DBG("Waiting for '>' prompt...");
+    // LOG_DBG("Waiting for '>' prompt...");
     ret = k_sem_take(&mdata.sem_tx_ready, K_SECONDS(2));
     if (ret < 0)
     {
@@ -413,9 +566,9 @@ static ssize_t offload_sendto(void *obj, const void *buf, size_t len, int flags,
         goto exit;
     }
 
-    LOG_DBG("Sending data payload...");
+    // LOG_DBG("Sending data payload...");
     modem_cmd_send_data_nolock(&mctx.iface, buf, len);
-    LOG_DBG("Sending CTRL-Z terminator...");
+    // LOG_DBG("Sending CTRL-Z terminator...");
     modem_cmd_send_data_nolock(&mctx.iface, &ctrlz, 1);
 
     // LOG_DBG("Waiting for final OK response...");
@@ -427,7 +580,7 @@ static ssize_t offload_sendto(void *obj, const void *buf, size_t len, int flags,
     // }
 
 exit:
-    LOG_DBG("Releasing TX lock semaphore...");
+    // LOG_DBG("Releasing TX lock semaphore...");
     k_sem_give(&mdata.cmd_handler_data.sem_tx_lock);
     /* Data was successfully sent */
 
@@ -446,9 +599,10 @@ exit:
  *
  * Note: len seems to always be zero. It feels like a sanity check more than anything else.
  */
-static int sockread_common(int sock_id, struct modem_cmd_handler_data *data, int socket_data_length,
-                           uint16_t len, size_t rx_buf_bytes_to_skip)
+static int sockread_common(int link_num, struct modem_cmd_handler_data *data, int socket_data_length, uint16_t len, size_t rx_buf_bytes_to_skip)
 {
+
+    // LOG_DBG("link_num=%d | socket_data_length=%d | len=%u | rx_buf_bytes_to_skip=%zu", link_num, socket_data_length, len, rx_buf_bytes_to_skip);
     struct modem_socket *sock;
     struct socket_read_data *sock_data;
     int ret, packet_size;
@@ -473,14 +627,15 @@ static int sockread_common(int sock_id, struct modem_cmd_handler_data *data, int
 
     if (net_buf_frags_len(data->rx_buf) < socket_data_length)
     {
-        LOG_DBG("Not enough data -- wait!");
+        // LOG_WRN("Not enough data -- wait!");
         return -EAGAIN;
     }
 
-    sock = modem_socket_from_id(&mdata.socket_config, sock_id);
+    int fd = get_fd_from_link_num(link_num);
+    sock = get_socket_from_fd(fd);
     if (!sock)
     {
-        LOG_ERR("Socket not found! (%d)", sock_id);
+        LOG_ERR("Socket with link num %d not found.", link_num);
         ret = -EINVAL;
         goto exit;
     }
@@ -488,10 +643,11 @@ static int sockread_common(int sock_id, struct modem_cmd_handler_data *data, int
     sock_data = (struct socket_read_data *)sock->data;
     if (!sock_data)
     {
-        LOG_ERR("Socket data not found! (%d)", sock_id);
+        LOG_ERR("Socket data not found! (%d)", sock->id);
         ret = -EINVAL;
         goto exit;
     }
+    // LOG_DBG("sock_data->recv_buf_len=%zu", sock_data->recv_buf_len);
 
     // if (data->rx_buf) {
     // 	dump_net_buf(data->rx_buf);
@@ -500,6 +656,7 @@ static int sockread_common(int sock_id, struct modem_cmd_handler_data *data, int
     // if (data->rx_buf) {
     // 	dump_net_buf(data->rx_buf);
     // }
+    LOG_DBG("data->rx_buf", data->rx_buf);
     data->rx_buf = net_buf_skip(data->rx_buf, rx_buf_bytes_to_skip);
     ret = net_buf_linearize(sock_data->recv_buf, sock_data->recv_buf_len, data->rx_buf, 0, (uint16_t)socket_data_length);
     // ret = net_buf_linearize(sock_data->recv_buf, sock_data->recv_buf_len, data->rx_buf, 0, sock_data->recv_buf_len);
@@ -509,7 +666,7 @@ static int sockread_common(int sock_id, struct modem_cmd_handler_data *data, int
     // 	dump_net_buf(data->rx_buf);
     // }
     // log sock_data->recv_buf (only log ret characters)
-    LOG_HEXDUMP_DBG(sock_data->recv_buf, ret, "Data Copied to App Buffer");
+    // LOG_HEXDUMP_DBG(sock_data->recv_buf, ret, "Data Copied to App Buffer");
     sock_data->recv_read_len = ret;
     if (ret != socket_data_length)
     {
@@ -521,7 +678,7 @@ static int sockread_common(int sock_id, struct modem_cmd_handler_data *data, int
     }
     else
     {
-        LOG_DBG("Copied as many bytes as the modem reported (apparently).");
+        // LOG_DBG("Copied as many bytes as the modem reported (apparently).");
     }
 
 exit:
@@ -537,11 +694,17 @@ MODEM_CMD_DEFINE(on_cmd_ciprxget_mode_2)
     // argv[0] -> link number
     // arvg[1] -> bytes read
     // argv[2] -> remaining bytes
-    LOG_DBG("on_cmd_ciprxget_mode_2: Args: %s, %s, %s | Arg count: %d", argv[0], argv[1], argv[2], argc);
+    // LOG_DBG("on_cmd_ciprxget_mode_2: Args: %s, %s, %s | Arg count: %d", argv[0], argv[1], argv[2], argc);
     // modem_cmd_handler will skip until the last arg
     // which means we need to manually skip the last arg and \r\n
     size_t last_arg_len = strlen(argv[2]);
     size_t rx_buf_bytes_to_skip = last_arg_len + 2;
+    // sockread_common(
+    // int link_num,
+    // struct modem_cmd_handler_data *data,
+    // int socket_data_length,
+    // uint16_t len,
+    // size_t rx_buf_bytes_to_skip)
     int ret = sockread_common(atoi(argv[0]), data, atoi(argv[1]), len, rx_buf_bytes_to_skip);
     return ret;
 }
@@ -572,16 +735,16 @@ static ssize_t offload_recvfrom(void *obj, void *buf, size_t max_len, int flags,
     // struct modem_cmd query_data_length_cmd[] = {MODEM_CMD("+CIPRXGET: 4,", on_cmd_ciprxget_mode_4, 2U, ",")};
     struct modem_cmd get_data_cmd[] = {MODEM_CMD("+CIPRXGET: 2,", on_cmd_ciprxget_mode_2, 3U, ",")};
 
-    LOG_DBG("Receiving data from socket %d...", sock->id);
+    // LOG_DBG("Receiving data from socket %d...", sock->id);
 
-    LOG_DBG("Checking network state...");
+    // LOG_DBG("Checking network state...");
     if (get_state() != A76XX_STATE_NETWORKING)
     {
         LOG_ERR("Modem not in networking state, aborting receive.");
         return -EAGAIN;
     }
 
-    LOG_DBG("Performing sanity checks on buffer and length...");
+    // LOG_DBG("Performing sanity checks on buffer and length...");
     if (!buf || max_len == 0)
     {
         errno = EINVAL;
@@ -595,7 +758,7 @@ static ssize_t offload_recvfrom(void *obj, void *buf, size_t max_len, int flags,
         return -1;
     }
 
-    LOG_DBG("Checking for available data packets...");
+    // LOG_DBG("Checking for available data packets...");
     packet_size = modem_socket_next_packet_size(&mdata.socket_config, sock);
     if (!packet_size)
     {
@@ -606,10 +769,10 @@ static ssize_t offload_recvfrom(void *obj, void *buf, size_t max_len, int flags,
             return -1;
         }
 
-        LOG_DBG("No data available, waiting for data notification...");
+        // LOG_DBG("No data available, waiting for data notification...");
         modem_socket_wait_data(&mdata.socket_config, sock);
         packet_size = modem_socket_next_packet_size(&mdata.socket_config, sock);
-        LOG_DBG("Data notification received, packet size is now %d.", packet_size);
+        // LOG_DBG("Data notification received, packet size is now %d.", packet_size);
     }
 
     // LOG_DBG("Querying data length");
@@ -619,10 +782,10 @@ static ssize_t offload_recvfrom(void *obj, void *buf, size_t max_len, int flags,
 
     max_len = (max_len > MDM_MAX_DATA_LENGTH) ? MDM_MAX_DATA_LENGTH : max_len;
     // max_len = (max_len > mdata.unread_data_lengths[SOCKET_INDEX(sock->id)]) ? mdata.unread_data_lengths[SOCKET_INDEX(sock->id)] : max_len;
-    LOG_DBG("Building AT+CIPRXGET command to read %zu bytes...", max_len);
-    snprintk(ciprxget_command, sizeof(ciprxget_command), "AT+CIPRXGET=2,%d,%zu", sock->id, max_len);
+    // LOG_DBG("Building AT+CIPRXGET command to read %zu bytes...", max_len);
+    snprintk(ciprxget_command, sizeof(ciprxget_command), "AT+CIPRXGET=2,%d,%zu", get_link_num(sock->sock_fd), max_len);
 
-    LOG_DBG("Preparing socket data structure for read...");
+    // LOG_DBG("Preparing socket data structure for read...");
     memset(&sock_data, 0, sizeof(sock_data));
     sock_data.recv_buf = buf;
     sock_data.recv_buf_len = max_len;
@@ -630,7 +793,7 @@ static ssize_t offload_recvfrom(void *obj, void *buf, size_t max_len, int flags,
     sock->data = &sock_data;
     mdata.current_sock_fd = sock->sock_fd;
 
-    LOG_DBG("Sending command '%s' and waiting for response...", ciprxget_command);
+    // LOG_DBG("Sending command '%s' and waiting for response...", ciprxget_command);
     ret = modem_cmd_send(&mctx.iface, &mctx.cmd_handler, get_data_cmd, ARRAY_SIZE(get_data_cmd),
                          ciprxget_command, &mdata.sem_response, MDM_CMD_TIMEOUT);
     if (ret < 0)
@@ -651,10 +814,10 @@ static ssize_t offload_recvfrom(void *obj, void *buf, size_t max_len, int flags,
 
     errno = 0;
     ret = sock_data.recv_read_len;
-    LOG_DBG("Successfully received %d bytes.", ret);
+    // LOG_DBG("Successfully received %d bytes.", ret);
 
 exit:
-    LOG_DBG("Cleaning up socket data...");
+    // LOG_DBG("Cleaning up socket data...");
     /* clear socket data */
     mdata.current_sock_fd = -1;
     sock->data = NULL;
@@ -733,10 +896,10 @@ static void socket_close(struct modem_socket *sock)
 
     LOG_DBG("Closing socket %d...", sock->id);
 
-    LOG_DBG("Building AT+CIPCLOSE command...");
-    snprintk(cipclose_cmd_buffer, sizeof(cipclose_cmd_buffer), "AT+CIPCLOSE=%d", sock->id);
+    // LOG_DBG("Building AT+CIPCLOSE command...");
+    snprintk(cipclose_cmd_buffer, sizeof(cipclose_cmd_buffer), "AT+CIPCLOSE=%d", get_link_num(sock->sock_fd));
 
-    LOG_DBG("Sending command '%s' and waiting for response...", cipclose_cmd_buffer);
+    // LOG_DBG("Sending command '%s' and waiting for response...", cipclose_cmd_buffer);
     ret = modem_cmd_send(&mctx.iface, &mctx.cmd_handler, NULL, 0U, cipclose_cmd_buffer,
                          &mdata.sem_response, MDM_CIPCLOSE_TIMEOUT);
     if (ret < 0)
@@ -744,9 +907,9 @@ static void socket_close(struct modem_socket *sock)
         LOG_ERR("AT+CIPCLOSE command failed for socket %d, ret: %d", sock->id, ret);
     }
 
-    LOG_DBG("Releasing socket resource for fd %d...", sock->sock_fd);
+    // LOG_DBG("Releasing socket resource for fd %d...", sock->sock_fd);
     modem_socket_put(&mdata.socket_config, sock->sock_fd);
-    LOG_DBG("Socket %d closed successfully.", sock->id);
+    // LOG_DBG("Socket %d closed successfully.", sock->id);
 }
 
 /*
@@ -1114,19 +1277,24 @@ MODEM_CMD_DEFINE(on_urc_app_pdp)
 
 MODEM_CMD_DEFINE(on_urc_ciprxget)
 {
-    int sock_id = atoi(argv[0]); // link number is equal to socket id
-    LOG_DBG("+CIPRXGET: data recieved for socket with ID %d.", sock_id);
-    struct modem_socket *socket = modem_socket_from_id(&mdata.socket_config, sock_id);
+    int link_num = atoi(argv[0]); // link number is equal to socket id
+    int fd = get_fd_from_link_num(link_num);
+    struct modem_socket *socket = get_socket_from_fd(fd);
     if (!socket)
     {
-        LOG_ERR("Received data notification for unknown socket ID %d", sock_id);
+        LOG_ERR("Received data notification for unknown link number %d", link_num);
         return 0;
     }
+    else
+    {
+        LOG_INF("Received data for modem socket with ID %d.", socket->id);
+    }
 
-    LOG_DBG("Data available on socket: %d", sock_id);
+    // LOG_DBG("Data available on socket: %d", socket->id);
     /* Modem does not tell packet size. Set dummy for receive. */
     modem_socket_packet_size_update(&mdata.socket_config, socket, 1);
     modem_socket_data_ready(&mdata.socket_config, socket);
+    // LOG_DBG("Done running on_urc_ciprxget...");
     return 0;
 }
 
@@ -1334,25 +1502,27 @@ MODEM_CMD_DEFINE(on_cmd_csq)
  */
 static void modem_rssi_query_work(struct k_work *work)
 {
-    LOG_DBG("Going to query RSSI.");
+    // LOG_DBG("Going to query RSSI.");
     struct modem_cmd cmd[] = {MODEM_CMD("+CSQ: ", on_cmd_csq, 2U, ",")};
     static char *send_cmd = "AT+CSQ";
     int ret;
-    LOG_DBG("Going to run cmd for RSSI query.");
-    LOG_DBG("ARRAY_SIZE(cmd): %zu", ARRAY_SIZE(cmd));
+    // LOG_DBG("Going to run cmd for RSSI query.");
+    // LOG_DBG("ARRAY_SIZE(cmd): %zu", ARRAY_SIZE(cmd));
     ret = modem_cmd_send(&mctx.iface, &mctx.cmd_handler, cmd, ARRAY_SIZE(cmd), send_cmd,
                          &mdata.sem_response, MDM_CMD_TIMEOUT);
     if (ret < 0)
     {
         LOG_ERR("AT+CSQ ret:%d", ret);
-    } else {
-        LOG_DBG("Queried RSSI successfully.");
+    }
+    else
+    {
+        // LOG_DBG("Queried RSSI successfully.");
     }
 
     if (work)
     {
-        k_work_reschedule_for_queue(&modem_workq, &mdata.rssi_query_work,
-                                    K_SECONDS(RSSI_TIMEOUT_SECS));
+        // k_work_reschedule_for_queue(&modem_workq, &mdata.rssi_query_work,
+        //                             K_SECONDS(RSSI_TIMEOUT_SECS));
     }
 }
 
@@ -1833,7 +2003,7 @@ static int modem_setup(void)
     int counter = 0;
 
     LOG_INF("[1/7] Cancelling any pending RSSI query work...");
-    k_work_cancel_delayable(&mdata.rssi_query_work);
+    // k_work_cancel_delayable(&mdata.rssi_query_work);
 
     // ret = modem_autobaud();
     LOG_INF("[2/7] Powering on modem...");
@@ -1887,9 +2057,12 @@ static int modem_setup(void)
     }
     LOG_INF("PDP context activated.");
 
-    LOG_INF("[6/7] Scheduling periodic RSSI updates...");
-    k_work_reschedule_for_queue(&modem_workq, &mdata.rssi_query_work,
-                                K_SECONDS(RSSI_TIMEOUT_SECS));
+    LOG_INF("[6/7] Starting socket service...");
+    struct modem_cmd netopen_responses[] = {
+        MODEM_CMD("+NETOPEN: ", on_cmd_netopen, 1U, ""),
+        MODEM_CMD("+IP ERROR: Network is already opened", on_cmd_ip_error_network_already_opened, 0U, "")};
+    ret = modem_cmd_send(&mctx.iface, &mctx.cmd_handler, netopen_responses, ARRAY_SIZE(netopen_responses), "AT+NETOPEN",
+                         &mdata.sem_response, MDM_NETOPEN_TIMEOUT);
 
     LOG_INF("[7/7] Switching modem to NETWORKING state...");
     change_state(A76XX_STATE_NETWORKING);
@@ -1978,6 +2151,8 @@ static int modem_init(const struct device *dev)
     k_sem_init(&mdata.sem_tx_ready, 0, 1);
     k_sem_init(&mdata.sem_dns, 0, 1);
     k_sem_init(&mdata.sem_ftp, 0, 1);
+    k_mutex_init(&mdata.link_num_lock);
+    init_link_nums();
 
     LOG_DBG("Starting workqueue...");
     k_work_queue_start(&modem_workq, modem_workq_stack,
@@ -2058,8 +2233,8 @@ static int modem_init(const struct device *dev)
     k_thread_create(&modem_rx_thread, modem_rx_stack, K_KERNEL_STACK_SIZEOF(modem_rx_stack),
                     modem_rx, NULL, NULL, NULL, K_PRIO_COOP(7), 0, K_NO_WAIT);
 
-    LOG_INF("Initializing RSSI query work...");
-    k_work_init_delayable(&mdata.rssi_query_work, modem_rssi_query_work);
+    // LOG_INF("Initializing RSSI query work...");
+    // k_work_init_delayable(&mdata.rssi_query_work, modem_rssi_query_work);
 
     LOG_INF("Running modem setup...");
     return modem_setup();
@@ -2067,21 +2242,6 @@ static int modem_init(const struct device *dev)
 error:
     LOG_ERR("Modem init failed with code: %d", ret);
     return ret;
-}
-
-static struct modem_socket *get_socket_from_fd(int fd)
-{
-    struct modem_socket *socket = NULL;
-    k_sem_take(&(mdata.socket_config.sem_lock), K_FOREVER);
-    for (uint8_t i = 0; i < MDM_MAX_SOCKETS; i++)
-    {
-        if (mdata.socket_config.sockets[i].sock_fd == fd)
-        {
-            socket = &mdata.socket_config.sockets[i];
-        }
-    }
-    k_sem_give(&(mdata.socket_config.sem_lock));
-    return socket;
 }
 
 static int net_if_offload_get(sa_family_t family, enum net_sock_type type,
@@ -2098,21 +2258,30 @@ static int net_if_offload_get(sa_family_t family, enum net_sock_type type,
         errno = -ret;
         return -1;
     }
-    LOG_DBG("Successfully got the fd %d.", ret);
+
+    int link_num = allocate_link_num(ret);
+    LOG_DBG("Link num: %d | get_link_num(%d): %d", link_num, ret, get_link_num(ret));
 
     struct modem_socket *socket = get_socket_from_fd(ret);
+
+    if (link_num < 0)
+    {
+        LOG_ERR("Could not allocate link number.");
+        socket_close(socket);
+        return -1;
+    }
+
     if (socket == NULL)
     {
         LOG_ERR("Couldn't find the socket that was apparently created.");
+        free_link_num(link_num);
         return -1;
     }
     LOG_DBG("Successfully got a socket with fd %d.", ret);
     (*context)->offload_context = socket;
     LOG_DBG("Successfully stored socket with fd %d in the context.", ret);
-
     errno = 0;
     return ret;
-    return 0;
 }
 
 static int net_if_offload_bind(struct net_context *context,
@@ -2159,7 +2328,7 @@ static int net_if_offload_recv(struct net_context *context, net_context_recv_cb_
                                int32_t timeout, void *user_data)
 {
     LOG_DBG("Running modem's net_if_offload_recv...");
-    struct modem_socket *socket = context->offload_context;
+    struct modem_socket *socket = (struct modem_socket *)context->offload_context;
     /*
     typedef void (*net_context_recv_cb_t)(
     struct net_context *context, struct net_pkt *pkt, union net_ip_header *ip_hdr,
@@ -2170,25 +2339,42 @@ static int net_if_offload_recv(struct net_context *context, net_context_recv_cb_
 
     Since i only want to use the packet, set everything to null and send the packet.
     */
-    struct net_pkt *pkt = net_pkt_alloc_with_buffer(mdata.netif, 1280, socket->family, socket->ip_proto, K_FOREVER);
+    LOG_DBG("Running net_pkt_alloc_with_buffer...");
+    struct net_pkt *pkt = net_pkt_alloc_with_buffer(mdata.netif, 1100, socket->family, socket->ip_proto, K_FOREVER);
+    LOG_DBG("Running k_calloc for buffer...");
     uint8_t *buf = NULL;
     while (buf == NULL)
     {
-        buf = k_calloc(1280, 1);
+        LOG_DBG("Allocating buffer...");
+        buf = k_calloc(1100, 1);
+        k_msleep(100);
     }
-    ssize_t bytes_read = offload_recvfrom(socket, buf, 1280, 0, NULL, NULL);
-    net_hexdump("Response in net_if_offload_recv", buf, bytes_read);
+    LOG_DBG("Running modem's net_if_offload_recv...");
+    ssize_t bytes_read = offload_recvfrom(socket, buf, 1100, 0, NULL, NULL);
+    // net_hexdump("Response in net_if_offload_recv", buf, bytes_read);
     net_pkt_write(pkt, buf, bytes_read);
+    k_free(buf);
     net_pkt_cursor_init(pkt);
     cb(context, pkt, NULL, NULL, 0, user_data);
-    k_free(buf);
     return 0;
 }
 
 static int net_if_offload_put(struct net_context *context)
 {
     LOG_DBG("Running modem's net_if_offload_put...");
-    struct modem_socket *socket = context->offload_context;
+    if (context != NULL)
+    {
+        struct modem_socket *socket = (struct modem_socket *)context->offload_context;
+        int link_num = get_link_num(socket->sock_fd);
+        socket_close(socket);
+        if (link_num >= 0) {
+            free_link_num(link_num);
+        }
+    }
+    else
+    {
+        LOG_WRN("Could not free socket memory because no net context was given.");
+    }
 }
 
 /* Register device with the networking stack. */
@@ -2196,5 +2382,5 @@ NET_DEVICE_DT_INST_OFFLOAD_DEFINE(0, modem_init, NULL, &mdata, NULL,
                                   CONFIG_MODEM_SIMCOM_A76XX_INIT_PRIORITY, &api_funcs,
                                   MDM_MAX_DATA_LENGTH);
 
-// NET_SOCKET_OFFLOAD_REGISTER(simcom_a76xx, CONFIG_MODEM_SIMCOM_A76XX_SOCKET_PRIORITY,
-//                             AF_INET, offload_is_supported, offload_socket);
+NET_SOCKET_OFFLOAD_REGISTER(simcom_a76xx, CONFIG_MODEM_SIMCOM_A76XX_SOCKET_PRIORITY,
+                            AF_INET, offload_is_supported, offload_socket);

@@ -30,9 +30,11 @@
 
 #define MDM_UART_NODE DT_INST_BUS(0)
 #define MDM_UART_DEV DEVICE_DT_GET(MDM_UART_NODE)
-#define MDM_MAX_DATA_LENGTH 1024
-#define MDM_RECV_BUF_SIZE 1024
+#define MDM_MAX_DATA_LENGTH 1500
+#define MDM_RECV_BUF_SIZE 1500
 #define MDM_MAX_SOCKETS 5
+#define MDM_MAX_LINK_NUM 9
+#define MDM_MIN_LINK_NUM 0
 #define MDM_BASE_SOCKET_NUM 1
 #define MDM_RECV_MAX_BUF 30
 #define BUF_ALLOC_TIMEOUT K_SECONDS(1)
@@ -102,6 +104,11 @@ enum a76xx_ftp_connection_state {
 	A76XX_FTP_CONNECTION_STATE_FINISHED,
 	/* Something went wrong. */
 	A76XX_FTP_CONNECTION_STATE_ERROR,
+};
+
+struct fd_link_num_pair{
+    int fd;
+    uint8_t link_num;
 };
 
 /*
@@ -191,7 +198,15 @@ struct a76xx_data {
 	struct k_sem sem_ftp;
     // Power status
     bool powered_on;
+
+    // link numbers from 0 to 9 can be used
+    // use the helper functions allocate_link_num and free_link_num
+    // if socket_fd and socket_link_num, then link_num_to_fd[socket_link_num] = socket_fd
+    // link_num_to_fd -1 to indicate NOT USED 
+	struct k_mutex link_num_lock;
+    int link_num_to_fd[MDM_MAX_SOCKETS];
 };
+
 
 /*
  * Socket read callback data.

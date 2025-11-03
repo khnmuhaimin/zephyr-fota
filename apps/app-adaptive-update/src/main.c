@@ -339,15 +339,9 @@ int main(void)
     wait_for_wifi();
     LOG_DBG("Initializing adaptive sockets...");
     adaptive_sockets_init();
-    // LOG_DBG("Starting updatehub...");
-    // updatehub_autohandler();
+    LOG_DBG("Starting updatehub...");
+    updatehub_autohandler();
 
-    // LOG_DBG("Waiting");
-    // while (1)
-    // {
-    //     // LOG_INF("Hello, old image!");
-    //     k_sleep(K_SECONDS(10));
-    // }
 
     // int i = 1;
     // while (true) {
@@ -402,7 +396,7 @@ int main(void)
     //     }
     //     zsock_close(sock);
     //     LOG_DBG("Starting to sleep.");
-    //     k_msleep(1000);
+    //     k_msleep(10000);
     //     LOG_DBG("Done sleeping.");
     //     i++;
     // }
